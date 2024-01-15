@@ -1,6 +1,6 @@
 import { stripHtmlFromString } from "@/utils"
 import portableText from "../partials/portableText"
-import link from "../partials/link";
+import link from "../objects/link";
 
 export const heroType = {
   name: "hero",
@@ -30,7 +30,9 @@ export const heroType = {
       type: 'array',
       title: 'Buttons',
       of: [
-        link('button', 'Button')
+        {
+          type: 'button',
+        },
       ]
     },
     {
