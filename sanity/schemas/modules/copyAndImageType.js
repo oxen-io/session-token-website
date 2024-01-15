@@ -1,6 +1,6 @@
 import { stripHtmlFromString } from "@/utils"
 
-import link from "../partials/link"
+import link from "../objects/link"
 import portableText from "../partials/portableText"
 
 export const copyAndImageType = {
@@ -29,7 +29,10 @@ export const copyAndImageType = {
             type: "image",
             options: { hotspot: true },
         },
-        link('button', 'Button'),
+        {
+            name: 'button',
+            type: 'button',
+        },
         {
             name: 'alignment',
             type: 'string',

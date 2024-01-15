@@ -1,6 +1,6 @@
-export default (name, title) => ({
-    name,
-    title,
+export const link = {
+    name: 'link',
+    title: "Link",
     type: "object",
     fields: [
         {
@@ -42,21 +42,5 @@ export default (name, title) => ({
                 // other types you may want to link to
             ],
         },
-        {
-            name: 'isPrimary',
-            type: 'boolean',
-            title: 'Is primary?'
-        },
-        {
-            name: 'iconName',
-            type: 'string',
-            options: {
-                list: [
-                    { value: 'none', title: 'none' },
-                    { value: 'logoWithCircle', title: 'logoWithCircle' },
-                    { value: 'logo', title: 'logo' }
-                ]
-            }
-        }
     ]
-});
+};
