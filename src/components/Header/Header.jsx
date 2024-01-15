@@ -44,7 +44,9 @@ export default function Header({settings}) {
                 />
             </NavLink>
             <HeaderMenu menu={menu} />
-            <Button />
+            <Button
+                label={'Buy $SENT'}
+            />
         </header>
     )
 }
