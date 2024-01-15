@@ -22,6 +22,7 @@ export default function Hero ({
                     { buttons && 
                         <ul>
                             {buttons.map((button, index) => {
+                                console.log(button)
                                 
                                 return (
                                     <li key={index}>
