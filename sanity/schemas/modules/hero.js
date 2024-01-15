@@ -1,8 +1,7 @@
 import { stripHtmlFromString } from "@/utils"
 import portableText from "../partials/portableText"
-import link from "../objects/link";
 
-export const heroType = {
+export const hero = {
   name: "hero",
   type: "object",
   title: "Hero",

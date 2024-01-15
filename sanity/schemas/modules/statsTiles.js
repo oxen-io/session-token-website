@@ -1,4 +1,4 @@
-export const statsTilesType = {
+export const statsTiles = {
     name: "statsTiles",
     type: "object",
     title: "Stats Tiles",
