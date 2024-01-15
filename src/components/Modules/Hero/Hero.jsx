@@ -14,7 +14,7 @@ export default function Hero ({
     type,
 }) {
     return (
-        <section className={s.Outer}>
+        <section className={s.Hero}>
             <div className={cn(s.Cont, "Container")}>
                 <div className={s.CopyCont}>
                     { title && <h1 dangerouslySetInnerHTML={{ __html: title }} /> }
