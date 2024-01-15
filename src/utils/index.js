@@ -66,7 +66,17 @@ export const replaceEmailWithMailToLinks = str => {
 export const getSettings = async () => {
   return sanityFetch(`*[_type == "settings"][0] {
     ...,
-    menu[]->
+    menuItems[]->{
+      _type,
+      "slug": slug.current,
+      title,
+      children[]->{
+        _type,
+        "slug": slug.current,
+        title,
+        overview,
+      }
+    },
   }`, {}, ['settings'])
 }
 
