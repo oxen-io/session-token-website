@@ -7,14 +7,15 @@ export default function HeaderMenu({ menu }) {
 
     return (
         <ul className={s.HeaderMenu}>
-            {menu?.map((menuItem, key) => {
+            {menu?.map((menuItem, index) => {
                 const {
                     title,
-                    slug
+                    slug,
+                    children,
                 } = menuItem
 
                 return (
-                    <li key={key}>
+                    <li key={index}>
                         <div className={s.Title}>
                             {slug ? (
                                 <NavLink href={slug}>{title}</NavLink>
@@ -22,6 +23,28 @@ export default function HeaderMenu({ menu }) {
                                 title
                             )}
                         </div>
+                        { children &&
+                            <ul className={s.SubMenu}>
+                                { children?.map((menuItem, sIndex) => {
+                                    const {
+                                        title,
+                                        slug,
+                                    } = menuItem
+
+                                    return (
+                                        <li key={sIndex}>
+                                            <div className={s.Title}>
+                                                {slug ? (
+                                                    <NavLink href={slug}>{title}</NavLink>
+                                                ) : (
+                                                    title
+                                                )}
+                                            </div>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        }
                     </li>
                 )
             })}
