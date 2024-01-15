@@ -4,23 +4,23 @@ import clsx from 'clsx'
 import s from './Button.module.sass'
 
 export default function Button({
-    icon,
+    iconName,
     iconAfter,
-    text,
-    isWhite,
+    label,
+    isPrimary,
     onClick = () => { }
 }) {
     const inner = (
         <>
             <span>
-                {text}
+                {label}
             </span>
         </>
     )
     return (
         <button
             className={clsx(s.Outer, {
-                [s.White]: isWhite
+                [s.Primary]: isPrimary
             })}
             onClick={onClick}
         >
