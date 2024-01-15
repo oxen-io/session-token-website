@@ -22,7 +22,7 @@ export default function Modules({
     return (
         <>
             {modules && modules.map((module) => {
-                const { _type, _id } = module
+                const { _type, _key } = module
 
                 const Component = components[ucFirst(_type)]
 
@@ -30,7 +30,7 @@ export default function Modules({
                     return `No component found for ${_type}`
                 }
 
-                return <Component key={_id} {...module} />
+                return <Component key={_key} {...module} />
             })}
         </>
     )
