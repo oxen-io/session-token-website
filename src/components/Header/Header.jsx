@@ -1,51 +1,32 @@
 'use client'
 
-import Link from 'next/link'
-import s from './Header.module.sass'
 import clsx from 'clsx'
-import { useEffect, useRef, useState } from 'react'
-import { usePathname } from 'next/navigation'
+import Image from 'next/image'
 
-export default function Header() {
-    const menu = []
+import NavLink from '@/components/NavLink/NavLink'
 
-    const pathname = usePathname()
+import HeaderMenu from './HeaderMenu'
 
-    const menuJsx = (
-        <ul>
-            {menu.map(({
-                _id,
-                slug: { current: slug },
-                title
-            }, index) => {
-                const transitionDelay = !menuOpen ? 0 : isMobile ? index * 0.1 + 0.1 : (menu.length - index) * 0.1
-                const isActive = pathname === `/${slug}`
+import Logo from '/public/images/logo.png'
 
-                return (
-                    <li
-                        key={_id}
-                        style={{
-                            transitionDelay: `${transitionDelay}s`
-                        }}
-                        onClick={() => setMenuOpen(false)}
-                        className={isActive ? s.Active : ''}
-                    >
-                        <Link href={`/${slug}`}>
-                            {title}
-                        </Link>
-                    </li>
-                )
-            })}
-        </ul>
-    )
+import s from './Header.module.sass'
+
+export default function Header({settings}) {
+    const menu = settings?.menuItems
+
+    console.log(settings)
 
     return (
-        <>
-            <header className={clsx(s.Outer, 'Container')}>
-                <h1>
-                    Hedder gets the chedder
-                </h1>
-            </header>
-        </>
+        <header className={clsx(s.Header, 'Container')}>
+            <NavLink href={'/'}>
+                <Image
+                    src={Logo}
+                    alt="Session Token"
+                    placeholder="blur"
+                    onClick={ () => setMenuOpen(false) }
+                />
+            </NavLink>
+            <HeaderMenu menu={menu} />
+        </header>
     )
 }

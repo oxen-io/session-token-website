@@ -1,4 +1,7 @@
 import { pageType } from "./schemas/pageType"
+import settings from "./schemas/singletons/settings"
+
+import navigationLink from "./schemas/documents/navigationLink"
 
 import { heroType } from "./schemas/modules/heroType"
 import { copyAndImageType } from "./schemas/modules/copyAndImageType"
@@ -7,15 +10,17 @@ import { joinCtaType } from "./schemas/modules/joinCtaType"
 import { statsTilesType } from "./schemas/modules/statsTilesType"
 import { tileCarouselType } from "./schemas/modules/tileCarouselType"
 
+
 export const schema = {
   types: [
     pageType,
-
+    settings,
     heroType,
     copyAndImageType,
     iconStripType,
     joinCtaType,
     statsTilesType,
     tileCarouselType,
+    navigationLink,
   ],
 }
