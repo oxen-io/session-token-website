@@ -24,7 +24,7 @@ export default function Header({settings}) {
 
         window.addEventListener("scroll", function(){
             var st = window.scrollY || document.documentElement.scrollTop
-            if (st > lastScrollTop) {
+            if (st > lastScrollTop && window.scrollY > 100) {
                 setHideMenu(true)
             } else if (st < lastScrollTop) {
                 setHideMenu(false)
