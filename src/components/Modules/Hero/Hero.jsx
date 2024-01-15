@@ -1,18 +1,18 @@
-import s from './Hero.module.sass'
 import cn from 'clsx'
 
 import { PortableText } from '@portabletext/react'
 import Button from '@/components/Button/Button'
 import ImageBox from '@/components/ImageBox/ImageBox'
 
+import s from './Hero.module.sass'
+
 export default function Hero ({
     title,
     copy,
     buttons,
     backgroundImage,
-    type
+    type,
 }) {
-
     return (
         <section className={s.Outer}>
             <div className={cn(s.Cont, "Container")}>
@@ -22,7 +22,6 @@ export default function Hero ({
                     { buttons && 
                         <ul>
                             {buttons.map((button, index) => {
-                                
                                 return (
                                     <li key={index}>
                                         <Button 
