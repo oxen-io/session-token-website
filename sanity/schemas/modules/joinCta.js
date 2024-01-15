@@ -1,7 +1,7 @@
 import { stripHtmlFromString } from "@/utils"
 import portableText from "../partials/portableText"
 
-export const joinCtaType = {
+export const joinCta = {
     name: "joinCta",
     type: "object",
     title: "Join CTA",

@@ -1,7 +1,7 @@
 import { stripHtmlFromString } from "@/utils"
 import portableText from "../partials/portableText"
 
-export const tileCarouselType = {
+export const tileCarousel = {
     name: "tileCarousel",
     type: "object",
     title: "Tile Carousel",

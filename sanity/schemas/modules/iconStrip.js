@@ -1,4 +1,4 @@
-export const iconStripType = {
+export const iconStrip = {
     name: "iconStrip",
     type: "object",
     title: "Icon Strip",

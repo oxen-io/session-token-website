@@ -1,9 +1,8 @@
 import { stripHtmlFromString } from "@/utils"
 
-import link from "../objects/link"
 import portableText from "../partials/portableText"
 
-export const copyAndImageType = {
+export const copyAndImage = {
     name: "copyAndImage",
     type: "object",
     title: "Copy & Image",
