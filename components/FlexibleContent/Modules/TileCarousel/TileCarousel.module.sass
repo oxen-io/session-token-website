@@ -1,15 +1,87 @@
 .TileCarousel
-    margin: 50px 0
+    margin: 100px 0 20px
+    padding: 0 0 80px
+    overflow: hidden
+
+    &.HasContent
+        .Slider
+            width: 75%
+
+            div
+                &[class*="swiper-horizontal"]
+                    overflow: hidden
+
+        .Slide
+            justify-content: flex-start
+            padding: 0
+
+        .Image
+            width: 100%
+            height: 240px
+            margin: 0
+
+            img
+                object-fit: cover
+                object-position: center
+
+        .TileContent
+            padding: 20px
+
+.Cont
+    display: flex
+
+.Content
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    width: 25%
+    padding: 0 100px 0 0
 
 .Slider
-    display: grid
-    grid-template-columns: repeat(3, 1fr)
-    gap: 15px
+    width: 100%
     list-style: none
     margin: 0
     padding: 0
 
+    div
+        &[class*="swiper-horizontal"]
+            overflow: visible
+
+        &[class*="swiper-slide"]
+            height: auto
+
+        &[class*="swiper-scrollbar"]
+            bottom: -20px
+
+        &[class*="swiper-scrollbar-drag"]
+            background-color: var(--color-primary)
+
+        &[class*="swiper-button-prev"], &[class*="swiper-button-next"]
+            display: none
+            width: 40px
+            height: 40px
+            border: 1px solid var(--color-primary)
+            border-radius: 50%
+            background-color: var(--color-black)
+            top: auto
+            bottom: -60px
+            left: calc( 50% - 42px )
+
+            &::after
+                content: ''
+                display: block
+                width: 12px
+                height: 12px
+                background-image: url( '/images/arrow.svg' )
+                background-size: contain
+
+        &[class*="swiper-button-next"]
+            left: auto
+            right: calc( 50% - 42px )
+            rotate: 180deg
+
 .Slide
+    height: 100%
     display: flex
     flex-direction: column
     justify-content: flex-end
@@ -35,13 +107,6 @@
                 object-fit: cover
                 object-position: center
 
-    h2
-        margin: 0 0 20px
-
-    > a, > button
-        display: flex
-        margin: 40px 0 0
-
     .Image
         width: 140px
         margin: 30px 0
@@ -56,11 +121,49 @@
             object-fit: contain
             object-position: bottom
 
+.TileContent
+    > div
+        margin: 0 0 10px
+        opacity: 0.6
+
+    h2
+        margin: 0 0 20px
+
+    h4
+        margin: 0 0 10px
+
+        span
+            color: var(--color-primary)
+            margin: 0 0 0 10px
+
+    > a, > button
+        display: flex
+        margin: 40px 0 0
+
 
 
 
 
 @media(max-width: 1024px)
 
-    .Slide
-        grid-template-columns: 1fr
+    .TileCarousel
+        &.HasContent
+            .Slider
+                width: 100%
+
+                div
+                    &[class*="swiper-horizontal"]
+                        overflow: visible
+
+    .Cont
+        flex-direction: column
+
+    .Content
+        width: 100%
+        margin: 0 0 30px
+        gap: 20px
+
+    .Slider
+        div
+            &[class*="swiper-button-prev"], &[class*="swiper-button-next"]
+                display: flex
