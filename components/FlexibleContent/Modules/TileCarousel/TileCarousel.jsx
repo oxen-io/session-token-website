@@ -13,13 +13,14 @@ import { PortableText } from '@portabletext/react'
 
 import ImageBox from '/components/ImageBox/ImageBox'
 import Button from '/components/Button/Button'
+import NavLink from '/components/NavLink/NavLink'
 
 import s from './TileCarousel.module.sass'
 
 export default function TileCarousel ({
     title,
     content,
-    tiles
+    tiles,
 }) {
     return (
         <section className={cn(s.TileCarousel, content ? s.HasContent : '')}>
@@ -59,31 +60,47 @@ export default function TileCarousel ({
                                 link,
                             } = tile
 
+                            const inside = (
+                                <>
+                                    { image &&
+                                        <div className={s.Image}>
+                                            <ImageBox image={image} />
+                                        </div>
+                                    }
+                                    <div className={s.TileContent}>
+                                        { preTitle &&
+                                            <div className="smallTitle">{preTitle}</div>
+                                        }
+                                        { content ?
+                                            <h4>{title}<span>↗</span></h4>
+                                        :
+                                            <h2>{title}</h2>
+                                        }
+                                        <p>{copy}</p>
+                                        { linkLabel &&
+                                            <Button
+                                                title={linkLabel}
+                                                inverted={!fullSizeImage}
+                                                arrow={link}
+                                                disabled={!link}
+                                            />
+                                        }
+                                    </div>
+                                </>
+                            )
+
                             return (
                                 <SwiperSlide key={index}>
-                                    <div key={index} className={cn(s.Slide, fullSizeImage ? s.FullSizeImage : '')}>
-                                        { image &&
-                                            <div className={s.Image}>
-                                                <ImageBox image={image} />
+                                    <div className={cn(s.Slide, fullSizeImage ? s.FullSizeImage : '')}>
+                                        { link ?
+                                            <NavLink href={link}>
+                                                {inside}
+                                            </NavLink>
+                                        :
+                                            <div>
+                                                {inside}
                                             </div>
                                         }
-                                        <div className={s.TileContent}>
-                                            { preTitle &&
-                                                <div className="smallTitle">{preTitle}</div>
-                                            }
-                                            { content ?
-                                                <h4>{title}<span>↗</span></h4>
-                                            :
-                                                <h2>{title}</h2>
-                                            }
-                                            <p>{copy}</p>
-                                            { linkLabel &&
-                                                <Button
-                                                    title={linkLabel}
-                                                    url={link}
-                                                />
-                                            }
-                                        </div>
                                     </div>
                                 </SwiperSlide>
                             )

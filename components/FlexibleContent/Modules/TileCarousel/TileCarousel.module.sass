@@ -12,17 +12,27 @@
                     overflow: hidden
 
         .Slide
-            justify-content: flex-start
-            padding: 0
+            > a, > div
+                justify-content: flex-start
+                padding: 0
+
+            > a
+                &:hover
+                    .Image
+                        img
+                            scale: 1
 
         .Image
             width: 100%
             height: 240px
             margin: 0
+            overflow: hidden
 
             img
                 object-fit: cover
                 object-position: center
+                scale: 1.05
+                transition: 0.2s
 
         .TileContent
             padding: 20px
@@ -82,17 +92,41 @@
 
 .Slide
     height: 100%
-    display: flex
-    flex-direction: column
-    justify-content: flex-end
-    align-items: flex-start
-    border: 1px solid rgba(255, 255, 255, 0.2)
-    border-radius: 32px
-    padding: 30px 20% 40px 6%
-    overflow: hidden
+
+    > a, > div
+        height: 100%
+        display: flex
+        flex-direction: column
+        justify-content: flex-end
+        align-items: flex-start
+        border: 1px solid rgba(255, 255, 255, 0.2)
+        border-radius: 32px
+        padding: 30px 20% 40px 6%
+        overflow: hidden
+        transition: 0.2s
+
+        > span
+            display: flex
+            flex-direction: column
+            justify-content: flex-end
+            align-items: flex-start
+            height: 100%
+
+    > a
+        &:hover
+            border-color: #006c38
 
     &.FullSizeImage
-        border: 0
+        > a, > div
+            border-color: transparent
+            padding: 0
+
+        > a
+            &:hover
+                border-color: #006c38
+
+                .Image
+                    scale: 1
 
         .Image
             width: 100%
@@ -102,10 +136,15 @@
             left: 0
             z-index: -1
             margin: 0
+            scale: 1.05
+            transition: 0.2s
 
             img
                 object-fit: cover
                 object-position: center
+
+        .TileContent
+            padding: 30px 20% 40px 6%
 
     .Image
         width: 140px

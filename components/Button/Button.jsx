@@ -21,6 +21,7 @@ export default function Button({
     inverted,
     iconName,
     arrow,
+    disabled,
 }) {
     const handleDummyClick = undefined
 
@@ -32,6 +33,7 @@ export default function Button({
         className && className,
         small && s.Small,
         inverted && s.Inverted,
+        disabled && s.Disabled,
     )
 
     const buttonIcon = iconName ? buttonLogos[iconName] : null
