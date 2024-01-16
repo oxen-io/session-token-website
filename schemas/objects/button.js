@@ -14,11 +14,7 @@ export const button = {
                 { value: 'logoWithCircle', title: 'Logo With Circle' },
             ],
         },
-    }, {
-        title: 'Icon After',
-        name: 'iconAfter',
-        type: 'boolean'
-    }, {
+    },{
         title: 'Is Primary',
         name: 'isPrimary',
         type: 'boolean'
