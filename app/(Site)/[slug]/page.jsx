@@ -40,8 +40,6 @@ export default async function PageSlugRoute({ params }) {
         getDocumentBySlug(params.slug, 'page'),
     ])
 
-    console.log("DATA", data);
-
     if (!data && !draftMode().isEnabled) {
         notFound()
     }
