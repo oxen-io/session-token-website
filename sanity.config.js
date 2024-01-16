@@ -59,7 +59,7 @@ export const iframeOptions = {
 }
 
 export default defineConfig({
-    basePath: '/studio',
+    basePath: '/admin',
     projectId: projectId || '',
     dataset: dataset || '',
     title,
