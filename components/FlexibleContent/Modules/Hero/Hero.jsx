@@ -13,6 +13,8 @@ export default function Hero ({
     backgroundImage,
     type,
 }) {
+
+    console.log(buttons);
     return (
         <section className={s.Hero}>
             <div className={cn(s.Cont, "Container")}>

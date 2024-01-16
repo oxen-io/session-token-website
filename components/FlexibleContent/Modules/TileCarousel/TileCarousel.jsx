@@ -9,8 +9,6 @@ export default function TileCarousel ({
     content,
     tiles
 }) {
-    console.log(title, content, tiles)
-
     return (
         <section className={s.TileCarousel}>
             <div className={cn(s.Cont, "Container")}>
