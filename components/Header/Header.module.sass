@@ -1,0 +1,21 @@
+.Header
+    width: 100%
+    height: 78px
+    backdrop-filter: blur(10px) brightness(60%)
+    display: flex
+    align-items: center
+    position: fixed
+    top: 0
+    z-index: 10
+    transition: top 0.3s
+
+    &.Hide
+        top: -78px
+
+    > a
+        padding: 0 20px 0 0
+
+    img
+        display: block
+        width: auto
+        height: 29px

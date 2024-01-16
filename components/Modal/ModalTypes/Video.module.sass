@@ -1,0 +1,40 @@
+.Video
+    width: 100%
+    border-radius: 10px
+    overflow: hidden
+
+    video
+        display: block
+        width: 100%
+        aspect-ratio: 16 / 9
+
+    &.isYouTube
+        display: flex
+        justify-content: center
+        width: 70vw
+        max-width: 1500px
+        margin: 0 auto
+
+        iframe
+            display: block
+            width: 70vw
+            max-width: 1500px
+            height: auto
+            aspect-ratio: 16/9
+
+
+
+
+
+@media(max-width: 1024px)
+
+    .Video
+        &.isYouTube
+            width: 100%
+            max-width: 100%
+
+            iframe
+                display: block
+                width: 100vw
+                height: auto
+                aspect-ratio: 16/9

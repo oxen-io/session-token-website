@@ -1,0 +1,10 @@
+.SmoothOpen
+    display: grid
+    grid-template-rows: 0fr
+    transition: grid-template-rows 0.5s
+
+    > div
+        overflow: hidden
+
+    &.isOpen
+        grid-template-rows: 1fr
