@@ -3,7 +3,7 @@ import { AtypDisplay, AtypText } from 'styles/fonts/fonts'
 
 export default async function RootLayout({ children }) {
     return (
-        <html lang="en" className={`${AtypDisplay.variable}, ${AtypText.variable}`}>
+        <html lang="en" className={`${AtypDisplay.variable} ${AtypText.variable}`}>
             <head>
                 <Script id="google-tag-manager" strategy="afterInteractive">
                     {`
