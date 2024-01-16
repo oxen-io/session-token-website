@@ -7,6 +7,8 @@ import { getLinkUrl } from 'lib/sanity.links'
 
 import s from './Button.module.sass'
 
+import buttonLogos from 'public/images/buttonLogos'
+
 export default function Button({
     link: sanityLink,
     url,
@@ -17,6 +19,7 @@ export default function Button({
     type,
     small,
     inverted,
+    iconName,
 }) {
     const handleDummyClick = undefined
 
@@ -30,6 +33,9 @@ export default function Button({
         inverted && s.Inverted,
     )
 
+    const buttonIcon = iconName ? buttonLogos[iconName] : null
+
+    console.log(buttonIcon);
 
     if (!url && !sanityLink) {
         return (
@@ -38,7 +44,8 @@ export default function Button({
                 onClick={_handleClick}
                 type={type || ''}
             >
-                {title && <span>{title}</span>}
+                {buttonIcon}
+                {title && <span dangerouslySetInnerHTML={{ __html: title }} />}
             </button>
         )
     }
@@ -58,7 +65,8 @@ export default function Button({
             prefetch={prefetch}
             onClick={_handleClick}
         >
-            {_title && <span>{_title}</span>}
+            {buttonIcon}
+            {_title && <span dangerouslySetInnerHTML={{ __html: _title }} />}
         </NavLink>
     )
 }

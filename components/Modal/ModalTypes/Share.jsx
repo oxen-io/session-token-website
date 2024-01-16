@@ -3,7 +3,6 @@
 import s from './Share.module.sass'
 import { getShareSites, getSocialIcon } from 'lib/utils'
 
-import circle from 'public/circle'
 import Button from 'components/Button/Button'
 
 import { useState } from 'react'
@@ -43,7 +42,6 @@ function Share({ data, settings, close }) {
                         return (
                             <li key={index}>
                                 <a href={href}>
-                                    {circle}
                                     {getSocialIcon(company)}
                                 </a>
                             </li>
