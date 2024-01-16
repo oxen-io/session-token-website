@@ -1,0 +1,155 @@
+.Footer
+    width: 100%
+    padding: 50px 0 0
+    background-color: var(--brown)
+    color: white
+    border-radius: 20px 20px 0 0
+    margin: auto 0 0
+
+.Main
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-template-areas: "logo acknowledgement menu"
+    gap: 30px 5%
+    font-size: 14px
+
+    > a
+        grid-area: logo
+
+        svg
+            display: block
+            width: 100%
+            max-width: 300px
+            height: auto
+
+    ul
+        grid-area: menu
+        margin-top: -15px
+
+        li
+            margin: 15px 0
+
+.Acknowledgement
+    padding: 0 0 20px
+    grid-area: acknowledgement
+
+    > div
+        margin: 20px 0 0
+
+.Bottom
+    margin: 10px 0 0
+    border-top: 1px solid rgba(255, 255, 255, 0.2)
+    font-size: 14px
+
+    .Cont
+        display: flex
+        justify-content: flex-end
+
+    ul
+        display: flex
+
+        li
+            display: flex
+            align-items: center
+
+            &::after
+                content: ''
+                display: block
+                width: 1px
+                height: 40%
+                background-color: rgba(255, 255, 255, 0.4)
+
+            &:last-child
+                &::after
+                    display: none
+
+    a
+        display: block
+        color: rgba(255, 255, 255, 0.7)
+        padding: 5px 10px
+        transition: 0.3s
+
+        &:hover
+            color: white
+
+
+.Topics
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    gap: 30px 5%
+    margin: 0 0 70px
+
+.TopicGroup
+    display: flex
+    flex-direction: column
+
+    h3
+        margin: 0 0 10px
+
+.Topic
+    margin: 4px 0
+    opacity: 0.6
+    transition: 0.3s
+
+    &:hover
+        opacity: 1
+
+
+
+
+
+@media(max-width: 1024px)
+
+    .Footer
+        padding: 60px 0 0
+
+    .Main
+        grid-template-areas: "menu" "logo" "acknowledgement"
+        grid-template-columns: 1fr
+
+        > a
+            svg
+                max-width: 200px
+
+        ul
+            width: 80%
+            display: flex
+            flex-wrap: wrap
+            margin: 0 0 10px
+
+            li
+                width: 50%
+                margin: 0
+
+                a
+                    display: block
+                    font-size: 22px
+                    padding: 5px 0
+                    opacity: 0.6
+
+    .Topics
+        grid-template-columns: 1fr
+
+        h4
+            font-size: 24px
+
+    .TopicGroup
+        > div:not(:first-of-type)
+            display: none
+
+    .Bottom
+        margin: 10px 0 20px
+
+        .Cont
+            justify-content: flex-start
+
+        a
+            padding: 5px 10px
+
+        ul
+            margin: 5px 0 0
+
+            li
+                &:first-of-type
+                    a
+                        padding-left: 0

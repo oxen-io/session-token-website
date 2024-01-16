@@ -1,0 +1,45 @@
+.StickyCont
+    width: 100%
+    max-width: 1860px
+    display: flex
+    justify-content: center
+    align-items: flex-start
+    margin: 0 auto
+    height: 100%
+    margin-top: 50px
+
+    &.Topic
+        > div:first-of-type
+            margin-top: 106px
+
+    div[class*="SingleTopic"]
+        padding-top: 0
+
+    main
+        width: 100%
+        max-width: 1440px
+        overflow: visible
+
+        > section
+            &:first-of-type
+                &:not([class*="textHero"])
+                    padding-top: 0
+
+                > div
+                    margin-top: 0
+
+
+
+
+
+@media(max-width: 1024px)
+
+    .StickyCont
+        flex-direction: column
+
+        &.Connect
+            margin-top: -115px
+
+        &.Topic
+            > div:first-of-type
+                margin-top: 0

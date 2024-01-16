@@ -1,0 +1,76 @@
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *))
+  all: unset
+  display: revert
+
+
+*, *::before, *::after
+  box-sizing: border-box
+  position: relative
+
+a, button
+  cursor: pointer
+
+ol, ul, menu
+  list-style: none
+
+img
+  max-width: 100%
+
+table
+  border-collapse: collapse
+
+input, textarea
+  -webkit-user-select: auto
+
+textarea
+  white-space: revert
+
+meter
+  -webkit-appearance: revert
+  appearance: revert
+
+::placeholder
+  color: unset
+
+:where([hidden])
+  display: none
+
+:where([contenteditable]:not([contenteditable='false']))
+  -moz-user-modify: read-write
+  -webkit-user-modify: read-write
+  overflow-wrap: break-word
+  -webkit-line-break: after-white-space
+  -webkit-user-select: auto
+
+:where([draggable='true'])
+  -webkit-user-drag: element
+
+*, *::before, *::after
+
+*
+    margin: 0
+
+html, body
+    height: 100%
+    outline: none
+    max-width: 100vw
+
+body
+    line-height: 1.5
+    -webkit-font-smoothing: antialiased
+
+img, picture, video, canvas, svg
+    display: block
+    max-width: 100%
+
+input, button, textarea, select
+    font: inherit
+
+button
+    cursor: pointer
+
+p, h1, h2, h3, h4, h5, h6
+    overflow-wrap: break-word
+
+#root, #__next
+    isolation: isolate
