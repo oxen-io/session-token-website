@@ -2,7 +2,7 @@ import cn from 'clsx'
 
 import { PortableText } from '@portabletext/react'
 import Button from '/components/Button/Button'
-import ImageBox from 'components/ImageBox/ImageBox'
+import ImageBox from '/components/ImageBox/ImageBox'
 
 import s from './Hero.module.sass'
 
@@ -24,10 +24,12 @@ export default function Hero ({
                     { buttons && 
                         <ul>
                             {buttons.map((button, index) => {
+                                console.log(button)
                                 return (
                                     <li key={index}>
-                                        <Button 
-                                            {...button}
+                                        <Button
+                                            title={button?.label}
+                                            inverted={index !== 0}
                                         />
                                     </li>
                                 )
