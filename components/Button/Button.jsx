@@ -20,6 +20,7 @@ export default function Button({
     small,
     inverted,
     iconName,
+    arrow,
 }) {
     const handleDummyClick = undefined
 
@@ -45,7 +46,7 @@ export default function Button({
                 type={type || ''}
             >
                 {buttonIcon}
-                {title && <span dangerouslySetInnerHTML={{ __html: title }} />}
+                {title && <span dangerouslySetInnerHTML={{ __html: `${title}${arrow ? ' ↗' : ''}` }} />}
             </button>
         )
     }
@@ -66,7 +67,7 @@ export default function Button({
             onClick={_handleClick}
         >
             {buttonIcon}
-            {_title && <span dangerouslySetInnerHTML={{ __html: _title }} />}
+            {_title && <span dangerouslySetInnerHTML={{ __html: `${_title}${arrow ? ' ↗' : ''}` }} />}
         </NavLink>
     )
 }
