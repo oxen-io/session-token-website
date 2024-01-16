@@ -14,8 +14,6 @@ export default function Hero ({
     type,
     
 }) {
-
-    console.log(buttons);
     return (
         <section className={s.Hero}>
             <div className={cn(s.Cont, "Container")}>
