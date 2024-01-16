@@ -8,11 +8,10 @@ import Image from 'next/image'
 
 import s from './Footer.module.sass'
 
-export default function Footer(props) {
-    const { data, topics } = props
-    const footer = data?.footer || []
-    const footerMenuItems = data?.footerMenuItems || []
-    const title = data?.title
+export default function Footer({settings}) {
+    const footer = settings?.footer || []
+    const footerMenuItems = settings?.footerMenuItems || []
+    const title = settings?.title
 
     const d = new Date()
     const year = d.getFullYear()
@@ -20,47 +19,6 @@ export default function Footer(props) {
     return (
         <footer className={s.Footer}>
             <div className={cn(s.Cont, 'container')}>
-                {topics && (
-                    <div className={s.Topics}>
-                        {topics?.map((topic, index) => {
-                            const { title, slug: parentSlug, parent } = topic
-
-                            if (parent) {
-                                return null
-                            }
-
-                            return (
-                                <div className={s.TopicGroup} key={index}>
-                                    <h3 className="h6">{title}</h3>
-
-                                    {topics?.map((subTopic, index) => {
-                                        const { title, slug, parent } = subTopic
-
-                                        if (parent?.title !== topic.title) {
-                                            return null
-                                        }
-
-                                        return (
-                                            <div
-                                                className={cn(
-                                                    s.Topic,
-                                                    s[parentSlug],
-                                                )}
-                                                key={index}
-                                            >
-                                                <NavLink
-                                                    href={`/learn/${slug}`}
-                                                >
-                                                    <h4>{title}</h4>
-                                                </NavLink>
-                                            </div>
-                                        )
-                                    })}
-                                </div>
-                            )
-                        })}
-                    </div>
-                )}
                 <div className={s.Main}>
                     <NavLink href={'/'} label="home">
                         <Image
