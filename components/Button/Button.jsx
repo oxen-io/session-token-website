@@ -3,9 +3,12 @@
 import cn from 'clsx'
 import NavLink from '/components/NavLink/NavLink'
 
+import { getLinkUrl } from 'lib/sanity.links'
+
 import s from './Button.module.sass'
 
 export default function Button({
+    link: sanityLink,
     url,
     title,
     handleClick,
@@ -27,7 +30,8 @@ export default function Button({
         inverted && s.Inverted,
     )
 
-    if (!url) {
+
+    if (!url && !sanityLink) {
         return (
             <button
                 className={buttonClass}
@@ -39,14 +43,22 @@ export default function Button({
         )
     }
 
+    let linkUrl = url
+    let _title = title
+
+    if (sanityLink) {
+        linkUrl = getLinkUrl(sanityLink)
+        _title = sanityLink.title || title
+    }
+
     return (
         <NavLink
             className={buttonClass}
-            href={url}
+            href={linkUrl}
             prefetch={prefetch}
             onClick={_handleClick}
         >
-            {title && <span>{title}</span>}
+            {_title && <span>{_title}</span>}
         </NavLink>
     )
 }
