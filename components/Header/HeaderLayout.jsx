@@ -41,11 +41,13 @@ export default function Header({settings}) {
                     alt="Session Token"
                     placeholder="blur"
                     onClick={ () => setMenuOpen(false) }
+                    priority
                 />
             </NavLink>
             <HeaderMenu menu={menu} />
             <Button
-                label={'Buy $SENT'}
+                title={'Buy $SENT'}
+                small
             />
         </header>
     )

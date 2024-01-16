@@ -1,5 +1,5 @@
-import 'styles/global.sass'
-import 'styles/_reset.sass'
+import 'styles/Global.sass'
+import 'styles/Reset.sass'
 
 import { Footer } from 'components/Footer'
 import { Header } from 'components/Header'

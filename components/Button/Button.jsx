@@ -1,30 +1,52 @@
 'use client'
 
-import clsx from 'clsx'
+import cn from 'clsx'
+import NavLink from '/components/NavLink/NavLink'
+
 import s from './Button.module.sass'
 
 export default function Button({
-    iconName,
-    iconAfter,
-    label,
-    isPrimary,
-    onClick = () => { }
+    url,
+    title,
+    handleClick,
+    className,
+    prefetch,
+    type,
+    small,
+    inverted,
 }) {
-    const inner = (
-        <>
-            <span>
-                {label}
-            </span>
-        </>
+    const handleDummyClick = undefined
+
+    const _handleClick = handleClick || handleDummyClick
+
+    const buttonClass = cn(
+        s.Button,
+        'button',
+        className && className,
+        small && s.Small,
+        inverted && s.Inverted,
     )
+
+    if (!url) {
+        return (
+            <button
+                className={buttonClass}
+                onClick={_handleClick}
+                type={type || ''}
+            >
+                {title && <span>{title}</span>}
+            </button>
+        )
+    }
+
     return (
-        <button
-            className={clsx(s.Outer, {
-                [s.Primary]: isPrimary
-            })}
-            onClick={onClick}
+        <NavLink
+            className={buttonClass}
+            href={url}
+            prefetch={prefetch}
+            onClick={_handleClick}
         >
-            {inner}
-        </button>
+            {title && <span>{title}</span>}
+        </NavLink>
     )
 }
