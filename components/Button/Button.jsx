@@ -38,8 +38,6 @@ export default function Button({
 
     const buttonIcon = iconName ? buttonLogos[iconName] : null
 
-    console.log(buttonIcon);
-
     if (!url && !sanityLink) {
         return (
             <button

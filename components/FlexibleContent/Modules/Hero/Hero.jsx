@@ -14,11 +14,13 @@ export default function Hero ({
     type,
     
 }) {
-
-    console.log(buttons);
     return (
         <section className={s.Hero}>
             <div className={cn(s.Cont, "Container")}>
+                <div className={s.MobileScroll}>
+                    <div className={s.ScrollIcon} />
+                    <span>Scroll</span>
+                </div>
                 <div className={s.CopyCont}>
                     { title && <h1 dangerouslySetInnerHTML={{ __html: title }} /> }
                     { copy && <PortableText value={copy} /> }
