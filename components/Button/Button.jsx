@@ -3,9 +3,14 @@
 import cn from 'clsx'
 import NavLink from '/components/NavLink/NavLink'
 
+import { getLinkUrl } from 'lib/sanity.links'
+
 import s from './Button.module.sass'
 
+import buttonLogos from 'public/images/buttonLogos'
+
 export default function Button({
+    link: sanityLink,
     url,
     title,
     handleClick,
@@ -14,6 +19,8 @@ export default function Button({
     type,
     small,
     inverted,
+    iconName,
+    arrow,
 }) {
     const handleDummyClick = undefined
 
@@ -27,26 +34,40 @@ export default function Button({
         inverted && s.Inverted,
     )
 
-    if (!url) {
+    const buttonIcon = iconName ? buttonLogos[iconName] : null
+
+    console.log(buttonIcon);
+
+    if (!url && !sanityLink) {
         return (
             <button
                 className={buttonClass}
                 onClick={_handleClick}
                 type={type || ''}
             >
-                {title && <span>{title}</span>}
+                {buttonIcon}
+                {title && <span dangerouslySetInnerHTML={{ __html: `${title}${arrow ? ' ↗' : ''}` }} />}
             </button>
         )
+    }
+
+    let linkUrl = url
+    let _title = title
+
+    if (sanityLink) {
+        linkUrl = getLinkUrl(sanityLink)
+        _title = sanityLink.title || title
     }
 
     return (
         <NavLink
             className={buttonClass}
-            href={url}
+            href={linkUrl}
             prefetch={prefetch}
             onClick={_handleClick}
         >
-            {title && <span>{title}</span>}
+            {buttonIcon}
+            {_title && <span dangerouslySetInnerHTML={{ __html: `${_title}${arrow ? ' ↗' : ''}` }} />}
         </NavLink>
     )
 }

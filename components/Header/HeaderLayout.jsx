@@ -48,6 +48,7 @@ export default function Header({settings}) {
             <Button
                 title={'Buy $SENT'}
                 small
+                iconName={'logoWithCircle'}
             />
         </header>
     )

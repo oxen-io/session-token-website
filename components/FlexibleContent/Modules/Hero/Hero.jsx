@@ -12,7 +12,10 @@ export default function Hero ({
     buttons,
     backgroundImage,
     type,
+    
 }) {
+
+    console.log(buttons);
     return (
         <section className={s.Hero}>
             <div className={cn(s.Cont, "Container")}>
@@ -22,11 +25,10 @@ export default function Hero ({
                     { buttons && 
                         <ul>
                             {buttons.map((button, index) => {
-                                console.log(button)
                                 return (
                                     <li key={index}>
                                         <Button
-                                            title={button?.label}
+                                            {...button}
                                             inverted={index !== 0}
                                         />
                                     </li>

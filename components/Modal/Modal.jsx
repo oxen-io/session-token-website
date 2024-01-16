@@ -2,7 +2,7 @@
 
 import cn from 'clsx'
 import useStore from 'lib/store'
-import x from 'public/x.js'
+import x from 'public/images/x.js'
 
 import styles from './Modal.module.sass'
 import Video from './ModalTypes/Video'
