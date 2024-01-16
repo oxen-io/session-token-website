@@ -39,7 +39,6 @@ export default function Header({settings}) {
                 <Image
                     src={Logo}
                     alt="Session Token"
-                    placeholder="blur"
                     onClick={ () => setMenuOpen(false) }
                     priority
                 />

@@ -24,7 +24,6 @@ export default function Footer({settings}) {
                         <Image
                             src={Logo}
                             alt="Session Token"
-                            placeholder="blur"
                         />
                     </NavLink>
                     <div className={s.Acknowledgement}>
