@@ -34,7 +34,6 @@
     @media(min-width: 2000px)
         padding-left: 15%
 
-
 .ImageCont
     > div, img
         width: 100%
@@ -46,3 +45,60 @@
         scale: 1.2
         translate: 5% 5%
         transform-origin: bottom right
+
+.MobileScroll
+    display: none
+
+
+
+@media(max-width: 500px)
+
+    .Cont
+        display: flex
+        flex-direction: column-reverse
+        justify-content: flex-end
+        text-align: center
+        height: calc(100vh - 78px)
+
+    .CopyCont
+        gap: 20px
+
+        h1
+            font-size: 40px
+            line-height: 1.1
+
+        p
+            font-size: 16px
+
+            br
+                display: none
+
+        ul
+            justify-content: center
+
+    .ImageCont
+        img
+            scale: 1
+            translate: 0 0
+
+    .MobileScroll
+        position: absolute
+        bottom: 20px
+        width: 100%
+        left: 0
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        gap: 5px
+        opacity: 0.7
+
+        span
+            font-size: 14px
+            font-weight: bold
+            text-transform: uppercase
+
+        div
+            height: 60px
+            width: 1px
+            background: white
