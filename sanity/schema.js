@@ -27,6 +27,6 @@ export const schema = {
     iconStrip,
     joinCta,
     statsTiles,
-    tileCarousel,
+    tileCarousel, 
   ],
 }
