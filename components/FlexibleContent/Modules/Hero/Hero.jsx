@@ -28,7 +28,7 @@ export default function Hero ({
                                 return (
                                     <li key={index}>
                                         <Button
-                                            title={button?.label}
+                                            {...button}
                                             inverted={index !== 0}
                                         />
                                     </li>

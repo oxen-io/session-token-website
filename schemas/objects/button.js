@@ -3,10 +3,6 @@ export const button = {
     name: 'button',
     type: 'object',
     fields: [{
-        title: 'Label',
-        name: 'label',
-        type: 'string'
-    }, {
         title: 'Icon Name',
         name: 'iconName',
         type: 'string'
