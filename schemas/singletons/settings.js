@@ -41,77 +41,6 @@ const settings = {
             ],
         },
         {
-            name: 'footerMenuItems',
-            title: 'Footer Menu Item list',
-            description: 'Links displayed on the footer of your site.',
-            type: 'array',
-            of: [
-                {
-                    title: 'Reference',
-                    type: 'reference',
-                    to: [
-                        {
-                            type: 'page',
-                        },
-                    ],
-                },
-            ],
-        },
-        {
-            name: 'footer',
-            description:
-                'This is a block of text that will be displayed at the bottom of the page.',
-            title: 'Footer Info',
-            type: 'array',
-            of: [
-                {
-                    type: 'block',
-                    marks: {
-                        annotations: [
-                            {
-                                name: 'link',
-                                type: 'object',
-                                title: 'Link',
-                                fields: [
-                                    {
-                                        name: 'href',
-                                        type: 'url',
-                                        title: 'Url',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                },
-            ],
-        },
-        {
-            name: 'acknowledgement',
-            title: 'Acknowledgement of Country',
-            type: 'array',
-            of: [
-                {
-                    type: 'block',
-                    marks: {
-                        annotations: [
-                            {
-                                name: 'link',
-                                type: 'object',
-                                title: 'Link',
-                                fields: [
-                                    {
-                                        name: 'href',
-                                        type: 'url',
-                                        title: 'Url',
-                                    },
-                                ],
-                            },
-                        ],
-                    },
-                },
-            ],
-        },
-        {
             name: 'ogImage',
             title: 'Open Graph Image',
             type: 'image',
@@ -137,11 +66,51 @@ const settings = {
                 },
             ],
         },
+        {
+            name: 'socialLinks',
+            title: 'Social Links',
+            type: 'array',
+            of: [
+                {
+                    type: 'object',
+                    title: 'Link',
+                    fields: [
+                        {
+                            name: 'company',
+                            title: 'Company',
+                            type: "string",
+                            options: {
+                                list: [
+                                    { title: "Twitter", value: "twitter" },
+                                    { title: "GitHub", value: "github" },
+                                    { title: "YouTube", value: "youtube" },
+                                    { title: "Reddit", value: "reddit" },
+                                    { title: "Instagram", value: "instagram" },
+                                    { title: "LinkedIn", value: "linkedin" },
+                                    { title: "Vimeo", value: "vimeo" },
+                                    { title: "WhatsApp", value: "whatsapp" },
+                                    { title: "Facebook", value: "facebook" },
+                                    { title: "Telegram", value: "telegram" },
+                                    { title: "Session", value: "session" },
+                                    { title: "RSS", value: "rss" },
+                                ],
+                            },
+                            validation: (Rule) => Rule.required(),
+                        },
+                        {
+                            name: 'link',
+                            title: 'Link',
+                            type: 'url',
+                        },
+                    ],
+                },
+            ],
+        },
     ],
     preview: {
         prepare() {
             return {
-                title: 'Menu Items',
+                title: 'Settings',
             }
         },
     },

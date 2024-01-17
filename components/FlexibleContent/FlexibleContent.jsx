@@ -6,6 +6,7 @@ import iconStrip from './Modules/IconStrip/IconStrip'
 import joinCta from './Modules/JoinCta/JoinCta'
 import statsTiles from './Modules/StatsTiles/StatsTiles'
 import tileCarousel from './Modules/TileCarousel/TileCarousel'
+import copyAndImage from './Modules/CopyAndImage/CopyAndImage'
 
 const Components = {
     hero,
@@ -13,6 +14,7 @@ const Components = {
     joinCta,
     statsTiles,
     tileCarousel,
+    copyAndImage,
 }
 
 const FlexibleContent = ({ rows, settings, topic }) => {

@@ -1,12 +1,14 @@
+import cn from 'clsx'
+
 import NavLink from '/components/NavLink/NavLink'
 
-import s from './HeaderMenu.module.sass'
+import s from './Menu.module.sass'
 
-export default function HeaderMenu({ menu }) {
+export default function Menu({ menu, footer }) {
     if (!menu) return null
 
     return (
-        <ul className={s.HeaderMenu}>
+        <ul className={cn(s.Menu, footer ? s.Footer : '')}>
             {menu?.map((menuItem, index) => {
                 const {
                     title,

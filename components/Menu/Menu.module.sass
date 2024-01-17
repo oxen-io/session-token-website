@@ -1,0 +1,77 @@
+.Menu
+    display: flex
+    margin: 0 auto 0 0
+    padding: 0 40px
+    gap: 15px
+
+    > li
+        display: flex
+        align-items: center
+
+        &:hover
+            ul
+                opacity: 1
+                visibility: visible
+
+        ul
+            width: 100%
+            min-width: 300px
+            background-color: red
+            position: absolute
+            top: 40px
+            left: 0
+            list-style: none
+            padding: 20px
+            margin: 0
+            opacity: 0
+            visibility: hidden
+            z-index: 1
+            transition: 0.2s
+
+    a
+        color: white
+        text-decoration: none
+        padding: 20px
+
+    &.Footer
+        width: 100%
+        max-width: 1000px
+        display: flex
+        align-items: flex-start
+        flex-wrap: wrap
+        gap: 0
+        margin: 0 auto 0 8%
+        padding: 0 0 100px
+
+        > li
+            width: 33.3333%
+            flex-direction: column
+            align-items: flex-start
+
+            a
+                display: block
+                padding: 5px 0
+                transition: 0.2s
+
+                &:hover
+                    opacity: 1
+                    color: var(--color-primary)
+
+            &:nth-child(4), &:nth-child(5)
+                width: 100%
+                align-items: flex-end
+
+                > div
+                    width: 33.3333%
+
+            ul
+                min-width: auto
+                background-color: transparent
+                position: absolute
+                top: 31px
+                padding: 0
+                opacity: 1
+                visibility: visible
+
+                a
+                    opacity: 0.6

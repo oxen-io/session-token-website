@@ -25,7 +25,7 @@ export async function generateMetadata() {
         baseTitle: settings?.title ?? undefined,
         description: page?.overview ? toPlainText(page.overview) : '',
         image: settings?.ogImage,
-        title: page?.title,
+        title: `${page?.title}${settings?.title ? ` | ${settings.title}` : ''}`,
     }
 }
 

@@ -5,16 +5,16 @@ import { useEffect, useState } from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
 
-import NavLink from 'components/NavLink/NavLink'
+import NavLink from '/components/NavLink/NavLink'
 import Button from '/components/Button/Button'
-
-import HeaderMenu from './HeaderMenu'
+import Menu from '/components/Menu/Menu'
 
 import Logo from 'public/images/logo.png'
 
 import s from './Header.module.sass'
 
 export default function Header({settings}) {
+    const [hasScrolled, setHasScrolled] = useState(false)
     const [hideMenu, setHideMenu] = useState(false)
 
     const menu = settings?.menuItems
@@ -24,6 +24,11 @@ export default function Header({settings}) {
 
         window.addEventListener("scroll", function(){
             var st = window.scrollY || document.documentElement.scrollTop
+            if (window.scrollY > 0) {
+                setHasScrolled(true)
+            } else {
+                setHasScrolled(false)
+            }
             if (st > lastScrollTop && window.scrollY > 100) {
                 setHideMenu(true)
             } else if (st < lastScrollTop) {
@@ -34,7 +39,7 @@ export default function Header({settings}) {
     }, [settings])
 
     return (
-        <header className={clsx(s.Header, 'Container', hideMenu ? s.Hide : '')}>
+        <header className={clsx(s.Header, 'Container', hideMenu ? s.Hide : '', hasScrolled ? s.HasScrolled : '')}>
             <NavLink href={'/'}>
                 <Image
                     src={Logo}
@@ -43,7 +48,7 @@ export default function Header({settings}) {
                     priority
                 />
             </NavLink>
-            <HeaderMenu menu={menu} />
+            <Menu menu={menu} />
             <Button
                 title={'Buy $SENT'}
                 small
