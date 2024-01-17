@@ -19,12 +19,19 @@
         display: block
         margin: 14px 0 0
 
+    .Bottom
+        display: none
+        margin: auto 0 0
+
 .Logo
     img
         display: block
         width: auto
         height: 40px
         object-fit: contain
+
+        &:last-of-type
+            display: none
 
 .Social
     display: flex
@@ -62,3 +69,40 @@
 
 .Bottom
     width: 100%
+
+
+
+
+
+@media(max-width: 1024px)
+
+    .FooterCont
+        display: grid
+        grid-template-columns: 1fr 1fr
+        gap: 0 10%
+
+    .Main
+        width: 100%
+        height: 100%
+        display: flex
+        flex-direction: column
+
+        .Bottom
+            display: block
+
+    .Logo
+        img
+            display: none
+
+            &:last-of-type
+                display: block
+
+    .Links
+        grid-column: 1 / 3
+
+        > a, > button
+            display: none
+
+    .Bottom
+        display: none
+        font-size: 12px
