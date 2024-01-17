@@ -53,15 +53,20 @@
 
 @media(max-width: 500px)
 
+    .Hero
+        padding-top: 0
+
     .Cont
         display: flex
         flex-direction: column-reverse
         justify-content: flex-end
         text-align: center
-        height: calc(100vh - 78px)
+        height: 100svh
+        padding-top: 70px
 
     .CopyCont
-        gap: 20px
+        gap: 10px
+        margin-top: -5%
 
         h1
             font-size: 40px
@@ -77,9 +82,13 @@
             justify-content: center
 
     .ImageCont
+        height: 40vh
+
         img
-            scale: 1
+            scale: 1.1
             translate: 0 0
+            transform-origin: center center
+            object-fit: contain
 
     .MobileScroll
         position: absolute
@@ -99,6 +108,7 @@
             text-transform: uppercase
 
         div
-            height: 60px
+            height: 70px
             width: 1px
             background: white
+            opacity: 0.7
