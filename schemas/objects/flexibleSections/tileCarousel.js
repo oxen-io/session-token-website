@@ -1,5 +1,5 @@
-import { stripHtmlFromString } from "lib/utils";
-import portableText from "schemas/partials/portableText";
+import { stripHtmlFromString } from "lib/utils"
+import portableText from "schemas/partials/portableText"
 
 export const tileCarousel = {
     name: "tileCarousel",

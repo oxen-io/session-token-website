@@ -1,12 +1,13 @@
 import InViewDetector from 'components/InViewDetector/InViewDetector'
 import React from 'react'
 
-import hero  from './Modules/Hero/Hero'
+import hero from './Modules/Hero/Hero'
 import iconStrip from './Modules/IconStrip/IconStrip'
 import joinCta from './Modules/JoinCta/JoinCta'
 import statsTiles from './Modules/StatsTiles/StatsTiles'
 import tileCarousel from './Modules/TileCarousel/TileCarousel'
 import copyAndImage from './Modules/CopyAndImage/CopyAndImage'
+import blogGrid from './Modules/BlogGrid/BlogGrid'
 
 const Components = {
     hero,
@@ -15,6 +16,7 @@ const Components = {
     statsTiles,
     tileCarousel,
     copyAndImage,
+    blogGrid
 }
 
 const FlexibleContent = ({ rows, settings, topic }) => {

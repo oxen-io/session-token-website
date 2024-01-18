@@ -4,7 +4,8 @@ const flexibleSections = [
     { type: 'joinCta' },
     { type: 'statsTiles' },
     { type: 'tileCarousel' },
-    { type: 'copyAndImage'}
+    { type: 'copyAndImage' },
+    { type: 'blogGrid' }
 ]
 
 export default flexibleSections

@@ -9,6 +9,9 @@ export const baseData = [
     name: "slug",
     type: "slug",
     label: "Slug",
+    options: {
+      source: 'title',
+    },
     validation: (Rule) => Rule.required(),
   },
   {
