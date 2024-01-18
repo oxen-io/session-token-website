@@ -1,6 +1,6 @@
 import { toPlainText } from '@portabletext/react'
-import { Page } from 'components/pages/page/Page'
-import PagePreview from 'components/pages/page/PagePreview'
+import { Page } from 'components/Page/Page'
+
 import {
     getDocumentBySlug,
     getDocumentPaths,
@@ -11,21 +11,21 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { LiveQuery } from 'next-sanity/preview/live-query'
 
-import PageComponents from 'components/PageComponents/PageComponents'
-
 export const runtime = 'edge'
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }) {
+    const { slug } = params
+
     const [settings, page] = await Promise.all([
         getSettings(),
-        getDocumentBySlug('home', 'page'),
+        getDocumentBySlug(params.slug?.[0] || 'home', 'page'),
     ])
 
     return {
         baseTitle: settings?.title ?? undefined,
-        description: page?.overview ? toPlainText(page.overview) : '',
+        description: `Session Token`,
         image: settings?.ogImage,
-        title: `${page?.title}${settings?.title ? ` | ${settings.title}` : ''}`,
+        title: `${page?.title} - ${settings?.title ?? undefined}`,
     }
 }
 
@@ -37,13 +37,22 @@ export async function generateStaticParams() {
 export default async function PageSlugRoute({ params }) {
     const [settings, data] = await Promise.all([
         getSettings(),
-        getDocumentBySlug('home', 'page'),
+        getDocumentBySlug(params.slug?.[0] || 'home', 'page'),
     ])
+
+    const isDraft = draftMode().isEnabled
 
     if (!data && !draftMode().isEnabled) {
         notFound()
     }
 
+    const inner = (
+        <Page data={data} settings={settings} />
+    )
+
+    if (!isDraft) {
+        return inner
+    }
 
     return (
         <LiveQuery
@@ -53,9 +62,7 @@ export default async function PageSlugRoute({ params }) {
             initialData={data}
             as={PagePreview}
         >
-            <PageComponents settings={settings}>
-                <Page data={data} settings={settings} />
-            </PageComponents>
+            {inner}
         </LiveQuery>
     )
 }

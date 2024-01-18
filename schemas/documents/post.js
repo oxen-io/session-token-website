@@ -11,6 +11,12 @@ const post = {
     fields: [
         ...baseData,
         {
+            type: 'reference',
+            name: 'author',
+            title: 'Author',
+            to: [{ type: 'author' }],
+        },
+        {
             type: 'image',
             icon: ImageIcon,
             name: 'featuredImage',
