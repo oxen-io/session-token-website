@@ -1,22 +1,43 @@
 import { sanityFetch } from 'lib/sanity.fetch'
 import s from './BlogGrid.module.sass'
-import { groq } from 'next-sanity'
+import BlogTile from './BlogTile'
+import clsx from 'clsx'
 
 export default async function BlogGrid({
     morePostsTitle
 }) {
-    const posts = await sanityFetch(`*[_type == "post"]{
-        ...
-    }`, {}, [])
+    const posts = await sanityFetch({
+        query: `*[_type == "post"]{
+            ...,
+            author->,
+        }`,
+        tags: []
+    })
 
-    console.log('test')
-    console.log(posts)
+    const postsWithoutFirst = posts.slice(1)
 
     return (
-        <section className={s.Outer}>
-            <h1>
-                Blog grid
-            </h1>
+        <section className={clsx(s.Outer, `Container Deep`)}>
+            <BlogTile
+                post={posts[0]}
+                isFeatured
+            />
+            <div className={s.Grid}>
+                <h5>
+                    {morePostsTitle}
+                </h5>
+                <ul>
+                    {postsWithoutFirst.map(post => (
+                        <li
+                            key={post.slug.current}
+                        >
+                            <BlogTile
+                                post={post}
+                            />
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </section>
     )
 }

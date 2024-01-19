@@ -1,6 +1,4 @@
-.Hero
-    padding: 78px 0 0
-    overflow: hidden
+$paddingTop: 78px
 
 .Cont
     display: grid
@@ -12,7 +10,7 @@
     justify-content: center
     gap: 40px
     z-index: 1
-    margin-bottom: 5%
+    height: 100vh
 
     h1
         font-size: 78.5px
@@ -36,10 +34,14 @@
         padding-left: 15%
 
 .ImageCont
+    position: absolute
+    top: 0
+    right: 0
+
     > div, img
-        width: 100%
-        height: 100%
-        object-fit: cover
+        width: auto
+        height: 110vh
+        max-width: none
         max-height: 1250px
 
     img
@@ -47,8 +49,6 @@
 
 .MobileScroll
     display: none
-
-
 
 @media(max-width: 500px)
 

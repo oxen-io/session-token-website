@@ -1,9 +1,9 @@
 import Script from 'next/script'
-import { AtypDisplay, AtypText } from 'styles/fonts/fonts'
+import { AtypDisplay, AtypText, MonumentExtended } from 'styles/fonts/fonts'
 
 export default async function RootLayout({ children }) {
     return (
-        <html lang="en" className={`${AtypDisplay.variable} ${AtypText.variable}`}>
+        <html lang="en" className={`${AtypDisplay.variable} ${AtypText.variable} ${MonumentExtended.variable}`}>
             <head>
                 <Script id="google-tag-manager" strategy="afterInteractive">
                     {`
