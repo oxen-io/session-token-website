@@ -12,17 +12,19 @@ import Menu from '/components/Menu/Menu'
 import Logo from 'public/images/logo.png'
 
 import s from './Header.module.sass'
+import MenuButton from 'components/Menu/MenuButton'
 
-export default function Header({settings}) {
+export default function Header({ settings }) {
     const [hasScrolled, setHasScrolled] = useState(false)
-    const [hideMenu, setHideMenu] = useState(false)
+    const [hideHeader, setHideHeader] = useState(false)
+    const [mobileMenuOpen, setMenuOpen] = useState(false)
 
     const menu = settings?.menuItems
 
     useEffect(() => {
         let lastScrollTop = 0
 
-        window.addEventListener("scroll", function(){
+        window.addEventListener("scroll", function () {
             var st = window.scrollY || document.documentElement.scrollTop
             if (window.scrollY > 0) {
                 setHasScrolled(true)
@@ -30,30 +32,36 @@ export default function Header({settings}) {
                 setHasScrolled(false)
             }
             if (st > lastScrollTop && window.scrollY > 100) {
-                setHideMenu(true)
+                setHideHeader(true)
             } else if (st < lastScrollTop) {
-                setHideMenu(false)
+                setHideHeader(false)
             }
             lastScrollTop = st <= 0 ? 0 : st
-        }, false)         
+        }, false)
     }, [settings])
 
     return (
-        <header className={clsx(s.Header, 'Container', hideMenu ? s.Hide : '', hasScrolled ? s.HasScrolled : '')}>
+        <header className={clsx(s.Header, 'Container', hideHeader ? s.Hide : '', hasScrolled ? s.HasScrolled : '')}>
             <NavLink href={'/'}>
                 <Image
                     src={Logo}
                     alt="Session Token"
-                    onClick={ () => setMenuOpen(false) }
+                    // onClick={() => setMenuOpen(false)}
                     priority
                 />
             </NavLink>
             <Menu menu={menu} />
-            <Button
-                title={'Buy $SENT'}
-                small
-                iconName={'logoWithCircle'}
-            />
+            <div className={s.Buttons}>
+                <Button
+                    title={'Buy $SENT'}
+                    small
+                    iconName={'logoWithCircle'}
+                />
+                <MenuButton
+                    open={mobileMenuOpen}
+                    setOpen={setMenuOpen}
+                />
+            </div>
         </header>
     )
 }
