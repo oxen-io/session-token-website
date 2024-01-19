@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import s from './BlogTile.module.sass'
 import clsx from 'clsx'
@@ -18,12 +16,15 @@ export default function BlogTile({
         slug,
         _createdAt
     },
-    isFeatured
+    isFeatured,
+    isSingle
 }) {
     const imageUrl = urlForImage(featuredImage).url()
 
+    const Element = isSingle ? 'div' : Link
+
     return (
-        <Link
+        <Element
             href={`/blog/${slug.current}`}
             className={clsx(s.Outer, {
                 [s.Featured]: isFeatured
@@ -53,10 +54,12 @@ export default function BlogTile({
                 <p className={s.Excerpt}>
                     {excerpt}
                 </p>
-                <span className={s.LinkLabel}>
-                    Read More
-                </span>
+                {!isSingle ?
+                    <span className={s.LinkLabel}>
+                        Read More
+                    </span>
+                    : null}
             </div>
-        </Link>
+        </Element>
     )
 }

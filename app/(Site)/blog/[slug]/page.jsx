@@ -1,3 +1,4 @@
+
 import { Page } from 'components/Page/Page'
 
 import {
@@ -9,6 +10,7 @@ import { pageBySlugQuery } from 'lib/sanity.queries'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { LiveQuery } from 'next-sanity/preview/live-query'
+import Post from 'components/Post/Post'
 
 export const runtime = 'edge'
 
@@ -17,7 +19,7 @@ export async function generateMetadata({ params }) {
 
     const [settings, page] = await Promise.all([
         getSettings(),
-        getDocumentBySlug(params.slug?.[0] || 'home', 'page'),
+        getDocumentBySlug(params.slug, 'post'),
     ])
 
     return {
@@ -29,15 +31,12 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-    const slugs = await getDocumentPaths('page')
+    const slugs = await getDocumentPaths('post')
     return slugs.map((slug) => ({ slug }))
 }
 
-export default async function PageSlugRoute({ params }) {
-    const [settings, data] = await Promise.all([
-        getSettings(),
-        getDocumentBySlug(params.slug?.[0] || 'home', 'page'),
-    ])
+export default async function BlogPost({ params }) {
+    const data = await getDocumentBySlug(params.slug, 'post')
 
     const isDraft = draftMode().isEnabled
 
@@ -46,7 +45,7 @@ export default async function PageSlugRoute({ params }) {
     }
 
     const inner = (
-        <Page data={data} settings={settings} />
+        <Post post={data} />
     )
 
     if (!isDraft) {
