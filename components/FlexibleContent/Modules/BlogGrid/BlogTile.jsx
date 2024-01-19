@@ -27,16 +27,18 @@ export default function BlogTile({
         <Element
             href={`/blog/${slug.current}`}
             className={clsx(s.Outer, {
-                [s.Featured]: isFeatured
+                [s.Featured]: isFeatured,
+                [s.Single]: isSingle
             })}
         >
-            <Image
-                src={imageUrl}
-                width={560}
-                height={345}
-                alt={`Featured image for ${title}`}
-                className={s.Image}
-            />
+            <div className={s.Image}>
+                <Image
+                    src={imageUrl}
+                    width={560}
+                    height={345}
+                    alt={`Featured image for ${title}`}
+                />
+            </div>
             <div className={s.Content}>
                 <h3>
                     {title}

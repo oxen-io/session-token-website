@@ -9,6 +9,7 @@ import { pageBySlugQuery } from 'lib/sanity.queries'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { LiveQuery } from 'next-sanity/preview/live-query'
+import PageWrapper from 'components/PageWrapper/PageWrapper'
 
 export const runtime = 'edge'
 
@@ -46,7 +47,9 @@ export default async function PageSlugRoute({ params }) {
     }
 
     const inner = (
-        <Page data={data} settings={settings} />
+        <PageWrapper>
+            <Page data={data} settings={settings} />
+        </PageWrapper>
     )
 
     if (!isDraft) {

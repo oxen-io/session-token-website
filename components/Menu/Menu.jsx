@@ -20,7 +20,7 @@ export default function Menu({ menu, footer }) {
                     <li key={index}>
                         <div className={s.Title}>
                             {slug ? (
-                                <NavLink href={slug}>{title}</NavLink>
+                                <NavLink href={`/${slug}`}>{title}</NavLink>
                             ) : (
                                 title
                             )}
@@ -37,7 +37,7 @@ export default function Menu({ menu, footer }) {
                                         <li key={sIndex}>
                                             <div className={s.Title}>
                                                 {slug ? (
-                                                    <NavLink href={slug}>{title}</NavLink>
+                                                    <NavLink href={`/${slug}`}>{title}</NavLink>
                                                 ) : (
                                                     title
                                                 )}
