@@ -22,6 +22,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4
 h1, .h1
     font-size: 60px
 
+    &.Huge
+        font-size: 80px
+
 h2, .h2
     font-size: 40px
 
@@ -55,7 +58,14 @@ video
     -webkit-backface-visibility: hidden
     -moz-backface-visibility: hidden
 
+.AnimatedElement
+    opacity: 0
+    transition: 0.5s
+    transform: translateY(20px)
 
+    &.Visible
+        opacity: 1
+        transform: translateY(0px)
 
 
 

@@ -30,19 +30,20 @@ $paddingTop: 78px
         display: flex
         gap: 10px
 
-    @media(min-width: 2000px)
-        padding-left: 15%
-
 .ImageCont
     position: absolute
-    top: 0
-    right: 0
+    top: 50%
+    right: -8%
+    width: 65%
+    transform: translateY(-50%)
 
-    > div, img
-        width: auto
-        height: 110vh
+    > div
         max-width: none
-        max-height: 1250px
+        height: auto
+
+        img
+            display: block
+            height: auto
 
     img
         transform-origin: bottom right

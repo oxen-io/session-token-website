@@ -5,7 +5,8 @@ const flexibleSections = [
     { type: 'statsTiles' },
     { type: 'tileCarousel' },
     { type: 'copyAndImage' },
-    { type: 'blogGrid' }
+    { type: 'blogGrid' },
+    { type: 'comingSoon' }
 ]
 
 export default flexibleSections

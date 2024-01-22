@@ -15,7 +15,7 @@ import Logo from 'public/images/logo.png'
 
 import s from './Footer.module.sass'
 
-export default function Footer({settings}) {
+export default function Footer({ settings }) {
     const menu = settings?.menuItems
     const socialLinks = settings?.socialLinks
 
@@ -45,14 +45,16 @@ export default function Footer({settings}) {
                             &copy; Session {year}. All rights reserved.
                         </div>
                     </div>
-                    <Menu menu={menu} footer />
+                    {menu.length > 1 ?
+                        <Menu menu={menu} footer />
+                        : null}
                     <div className={s.Links}>
                         <Button
                             title={'Buy $SENT'}
                             small
                             iconName={'logoWithCircle'}
                         />
-                        { socialLinks &&
+                        {socialLinks &&
                             <ul className={s.Social}>
                                 {socialLinks?.map((item, index) => {
                                     const {

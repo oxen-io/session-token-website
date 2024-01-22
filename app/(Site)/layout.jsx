@@ -21,9 +21,7 @@ export default async function IndexRoute({ children }) {
             {isDraftMode && <PreviewBanner />}
             <Suspense>
                 <Header />
-            </Suspense>
-            <Suspense>{children}</Suspense>
-            <Suspense>
+                {children}
                 <Footer />
             </Suspense>
         </div>

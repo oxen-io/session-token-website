@@ -5,7 +5,7 @@ import { tileCarousel } from 'schemas/objects/flexibleSections/tileCarousel'
 import { iconStrip } from 'schemas/objects/flexibleSections/iconStrip'
 import { copyAndImage } from 'schemas/objects/flexibleSections/copyAndImage'
 import { blogGrid } from 'schemas/objects/flexibleSections/blogGrid'
-
+import { comingSoon } from './objects/flexibleSections/comingSoon'
 
 import link from 'schemas/objects/link'
 import figure from 'schemas/objects/figure'
@@ -42,6 +42,7 @@ export default [
     iconStrip,
     copyAndImage,
     blogGrid,
+    comingSoon,
 
     // Objects
     figure,
