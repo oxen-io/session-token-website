@@ -33,8 +33,6 @@ export async function generateStaticParams() {
     const slugs = await getDocumentPaths('page')
     const response = slugs.map((slug) => ({ slug }))
 
-    response.push({ slug: '' })
-
     return response
 }
 
