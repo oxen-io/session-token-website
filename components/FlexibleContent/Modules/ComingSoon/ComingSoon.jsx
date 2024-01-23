@@ -1,3 +1,5 @@
+'use client'
+
 import { urlForImage } from 'lib/sanity.image'
 import s from './ComingSoon.module.sass'
 import Button from '/components/Button/Button'
@@ -5,6 +7,8 @@ import Button from '/components/Button/Button'
 import Logo from 'public/images/logoInline.svg'
 import Image from 'next/image'
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
+import { useEffect, useState } from 'react'
+import clsx from 'clsx'
 
 export default function ComingSoon({
     title,
@@ -13,8 +17,18 @@ export default function ComingSoon({
 }) {
     const backgroundImageUrl = urlForImage(backgroundImage).url()
 
+    const [hasMounted, setHasMounted] = useState(false)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setHasMounted(true)
+        }, 300)
+    }, [])
+
     return (
-        <section className={s.Outer}>
+        <section className={clsx(s.Outer, {
+            [s.Mounted]: hasMounted
+        })}>
             <Image
                 src={backgroundImageUrl}
                 className={s.Bg}
@@ -42,14 +56,12 @@ export default function ComingSoon({
                     {title}
                 </AnimatedElement>
                 {buttons &&
-                    <AnimatedElement 
+                    <AnimatedElement
                         className={s.Buttons}
                         delay={500}
                         type="ul"
                     >
                         {buttons.map((button, index) => {
-                            console.log(button)
-
                             return (
                                 <li key={index}>
                                     <Button
