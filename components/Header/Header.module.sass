@@ -8,9 +8,10 @@ header.Header
     z-index: 10
     transition: 0.3s
     max-width: none
+    transform: translateY(0px)
 
     &.Hide
-        top: -78px
+        transform: translateY(-78px)
 
     &.HasScrolled
         backdrop-filter: blur(10px) brightness(60%)
@@ -26,6 +27,43 @@ header.Header
     .Buttons
         display: flex
         flex-direction: row
+
+.MobileMenu
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0,0,0,0.7)
+    z-index: 9
+    backdrop-filter: blur(3px)
+    padding: 10px
+    padding-top: 85px
+    pointer-events: none
+    opacity: 0
+    transition: 0.3s
+
+    &.Open
+        opacity: 1
+        pointer-events: all
+
+    ul[class^="Menu_"]
+        display: block
+        padding: 0px
+        font-size: 25px
+
+        a
+            padding-left: 0px
+
+    .Bottom
+        position: absolute
+        bottom: 10px
+        left: 0
+        width: 100%
+        padding: 10px
+        display: flex
+        flex-direction: column
+        align-items: flex-start
 
 @media(max-width: 500px)
     header.Header

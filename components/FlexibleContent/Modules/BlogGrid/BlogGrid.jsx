@@ -3,6 +3,7 @@ import s from './BlogGrid.module.sass'
 import BlogTile from './BlogTile'
 import clsx from 'clsx'
 import BlogGridInner from './BlogGridInner'
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 
 export default async function BlogGrid({
     morePostsTitle
@@ -27,9 +28,12 @@ export default async function BlogGrid({
                 isFeatured
             />
             <div className={s.Grid}>
-                <h5>
+                <AnimatedElement
+                    type='h5'
+                    delay={300}
+                >
                     {morePostsTitle}
-                </h5>
+                </AnimatedElement>
                 <BlogGridInner
                     posts={postsWithoutFirst}
                 />

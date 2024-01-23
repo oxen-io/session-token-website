@@ -4,7 +4,11 @@ import NavLink from '/components/NavLink/NavLink'
 
 import s from './Menu.module.sass'
 
-export default function Menu({ menu, footer }) {
+export default function Menu({
+    menu,
+    footer,
+    closeMenu
+}) {
     if (!menu) return null
 
     return (
@@ -17,7 +21,17 @@ export default function Menu({ menu, footer }) {
                 } = menuItem
 
                 return (
-                    <li key={index}>
+                    <li
+                        key={index}
+                        style={{
+                            transitionDelay: `${index * 0.1}s`
+                        }}
+                        onClick={() => {
+                            if (closeMenu) {
+                                closeMenu()
+                            }
+                        }}
+                    >
                         <div className={s.Title}>
                             {slug ? (
                                 <NavLink href={`/${slug}`}>{title}</NavLink>
@@ -25,9 +39,9 @@ export default function Menu({ menu, footer }) {
                                 title
                             )}
                         </div>
-                        { children &&
+                        {children &&
                             <ul className={s.SubMenu}>
-                                { children?.map((menuItem, sIndex) => {
+                                {children?.map((menuItem, sIndex) => {
                                     const {
                                         title,
                                         slug,

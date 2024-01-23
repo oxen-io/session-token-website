@@ -9,12 +9,15 @@ export const AnimatedElement = ({
     children,
     delay = 0,
     className = '',
+    disabled,
     ...props
 }) => {
     const { ref, inView } = useInView({
         threshold: 0.1,
         triggerOnce: true,
     })
+
+    const _visible = disabled || inView
 
     const Element = type
 
@@ -23,7 +26,7 @@ export const AnimatedElement = ({
             {...props}
             ref={ref}
             className={clsx(`${className} AnimatedElement`, {
-                [`Visible`]: inView
+                [`Visible`]: _visible
             })}
             style={{
                 transitionDelay: delay + 'ms'

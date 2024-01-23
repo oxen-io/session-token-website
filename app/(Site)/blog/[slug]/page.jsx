@@ -20,7 +20,7 @@ export async function generateMetadata({ params }) {
 
     const [settings, page] = await Promise.all([
         getSettings(),
-        getDocumentBySlug(params.slug, 'post'),
+        getDocumentBySlug(slug, 'post'),
     ])
 
     return {

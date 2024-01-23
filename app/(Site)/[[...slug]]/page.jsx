@@ -18,7 +18,7 @@ export async function generateMetadata({ params }) {
 
     const [settings, page] = await Promise.all([
         getSettings(),
-        getDocumentBySlug(params.slug?.[0] || 'home', 'page'),
+        getDocumentBySlug(slug?.[0] || 'coming-soon', 'page'),
     ])
 
     return {
@@ -31,13 +31,17 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
     const slugs = await getDocumentPaths('page')
-    return slugs.map((slug) => ({ slug }))
+    const response = slugs.map((slug) => ({ slug }))
+
+    response.push({ slug: '' })
+
+    return response
 }
 
 export default async function PageSlugRoute({ params }) {
     const [settings, data] = await Promise.all([
         getSettings(),
-        getDocumentBySlug(params.slug?.[0] || 'home', 'page'),
+        getDocumentBySlug(params.slug?.[0] || 'coming-soon', 'page'),
     ])
 
     const isDraft = draftMode().isEnabled

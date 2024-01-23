@@ -17,7 +17,11 @@ const settings = {
         },
         {
             name: 'menuTopLink',
-            type: 'link',
+            type: 'button',
+        },
+        {
+            name: 'mobileMenuCta',
+            type: 'button'
         },
         {
             name: 'menuItems',
