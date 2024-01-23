@@ -11,8 +11,6 @@ import { notFound } from 'next/navigation'
 import { LiveQuery } from 'next-sanity/preview/live-query'
 import PageWrapper from 'components/PageWrapper/PageWrapper'
 
-export const runtime = 'edge'
-
 export async function generateMetadata({ params }) {
     const { slug } = params
 

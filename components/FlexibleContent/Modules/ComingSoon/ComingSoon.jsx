@@ -49,7 +49,7 @@ export default function ComingSoon({
                     />
                 </AnimatedElement>
                 <AnimatedElement
-                    className='Huge'
+                    className={`Huge HasGradient`}
                     type="h1"
                     delay={400}
                 >
@@ -66,7 +66,6 @@ export default function ComingSoon({
                                 <li key={index}>
                                     <Button
                                         {...button}
-                                        inverted={index !== 0}
                                         small
                                     />
                                 </li>

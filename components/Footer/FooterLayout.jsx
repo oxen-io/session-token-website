@@ -1,6 +1,7 @@
 import cn from 'clsx'
 
 import Image from 'next/image'
+import moment from 'moment'
 
 import NavLink from 'components/NavLink/NavLink'
 import Button from '/components/Button/Button'
@@ -17,6 +18,13 @@ export default function Footer({ settings }) {
 
     const d = new Date()
     const year = d.getFullYear()
+
+    const bottomJsx = (
+        <div className={s.Bottom}>
+            Website last updated {moment().format(`DD MMMM YYYY`)}<br />
+            &copy; Session {year}. All rights reserved.
+        </div>
+    )
 
     return (
         <footer className={s.Footer}>
@@ -36,10 +44,7 @@ export default function Footer({ settings }) {
                             </NavLink>
                         </div>
                         <span className="smallTitle">/ Managed by Session</span>
-                        <div className={s.Bottom}>
-                            Website last updated XX October 2023<br />
-                            &copy; Session {year}. All rights reserved.
-                        </div>
+                        {bottomJsx}
                     </div>
                     {menuItems.length > 1 ?
                         <Menu menu={menuItems} footer />
@@ -53,10 +58,7 @@ export default function Footer({ settings }) {
                         <Socials />
                     </div>
                 </div>
-                <div className={s.Bottom}>
-                    Website last updated XX October 2023<br />
-                    &copy; Session {year}. All rights reserved.
-                </div>
+                {bottomJsx}
             </div>
         </footer>
     )

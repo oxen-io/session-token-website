@@ -11,7 +11,8 @@
     display: flex
     align-items: center
     gap: 5px
-    padding: 15px 20px
+    padding: 13px 20px
+    height: 46px
 
     &.Disabled
         pointer-events: none
@@ -25,7 +26,8 @@
                 fill: var(--color-primary)
 
     &.Small
-        padding: 8px 14px
+        padding: 10px 14px
+        height: 40px
 
     &.Inverted
         background-color: transparent
@@ -42,6 +44,12 @@
             svg
                 path 
                     fill: var(--color-black)
+
+    span
+        display: flex
+        flex-direction: row
+        align-items: center
+        top: 1px
 
     svg 
         display: inline
