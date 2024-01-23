@@ -1,7 +1,6 @@
 import cn from 'clsx'
 
 import Image from 'next/image'
-import moment from 'moment'
 
 import NavLink from 'components/NavLink/NavLink'
 import Button from '/components/Button/Button'
@@ -14,14 +13,14 @@ import s from './Footer.module.sass'
 import Socials from 'components/Socials/Socials'
 
 export default function Footer({ settings }) {
-    const { menuItems } = settings
+    const { menuItems, lastUpdatedDate } = settings
 
     const d = new Date()
     const year = d.getFullYear()
 
     const bottomJsx = (
         <div className={s.Bottom}>
-            Website last updated {moment().format(`DD MMMM YYYY`)}<br />
+            Website last updated {lastUpdatedDate}<br />
             &copy; Session {year}. All rights reserved.
         </div>
     )

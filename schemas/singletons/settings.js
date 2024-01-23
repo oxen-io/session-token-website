@@ -24,6 +24,10 @@ const settings = {
             type: 'button'
         },
         {
+            name: 'lastUpdatedDate',
+            type: 'string'
+        },
+        {
             name: 'menuItems',
             title: 'Menu Item list',
             description: 'Links displayed on the header of your site.',
