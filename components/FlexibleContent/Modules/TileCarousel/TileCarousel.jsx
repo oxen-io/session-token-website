@@ -81,7 +81,7 @@ export default function TileCarousel ({
                                             <Button
                                                 title={linkLabel}
                                                 inverted={!fullSizeImage}
-                                                arrow={link}
+                                                hasArrow={link}
                                                 disabled={!link}
                                             />
                                         }

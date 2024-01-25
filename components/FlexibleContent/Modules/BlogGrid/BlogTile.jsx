@@ -6,13 +6,14 @@ import moment from 'moment'
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
+
 export default function BlogTile({
     post: {
         author,
         excerpt,
         title,
         featuredImage,
-        copy,
         slug,
         _createdAt
     },
@@ -31,15 +32,25 @@ export default function BlogTile({
                 [s.Single]: isSingle
             })}
         >
-            <div className={s.Image}>
+            <AnimatedElement
+                className={s.Image}
+                type='div'
+                delay={100}
+                disabled={!isFeatured}
+            >
                 <Image
                     src={imageUrl}
                     width={560}
                     height={345}
                     alt={`Featured image for ${title}`}
                 />
-            </div>
-            <div className={s.Content}>
+            </AnimatedElement>
+            <AnimatedElement
+                className={s.Content}
+                type='div'
+                delay={200}
+                disabled={!isFeatured}
+            >
                 <h3>
                     {title}
                 </h3>
@@ -61,7 +72,7 @@ export default function BlogTile({
                         Read More
                     </span>
                     : null}
-            </div>
+            </AnimatedElement>
         </Element>
     )
 }

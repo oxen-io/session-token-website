@@ -2,27 +2,35 @@ export const button = {
     title: 'Button',
     name: 'button',
     type: 'object',
-    fields: [{
-        title: 'Icon Name',
-        name: 'iconName',
-        type: 'string',
-        options: {
-            layout: 'dropdown',
-            list: [
-                { value: 'none', title: 'None' },
-                { value: 'logo', title: 'Logo' },
-                { value: 'logoWithCircle', title: 'Logo With Circle' },
-            ],
+    fields: [
+        {
+            title: 'Icon Name',
+            name: 'iconName',
+            type: 'string',
+            options: {
+                layout: 'dropdown',
+                list: [
+                    { value: 'none', title: 'None' },
+                    { value: 'logo', title: 'Logo' },
+                    { value: 'logoWithCircle', title: 'Logo With Circle' },
+                ],
+            },
         },
-    },{
-        title: 'Is Primary',
-        name: 'isPrimary',
-        type: 'boolean'
-    }, {
-        title: 'Link',
-        name: 'link',
-        type: 'link'
-    }],
+        {
+            title: 'Has arrow?',
+            name: 'hasArrow',
+            type: 'boolean'
+        },
+        {
+            title: 'Is Primary',
+            name: 'isPrimary',
+            type: 'boolean'
+        }, {
+            title: 'Link',
+            name: 'link',
+            type: 'link'
+        }
+    ],
     preview: {
         select: {
             title: 'link.title',

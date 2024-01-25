@@ -13,14 +13,12 @@ import { LiveQuery } from 'next-sanity/preview/live-query'
 import Post from 'components/Post/Post'
 import PageWrapper from 'components/PageWrapper/PageWrapper'
 
-export const runtime = 'edge'
-
 export async function generateMetadata({ params }) {
     const { slug } = params
 
     const [settings, page] = await Promise.all([
         getSettings(),
-        getDocumentBySlug(params.slug, 'post'),
+        getDocumentBySlug(slug, 'post'),
     ])
 
     return {

@@ -1,8 +1,4 @@
-'use client'
-
 import cn from 'clsx'
-
-import { getSocialIcon } from 'lib/utils'
 
 import Image from 'next/image'
 
@@ -14,13 +10,20 @@ import LogoFooter from 'public/images/logo-footer.png'
 import Logo from 'public/images/logo.png'
 
 import s from './Footer.module.sass'
+import Socials from 'components/Socials/Socials'
 
-export default function Footer({settings}) {
-    const menu = settings?.menuItems
-    const socialLinks = settings?.socialLinks
+export default function Footer({ settings }) {
+    const { menuItems, lastUpdatedDate } = settings
 
     const d = new Date()
     const year = d.getFullYear()
+
+    const bottomJsx = (
+        <div className={s.Bottom}>
+            Website last updated {lastUpdatedDate}<br />
+            &copy; Session {year}. All rights reserved.
+        </div>
+    )
 
     return (
         <footer className={s.Footer}>
@@ -40,42 +43,21 @@ export default function Footer({settings}) {
                             </NavLink>
                         </div>
                         <span className="smallTitle">/ Managed by Session</span>
-                        <div className={s.Bottom}>
-                            Website last updated XX October 2023<br />
-                            &copy; Session {year}. All rights reserved.
-                        </div>
+                        {bottomJsx}
                     </div>
-                    <Menu menu={menu} footer />
+                    {menuItems.length > 1 ?
+                        <Menu menu={menuItems} footer />
+                        : null}
                     <div className={s.Links}>
                         <Button
                             title={'Buy $SENT'}
                             small
                             iconName={'logoWithCircle'}
                         />
-                        { socialLinks &&
-                            <ul className={s.Social}>
-                                {socialLinks?.map((item, index) => {
-                                    const {
-                                        link,
-                                        company,
-                                    } = item
-
-                                    return (
-                                        <li key={index}>
-                                            <a href={link}>
-                                                {getSocialIcon(company)}
-                                            </a>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        }
+                        <Socials />
                     </div>
                 </div>
-                <div className={s.Bottom}>
-                    Website last updated XX October 2023<br />
-                    &copy; Session {year}. All rights reserved.
-                </div>
+                {bottomJsx}
             </div>
         </footer>
     )

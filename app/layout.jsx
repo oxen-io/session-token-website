@@ -5,7 +5,7 @@ export default async function RootLayout({ children }) {
     return (
         <html lang="en" className={`${AtypDisplay.variable} ${AtypText.variable} ${MonumentExtended.variable}`}>
             <head>
-                <Script id="google-tag-manager" strategy="afterInteractive">
+                { /* <Script id="google-tag-manager" strategy="afterInteractive">
                     {`
                         (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -13,7 +13,7 @@ export default async function RootLayout({ children }) {
                         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                         })(window,document,'script','dataLayer','GTM-TGSRWD3Z');
                     `}
-                </Script>
+                    </Script> */ }
             </head>
             <body>{children}</body>
         </html>

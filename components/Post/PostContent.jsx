@@ -3,6 +3,7 @@
 import PortableText from 'components/PortableText/PortableText'
 import s from './PostContent.module.sass'
 import { useRef } from 'react'
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 
 export default function PostContent({
     post: {
@@ -15,11 +16,18 @@ export default function PostContent({
 
     return (
         <section className={s.Outer}>
-            <main ref={mainRef}>
+            <AnimatedElement
+                ref={mainRef}
+                type='main'
+                delay={250}
+            >
                 <PortableText value={copy} />
-            </main>
+            </AnimatedElement>
             <aside>
-                <div>
+                <AnimatedElement
+                    type='div'
+                    delay={300}
+                >
                     <h5>
                         In this article
                     </h5>
@@ -44,7 +52,7 @@ export default function PostContent({
                             )
                         })}
                     </ul>
-                </div>
+                </AnimatedElement>
             </aside>
         </section>
     )

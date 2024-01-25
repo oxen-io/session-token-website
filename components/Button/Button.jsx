@@ -18,10 +18,10 @@ export default function Button({
     prefetch,
     type,
     small,
-    inverted,
     iconName,
-    arrow,
+    hasArrow,
     disabled,
+    isPrimary
 }) {
     const handleDummyClick = undefined
 
@@ -32,11 +32,20 @@ export default function Button({
         'button',
         className && className,
         small && s.Small,
-        inverted && s.Inverted,
+        !isPrimary && s.Inverted,
         disabled && s.Disabled,
     )
 
     const buttonIcon = iconName ? buttonLogos[iconName] : null
+
+    const buttonInner = title => {
+        return (
+            <>
+                {buttonIcon}
+                {title && <span dangerouslySetInnerHTML={{ __html: `${title}${hasArrow ? ' ↗' : ''}` }} />}
+            </>
+        )
+    }
 
     if (!url && !sanityLink) {
         return (
@@ -45,8 +54,7 @@ export default function Button({
                 onClick={_handleClick}
                 type={type || ''}
             >
-                {buttonIcon}
-                {title && <span dangerouslySetInnerHTML={{ __html: `${title}${arrow ? ' ↗' : ''}` }} />}
+                {buttonInner(title)}
             </button>
         )
     }
@@ -66,8 +74,7 @@ export default function Button({
             prefetch={prefetch}
             onClick={_handleClick}
         >
-            {buttonIcon}
-            {_title && <span dangerouslySetInnerHTML={{ __html: `${_title}${arrow ? ' ↗' : ''}` }} />}
+            {buttonInner(_title)}
         </NavLink>
     )
 }

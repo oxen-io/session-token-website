@@ -26,7 +26,7 @@ export default function CopyAndImage ({
                         <Button
                             title={button?.label}
                             inverted={!button?.isPrimary}
-                            arrow
+                            hasArrow
                         />
                     }
                 </div>
