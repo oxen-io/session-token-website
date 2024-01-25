@@ -10,6 +10,7 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { LiveQuery } from 'next-sanity/preview/live-query'
 import PageWrapper from 'components/PageWrapper/PageWrapper'
+import metadata from 'lib/metadata'
 
 export async function generateMetadata({ params }) {
     const { slug } = params
@@ -19,12 +20,7 @@ export async function generateMetadata({ params }) {
         getDocumentBySlug(slug?.[0] || 'coming-soon', 'page'),
     ])
 
-    return {
-        baseTitle: settings?.title ?? undefined,
-        description: `Session Token`,
-        image: settings?.ogImage,
-        title: `${page?.title} - ${settings?.title ?? undefined}`,
-    }
+    return metadata(page, settings)
 }
 
 export async function generateStaticParams() {

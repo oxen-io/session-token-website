@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 
 import NavLink from '/components/NavLink/NavLink'

@@ -30,6 +30,11 @@ export const baseData = [
         type: "string",
         validation: (Rule) => Rule.required(),
       },
+      {
+        name: 'ogpImage',
+        title: 'OGP image',
+        type: 'image'
+      }
     ],
   },
 ];
