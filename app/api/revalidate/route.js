@@ -16,8 +16,13 @@ export async function POST(req) {
         }
 
         if (body.slug) {
-            console.log(`${body._type}:${body.slug}`)
-            revalidateTag(`${body._type}:${body.slug}`);
+            console.log(`${body._type}:${body.slug.current}`)
+            revalidateTag(`${body._type}:${body.slug.current}`);
+        }
+
+        if(body.type === 'post'){
+            console.log('revalidating posts')
+            revalidateTag('post')
         }
 
         return NextResponse.json({
