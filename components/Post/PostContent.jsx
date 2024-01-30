@@ -17,7 +17,7 @@ export default function PostContent({
     return (
         <section className={s.Outer}>
             <AnimatedElement
-                ref={mainRef}
+                innerRef={mainRef}
                 type='main'
                 delay={250}
             >

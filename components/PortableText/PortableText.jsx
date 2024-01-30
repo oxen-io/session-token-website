@@ -9,13 +9,30 @@ const Image = ({ value }) => {
     )
 }
 
+const IFrame = ({ value }) => {
+    const { embedCode } = value
+
+    if (!embedCode) {
+        return null
+    }
+
+    return (
+        <div
+            dangerouslySetInnerHTML={{
+                __html: embedCode
+            }}
+        />
+    )
+}
+
 export default function PortableText(props) {
     return (
         <DefaultPortableText
             {...props}
             components={{
                 types: {
-                    image: Image
+                    image: Image,
+                    iframe: IFrame
                 }
             }}
         />

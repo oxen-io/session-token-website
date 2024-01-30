@@ -15,7 +15,8 @@ export default function BlogTile({
         title,
         featuredImage,
         slug,
-        _createdAt
+        _createdAt,
+        datePosted
     },
     isFeatured,
     isSingle
@@ -56,7 +57,7 @@ export default function BlogTile({
                 </h3>
                 <div className={s.Meta}>
                     <span>
-                        {moment(_createdAt).format(`MMMM D, YYYY`)}
+                        {moment(datePosted || _createdAt).format(`MMMM D, YYYY`)}
                     </span>
                     {author &&
                         <span>

@@ -19,6 +19,10 @@ export const joinCta = {
     },
     fields: [
         {
+            name: 'preTitle',
+            type: 'string',
+        },
+        {
             name: 'title',
             type: 'string',
         },

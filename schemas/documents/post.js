@@ -11,6 +11,10 @@ const post = {
     fields: [
         ...baseData,
         {
+            type: 'date',
+            name: 'datePosted'
+        },
+        {
             type: 'reference',
             name: 'author',
             title: 'Author',
