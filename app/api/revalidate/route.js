@@ -20,7 +20,7 @@ export async function POST(req) {
             revalidateTag(`${body._type}:${body.slug.current}`);
         }
 
-        if(body.type === 'post'){
+        if (body._type === 'post') {
             console.log('revalidating posts')
             revalidateTag('post')
         }
