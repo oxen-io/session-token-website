@@ -8,13 +8,12 @@ import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 export default async function BlogGrid({
     morePostsTitle
 }) {
-
     const posts = await sanityFetch({
         query: `*[_type == "post"]{
             ...,
             author->,
         }`,
-        tags: []
+        tags: ['post']
     })
 
     const postsWithoutFirst = posts.slice(1)

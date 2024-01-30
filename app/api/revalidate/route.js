@@ -2,7 +2,6 @@ import { revalidateSecret } from 'lib/sanity.api'
 import { revalidateTag } from 'next/cache'
 import { NextResponse } from 'next/server'
 import { parseBody } from 'next-sanity/webhook'
-import { revalidatePath } from 'next/cache'
 
 export async function POST(req) {
     try {
@@ -16,13 +15,10 @@ export async function POST(req) {
             return new Response('Bad Request', { status: 400 });
         }
 
-        // uncomment for tag functionality, just using revalidatePath for now
-        // if (body.slug) {
-        //     revalidateTag(`${body._type}:${body.slug}`);
-        // }
-        // else revalidateTag(body._type);
-
-        revalidatePath("/")
+        if (body.slug) {
+            console.log(`${body._type}:${body.slug}`)
+            revalidateTag(`${body._type}:${body.slug}`);
+        }
 
         return NextResponse.json({
             status: 200,
