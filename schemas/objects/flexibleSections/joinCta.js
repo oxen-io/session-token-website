@@ -35,23 +35,8 @@ export const joinCta = {
             }
         },
         {
-            name: 'links',
-            type: 'array',
-            of: [
-                {
-                    name: 'link',
-                    type: 'object',
-                    fields: [
-                        {
-                            name: 'icon',
-                            type: 'image'
-                        }, {
-                            name: 'url',
-                            type: 'string'
-                        }
-                    ]
-                }
-            ]
+            name: 'socialLinks',
+            type: 'socialLinks',
         }
     ],
 };

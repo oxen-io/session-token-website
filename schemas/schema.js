@@ -16,6 +16,7 @@ import quote from './objects/quote'
 import portableImage from './objects/portableImage'
 import { button } from './objects/button'
 import { iframe } from './objects/iframe'
+import socialLinks from './partials/socialLinks'
 
 import page from './documents/page'
 import post from './documents/post'
@@ -54,5 +55,6 @@ export default [
     quote,
     portableImage,
     button,
-    iframe
+    iframe,
+    socialLinks
 ]

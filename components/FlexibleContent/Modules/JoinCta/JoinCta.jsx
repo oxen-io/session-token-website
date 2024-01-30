@@ -2,13 +2,14 @@ import clsx from 'clsx'
 import s from './JoinCta.module.sass'
 import { urlForImage } from 'lib/sanity.image'
 import { PortableText } from '@portabletext/react'
+import Socials from 'components/Socials/Socials'
 
 export default function JoinCta({
     preTitle,
     title,
     copy,
     image,
-    links
+    socialLinks
 }) {
     const bgUrl = urlForImage(image).url()
 
@@ -25,6 +26,7 @@ export default function JoinCta({
                     <div className={s.Copy}>
                         <PortableText value={copy} />
                     </div>
+                    <Socials socialLinks={socialLinks} />
                 </div>
                 <div
                     className={s.Image}

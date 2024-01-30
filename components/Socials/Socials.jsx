@@ -6,8 +6,12 @@ import { useContext } from "react"
 
 import s from './Socials.module.sass'
 
-export default function Socials() {
-    const { socialLinks } = useContext(SettingsContext)
+export default function Socials({
+    socialLinks: parentSocialLinks
+}) {
+    const { socialLinks: settingsSocialLinks } = useContext(SettingsContext)
+
+    const socialLinks = parentSocialLinks || settingsSocialLinks
 
     return (
         <ul className={s.Outer}>
