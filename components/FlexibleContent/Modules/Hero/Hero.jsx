@@ -1,6 +1,6 @@
 import cn from 'clsx'
 
-import { PortableText } from '@portabletext/react'
+import PortableText from 'components/PortableText/PortableText'
 import Button from '/components/Button/Button'
 import ImageBox from '/components/ImageBox/ImageBox'
 

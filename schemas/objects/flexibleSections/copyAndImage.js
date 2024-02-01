@@ -22,6 +22,7 @@ export const copyAndImage = {
             type: 'string',
         },
         portableText("copy", "Copy"),
+        portableText("subCopy", "Sub-copy"),
         {
             name: "image",
             type: "image",

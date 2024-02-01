@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import s from './JoinCta.module.sass'
 import { urlForImage } from 'lib/sanity.image'
-import { PortableText } from '@portabletext/react'
+import PortableText from 'components/PortableText/PortableText'
 import Socials from 'components/Socials/Socials'
 
 export default function JoinCta({

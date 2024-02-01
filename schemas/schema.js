@@ -24,6 +24,7 @@ import author from './documents/author'
 import navigationLink from './documents/navigationLink'
 import forms from './documents/forms'
 import settings from './singletons/settings'
+import { genericCta } from './objects/flexibleSections/genericCta'
 
 export default [
     // Singletons
@@ -45,6 +46,7 @@ export default [
     copyAndImage,
     blogGrid,
     comingSoon,
+    genericCta,
 
     // Objects
     figure,
