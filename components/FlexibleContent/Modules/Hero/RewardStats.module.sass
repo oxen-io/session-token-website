@@ -1,0 +1,38 @@
+.Outer
+    z-index: 2
+    position: absolute
+    top: 120px
+    right: 0
+    text-align: right
+
+    ul
+        list-style: none
+        margin-top: 15px
+
+        li
+            span
+                display: flex
+                flex-direction: row
+                align-items: center
+                justify-content: flex-end
+
+                svg
+                    width: auto
+                    height: 16px
+                    margin-right: 5px
+                    top: -1px
+
+.Progress
+    width: 240px
+    height: 9px
+    background: linear-gradient(to right, #797979, #595959)
+    border-radius: 10px
+    margin-top: 5px
+    overflow: hidden
+
+    &>div
+        position: absolute
+        top: 0
+        right: 0
+        height: 100%
+        background: linear-gradient(to right, #00F782, #00FFD1)

@@ -1,5 +1,48 @@
 $paddingTop: 78px
 
+.Hero
+
+    &.Type-rewards
+        .ImageCont
+            top: 0
+            left: 0
+            transform: none
+            width: 100%
+            height: 100%
+
+            &>div
+                width: 100%
+                height: 100%
+
+            img
+                left: 50%
+                transform: translate(-50%, -50%)
+                width: auto
+                height: 100%
+                max-width: none
+                top: 50%
+
+        .CopyCont
+            justify-content: flex-start
+            max-width: 330px
+            padding-top: 120px
+            color: var(--color-mid-grey)
+
+            p
+                font-size: 20px
+                font-weight: 400
+                font-family: var(--font-atyp-text)
+
+            ul
+                display: block
+
+                li
+                    margin-bottom: 10px
+
+                    a[class^="Button"]
+                        display: inline-flex
+                        white-space: nowrap
+
 .Cont
     display: grid
     grid-template-columns: 1fr 1fr
@@ -13,14 +56,13 @@ $paddingTop: 78px
     height: 100vh
 
     h1
-        font-size: 78.5px
-        line-height: 100px
+        line-height: 1.2
         margin-bottom: -20px
 
     p
         font-size: 39px
         font-family: var(--font-atyp-display)
-        line-height: 50px
+        line-height: 1.3
         color: var(--color-grey-darker)
 
         strong
@@ -50,9 +92,6 @@ $paddingTop: 78px
 
 .MobileScroll
     display: none
-
-.Hero + section[class^="TileCarousel"]
-    margin-top: 200px
 
 @media(max-width: 500px)
 

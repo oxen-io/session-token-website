@@ -50,7 +50,7 @@ const settings = {
         },
         {
             name: 'ogImage',
-            title: 'Open Graph Image',
+            title: 'Default OpenGraph Image',
             type: 'image',
             description: 'Displayed on social cards and search engine results.',
             options: {
@@ -77,6 +77,32 @@ const settings = {
         {
             name: 'socialLinks',
             type: 'socialLinks'
+        }, {
+            name: 'rewards',
+            type: 'object',
+            fields: [
+                {
+                    name: 'timeUntilNextRewardPercent',
+                    type: 'number'
+                }, {
+                    name: 'meta',
+                    type: 'array',
+                    of: [
+                        {
+                            type: 'object',
+                            fields: [
+                                {
+                                    name: 'title',
+                                    type: 'string'
+                                }, {
+                                    name: 'copy',
+                                    type: 'string'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         }
     ],
     preview: {
