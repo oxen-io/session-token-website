@@ -15,15 +15,10 @@ export async function POST(req) {
             return new Response('Bad Request', { status: 400 });
         }
 
-        if (body.slug) {
-            console.log(`${body._type}:${body.slug.current}`)
-            revalidateTag(`${body._type}:${body.slug.current}`);
-        }
+        console.log('REVALIDATING')
+        console.log(body.type)
 
-        if (body._type === 'post') {
-            console.log('revalidating posts')
-            revalidateTag('post')
-        }
+        revalidateTag('post')
 
         return NextResponse.json({
             status: 200,
