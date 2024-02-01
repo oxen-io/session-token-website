@@ -4,17 +4,31 @@
     top: 120px
     right: 0
     text-align: right
+    color: var(--color-mid-grey)
 
     ul
         list-style: none
         margin-top: 15px
 
         li
+            margin-bottom: 8px
+            display: flex
+            flex-direction: column
+            align-items: flex-end
+
+            &:first-child
+                margin-bottom: 25px
+
             span
                 display: flex
                 flex-direction: row
                 align-items: center
                 justify-content: flex-end
+
+                strong
+                    font-weight: 900
+                    display: inline-block
+                    margin-left: 3px
 
                 svg
                     width: auto

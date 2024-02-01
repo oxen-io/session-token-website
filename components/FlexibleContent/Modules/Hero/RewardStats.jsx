@@ -8,9 +8,9 @@ const giftIcon = (
 )
 
 export default async function RewardStats() {
-    const settings = await getSettings()
+    const { rewards } = await getSettings()
 
-    console.log(settings)
+    const { timeUntilNextRewardPercent, meta } = rewards
 
     return (
         <div className={s.Outer}>
@@ -18,16 +18,34 @@ export default async function RewardStats() {
                 Current stats
             </h3>
             <ul>
-                <li>
-                    <span>
-                        {giftIcon} Time until next reward:
-                    </span>
-                    <div className={s.Progress}>
-                        <div style={{
-                            width: '50%'
-                        }} />
-                    </div>
-                </li>
+                {timeUntilNextRewardPercent ?
+                    <li>
+                        <span>
+                            {giftIcon} Time until next reward:
+                        </span>
+                        <div className={s.Progress}>
+                            <div style={{
+                                width: `${timeUntilNextRewardPercent}%`
+                            }} />
+                        </div>
+                    </li>
+                    : null}
+                {meta.map(({
+                    _key,
+                    title,
+                    copy
+                }) => {
+                    return (
+                        <li key={_key}>
+                            <span>
+                                {title}:
+                                <strong>
+                                    {copy}
+                                </strong>
+                            </span>
+                        </li>
+                    )
+                })}
             </ul>
         </div>
     )

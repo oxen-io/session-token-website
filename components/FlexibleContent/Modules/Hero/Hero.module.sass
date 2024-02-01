@@ -11,16 +11,34 @@ $paddingTop: 78px
             height: 100%
 
             &>div
-                width: 100%
+                width: auto
+                position: absolute
+                left: 50%
+                transform: translate(-50%)
                 height: 100%
 
+                // remove sharp edges from image
+                &:before, &:after
+                    content: ''
+                    position: absolute
+                    top: 0
+                    height: 100%
+                    width: 80px
+                    z-index: 2
+
+                &:before
+                    background: linear-gradient(to right, var(--color-black), rgba(0,0,0,0))
+                    left: -2px
+
+                &:after
+                    background: linear-gradient(to left, var(--color-black), rgba(0,0,0,0))
+                    right: -2px
+
+
             img
-                left: 50%
-                transform: translate(-50%, -50%)
                 width: auto
-                height: 100%
                 max-width: none
-                top: 50%
+                height: 100%
 
         .CopyCont
             justify-content: flex-start
