@@ -7,7 +7,8 @@ const components = [
     'copyAndImage',
     'blogGrid',
     'comingSoon',
-    'genericCta'
+    'genericCta',
+    'faqsList'
 ]
 
 const flexibleSections = components.map(component => ({

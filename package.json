@@ -41,6 +41,7 @@
         "react-hook-form": "^7.48.2",
         "react-intersection-observer": "^9.5.2",
         "react-select": "^5.8.0",
+        "react-smooth-collapse": "^2.1.2",
         "react-tracked": "^1.7.11",
         "sanity": "^3.26.1",
         "sanity-plugin-asset-source-unsplash": "1.1.2",

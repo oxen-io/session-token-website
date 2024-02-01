@@ -6,6 +6,8 @@ import { iconStrip } from './objects/flexibleSections/iconStrip'
 import { copyAndImage } from './objects/flexibleSections/copyAndImage'
 import { blogGrid } from './objects/flexibleSections/blogGrid'
 import { comingSoon } from './objects/flexibleSections/comingSoon'
+import { genericCta } from './objects/flexibleSections/genericCta'
+import { faqsList } from './objects/flexibleSections/faqsList'
 
 import link from './objects/link'
 import figure from './objects/figure'
@@ -24,7 +26,6 @@ import author from './documents/author'
 import navigationLink from './documents/navigationLink'
 import forms from './documents/forms'
 import settings from './singletons/settings'
-import { genericCta } from './objects/flexibleSections/genericCta'
 
 export default [
     // Singletons
@@ -47,6 +48,7 @@ export default [
     blogGrid,
     comingSoon,
     genericCta,
+    faqsList,
 
     // Objects
     figure,

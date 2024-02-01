@@ -5394,6 +5394,14 @@ react-select@^5.8.0:
     react-transition-group "^4.3.0"
     use-isomorphic-layout-effect "^1.1.2"
 
+react-smooth-collapse@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/react-smooth-collapse/-/react-smooth-collapse-2.1.2.tgz#65bec660e0432ddc45af5f2deeaef8ddd25741b2"
+  integrity sha512-Wq3NUBisI7Gycj4z7GVGTQyI2bfZSJ1UTSZNzGC3H3hysdRW+uHve3TJyQDFd6gDaXljPQy3u8zNuXZ8NzuptQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    prop-types "^15.6.0"
+
 react-style-proptype@^3.2.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/react-style-proptype/-/react-style-proptype-3.2.2.tgz#d8e998e62ce79ec35b087252b90f19f1c33968a0"

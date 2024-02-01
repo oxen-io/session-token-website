@@ -9,6 +9,7 @@ import CopyAndImage from './Modules/CopyAndImage/CopyAndImage'
 import BlogGrid from './Modules/BlogGrid/BlogGrid'
 import ComingSoon from './Modules/ComingSoon/ComingSoon'
 import GenericCta from './Modules/GenericCta/GenericCta'
+import FaqsList from './Modules/FaqsList/FaqsList'
 
 const Components = {
     Hero,
@@ -19,7 +20,8 @@ const Components = {
     CopyAndImage,
     BlogGrid,
     ComingSoon,
-    GenericCta
+    GenericCta,
+    FaqsList
 }
 
 const ucFirst = (string) => {
