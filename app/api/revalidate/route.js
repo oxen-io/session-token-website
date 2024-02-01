@@ -16,7 +16,7 @@ export async function POST(req) {
         }
 
         console.log('REVALIDATING')
-        console.log(body.type)
+        console.log(body._type)
 
         revalidateTag('post')
 
