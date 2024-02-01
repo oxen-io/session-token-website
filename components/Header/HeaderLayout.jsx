@@ -57,7 +57,6 @@ export default function Header() {
                     <Image
                         src={Logo}
                         alt="Session Token"
-                        // onClick={() => setMenuOpen(false)}
                         priority
                     />
                 </NavLink>
