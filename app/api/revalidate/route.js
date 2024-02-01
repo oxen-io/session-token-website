@@ -15,10 +15,7 @@ export async function POST(req) {
             return new Response('Bad Request', { status: 400 });
         }
 
-        console.log('REVALIDATING')
-        console.log(body._type)
-
-        revalidateTag('post')
+        revalidateTag(body._type)
 
         return NextResponse.json({
             status: 200,
