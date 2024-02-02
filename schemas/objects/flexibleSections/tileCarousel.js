@@ -22,6 +22,12 @@ export const tileCarousel = {
             type: 'string',
         },
         {
+            name: 'borderless',
+            title: 'Borderless?',
+            description: `Removes borders around tiles, and centres content`,
+            type: 'boolean'
+        },
+        {
             name: 'content',
             description: `If you put content in here, we'll use the smaller layout (e.g for Roadmap section)`,
             type: 'object',

@@ -1,27 +1,31 @@
-import { hero } from 'schemas/objects/flexibleSections/hero'
-import { joinCta } from 'schemas/objects/flexibleSections/joinCta'
-import { statsTiles } from 'schemas/objects/flexibleSections/statsTiles'
-import { tileCarousel } from 'schemas/objects/flexibleSections/tileCarousel'
-import { iconStrip } from 'schemas/objects/flexibleSections/iconStrip'
-import { copyAndImage } from 'schemas/objects/flexibleSections/copyAndImage'
-import { blogGrid } from 'schemas/objects/flexibleSections/blogGrid'
+import { hero } from './objects/flexibleSections/hero'
+import { joinCta } from './objects/flexibleSections/joinCta'
+import { statsTiles } from './objects/flexibleSections/statsTiles'
+import { tileCarousel } from './objects/flexibleSections/tileCarousel'
+import { iconStrip } from './objects/flexibleSections/iconStrip'
+import { copyAndImage } from './objects/flexibleSections/copyAndImage'
+import { blogGrid } from './objects/flexibleSections/blogGrid'
 import { comingSoon } from './objects/flexibleSections/comingSoon'
+import { genericCta } from './objects/flexibleSections/genericCta'
+import { faqsList } from './objects/flexibleSections/faqsList'
 
-import link from 'schemas/objects/link'
-import figure from 'schemas/objects/figure'
-import formRow from 'schemas/objects/form/formRow'
-import formBuilder from 'schemas/objects/form/formBuilder'
-import formFields from 'schemas/objects/form/formFields'
-import quote from 'schemas/objects/quote'
-import portableImage from 'schemas/objects/portableImage'
-import { button } from 'schemas/objects/button'
+import link from './objects/link'
+import figure from './objects/figure'
+import formRow from './objects/form/formRow'
+import formBuilder from './objects/form/formBuilder'
+import formFields from './objects/form/formFields'
+import quote from './objects/quote'
+import portableImage from './objects/portableImage'
+import { button } from './objects/button'
+import { iframe } from './objects/iframe'
+import socialLinks from './partials/socialLinks'
 
-import page from 'schemas/documents/page'
-import post from 'schemas/documents/post'
-import author from 'schemas/documents/author'
-import navigationLink from 'schemas/documents/navigationLink'
-import forms from 'schemas/documents/forms'
-import settings from 'schemas/singletons/settings'
+import page from './documents/page'
+import post from './documents/post'
+import author from './documents/author'
+import navigationLink from './documents/navigationLink'
+import forms from './documents/forms'
+import settings from './singletons/settings'
 
 export default [
     // Singletons
@@ -43,6 +47,8 @@ export default [
     copyAndImage,
     blogGrid,
     comingSoon,
+    genericCta,
+    faqsList,
 
     // Objects
     figure,
@@ -53,5 +59,6 @@ export default [
     quote,
     portableImage,
     button,
-
+    iframe,
+    socialLinks
 ]

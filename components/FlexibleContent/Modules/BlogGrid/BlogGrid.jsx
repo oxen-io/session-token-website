@@ -8,23 +8,29 @@ import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 export default async function BlogGrid({
     morePostsTitle
 }) {
-
     const posts = await sanityFetch({
         query: `*[_type == "post"]{
             ...,
             author->,
         }`,
-        tags: []
+        tags: ['post']
     })
 
-    const postsWithoutFirst = posts.slice(1)
+    const sortedPosts = posts.sort((a, b) => {
+        const aDate = new Date(a.datePosted || a._createdAt)
+        const bDate = new Date(b.datePosted || b._createdAt)
+
+        return bDate - aDate
+    })
+
+    const postsWithoutFirst = sortedPosts.slice(1)
 
     return (
         <section
             className={clsx(s.Outer, `Container Deep`)}
         >
             <BlogTile
-                post={posts[0]}
+                post={sortedPosts[0]}
                 isFeatured
             />
             <div className={s.Grid}>

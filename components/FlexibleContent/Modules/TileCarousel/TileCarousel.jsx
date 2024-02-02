@@ -9,7 +9,7 @@ import 'swiper/scss'
 import 'swiper/scss/a11y'
 import 'swiper/css/navigation'
 
-import { PortableText } from '@portabletext/react'
+import PortableText from 'components/PortableText/PortableText'
 
 import ImageBox from '/components/ImageBox/ImageBox'
 import Button from '/components/Button/Button'
@@ -17,20 +17,32 @@ import NavLink from '/components/NavLink/NavLink'
 
 import s from './TileCarousel.module.sass'
 
-export default function TileCarousel ({
+export default function TileCarousel({
     title,
     content,
     tiles,
+    borderless
 }) {
     return (
-        <section className={cn(s.TileCarousel, content ? s.HasContent : '')}>
+        <section className={cn(
+            s.TileCarousel,
+            {
+                [s.HasContent]: content,
+                [s.Borderless]: borderless,
+            }
+        )}
+        >
             <div className={cn(s.Cont, "Container")}>
-                { content &&
-                    <div className={s.Content}>
-                        <div className="smallTitle">{title}</div>
-                        { content?.title && <h2>{content?.title}</h2> }
-                        { content?.copy && <PortableText value={content?.copy} /> }
-                    </div>
+                {
+                    (borderless && title) ?
+                        <h2>{title}</h2>
+                        :
+                        content &&
+                        <div className={s.Content}>
+                            <div className="smallTitle">{title}</div>
+                            {content?.title && <h2>{content?.title}</h2>}
+                            {content?.copy && <PortableText value={content?.copy} />}
+                        </div>
                 }
                 <div className={s.Slider}>
                     <Swiper
@@ -62,22 +74,22 @@ export default function TileCarousel ({
 
                             const inside = (
                                 <>
-                                    { image &&
+                                    {image &&
                                         <div className={s.Image}>
                                             <ImageBox image={image} />
                                         </div>
                                     }
                                     <div className={s.TileContent}>
-                                        { preTitle &&
+                                        {preTitle &&
                                             <div className="smallTitle">{preTitle}</div>
                                         }
-                                        { content ?
+                                        {content ?
                                             <h4>{title}<span>↗</span></h4>
-                                        :
+                                            :
                                             <h2>{title}</h2>
                                         }
                                         <p>{copy}</p>
-                                        { linkLabel &&
+                                        {linkLabel &&
                                             <Button
                                                 title={linkLabel}
                                                 inverted={!fullSizeImage}
@@ -92,11 +104,11 @@ export default function TileCarousel ({
                             return (
                                 <SwiperSlide key={index}>
                                     <div className={cn(s.Slide, fullSizeImage ? s.FullSizeImage : '')}>
-                                        { link ?
+                                        {link ?
                                             <NavLink href={link}>
                                                 {inside}
                                             </NavLink>
-                                        :
+                                            :
                                             <div>
                                                 {inside}
                                             </div>

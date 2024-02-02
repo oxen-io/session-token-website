@@ -1,6 +1,8 @@
 :root
     --color-black: #0A0A0A
     --color-primary: #00F782
+    
+    --color-mid-grey: #dbdbdb
 
     --margin: 180px
     --gap: 15px
@@ -28,11 +30,17 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4
         -webkit-text-fill-color: transparent
         -moz-text-fill-color: transparent
 
+        &.Vertical
+            background-image: linear-gradient(0deg, #f3f5f4, #bdc7c2)
+
 h1, .h1
     font-size: 60px
 
     &.Huge
         font-size: 80px
+
+    &.Massive
+        font-size: 120px
 
 h2, .h2
     font-size: 40px
@@ -47,6 +55,13 @@ h5, .h5
     font-family: var(--font-monument-extended)
     font-size: 16px
     text-transform: uppercase
+
+.Copy
+    &.Large
+        font-size: 24px
+    
+    p
+        margin: 20px 0px
 
 .smallTitle
     font-family: var(--font-atyp-display)

@@ -1,0 +1,43 @@
+.Outer
+    &>div
+        border-radius: 25px
+        border: 1px solid rgba(255, 255, 255, 0.2)
+        display: grid
+        grid-template-columns: auto 1fr
+        overflow: hidden
+
+        ul[class^="Socials_"] 
+            margin-top: 70px
+
+            li 
+                margin-right: 10px
+
+                a
+                    border: none
+                    background: none
+                    height: auto
+                    width: auto
+
+                    &:hover svg path
+                        fill: var(--color-primary)
+
+                    svg
+                        height: 30px
+                        width: auto
+
+                        &[class="social-discord"]
+                            path
+                                &:nth-child(2), &:nth-child(3)
+                                    fill: black
+
+.Content
+    padding: 40px
+    max-width: 500px
+
+    h2
+        margin-top: 70px
+        margin-bottom: 20px
+
+.Image
+    background-size: cover
+    background-position: center

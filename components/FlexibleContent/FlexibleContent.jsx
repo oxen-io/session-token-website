@@ -1,4 +1,3 @@
-import InViewDetector from 'components/InViewDetector/InViewDetector'
 import React from 'react'
 
 import Hero from './Modules/Hero/Hero'
@@ -9,6 +8,8 @@ import TileCarousel from './Modules/TileCarousel/TileCarousel'
 import CopyAndImage from './Modules/CopyAndImage/CopyAndImage'
 import BlogGrid from './Modules/BlogGrid/BlogGrid'
 import ComingSoon from './Modules/ComingSoon/ComingSoon'
+import GenericCta from './Modules/GenericCta/GenericCta'
+import FaqsList from './Modules/FaqsList/FaqsList'
 
 const Components = {
     Hero,
@@ -18,7 +19,9 @@ const Components = {
     TileCarousel,
     CopyAndImage,
     BlogGrid,
-    ComingSoon
+    ComingSoon,
+    GenericCta,
+    FaqsList
 }
 
 const ucFirst = (string) => {
@@ -29,11 +32,6 @@ const FlexibleContent = ({ rows, settings, topic }) => {
     if (!rows) {
         return null
     }
-
-    const scrollIds = rows.map(row => row.scrollId).filter(Boolean).map(id => ({
-        id: id.replace(/\s+/g, '-').toLowerCase(),
-        title: id,
-    }))
 
     return (
         <main>
@@ -49,20 +47,13 @@ const FlexibleContent = ({ rows, settings, topic }) => {
 
                 if (row?.hide) return null
 
-                const scrollId = row.scrollId
-                    ? row.scrollId.replace(/\s+/g, '-').toLowerCase()
-                    : null
-
                 return (
-                    <InViewDetector name={name} key={index} scrollId={scrollId}>
-                        <Component
-                            {...row}
-                            key={index}
-                            scrollIds={scrollIds}
-                            settings={settings}
-                            topic={topic}
-                        />
-                    </InViewDetector>
+                    <Component
+                        {...row}
+                        key={index}
+                        settings={settings}
+                        topic={topic}
+                    />
                 )
             })}
         </main>
