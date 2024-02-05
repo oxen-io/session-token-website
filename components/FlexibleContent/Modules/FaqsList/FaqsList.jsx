@@ -6,6 +6,7 @@ import s from './FaqsList.module.sass'
 import clsx from 'clsx'
 import PortableText from 'components/PortableText/PortableText'
 import FadeCollapse from 'components/FadeCollapse/FadeCollapse'
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 
 export default function FaqsList({
     categories
@@ -15,7 +16,11 @@ export default function FaqsList({
 
     return (
         <section className={clsx(s.Outer, 'Container')}>
-            <legend className={s.Legend}>
+            <AnimatedElement
+                type='legend'
+                delay={100}
+                className={s.Legend}
+            >
                 <div>
                     <strong>
                         Table of contents
@@ -43,8 +48,11 @@ export default function FaqsList({
                         })}
                     </ul>
                 </div>
-            </legend>
-            <main>
+            </AnimatedElement>
+            <AnimatedElement
+                type='main'
+                delay={200}
+            >
                 <ul className={s.Categories}>
                     {categories.map(({
                         _key,
@@ -95,7 +103,7 @@ export default function FaqsList({
                         )
                     })}
                 </ul>
-            </main>
+            </AnimatedElement>
         </section>
     )
 }
