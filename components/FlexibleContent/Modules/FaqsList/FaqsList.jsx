@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import s from './FaqsList.module.sass'
 import clsx from 'clsx'
@@ -11,37 +11,53 @@ export default function FaqsList({
     categories
 }) {
     const [openCategories, setOpenCategories] = useState([])
+    const categoryRefs = useRef({})
 
     return (
         <section className={clsx(s.Outer, 'Container')}>
             <legend className={s.Legend}>
-                <strong>
-                    Table of contents
-                </strong>
-                <ul>
-                    {categories.map(({
-                        _key,
-                        title
-                    }) => {
-                        return (
-                            <li key={_key}>
-                                <button>
-                                    {title}
-                                </button>
-                            </li>
-                        )
-                    })}
-                </ul>
+                <div>
+                    <strong>
+                        Table of contents
+                    </strong>
+                    <ul>
+                        {categories.map(({
+                            _key,
+                            title
+                        }) => {
+                            return (
+                                <li key={_key}>
+                                    <button
+                                        onClick={() => {
+                                            const target = categoryRefs.current[_key]
+
+                                            target && target.scrollIntoView({
+                                                behavior: 'smooth',
+                                            })
+                                        }}
+                                    >
+                                        {title}
+                                    </button>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
             </legend>
             <main>
-                <ul>
+                <ul className={s.Categories}>
                     {categories.map(({
                         _key,
                         title,
                         faqs
                     }) => {
                         return (
-                            <li key={_key}>
+                            <li
+                                key={_key}
+                                ref={ref => {
+                                    categoryRefs.current[_key] = ref
+                                }}
+                            >
                                 <strong>
                                     {title}
                                 </strong>
