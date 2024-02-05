@@ -45,18 +45,28 @@ export default function FaqsList({
                                 <strong>
                                     {title}
                                 </strong>
-                                <ul>
+                                <ul className={s.FaqsGroup}>
                                     {faqs.map(({
                                         _key,
                                         question,
                                         answer
                                     }) => {
+                                        const isOpen = openCategories.includes(_key)
+
                                         return (
-                                            <li key={_key}>
-                                                <button>
+                                            <li
+                                                key={_key}
+                                                className={isOpen ? s.Open : ''}
+                                            >
+                                                <button
+                                                    onClick={() => {
+                                                        setOpenCategories(openCategories.includes(_key) ? openCategories.filter((category) => category !== _key) : [...openCategories, _key])
+                                                    }}
+                                                >
+                                                    <em />
                                                     {question}
                                                 </button>
-                                                <FadeCollapse open={false}>
+                                                <FadeCollapse open={isOpen}>
                                                     <div className={s.Answer}>
                                                         <PortableText value={answer} />
                                                     </div>

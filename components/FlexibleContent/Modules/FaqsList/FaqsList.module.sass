@@ -7,3 +7,60 @@
     strong
         font-weight: 900
         text-transform: uppercase
+
+    .FaqsGroup
+        margin-bottom: 30px
+
+        & > li
+            &.Open > button
+                color: var(--color-primary)
+
+                & > em:after
+                    transform: translate(-50%, -50%) rotate(180deg)
+                    background: var(--color-primary)
+
+            &:not(:last-child):after
+                content: ''
+                position: absolute
+                bottom: 0
+                left: 0
+                width: 100%
+                max-width: 600px
+                background: linear-gradient(to right, #515151, rgba(255,255,255,0))
+                height: 1px
+
+            &>button
+                padding: 15px 0px
+                transition: 0.15s
+
+                em
+                    width: 10px
+                    height: 10px
+                    display: inline-block
+                    margin-right: 10px
+                    vertical-align: middle
+                    top: -1px
+
+                    &:before, &:after
+                        content: ''
+                        height: 1px
+                        width: 100%
+                        background: white
+                        position: absolute
+                        top: 50%
+                        left: 50%
+                        transform: translate(-50%, -50%)
+                        transition: 0.15s
+
+                    &:after
+                        transform: translate(-50%, -50%) rotate(90deg)
+
+            .Answer
+                padding-bottom: 20px
+
+                p
+                    &:not(:first-child)
+                        margin-top: 15px
+
+                    &:not(:last-child)
+                        margin-bottom: 15px

@@ -49,7 +49,9 @@ export default function Hero({
                         </ul>
                     }
                 </div>
-                <RewardStats />
+                {type === 'rewards' ?
+                    <RewardStats />
+                    : null}
                 <div className={s.ImageCont}>
                     {backgroundImage && <ImageBox image={backgroundImage} />}
                 </div>
