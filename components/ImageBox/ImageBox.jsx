@@ -1,3 +1,5 @@
+'use client'
+
 import { urlForImage } from 'lib/sanity.image'
 import Image from 'next/image'
 
@@ -9,19 +11,15 @@ export default function ImageBox({
     loading = "lazy",
     blur,
     className = "",
+    innerRef
 }) {
     if (!image) return null
 
     const altText = image ? (image.alt ? image.alt : "") : ""
-    const imageUrl = image?.asset?.url
-        ? image?.asset?.url
-        : urlForImage(image)?.url()
-    const blurImage = image?.asset?.metadata?.lqip
-        ? image?.asset?.metadata?.lqip
-        : null
+    const imageUrl = image?.asset?.url ? image?.asset?.url : urlForImage(image)?.url()
+    const blurImage = image?.asset?.metadata?.lqip ? image?.asset?.metadata?.lqip : null
 
-    const keyStr =
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
+    const keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/="
 
     const triplet = (e1, e2, e3) =>
         keyStr.charAt(e1 >> 2) +
@@ -29,13 +27,17 @@ export default function ImageBox({
         keyStr.charAt(((e2 & 15) << 2) | (e3 >> 6)) +
         keyStr.charAt(e3 & 63)
 
-    const rgbDataURL = (r, g, b) =>
-        `data:image/gif;base64,R0lGODlhAQABAPAA${
-            triplet(0, r, g) + triplet(b, 255, 255)
-        }/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`
+    const rgbDataURL = (r, g, b) => `data:image/gif;base64,R0lGODlhAQABAPAA${triplet(0, r, g) + triplet(b, 255, 255)}/yH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==`
 
     return (
-        <div className={className}>
+        <div
+            className={className}
+            ref={ref => {
+                if (innerRef) {
+                    innerRef(ref)
+                }
+            }}
+        >
             {image && (
                 <Image
                     alt={altText}

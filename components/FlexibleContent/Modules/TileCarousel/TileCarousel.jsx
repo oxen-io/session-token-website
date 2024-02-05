@@ -16,6 +16,7 @@ import Button from '/components/Button/Button'
 import NavLink from '/components/NavLink/NavLink'
 
 import s from './TileCarousel.module.sass'
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 
 export default function TileCarousel({
     title,
@@ -103,7 +104,10 @@ export default function TileCarousel({
 
                             return (
                                 <SwiperSlide key={index}>
-                                    <div className={cn(s.Slide, fullSizeImage ? s.FullSizeImage : '')}>
+                                    <AnimatedElement
+                                        className={cn(s.Slide, fullSizeImage ? s.FullSizeImage : '')}
+                                        delay={(index * 100) + 100}
+                                    >
                                         {link ?
                                             <NavLink href={link}>
                                                 {inside}
@@ -113,7 +117,7 @@ export default function TileCarousel({
                                                 {inside}
                                             </div>
                                         }
-                                    </div>
+                                    </AnimatedElement>
                                 </SwiperSlide>
                             )
                         })}

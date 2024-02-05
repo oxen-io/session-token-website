@@ -4,6 +4,8 @@ import PortableText from 'components/PortableText/PortableText'
 import Button from '/components/Button/Button'
 import ImageBox from '/components/ImageBox/ImageBox'
 
+import { AnimatedBigImage, AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
+
 import clsx from 'clsx'
 
 import s from './Hero.module.sass'
@@ -25,7 +27,9 @@ export default function Hero({
                 </div>
                 <div className={s.CopyCont}>
                     {title &&
-                        <h1
+                        <AnimatedElement
+                            type='h1'
+                            delay={100}
                             className={clsx({
                                 'h3': type === 'rewards',
                                 'Huge': type !== 'rewards',
@@ -33,9 +37,19 @@ export default function Hero({
                             dangerouslySetInnerHTML={{ __html: title }}
                         />
                     }
-                    {copy && <PortableText value={copy} />}
+                    {copy &&
+                        <AnimatedElement
+                            type='div'
+                            delay={200}
+                        >
+                            <PortableText value={copy} />
+                        </AnimatedElement>
+                    }
                     {buttons &&
-                        <ul>
+                        <AnimatedElement
+                            type={'ul'}
+                            delay={300}
+                        >
                             {buttons.map((button, index) => {
                                 return (
                                     <li key={index}>
@@ -46,14 +60,14 @@ export default function Hero({
                                     </li>
                                 )
                             })}
-                        </ul>
+                        </AnimatedElement>
                     }
                 </div>
                 {type === 'rewards' ?
                     <RewardStats />
                     : null}
                 <div className={s.ImageCont}>
-                    {backgroundImage && <ImageBox image={backgroundImage} />}
+                    {backgroundImage && <AnimatedBigImage image={backgroundImage} />}
                 </div>
             </div>
         </section>

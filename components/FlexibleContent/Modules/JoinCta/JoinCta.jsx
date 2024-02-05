@@ -3,6 +3,7 @@ import s from './JoinCta.module.sass'
 import { urlForImage } from 'lib/sanity.image'
 import PortableText from 'components/PortableText/PortableText'
 import Socials from 'components/Socials/Socials'
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 
 export default function JoinCta({
     preTitle,
@@ -15,7 +16,9 @@ export default function JoinCta({
 
     return (
         <section className={clsx(s.Outer, 'Container')}>
-            <div>
+            <AnimatedElement
+                delay={100}
+            >
                 <div className={s.Content}>
                     <div className='smallTitle'>
                         / {preTitle}
@@ -34,7 +37,7 @@ export default function JoinCta({
                         backgroundImage: `url(${bgUrl})`
                     }}
                 />
-            </div>
+            </AnimatedElement>
         </section>
     )
 }

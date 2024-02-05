@@ -1,12 +1,13 @@
 'use client'
 
 import clsx from "clsx"
+import ImageBox from "components/ImageBox/ImageBox"
 import { useCallback } from "react"
 
 import { useInView } from 'react-intersection-observer'
 
 export const AnimatedElement = ({
-    type,
+    type = 'div',
     children,
     delay = 0,
     className = '',
@@ -44,5 +45,29 @@ export const AnimatedElement = ({
         >
             {children}
         </Element>
+    )
+}
+
+export const AnimatedBigImage = ({
+    image,
+    className = '',
+    delay = 0,
+}) => {
+    const { ref, inView } = useInView({
+        threshold: 0,
+        triggerOnce: true,
+    })
+
+    return (
+        <ImageBox
+            image={image}
+            className={clsx(className, `AnimatedBigImage`, {
+                [`Visible`]: inView
+            })}
+            innerRef={ref}
+            style={{
+                transitionDelay: delay + 'ms'
+            }}
+        />
     )
 }

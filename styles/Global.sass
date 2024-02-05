@@ -97,7 +97,14 @@ video
         opacity: 1
         transform: translateY(0px)
 
+.AnimatedBigImage
+    opacity: 0
+    transition: 1.3s
+    transform: scale(1.1)
 
+    &.Visible
+        opacity: 1
+        transform: scale(1)
 
 @media(max-width: 768px)
 
