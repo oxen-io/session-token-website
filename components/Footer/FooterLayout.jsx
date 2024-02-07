@@ -13,7 +13,7 @@ import s from './Footer.module.sass'
 import Socials from 'components/Socials/Socials'
 
 export default function Footer({ settings }) {
-    const { menuItems, lastUpdatedDate } = settings
+    const { menuItems, lastUpdatedDate, menuTopLink } = settings
 
     const d = new Date()
     const year = d.getFullYear()
@@ -50,9 +50,8 @@ export default function Footer({ settings }) {
                         : null}
                     <div className={s.Links}>
                         <Button
-                            title={'Buy $SENT'}
+                            {...menuTopLink}
                             small
-                            iconName={'logoWithCircle'}
                         />
                         <Socials />
                     </div>
