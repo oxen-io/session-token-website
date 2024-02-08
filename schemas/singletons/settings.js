@@ -17,6 +17,7 @@ const settings = {
         },
         {
             name: 'menuTopLink',
+            title: 'Primary CTA',
             type: 'button',
         },
         {
