@@ -13,6 +13,7 @@ import { LiveQuery } from 'next-sanity/preview/live-query'
 import Post from 'components/Post/Post'
 import PageWrapper from 'components/PageWrapper/PageWrapper'
 import metadata from 'lib/metadata'
+import generateRssFeed from 'lib/rss'
 
 export async function generateMetadata({ params }) {
     const { slug } = params
@@ -26,8 +27,11 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-    const slugs = await getDocumentPaths('post')
-    return slugs.map((slug) => ({ slug }))
+    const allPosts = await getDocumentPaths('post')
+
+    generateRssFeed(allPosts)
+
+    return allPosts.map(({ slug }) => ({ slug: slug.current }))
 }
 
 export default async function BlogPost({ params }) {

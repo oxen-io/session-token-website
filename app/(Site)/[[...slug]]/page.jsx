@@ -25,9 +25,9 @@ export async function generateMetadata({ params }) {
 
 export async function generateStaticParams() {
     const slugs = await getDocumentPaths('page')
-    const response = slugs.map((slug) => ({ slug }))
+    const allPages = slugs.map((slug) => ({ slug }))
 
-    return response
+    return allPages.map(({ slug }) => ({ slug: slug.current }))
 }
 
 export default async function PageSlugRoute({ params }) {
