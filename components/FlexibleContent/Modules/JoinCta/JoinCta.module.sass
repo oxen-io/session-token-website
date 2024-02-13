@@ -41,3 +41,20 @@
 .Image
     background-size: cover
     background-position: center
+
+@media(max-width: 500px)
+    .Outer>div
+        display: flex
+        flex-direction: column-reverse
+
+        ul[class^="Socials_"]
+            margin-top: 30px
+
+    .Image
+        height: 300px
+
+    .Content
+        padding: 30px 25px
+
+        h2
+            margin-top: 20px

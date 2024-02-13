@@ -1,58 +1,9 @@
 $paddingTop: 78px
 
 .Hero
-
     &.Type-rewards
-        .ImageCont
-            top: 0
-            left: 0
-            transform: none
-            width: 100%
-            height: 100%
-
-            &>div
-                width: auto
-                position: absolute
-                left: 50%
-                transform: translate(-50%)
-                height: 100%
-
-                // remove sharp edges from image
-                &:before, &:after
-                    content: ''
-                    position: absolute
-                    top: 0
-                    height: 100%
-                    width: 80px
-                    z-index: 2
-
-                &:before
-                    background: linear-gradient(to right, var(--color-black), rgba(0,0,0,0))
-                    left: -2px
-
-                &:after
-                    background: linear-gradient(to left, var(--color-black), rgba(0,0,0,0))
-                    right: -2px
-
-
-            img
-                width: auto
-                max-width: none
-                height: 100%
-
         .CopyCont
-            justify-content: flex-start
-            max-width: 330px
-            padding-top: 120px
-            color: var(--color-mid-grey)
-
-            p
-                font-size: 20px
-                font-weight: 400
-                font-family: var(--font-atyp-text)
-
             ul
-                display: block
 
                 li
                     margin-bottom: 10px
@@ -111,10 +62,67 @@ $paddingTop: 78px
 .MobileScroll
     display: none
 
+@media(min-width: 501px)
+    .Hero.Type-rewards
+        .ImageCont
+            top: 0
+            left: 0
+            transform: none
+            width: 100%
+            height: 100%
+
+            &>div
+                width: auto
+                position: absolute
+                left: 50%
+                transform: translate(-50%)
+                height: 100%
+
+                // remove sharp edges from image
+                &:before, &:after
+                    content: ''
+                    position: absolute
+                    top: 0
+                    height: 100%
+                    width: 80px
+                    z-index: 2
+
+                &:before
+                    background: linear-gradient(to right, var(--color-black), rgba(0,0,0,0))
+                    left: -2px
+
+                &:after
+                    background: linear-gradient(to left, var(--color-black), rgba(0,0,0,0))
+                    right: -2px
+
+
+            img
+                width: auto
+                max-width: none
+                height: 100%
+
+        .CopyCont
+            justify-content: flex-start
+            max-width: 330px
+            padding-top: 120px
+            color: var(--color-mid-grey)
+
+            ul
+                display: block
+
+            p
+                font-size: 20px
+                font-weight: 400
+                font-family: var(--font-atyp-text)
+
 @media(max-width: 500px)
 
     .Hero
         padding-top: 0
+        overflow: hidden
+
+        &.Type-rewards .CopyCont ul li:nth-child(2)
+            display: none
 
     .Cont
         display: flex
@@ -126,11 +134,15 @@ $paddingTop: 78px
 
     .CopyCont
         gap: 10px
-        margin-top: -5%
+        justify-content: flex-end
+        max-width: none
+        padding-top: 0px
+        margin-bottom: 150px
 
         h1
             font-size: 40px
             line-height: 1.1
+            margin-bottom: 0px
 
         p
             font-size: 16px
@@ -140,9 +152,22 @@ $paddingTop: 78px
 
         ul
             justify-content: center
+            margin-top: 30px
 
     .ImageCont
-        height: 40vh
+        height: auto
+        width: 100%
+        right: 0%
+        transform: none
+        top: 90px
+        transition: 0.6s
+        transform: scale(1)
+        filter: blur(0px)
+
+        &.Darkened
+            opacity: 0.3
+            transform: scale(0.98)
+            filter: blur(5px)
 
         img
             translate: 0 0

@@ -3,7 +3,16 @@
     padding: 0 0 80px
     overflow: hidden
 
+    div[class^="smallTitle"]
+        margin-bottom: 30px
+
+        .ScrollIcon
+            display: none
+
     &.Borderless 
+        .Cont
+            display: flex
+
         &:before
             content: ''
             z-index: 1
@@ -40,6 +49,9 @@
                     object-position: center
 
     &.HasContent
+        .Cont
+            display: flex
+
         .Slider
             width: 75%
 
@@ -55,11 +67,8 @@
                 > span
                     justify-content: flex-start
 
-            > a
-                &:hover
-                    .Image
-                        img
-                            scale: 1
+            > a:hover .Image img
+                scale: 1
 
         .Image
             width: 100%
@@ -76,9 +85,6 @@
         .TileContent
             padding: 20px
 
-.Cont
-    display: flex
-
 .Content
     display: flex
     flex-direction: column
@@ -87,7 +93,7 @@
     padding: 0 100px 0 0
 
     h2
-        margin-top: 30px
+        margin-top: 0px
         margin-bottom: 20px
 
 .Slider
@@ -204,7 +210,7 @@
             object-position: bottom
 
 .TileContent
-    > div
+    > div, div[class^="smallTitle"]
         margin: 0 0 10px
         opacity: 0.6
 
@@ -237,13 +243,33 @@
                     &[class*="swiper-horizontal"]
                         overflow: visible
 
+        div[class^="smallTitle"]
+            margin-bottom: 0px
+
+            .ScrollIcon
+                display: block
+                position: absolute
+                right: 0
+                top: 0
+                white-space: nowrap
+                opacity: 0.5
+
+                svg
+                    width: 35px
+                    display: inline-block
+                    margin-left: 10px
+
     .Cont
         flex-direction: column
 
     .Content
         width: 100%
         margin: 0 0 30px
+        padding: 0px
         gap: 20px
+
+        h2
+            margin: 0px
 
     .Slider
         div

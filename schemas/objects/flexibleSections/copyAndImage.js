@@ -29,6 +29,11 @@ export const copyAndImage = {
             options: { hotspot: true },
         },
         {
+            name: 'expandImageOnMobile',
+            type: 'boolean',
+            description: `Some images have a glow around them - this'll expand them so they sit flush with margins.`
+        },
+        {
             name: 'button',
             type: 'button',
         },

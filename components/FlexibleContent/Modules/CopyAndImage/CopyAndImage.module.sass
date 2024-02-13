@@ -37,6 +37,19 @@
 
 
 @media(max-width: 1024px)
+    .CopyAndImage
+        overflow: hidden
+
+        &.ExpandImageOnMobile 
+            margin-top: 60px
+            
+            .Image > div
+                margin-left: -45px
+                width: calc(100% + 90px)
+                margin-bottom: -30px
+
+        h2
+            font-size: 35px
 
     .Cont
         flex-direction: column

@@ -7,6 +7,7 @@ import Button from '/components/Button/Button'
 
 import s from './CopyAndImage.module.sass'
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
+import clsx from 'clsx'
 
 export default function CopyAndImage({
     title,
@@ -15,11 +16,14 @@ export default function CopyAndImage({
     image,
     button,
     alignment,
+    expandImageOnMobile
 }) {
     const isReversed = alignment === 'imageLeft'
 
     return (
-        <section className={s.CopyAndImage}>
+        <section className={clsx(s.CopyAndImage, {
+            [s.ExpandImageOnMobile]: expandImageOnMobile,
+        })}>
             <div className={cn(s.Cont, 'Container', alignment ? s[alignment] : '')}>
                 <AnimatedElement
                     className={s.Content}

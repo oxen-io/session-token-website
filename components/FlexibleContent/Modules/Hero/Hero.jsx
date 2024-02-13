@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 
 import PortableText from 'components/PortableText/PortableText'
@@ -10,6 +12,7 @@ import clsx from 'clsx'
 
 import s from './Hero.module.sass'
 import RewardStats from './RewardStats'
+import { useState } from 'react'
 
 export default function Hero({
     title,
@@ -18,6 +21,10 @@ export default function Hero({
     backgroundImage,
     type,
 }) {
+    const [statsVisibleOnMobile, setStatsVisibleOnMobile] = useState(false)
+
+    const isRewards = type === 'rewards'
+
     return (
         <section className={clsx(s.Hero, s[`Type-${type}`])}>
             <div className={cn(s.Cont, "Container")}>
@@ -31,8 +38,8 @@ export default function Hero({
                             type='h1'
                             delay={100}
                             className={clsx({
-                                'h3': type === 'rewards',
-                                'Huge': type !== 'rewards',
+                                'h3': isRewards,
+                                'Huge': !isRewards,
                             })}
                             dangerouslySetInnerHTML={{ __html: title }}
                         />
@@ -60,13 +67,28 @@ export default function Hero({
                                     </li>
                                 )
                             })}
+                            {isRewards &&
+                                <li className={s.RewardsButton}>
+                                    <Button
+                                        handleClick={() => {
+                                            setStatsVisibleOnMobile(!statsVisibleOnMobile)
+                                        }}
+                                        inverted
+                                        title={`${statsVisibleOnMobile ? 'Hide' : 'Show'} stats`}
+                                    />
+                                </li>
+                            }
                         </AnimatedElement>
                     }
                 </div>
                 {type === 'rewards' ?
-                    <RewardStats />
+                    <RewardStats 
+                        visibleOnMobile={statsVisibleOnMobile}
+                    />
                     : null}
-                <div className={s.ImageCont}>
+                <div className={clsx(s.ImageCont, {
+                    [s.Darkened]: statsVisibleOnMobile
+                })}>
                     {backgroundImage && <AnimatedBigImage image={backgroundImage} />}
                 </div>
             </div>

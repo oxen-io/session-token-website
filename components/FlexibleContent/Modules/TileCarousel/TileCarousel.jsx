@@ -24,6 +24,8 @@ export default function TileCarousel({
     tiles,
     borderless
 }) {
+    const hasScrollIconOnMobile = !content && !borderless
+
     return (
         <section className={cn(
             s.TileCarousel,
@@ -35,15 +37,27 @@ export default function TileCarousel({
         >
             <div className={cn(s.Cont, "Container")}>
                 {
-                    (borderless && title) ?
-                        <h2>{title}</h2>
-                        :
-                        content &&
+                    content ?
                         <div className={s.Content}>
                             <div className="smallTitle">{title}</div>
                             {content?.title && <h2>{content?.title}</h2>}
                             {content?.copy && <PortableText value={content?.copy} />}
                         </div>
+                        : borderless ?
+                            <h2>{title}</h2>
+                            : title ?
+                                <div className="smallTitle">
+                                    {title}
+                                    {hasScrollIconOnMobile ?
+                                        <div className={s.ScrollIcon}>
+                                            Scroll
+                                            <svg width="77" height="8" viewBox="0 0 77 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M76.4998 3.79688L69.9998 0.0440984V7.54965L76.4998 3.79688ZM70.6498 3.14688L0.964111 3.14688V4.44687L70.6498 4.44687V3.14688Z" fill="#fff" />
+                                            </svg>
+                                        </div>
+                                        : null}
+                                </div>
+                                : null
                 }
                 <div className={s.Slider}>
                     <Swiper

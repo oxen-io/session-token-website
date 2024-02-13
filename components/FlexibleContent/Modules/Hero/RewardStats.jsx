@@ -1,5 +1,7 @@
-import { getSettings } from 'lib/sanity.fetch'
 import s from './RewardStats.module.sass'
+import { useContext } from 'react'
+import { SettingsContext } from 'components/Contexts/SettingsContext'
+import clsx from 'clsx'
 
 const giftIcon = (
     <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -7,13 +9,17 @@ const giftIcon = (
     </svg>
 )
 
-export default async function RewardStats() {
-    const { rewards } = await getSettings()
+export default function RewardStats({
+    visibleOnMobile
+}) {
+    const { rewards } = useContext(SettingsContext)
 
     const { timeUntilNextRewardPercent, meta } = rewards
 
     return (
-        <div className={s.Outer}>
+        <div className={clsx(s.Outer, {
+            [s.VisibleOnMobile]: visibleOnMobile
+        })}>
             <h3>
                 Current stats
             </h3>
