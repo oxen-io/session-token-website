@@ -26,6 +26,27 @@ export default function TileCarousel({
 }) {
     const hasScrollIconOnMobile = !content && !borderless
 
+    const [OuterElement, outerElementProps, InnerElement] = (() => {
+        if (borderless) {
+            return ['ul', {}, 'li']
+        } else {
+            return [Swiper, {
+                modules: [A11y, Navigation],
+                spaceBetween: 20,
+                slidesPerView: content ? 1.2 : 1,
+                a11y: true,
+                allowTouchMove: true,
+                navigation: true,
+                breakpoints: {
+                    1024: {
+                        slidesPerView: content ? 3 : 2.85,
+                        allowTouchMove: false,
+                    },
+                }
+            }, SwiperSlide]
+        }
+    })()
+
     return (
         <section className={cn(
             s.TileCarousel,
@@ -60,21 +81,8 @@ export default function TileCarousel({
                                 : null
                 }
                 <div className={s.Slider}>
-                    <Swiper
-                        modules={[A11y, Navigation]}
-                        spaceBetween={20}
-                        slidesPerView={content ? 1.2 : 1}
-                        a11y={true}
-                        allowTouchMove={true}
-                        navigation={true}
-                        breakpoints={
-                            {
-                                1024: {
-                                    slidesPerView: content ? 3 : 2.85,
-                                    allowTouchMove: false,
-                                },
-                            }
-                        }
+                    <OuterElement
+                        {...outerElementProps}
                     >
                         {tiles?.map((tile, index) => {
                             const {
@@ -117,7 +125,7 @@ export default function TileCarousel({
                             )
 
                             return (
-                                <SwiperSlide key={index}>
+                                <InnerElement key={index}>
                                     <AnimatedElement
                                         className={cn(s.Slide, fullSizeImage ? s.FullSizeImage : '')}
                                         delay={(index * 100) + 100}
@@ -132,10 +140,10 @@ export default function TileCarousel({
                                             </div>
                                         }
                                     </AnimatedElement>
-                                </SwiperSlide>
+                                </InnerElement>
                             )
                         })}
-                    </Swiper>
+                    </OuterElement>
                 </div>
             </div>
         </section>
