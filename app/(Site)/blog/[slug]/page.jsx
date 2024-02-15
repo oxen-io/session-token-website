@@ -1,15 +1,12 @@
-
-import { Page } from 'components/Page/Page'
-
 import {
     getDocumentBySlug,
     getDocumentPaths,
     getSettings,
 } from 'lib/sanity.fetch'
-import { pageBySlugQuery } from 'lib/sanity.queries'
+
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
-import { LiveQuery } from 'next-sanity/preview/live-query'
+
 import Post from 'components/Post/Post'
 import PageWrapper from 'components/PageWrapper/PageWrapper'
 import metadata from 'lib/metadata'
@@ -39,29 +36,13 @@ export default async function BlogPost({ params }) {
 
     const isDraft = draftMode().isEnabled
 
-    if (!data && !draftMode().isEnabled) {
+    if (!data && !isDraft) {
         notFound()
     }
 
-    const inner = (
+    return (
         <PageWrapper>
             <Post post={data} />
         </PageWrapper>
-    )
-
-    if (!isDraft) {
-        return inner
-    }
-
-    return (
-        <LiveQuery
-            enabled={draftMode().isEnabled}
-            query={pageBySlugQuery}
-            params={params}
-            initialData={data}
-            as={PagePreview}
-        >
-            {inner}
-        </LiveQuery>
     )
 }

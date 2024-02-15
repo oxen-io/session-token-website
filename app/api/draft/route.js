@@ -21,8 +21,6 @@ export async function GET(request) {
         )
     }
 
-    console.log('ENABLING DRAFT')
-
     draftMode().enable()
 
     return new Response(null, {

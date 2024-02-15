@@ -43,13 +43,7 @@ export default async function PageSlugRoute({ params }) {
     if (!data && !isDraft) {
         notFound()
     }
-
-    if (!isDraft) {
-        return (
-            <PageInner data={data} settings={settings} />
-        )
-    }
-
+    
     return (
         <PageInner data={data} settings={settings} />
     )
