@@ -7,8 +7,7 @@ import { PreviewBanner } from 'components/preview/PreviewBanner'
 import { getSettings, token } from 'lib/sanity.fetch'
 import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
-import { Suspense } from 'react'
-import { SettingsContext, SettingsProvider } from 'components/Contexts/SettingsContext'
+import { SettingsProvider } from 'components/Contexts/SettingsContext'
 
 const PreviewProvider = dynamic(() =>
     import('components/preview/PreviewProvider'),
@@ -22,13 +21,11 @@ export default async function IndexRoute({ children }) {
     const layout = (
         <div>
             {isDraftMode && <PreviewBanner />}
-            <Suspense>
-                <SettingsProvider value={settings}>
-                    <Header />
-                    {children}
-                    <Footer />
-                </SettingsProvider>
-            </Suspense>
+            <SettingsProvider value={settings}>
+                <Header />
+                {children}
+                <Footer />
+            </SettingsProvider>
         </div>
     )
 
