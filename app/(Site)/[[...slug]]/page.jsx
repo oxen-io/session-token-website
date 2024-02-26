@@ -1,4 +1,4 @@
-import { Page } from 'components/Page/Page'
+
 
 import {
     getDocumentBySlug,
@@ -9,8 +9,10 @@ import { pageBySlugQuery } from 'lib/sanity.queries'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { LiveQuery } from 'next-sanity/preview/live-query'
-import PageWrapper from 'components/PageWrapper/PageWrapper'
 import metadata from 'lib/metadata'
+
+import PageInner from './PageInner'
+import PagePreview from './PagePreview'
 
 export async function generateMetadata({ params }) {
     const { slug } = params
@@ -38,29 +40,11 @@ export default async function PageSlugRoute({ params }) {
 
     const isDraft = draftMode().isEnabled
 
-    if (!data && !draftMode().isEnabled) {
+    if (!data && !isDraft) {
         notFound()
     }
-
-    const inner = (
-        <PageWrapper>
-            <Page data={data} settings={settings} />
-        </PageWrapper>
-    )
-
-    if (!isDraft) {
-        return inner
-    }
-
+    
     return (
-        <LiveQuery
-            enabled={draftMode().isEnabled}
-            query={pageBySlugQuery}
-            params={params}
-            initialData={data}
-            as={PagePreview}
-        >
-            {inner}
-        </LiveQuery>
+        <PageInner data={data} settings={settings} />
     )
 }

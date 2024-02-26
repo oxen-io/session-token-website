@@ -17,6 +17,7 @@ import page from 'schemas/documents/page'
 import settings from 'schemas/singletons/settings'
 
 import schema from 'schemas/schema'
+import post from 'schemas/documents/post'
 
 const title =
     process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
@@ -24,10 +25,12 @@ const title =
 
 export const PREVIEWABLE_DOCUMENT_TYPES = [
     page.name,
+    post.name
 ]
 
 export const PREVIEWABLE_DOCUMENT_TYPES_REQUIRING_SLUGS = [
     page.name,
+    post.name
 ]
 
 // Used to generate URLs for drafts and live previews

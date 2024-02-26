@@ -1,6 +1,5 @@
 .TileCarousel
     margin: 100px 0 20px
-    padding: 0 0 80px
     overflow: hidden
 
     div[class^="smallTitle"]
@@ -102,6 +101,10 @@
     margin: 0
     padding: 0
     padding-bottom: 3px
+
+    &>ul
+        display: grid
+        grid-template-columns: 1fr 1fr 1fr
 
     div
         &[class*="swiper-horizontal"]
@@ -273,6 +276,12 @@
             margin: 0px
 
     .Slider
+        &>ul
+            grid-template-columns: 1fr
+
+            .Slide > div
+                padding: 30px 20px
+
         div
             &[class*="swiper-button-prev"], &[class*="swiper-button-next"]
                 display: flex

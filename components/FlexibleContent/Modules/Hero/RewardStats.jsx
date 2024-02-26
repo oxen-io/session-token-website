@@ -2,6 +2,7 @@ import s from './RewardStats.module.sass'
 import { useContext } from 'react'
 import { SettingsContext } from 'components/Contexts/SettingsContext'
 import clsx from 'clsx'
+import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent'
 
 const giftIcon = (
     <svg width="23" height="26" viewBox="0 0 23 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,9 +18,12 @@ export default function RewardStats({
     const { timeUntilNextRewardPercent, meta } = rewards
 
     return (
-        <div className={clsx(s.Outer, {
-            [s.VisibleOnMobile]: visibleOnMobile
-        })}>
+        <AnimatedElement
+            className={clsx(s.Outer, {
+                [s.VisibleOnMobile]: visibleOnMobile
+            })}
+            delay={400}
+        >
             <h3>
                 Current stats
             </h3>
@@ -53,6 +57,6 @@ export default function RewardStats({
                     )
                 })}
             </ul>
-        </div>
+        </AnimatedElement>
     )
 }
