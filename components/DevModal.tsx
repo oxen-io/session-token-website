@@ -1,8 +1,7 @@
 'use client';
 
-import { isProduction } from '@/lib/env';
 import clsx from 'clsx';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const navLinks: Array<{ title: string; href: string }> = [
   { title: 'Home', href: '/home' },
@@ -65,10 +64,6 @@ export const DevModal = () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
-
-  if (isProduction()) {
-    return null;
-  }
 
   return (
     <>

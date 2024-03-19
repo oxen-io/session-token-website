@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 enum Environment {
   Development = 'development',
   Dev = 'dev',
@@ -11,7 +12,7 @@ enum Environment {
 
 export const isNotProduction = () => {
   return (
-    !process.env.NODE_ENV ||
+    !process.env.NEXT_PUBLIC_SITE_ENV ||
     [
       Environment.Development,
       Environment.Dev,
@@ -19,7 +20,7 @@ export const isNotProduction = () => {
       Environment.Stg,
       Environment.Testing,
       Environment.Test,
-    ].includes(process.env.NODE_ENV as Environment)
+    ].includes(process.env.NEXT_PUBLIC_SITE_ENV as Environment)
   );
 };
 
