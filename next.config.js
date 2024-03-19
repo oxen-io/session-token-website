@@ -6,13 +6,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'cdn.sanity.io',
       },
+      { hostname: 'cdn.sanity.io' },
+      { hostname: 'source.unsplash.com' },
     ],
   },
-  // logging: {
-  //   fetches: {
-  //     fullUrl: true,
-  //   },
-  // },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

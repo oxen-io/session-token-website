@@ -1,0 +1,11 @@
+.roadmap-button-hover-wrapper svg * {
+  fill: #dbdbdb !important;
+}
+
+.roadmap-button-hover-wrapper:hover svg * {
+  fill: #00f782 !important;
+}
+
+.roadmap-button-hover-wrapper-active svg * {
+  fill: #00f782 !important;
+}

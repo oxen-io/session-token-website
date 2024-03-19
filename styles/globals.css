@@ -1,0 +1,432 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary-DEFAULT: #00f782;
+    --primary-dark: #00b35f;
+    --gray-lightest: #adadad;
+    --gray-lighter: #7a7a7a;
+    --gray-light: #55595c;
+    --gray-DEFAULT: #3a3a3a;
+    --gray-dark: #333132;
+
+    --black: #0a0a0a;
+    --text: #dbdbdb;
+
+    --text-static: #dbdbdb;
+    --text-gradient: linear-gradient(128.42deg, #ffffff -38.86%, #97a99e 133.98%);
+    --text-gradient-darker: linear-gradient(
+      90.71deg,
+      rgba(160, 197, 181, 0.8) -0.79%,
+      rgba(174, 208, 216, 0.8) 98.84%
+    );
+
+    --text-caption: linear-gradient(113.07deg, #ace2d5 -6.36%, #405e56 210.93%);
+
+    --background: var(--black);
+    --foreground: var(--gray-light);
+  }
+}
+
+.text-gradient {
+  background-image: var(--text-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block; /* Ensures the gradient is only as wide as the text */
+}
+
+.text-gradient-darker {
+  background-image: var(--text-gradient-darker);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block; /* Ensures the gradient is only as wide as the text */
+}
+
+.text-caption {
+  background-image: var(--text-caption);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block; /* Ensures the gradient is only as wide as the text */
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Added static font files as a fallback for Safari */
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Light.ttf') format('truetype');
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-VariableFont_wght.ttf') format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-ThinItalic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-ExtraLightItalic.ttf')
+      format('truetype');
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-LightItalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-ExtraBoldItalic.ttf')
+      format('truetype');
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: PublicSans;
+  font-display: swap;
+  src:
+    url('../public/assets/fonts/PublicSans/PublicSans-Italic-VariableFont_wght.ttf')
+      format('truetype'),
+    url('../public/assets/fonts/PublicSans/static/PublicSans-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: SpaceMono;
+  font-display: swap;
+  src: url('../public/assets/fonts/SpaceMono/SpaceMono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: SpaceMono;
+  font-display: swap;
+  font-weight: bold;
+  src: url('../public/assets/fonts/SpaceMono/SpaceMono-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: SpaceMono;
+  font-display: swap;
+  font-style: italic;
+  src: url('../public/assets/fonts/SpaceMono/SpaceMono-Italic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: SpaceMono;
+  font-display: swap;
+  font-weight: bold;
+  font-style: italic;
+  src: url('../public/assets/fonts/SpaceMono/SpaceMono-BoldItalic.ttf') format('truetype');
+}
+
+body {
+  /* Fix for Safari */
+  /* https://stackoverflow.com/a/37365794 */
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+a,
+input,
+button {
+  @apply focus:outline-primary;
+}
+
+.embed-content blockquote {
+  @apply px-4 py-6 mb-6 ml-10 mr-4 text-base italic text-black border-gray-100 border-l-6;
+  @apply lg:text-lg;
+}
+
+.embed-content blockquote > p {
+  @apply pb-6 leading-relaxed;
+}
+
+.embed-content blockquote > a {
+  @apply text-primary-dark font-extralight;
+}
+
+.embed-content iframe {
+  @apply mb-6;
+}
+
+/* fixes '</' in Space Mono */
+.font-mono {
+  font-variant-ligatures: no-contextual;
+}
+
+/* Space Mono doesn't have a medium weight */
+.font-mono.font-medium {
+  @apply subpixel-antialiased;
+}
+
+.glitch {
+  transform: scale3d(1, 1, 1);
+}
+
+.glitch:after {
+  @apply text-5xl font-semibold bg-white text-gray-dark lg:text-6xl;
+  @apply absolute top-0 left-0 right-0 overflow-hidden;
+  content: attr(data-glitch-text);
+  clip: rect(0, 900px, 0, 0);
+  text-shadow: -1px 0 var(--primary-DEFAULT);
+}
+
+.glitch:after {
+  left: 3px;
+  animation: glitch-effect 4s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-effect {
+  0% {
+    clip: rect(23px, 9999px, 65px, 0);
+  }
+  5% {
+    clip: rect(17px, 9999px, 37px, 0);
+  }
+  10% {
+    clip: rect(72px, 9999px, 86px, 0);
+  }
+  15% {
+    clip: rect(52px, 9999px, 24px, 0);
+  }
+  20% {
+    clip: rect(85px, 9999px, 73px, 0);
+  }
+  25% {
+    clip: rect(81px, 9999px, 23px, 0);
+  }
+  30% {
+    clip: rect(48px, 9999px, 11px, 0);
+  }
+  35% {
+    clip: rect(94px, 9999px, 85px, 0);
+  }
+  40% {
+    clip: rect(71px, 9999px, 14px, 0);
+  }
+  45% {
+    clip: rect(74px, 9999px, 7px, 0);
+  }
+  50% {
+    clip: rect(25px, 9999px, 92px, 0);
+  }
+  55% {
+    clip: rect(1px, 9999px, 29px, 0);
+  }
+  60% {
+    clip: rect(59px, 9999px, 28px, 0);
+  }
+  65% {
+    clip: rect(52px, 9999px, 45px, 0);
+  }
+  70% {
+    clip: rect(95px, 9999px, 11px, 0);
+  }
+  75% {
+    clip: rect(23px, 9999px, 24px, 0);
+  }
+  80% {
+    clip: rect(42px, 9999px, 52px, 0);
+  }
+  85% {
+    clip: rect(44px, 9999px, 89px, 0);
+  }
+  90% {
+    clip: rect(35px, 9999px, 16px, 0);
+  }
+  95% {
+    clip: rect(56px, 9999px, 32px, 0);
+  }
+  100% {
+    clip: rect(45px, 9999px, 70px, 0);
+  }
+}
+
+.rich-content a span {
+  text-decoration-line: none;
+}
+
+.rich-content a span:hover {
+  text-decoration-line: underline;
+}
+
+/* https://github.com/videojs/video.js/issues/5751#issuecomment-483585248 */
+/* includes fixes for desktop safari  */
+.vjs-has-started .vjs-control-bar {
+  display: flex;
+  align-items: center;
+}
+
+.video-js .vjs-current-time,
+.vjs-no-flex .vjs-current-time {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.video-js .vjs-time-divider,
+.vjs-no-flex .vjs-time-divider {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}
+
+.video-js .vjs-duration,
+.vjs-no-flex .vjs-duration {
+  display: flex !important;
+  align-items: center !important;
+  height: 100% !important;
+}

@@ -2,74 +2,81 @@
     <channel>
         <title><![CDATA[Session Token - Articles]]></title>
         <description><![CDATA[RSS feed for articles on Session Token.]]></description>
-        <link>http://localhost:3000</link>
+        <link>https://token.getsession.org</link>
         <image>
-            <url>http://localhost:3000/images/logoBlack.png</url>
+            <url>https://token.getsession.org/images/logoBlack.png</url>
             <title>Session Token - Articles</title>
-            <link>http://localhost:3000</link>
+            <link>https://token.getsession.org</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 15 Feb 2024 02:56:32 GMT</lastBuildDate>
-        <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 15 Feb 2024 02:56:32 GMT</pubDate>
+        <lastBuildDate>Tue, 19 Mar 2024 02:08:47 GMT</lastBuildDate>
+        <atom:link href="https://token.getsession.org/rss.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Tue, 19 Mar 2024 02:08:47 GMT</pubDate>
         <copyright><![CDATA[All rights reserved 2024]]></copyright>
         <item>
             <title><![CDATA[Session Network is launching on Arbitrum]]></title>
             <description><![CDATA[The Session Network is launching on Arbitrum One after receiving a grant from the Arbitrum Foundation
 ]]></description>
-            <link>http://localhost:3000/blog/launching-on-arbitrum</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/launching-on-arbitrum</guid>
+            <link>https://token.getsession.org/blog/launching-on-arbitrum</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/launching-on-arbitrum</guid>
             <pubDate>Thu, 08 Feb 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Session Lab Update: New beginnings]]></title>
             <description><![CDATA[Welcome to the first ever edition of the Session Lab Update — learn about tokenomics, website building, and the Token Swap Program.
 ]]></description>
-            <link>http://localhost:3000/blog/session-lab-update-001</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/session-lab-update-001</guid>
+            <link>https://token.getsession.org/blog/session-lab-update-001</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/session-lab-update-001</guid>
             <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Session Lab Update: Session Token meets world 🌎]]></title>
             <description><![CDATA[Session Token got its own place on the world wide web, community hubs were launched, and smart contracts were released in a busy start to 2024.
 ]]></description>
-            <link>http://localhost:3000/blog/session-token-meets-world</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/session-token-meets-world</guid>
+            <link>https://token.getsession.org/blog/session-token-meets-world</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/session-token-meets-world</guid>
             <pubDate>Thu, 08 Feb 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Say hello to Session Token 👋]]></title>
             <description><![CDATA[Session Token is the cryptocurrency driving the future of Session. It is used for active staking, securing and rewarding the Session Network, and on-chain purchase of premium features in Session.]]></description>
-            <link>http://localhost:3000/blog/say-hello-to-session-token</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/say-hello-to-session-token</guid>
+            <link>https://token.getsession.org/blog/say-hello-to-session-token</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/say-hello-to-session-token</guid>
             <pubDate>Tue, 19 Dec 2023 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Session Lab Update: From Little Things, Big Things Grow]]></title>
+            <description><![CDATA[The Session Token community is growing fast, accompanied by some major development milestones for Session and the Session Network.]]></description>
+            <link>https://token.getsession.org/blog/from-little-things-big-things-grow</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/from-little-things-big-things-grow</guid>
+            <pubDate>Fri, 01 Mar 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[It’s token time: Session Token Swap Program]]></title>
             <description><![CDATA[Learn about the Session Token Swap Program which will be offered and other details about the transition to Session Token]]></description>
-            <link>http://localhost:3000/blog/session-token-swap-program</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/session-token-swap-program</guid>
+            <link>https://token.getsession.org/blog/session-token-swap-program</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/session-token-swap-program</guid>
             <pubDate>Fri, 01 Dec 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Session Lab Update: A Deep Breath In 🧘]]></title>
             <description><![CDATA[We are beyond excited for what the project and the community can achieve together in 2024. ]]></description>
-            <link>http://localhost:3000/blog/session-lab-update-002</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/session-lab-update-002</guid>
+            <link>https://token.getsession.org/blog/session-lab-update-002</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/session-lab-update-002</guid>
             <pubDate>Wed, 10 Jan 2024 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Session Token: Genesis Distribution]]></title>
             <description><![CDATA[This doc explains what the state of play will be at token generation along with projections for the first few years of Session Token’s existence.]]></description>
-            <link>http://localhost:3000/blog/session-token-genesis-distribution</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/session-token-genesis-distribution</guid>
+            <link>https://token.getsession.org/blog/session-token-genesis-distribution</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/session-token-genesis-distribution</guid>
             <pubDate>Wed, 13 Dec 2023 00:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Session Token Rewards Contract v0.1]]></title>
             <description><![CDATA[We have released the first public version of the smart contract which will be used to execute network operations using the new Session Token. 🎉]]></description>
-            <link>http://localhost:3000/blog/session-token-rewards-contract</link>
-            <guid isPermaLink="true">http://localhost:3000/blog/session-token-rewards-contract</guid>
+            <link>https://token.getsession.org/blog/session-token-rewards-contract</link>
+            <guid isPermaLink="true">https://token.getsession.org/blog/session-token-rewards-contract</guid>
             <pubDate>Mon, 15 Jan 2024 00:00:00 GMT</pubDate>
         </item>
     </channel>

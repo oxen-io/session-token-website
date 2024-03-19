@@ -47,7 +47,7 @@
     &>div
         position: absolute
         top: 0
-        right: 0
+        left: 0
         height: 100%
         background: linear-gradient(to right, #00F782, #00FFD1)
 
@@ -57,12 +57,12 @@
         left: 0px
         text-align: center
         pointer-events: none
-        opacity: 0
+        opacity: 0 !important
         transition: 0.3s
         transform: translateY(5px)
 
         &.VisibleOnMobile
-            opacity: 1
+            opacity: 1 !important
             transform: translateY(0px)
             pointer-events: all
 
