@@ -3,15 +3,16 @@ import { getDocumentBySlug, getDocumentPaths, getSettings } from '@/lib/sanity.f
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 
-import { isNotProduction } from '@/lib/env';
+import { isProduction } from '@/lib/env';
+import type { Page } from '@/schemas/documents/page';
 import PageInner from './PageInner';
 
 export async function generateMetadata({ params }: { params: { slug?: Array<string> } }) {
-  const { slug } = params;
+  const pageSlug = params.slug?.[0] ?? 'coming-soon';
 
   const [settings, page] = await Promise.all([
     getSettings(),
-    getDocumentBySlug(slug?.[0] || 'coming-soon', 'page'),
+    getDocumentBySlug<Page>(pageSlug || 'coming-soon', 'page'),
   ]);
 
   return metadata(page, settings);
@@ -25,24 +26,19 @@ export async function generateStaticParams() {
 }
 
 export default async function PageSlugRoute({ params }: { params: { slug?: Array<string> } }) {
+  const pageSlug = params.slug?.[0] ?? 'coming-soon';
+
   const [settings, data] = await Promise.all([
     getSettings(),
-    getDocumentBySlug(params.slug?.[0] || 'coming-soon', 'page'),
+    getDocumentBySlug<Page>(pageSlug, 'page'),
   ]);
 
-  const isDraft = draftMode().isEnabled;
-
-  if (!data && !isDraft) {
+  if (!data && !draftMode().isEnabled) {
     notFound();
   }
 
-  // If the page is not in production and we are in development, we allow the page to be viewed otherwise a not found page is returned
-  if (
-    params.slug?.[0] &&
-    isNotProduction() &&
-    !data.production &&
-    !['', '/', 'admin'].includes(params.slug[0])
-  ) {
+  // If the page is not in production and the site is in production, return not found (except for the admin page)
+  if (isProduction() && !data.production && !(pageSlug === 'admin')) {
     return notFound();
   }
 

@@ -53,4 +53,4 @@ Thumbs.db
 .env
 .env.local
 tsconfig.tsbuildinfo
-rss.xml
+public/rss.xml

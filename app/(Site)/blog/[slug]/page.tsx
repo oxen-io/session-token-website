@@ -12,7 +12,10 @@ import type { Post } from '@/schemas/documents/post';
 export async function generateMetadata({ params }: { params: { slug: Array<string> } }) {
   const { slug } = params;
 
-  const [settings, page] = await Promise.all([getSettings(), getDocumentBySlug(slug, 'post')]);
+  const [settings, page] = await Promise.all([
+    getSettings(),
+    getDocumentBySlug<Post>(slug, 'post'),
+  ]);
 
   return metadata(page, settings);
 }

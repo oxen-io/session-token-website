@@ -25,3 +25,11 @@ type Field = {
 export type SchemaFields<T extends Array<Field>> = {
   [P in T[number] as P['name']]: FieldTypeMap[P['type']];
 };
+
+export type DocumentFields = {
+  _id: string;
+  _type: string;
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+};

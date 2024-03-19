@@ -1,6 +1,6 @@
 import { DocumentIcon, ImageIcon } from '@sanity/icons';
 
-import type { SchemaFields } from '@/lib/sanity.types';
+import type { DocumentFields, SchemaFields } from '@/lib/sanity.types';
 import { baseData } from '@/schemas/partials/base';
 import portableText from '@/schemas/partials/portableText';
 import { defineField, defineType } from 'sanity';
@@ -72,4 +72,4 @@ const post = defineType({
 
 export default post;
 
-export type Post = SchemaFields<typeof fields>;
+export type Post = SchemaFields<typeof fields> & DocumentFields;
