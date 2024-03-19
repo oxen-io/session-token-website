@@ -13,10 +13,12 @@ export default function BlogTile({
   post: { author, excerpt, title, featuredImage, slug, datePosted },
   isFeatured,
   isSingle,
+  isTitle,
 }: {
   post: Post;
   isFeatured?: boolean;
   isSingle?: boolean;
+  isTitle?: boolean;
 }) {
   const imageUrl = urlForImage(featuredImage)?.url();
 
@@ -33,7 +35,7 @@ export default function BlogTile({
         s.Outer,
         isFeatured && s.Featured,
         isSingle && s.Single,
-        !isSingle && 'hover:brightness-125 transition-all',
+        !isSingle && !isTitle && 'hover:brightness-125 transition-all',
         'group'
       )}
     >

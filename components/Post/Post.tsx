@@ -12,7 +12,7 @@ export default function Post({ post }: { post: Post }) {
       <div className={s.BackLink}>
         <Link href={'/blog'}>← Back to blog</Link>
       </div>
-      <BlogTile post={post} isFeatured isSingle />
+      <BlogTile post={post} isFeatured isSingle isTitle />
       <PostContent copy={post.copy as CopyFields} />
     </section>
   );
