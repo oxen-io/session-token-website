@@ -49,3 +49,8 @@ Thumbs.db
 *.wmv
 
 .next
+
+.env
+.env.local
+tsconfig.tsbuildinfo
+rss.xml
