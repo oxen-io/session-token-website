@@ -302,6 +302,18 @@ button {
   @apply mb-6;
 }
 
+.AnimatedElement a {
+  @apply text-primary font-extralight;
+}
+
+::-moz-selection { /* Code for Firefox */
+  @apply bg-primary text-black
+}
+
+::selection {
+  @apply bg-primary text-black
+}
+
 /* fixes '</' in Space Mono */
 .font-mono {
   font-variant-ligatures: no-contextual;
