@@ -1,5 +1,5 @@
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
+import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
 import clsx from 'clsx';
 import s from './BlogGrid.module.sass';
 import BlogGridInner from './BlogGridInner';
@@ -8,8 +8,7 @@ import BlogTile from './BlogTile';
 export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: string }) {
   const posts = await sanityQuery
     .from(CMSDocument.Post)
-    .select()
-    .neq('slug.current', null)
+    .select([SPECIAL_SELECT[CMSDocument.Post]])
     .execute();
 
   const sortedPosts = posts.sort((a, b) => {

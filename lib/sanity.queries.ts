@@ -40,7 +40,7 @@ modules[] {
   },
 }` as const;
 
-const POST_SPECIAL_SELECT = `...]
+const POST_SPECIAL_SELECT = `...,
 author->` as const;
 
 const SETTIONS_SPECIAL_SELECT = `...,

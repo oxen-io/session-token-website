@@ -6,7 +6,7 @@ import PostPage from '@/components/Post/Post';
 import metadata from '@/lib/metadata';
 import generateRssFeed from '@/lib/rss';
 import { getDocumentData } from '@/lib/sanity.fetch';
-import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
+import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const { settings, page } = await getDocumentData(CMSDocument.Post, params.slug);
@@ -27,7 +27,7 @@ export default async function BlogPost({ params }: { params: { slug: string } })
   const { slug } = params;
   const post = await sanityQuery
     .from(CMSDocument.Post)
-    .select()
+    .select([SPECIAL_SELECT[CMSDocument.Post]])
     .eq('slug.current', slug)
     .executeSingle();
 
