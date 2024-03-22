@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { sanityFetch } from './sanity.fetch';
-
 export const blocksToText = (blocks, opts = {}) => {
   const defaults = { nonTextBehavior: 'remove' };
 
@@ -66,26 +64,6 @@ export const replaceEmailWithMailToLinks = str => {
   }
 
   return str.replace(/([^\s]+@[^\s]+)/g, '<a href="mailto:$1">$1</a>');
-};
-
-export const getSettings = async () => {
-  return sanityFetch({
-    query: `*[_type == "settings"][0] {
-    ...,
-    menuItems[]->{
-      _type,
-      "slug": slug.current,
-      title,
-      children[]->{
-        _type,
-        "slug": slug.current,
-        title,
-        overview,
-      }
-    },
-  }`,
-    tags: ['settings'],
-  });
 };
 
 export const animateInProps = (delay, duration = 0.4) => ({

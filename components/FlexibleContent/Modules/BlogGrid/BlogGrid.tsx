@@ -1,19 +1,16 @@
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import { sanityFetch } from '@/lib/sanity.fetch';
-import type { Post } from '@/schemas/documents/post';
+import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
 import clsx from 'clsx';
 import s from './BlogGrid.module.sass';
 import BlogGridInner from './BlogGridInner';
 import BlogTile from './BlogTile';
 
 export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: string }) {
-  const posts = await sanityFetch<Array<Post>>({
-    query: `*[_type == "post"]{
-            ...,
-            author->,
-        }`,
-    tags: ['post'],
-  });
+  const posts = await sanityQuery
+    .from(CMSDocument.Post)
+    .select()
+    .neq('slug.current', null)
+    .execute();
 
   const sortedPosts = posts.sort((a, b) => {
     const aDate = new Date(a.datePosted);

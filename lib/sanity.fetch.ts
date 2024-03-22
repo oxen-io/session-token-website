@@ -1,25 +1,27 @@
-import { client } from '@/lib/sanity.client';
-import {
-  documentPaths,
-  pageBySlugQuery,
-  postBySlugQuery,
-  settingsQuery,
-} from '@/lib/sanity.queries';
+'server-only';
+
+import { sanityClient } from '@/lib/sanity.client';
+import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
+import type { FilteredResponseQueryOptions, QueryParams } from '@sanity/client';
 import { log } from './logger';
 
 export const maxDuration = 300;
 
 export const token = process.env.SANITY_API_READ_TOKEN;
 
-const DEFAULT_PARAMS = {} as Record<string, any>;
-const DEFAULT_TAGS = [] as Array<string>;
+const defaultParams = {} as QueryParams;
 
-export async function sanityFetch<R>({
+export async function sanityFetch<QueryResponse>({
   query,
-  params = DEFAULT_PARAMS,
-  tags = DEFAULT_TAGS,
+  tags,
+  params = defaultParams,
   isServer = true,
-}): Promise<R> {
+}: {
+  query: string;
+  tags: Array<CMSDocument | string>;
+  params?: QueryParams;
+  isServer?: boolean;
+}): Promise<QueryResponse> {
   let isDraftMode = false;
 
   if (isServer) {
@@ -38,20 +40,23 @@ export async function sanityFetch<R>({
     throw new Error('The `SANITY_API_READ_TOKEN` environment variable is required.');
   }
 
-  const sanityClient =
-    client.config().useCdn && isDraftMode ? client.withConfig({ useCdn: false }) : client;
+  const queryOptions: FilteredResponseQueryOptions = {
+    cache: 'force-cache',
+    next: { tags },
+  };
 
-  return sanityClient.fetch<R>(query, params, {
-    ...(isDraftMode && {
-      cache: undefined,
-      token,
-      perspective: 'previewDrafts',
-    }),
-    next: {
-      ...(isDraftMode && { revalidate: 30 }),
-      tags,
-    },
-  });
+  const draftQueryOptions: FilteredResponseQueryOptions = {
+    cache: undefined,
+    token,
+    perspective: 'previewDrafts',
+    next: { revalidate: 30, tags },
+  };
+
+  return sanityClient.fetch<QueryResponse>(
+    query,
+    params,
+    isDraftMode ? draftQueryOptions : queryOptions
+  );
 }
 
 export type SanitySettings = {
@@ -62,37 +67,12 @@ export type SanitySettings = {
   menuItems?: string | undefined;
 };
 
-export function getSettings<R = SanitySettings>() {
-  return sanityFetch<R>({
-    query: settingsQuery,
-    tags: ['settings', 'page', 'topic'],
-  });
-}
-
-export type SanityDocument = Record<string, any>;
-
-export function getDocumentBySlug<R = SanityDocument>(
-  slug: string | Array<string>,
-  type: string
-): Promise<R> {
-  let query: string;
-
-  switch (type) {
-    case 'page':
-      query = pageBySlugQuery;
-      break;
-    case 'post':
-      query = postBySlugQuery;
-      break;
-    default:
-      throw new Error(`Unknown type: ${type}`);
-  }
-  return sanityFetch<R>({
-    query,
-    params: { slug },
-    tags: [`${type}:${slug}`, type],
-  });
-}
+export const getSettings = () => {
+  return sanityQuery
+    .from(CMSDocument.Settings)
+    .select([SPECIAL_SELECT[CMSDocument.Settings]])
+    .executeSingle();
+};
 
 export type DocumentPaths = Array<{
   slug: {
@@ -101,9 +81,23 @@ export type DocumentPaths = Array<{
   current: string;
 }>;
 
-export function getDocumentPaths<R = DocumentPaths>(type: string): Promise<R> {
-  return sanityFetch<R>({
-    query: documentPaths(type),
-    tags: [type],
-  });
+export async function getDocumentData<D extends CMSDocument>(
+  document: D,
+  slug: string | Array<string>
+) {
+  log.debug(`Getting page dat
+  a for slug: ${slug}`);
+  const [settings, page] = await Promise.all([
+    getSettings(),
+    sanityQuery.from(document).select().eq('slug.current', slug.toString()).executeSingle(),
+  ]);
+
+  if (!page) {
+    log.error(`No page found for slug: ${slug}`);
+  }
+
+  log.debug(`Page data for slug ${slug} - Page:`, page);
+  log.debug(`Page data for slug ${slug} - Settings:`, settings);
+
+  return { settings, page };
 }

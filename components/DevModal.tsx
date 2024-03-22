@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 
 const navLinks: Array<{ title: string; href: string }> = [
   { title: 'Home', href: '/home' },
+  { title: 'Coming Soon', href: '/coming-soon' },
   { title: 'Blog', href: '/blog' },
   { title: 'Rewards', href: '/active-staker-reward-pool' },
   { title: 'Roadmap', href: '/roadmap' },

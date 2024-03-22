@@ -1,11 +1,14 @@
+'server-only';
+
 import { apiVersion, dataset, projectId } from '@/lib/sanity.api';
+import { createClient, type ClientConfig } from '@sanity/client';
 
-import { createClient } from 'next-sanity';
-
-export const client = createClient({
+const config: ClientConfig = {
   projectId,
   dataset,
   apiVersion,
   useCdn: false,
   perspective: 'published',
-});
+};
+
+export const sanityClient = createClient(config);

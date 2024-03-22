@@ -1,46 +1,43 @@
+import { isProduction } from '@/lib/env';
 import metadata from '@/lib/metadata';
-import { getDocumentBySlug, getDocumentPaths, getSettings } from '@/lib/sanity.fetch';
+
+import { getDocumentData } from '@/lib/sanity.fetch';
+import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
-
-import { isProduction } from '@/lib/env';
-import type { Page } from '@/schemas/documents/page';
 import PageInner from './PageInner';
 
-export async function generateMetadata({ params }: { params: { slug?: Array<string> } }) {
-  const pageSlug = params.slug?.[0] ?? 'coming-soon';
+const landingSlug = isProduction() ? 'coming-soon' : 'home';
 
-  const [settings, page] = await Promise.all([
-    getSettings(),
-    getDocumentBySlug<Page>(pageSlug || 'coming-soon', 'page'),
-  ]);
+const parseSlug = (slug?: Array<string>) => slug?.join('/') ?? landingSlug;
 
+export async function generateMetadata({ params }: { params: { slug: Array<string> } }) {
+  const { settings, page } = await getDocumentData(CMSDocument.Page, parseSlug(params.slug));
   return metadata(page, settings);
 }
 
 export async function generateStaticParams() {
-  const slugs = await getDocumentPaths('page');
-  const allPages = slugs.map(slug => ({ slug }));
+  const pages = await sanityQuery
+    .from(CMSDocument.Page)
+    .select()
+    .neq('slug.current', null)
+    .execute();
 
-  return allPages.map(({ slug }) => ({ slug: slug.current }));
+  return pages.map(({ slug }) => ({ slug: [slug.current] }));
 }
 
-export default async function PageSlugRoute({ params }: { params: { slug?: Array<string> } }) {
-  const pageSlug = params.slug?.[0] ?? 'coming-soon';
+export default async function PageSlugRoute({ params }: { params: { slug: Array<string> } }) {
+  const pageSlug = parseSlug(params.slug);
+  const { settings, page } = await getDocumentData(CMSDocument.Page, pageSlug);
 
-  const [settings, data] = await Promise.all([
-    getSettings(),
-    getDocumentBySlug<Page>(pageSlug, 'page'),
-  ]);
-
-  if (!data && !draftMode().isEnabled) {
+  if (!page && !draftMode().isEnabled) {
     notFound();
   }
 
   // If the page is not in production and the site is in production, return not found (except for the admin page)
-  if (isProduction() && !data.production && !(pageSlug === 'admin')) {
+  if (isProduction() && !page.production && !(pageSlug === 'admin')) {
     return notFound();
   }
 
-  return <PageInner data={data} settings={settings} />;
+  return <PageInner page={page} settings={settings} />;
 }

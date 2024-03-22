@@ -1,18 +1,30 @@
 import { revalidateSecret } from '@/lib/sanity.api';
+import { parseBody } from 'next-sanity/webhook';
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
-import { parseBody } from 'next-sanity/webhook';
 
+/**
+ * Revalidate the cache for a specific CMS resource
+ *
+ * This endpoint is used to revalidate the cache for a specific CMS resource.
+ * It is called by the CMS when a resource is published or updated. The CMS
+ * sends a POST request to this endpoint with a JSON body containing the type
+ * of the resource and the ID of the resource. The endpoint then revalidates
+ * the cache for the resource and returns a JSON response with the status of the revalidation.
+ *
+ * @param request - The incoming request with a JSON body containing the type and ID of the resource and a signature to verify the request
+ * @returns The result of the revalidation as a JSON response
+ */
 export async function POST(request: NextRequest) {
   try {
     const { body, isValidSignature } = await parseBody(request, revalidateSecret);
+
     if (!isValidSignature) {
-      const message = 'Invalid signature';
-      return new Response(message, { status: 401 });
+      return new NextResponse('Invalid signature', { status: 401 });
     }
 
     if (!body?._type) {
-      return new Response('Bad Request', { status: 400 });
+      return new NextResponse('Bad Request', { status: 400 });
     }
 
     revalidateTag(body._type);
@@ -23,8 +35,8 @@ export async function POST(request: NextRequest) {
       now: Date.now(),
       body,
     });
-  } catch (err) {
-    return new Response(err instanceof Error ? err.message : 'Internal Server Error', {
+  } catch (error) {
+    return new NextResponse(error instanceof Error ? error.message : 'Internal Server Error', {
       status: 500,
     });
   }

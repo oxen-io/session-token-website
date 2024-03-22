@@ -15,7 +15,7 @@ export default function PreviewProvider({
   children: React.ReactNode;
   token?: string;
 }) {
-  const { client } = suspend(() => import('@/lib/sanity.client'), [UniqueKey]);
+  const { sanityClient: client } = suspend(() => import('@/lib/sanity.client'), [UniqueKey]);
   if (!token) {
     throw new TypeError('Missing token');
   }
