@@ -1,6 +1,6 @@
 .Button
     background-color: var(--color-primary)
-    color: var(--color-black)
+    color: var(--color-black) !important
     border: 1px solid var(--color-primary)
     text-transform: uppercase
     font-family: var(--font-atyp-display)
@@ -19,10 +19,10 @@
 
     &:hover
         background-color: transparent
-        color: var(--color-primary)
+        color: var(--color-primary) !important
 
         svg
-            path 
+            path
                 fill: var(--color-primary)
 
     &.Small
@@ -31,10 +31,10 @@
 
     &.Inverted
         background-color: transparent
-        color: var(--color-primary)
+        color: var(--color-primary) !important
 
         svg
-            path 
+            path
                 fill: var(--color-primary)
 
         &:hover
@@ -42,7 +42,7 @@
             color: var(--color-black)
 
             svg
-                path 
+                path
                     fill: var(--color-black)
 
     span
@@ -51,10 +51,10 @@
         align-items: center
         top: 1px
 
-    svg 
+    svg
         display: inline
         height: 18px
-        width: 18px 
+        width: 18px
 
-        path 
+        path
             transition: 0.2s
