@@ -3,21 +3,28 @@
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import { useState } from 'react';
 import RoadmapTab from './RoadmapTab';
+import type { RoadmapTabButton } from './RoadmapTabs';
 
 export default function RoadmapTabsClient({
   tabs,
-  images,
+  roadmapButtons,
 }: {
   tabs: Array<any>;
-  images: Array<string | undefined>;
+  roadmapButtons: Array<RoadmapTabButton>;
 }) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const tabButtonImages = images.map((svgData, i) => {
+  const tabButtonImages = roadmapButtons.map(({ title, imageData }, i) => {
     return (
       <li key={i}>
-        <button onClick={() => setActiveTab(i)}>
-          <TabButton svgData={svgData ?? ''} active={activeTab === i} />
+        <button
+          onClick={() => setActiveTab(i)}
+          className="items-center justify-center flex flex-col group"
+        >
+          <TabButton svgData={imageData} active={activeTab === i} />
+          <span className="text-center text-xs mt-3 w-max group-hover:text-primary group-hover:opacity-100 opacity-0 ease-in-out transition-all ">
+            {title}
+          </span>
         </button>
       </li>
     );
