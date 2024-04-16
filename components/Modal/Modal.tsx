@@ -1,8 +1,8 @@
 'use client';
 
-import clsx from 'clsx';
 import useStore from '@/lib/store';
 import x from '@/public/images/x';
+import clsx from 'clsx';
 
 import styles from './Modal.module.sass';
 import Share from './ModalTypes/Share';
