@@ -306,12 +306,13 @@ button {
   @apply text-primary font-extralight;
 }
 
-::-moz-selection { /* Code for Firefox */
-  @apply bg-primary text-black
+::-moz-selection {
+  /* Code for Firefox */
+  @apply bg-primary text-black;
 }
 
 ::selection {
-  @apply bg-primary text-black
+  @apply bg-primary text-black;
 }
 
 /* fixes '</' in Space Mono */

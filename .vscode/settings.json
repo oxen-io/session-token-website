@@ -4,6 +4,9 @@
     "source.organizeImports": "always"
   },
   "editor.formatOnSave": true,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   "files.exclude": {
     "ts/**/*.js": true
   },
