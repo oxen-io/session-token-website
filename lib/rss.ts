@@ -12,6 +12,12 @@ export async function generateRssFeed(posts: Array<Post>) {
     return dateB.getTime() - dateA.getTime();
   });
 
+  const date = new Date();
+  const year = date.toLocaleString('en-AU', {
+    timeZone: 'Australia/Melbourne',
+    year: 'numeric',
+  });
+
   const json = {
     rss: {
       '@version': '2.0',
@@ -28,13 +34,13 @@ export async function generateRssFeed(posts: Array<Post>) {
           link: site_url,
         },
         generator: 'mini-xml for Node.js',
-        lastBuildDate: new Date(),
+        lastBuildDate: date,
         'atom:link': {
           '@href': `${site_url}/rss.xml`,
           '@rel': 'self',
           '@type': 'application/rss+xml',
         },
-        copyright: 'All rights reserved 2024',
+        copyright: `All rights reserved ${year}`,
         item: posts.map((post: Post) => ({
           title: post.title.trim(),
           description: {
