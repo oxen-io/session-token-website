@@ -26,7 +26,7 @@ export async function generateRssFeed(posts: Array<Post>) {
       '@xmlns:dc': 'http://purl.org/dc/elements/1.1/',
       channel: {
         title: `Session Token Blog`,
-        description: 'RSS feed for articles on Session Token.',
+        description: 'RSS feed for the Session Token Blog.',
         link: site_url,
         image: {
           url: `${site_url}/images/logoBlack.png`,
