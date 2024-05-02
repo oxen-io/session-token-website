@@ -1,30 +1,63 @@
+import type { Post } from '@/schemas/documents/post';
 import fs from 'fs';
-import RSS from 'rss';
-import { isProduction } from './env';
+import { generateXMLFromObject } from 'mini-xml';
 
-export default async function generateRssFeed(allPosts) {
-  const site_url = isProduction() ? 'https://token.getsession.org' : 'http://localhost:3000';
+export async function generateRssFeed(posts: Array<Post>) {
+  const site_url = 'https://token.getsession.org';
 
-  const feedOptions = {
-    title: `Session Token - Articles`,
-    description: 'RSS feed for articles on Session Token.',
-    site_url,
-    feed_url: `${site_url}/rss.xml`,
-    image_url: `${site_url}/images/logoBlack.png`,
-    pubDate: new Date(),
-    copyright: `All rights reserved ${new Date().getFullYear()}`,
+  posts.sort((a, b) => {
+    const dateA = new Date(a.datePosted ?? a._createdAt);
+    const dateB = new Date(b.datePosted ?? b._createdAt);
+
+    return dateB.getTime() - dateA.getTime();
+  });
+
+  const date = new Date();
+  const year = date.toLocaleString('en-AU', {
+    timeZone: 'Australia/Melbourne',
+    year: 'numeric',
+  });
+
+  const json = {
+    rss: {
+      '@version': '2.0',
+      '@xmlns:atom': 'http://www.w3.org/2005/Atom',
+      '@xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
+      '@xmlns:dc': 'http://purl.org/dc/elements/1.1/',
+      channel: {
+        title: `Session Token Blog`,
+        description: 'RSS feed for the Session Token Blog.',
+        link: site_url,
+        image: {
+          url: `${site_url}/images/logoBlack.png`,
+          title: `Session Token Blog`,
+          link: site_url,
+        },
+        generator: 'mini-xml for Node.js',
+        lastBuildDate: date,
+        'atom:link': {
+          '@href': `${site_url}/rss.xml`,
+          '@rel': 'self',
+          '@type': 'application/rss+xml',
+        },
+        copyright: `All rights reserved ${year}`,
+        item: posts.map((post: Post) => ({
+          title: post.title.trim(),
+          description: {
+            '#cdata': `${post.excerpt}<br /><a href="${site_url}/blog/${post.slug.current}">Read more</a>`,
+          },
+          link: `${site_url}/blog/${post.slug.current}`,
+          guid: {
+            '@isPermaLink': 'true',
+            '#text': `${site_url}/blog/${post.slug.current}`,
+          },
+          pubDate: new Date(post.datePosted ?? post._createdAt),
+        })),
+      },
+    },
   };
 
-  const feed = new RSS(feedOptions);
+  const feed = generateXMLFromObject(json, { pretty: true, indentSpaces: 2 });
 
-  allPosts.forEach(post =>
-    feed.item({
-      title: post.title,
-      description: post.excerpt,
-      url: `${site_url}/blog/${post.slug.current}`,
-      date: post.datePosted || post._createdAt,
-    })
-  );
-
-  fs.writeFileSync('./public/rss.xml', feed.xml({ indent: true }));
+  fs.writeFileSync('./public/rss.xml', feed);
 }
