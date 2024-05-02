@@ -1,4 +1,6 @@
+import { generateRssFeed } from '@/lib/rss';
 import { revalidateSecret } from '@/lib/sanity.api';
+import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
 import { parseBody } from 'next-sanity/webhook';
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
@@ -28,6 +30,11 @@ export async function POST(request: NextRequest) {
     }
 
     revalidateTag(body._type);
+
+    if (body._type === CMSDocument.Post) {
+      const allPosts = await sanityQuery.from(CMSDocument.Post).select().execute();
+      await generateRssFeed(allPosts);
+    }
 
     return NextResponse.json({
       status: 200,
