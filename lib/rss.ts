@@ -6,8 +6,8 @@ export async function generateRssFeed(posts: Array<Post>) {
   const site_url = 'https://token.getsession.org';
 
   posts.sort((a, b) => {
-    const dateA = new Date(a.datePosted || a._createdAt);
-    const dateB = new Date(b.datePosted || b._createdAt);
+    const dateA = new Date(a.datePosted ?? a._createdAt);
+    const dateB = new Date(b.datePosted ?? b._createdAt);
 
     return dateB.getTime() - dateA.getTime();
   });
@@ -45,7 +45,7 @@ export async function generateRssFeed(posts: Array<Post>) {
             '@isPermaLink': 'true',
             '#text': `${site_url}/blog/${post.slug.current}`,
           },
-          pubDate: new Date(post.datePosted || post._createdAt),
+          pubDate: new Date(post.datePosted ?? post._createdAt),
         })),
       },
     },
