@@ -30,14 +30,4 @@ const AtypText = localFont({
   display: 'swap',
 });
 
-const MonumentExtended = localFont({
-  src: [
-    {
-      path: '/MonumentExtended-Regular.woff2',
-    },
-  ],
-  variable: '--font-monument-extended',
-  display: 'swap',
-});
-
-export { AtypDisplay, AtypText, MonumentExtended };
+export { AtypDisplay, AtypText };
