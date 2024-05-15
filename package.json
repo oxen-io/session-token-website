@@ -31,6 +31,7 @@
     "@sanity/vision": "3.34.0",
     "@vercel/og": "0.6.2",
     "@zeit/next-sass": "^1.0.1",
+    "class-variance-authority": "^0.7.0",
     "clsx": "2.1.0",
     "cssnano": "6.1.0",
     "eslint": "^8.57.0",
