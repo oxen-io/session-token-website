@@ -10,9 +10,8 @@ const navLinks: Array<{ title: string; href: string }> = [
   { title: 'Rewards', href: '/active-staker-reward-pool' },
   { title: 'Roadmap', href: '/roadmap' },
   { title: 'FAQ', href: '/faq' },
-];
+] as const;
 
-// Simple Modal Component for demonstration
 const Modal = ({
   isOpen,
   onClose,
@@ -30,6 +29,7 @@ const Modal = ({
         'fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center',
         isOpen ? '' : 'hidden'
       )}
+      role="dialog"
       onClick={onClose}
     >
       <div
@@ -42,18 +42,46 @@ const Modal = ({
   );
 };
 
-// Main Component that listens for Ctrl+K
 export const DevModal = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [lastSearchChar, setLastSearchChar] = useState<string>('');
+  const [lastSearchIndex, setLastSearchIndex] = useState<number>(0);
 
   useEffect(() => {
     const handleKeyDown = event => {
-      // Check for Ctrl+K (event.code === 'KeyK' for cross-browser compatibility)
-      if (event.ctrlKey && event.code === 'KeyK') {
-        event.preventDefault(); // Prevent the default action to ensure it doesn't interfere with other shortcuts
+      // Checks for the ctrl + k key combination
+      if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+        event.preventDefault();
         setIsModalOpen(prev => !prev);
       } else if (event.code === 'Escape') {
         setIsModalOpen(false);
+      } else {
+        setLastSearchChar(event.key);
+        const matchingLinks = navLinks.filter(
+          ({ title }) => title.toLowerCase().charAt(0) === event.key
+        );
+        if (matchingLinks.length > 0) {
+          let targetIndex = lastSearchIndex;
+          if (event.key === lastSearchChar) {
+            if (targetIndex < matchingLinks.length - 1) {
+              targetIndex++;
+            } else {
+              targetIndex = 0;
+            }
+          }
+          if (targetIndex > matchingLinks.length) {
+            return;
+          }
+          setLastSearchIndex(targetIndex);
+
+          const link = matchingLinks[targetIndex];
+          if (link) {
+            const anchor = document.querySelector(
+              `a[aria-label="dev-nav${link.href}"]`
+            ) as HTMLAnchorElement;
+            anchor.focus();
+          }
+        }
       }
     };
 
@@ -64,22 +92,21 @@ export const DevModal = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [lastSearchChar, lastSearchIndex]);
 
   return (
-    <>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <nav>
-          <ul>
-            {navLinks.map(({ title, href }) => (
-              <li key={href}>
-                <a href={href}>{title}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </Modal>
-      {/* Your other components go here */}
-    </>
+    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+      <nav>
+        <ul>
+          {navLinks.map(({ title, href }, i) => (
+            <li key={href}>
+              <a tabIndex={i} href={href} aria-label={`dev-nav${href}`}>
+                {title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </Modal>
   );
 };
