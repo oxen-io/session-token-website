@@ -12,7 +12,9 @@ export default function Menu({
 }: {
   menu: Array<{
     title: string;
-    slug: string;
+    // TODO: Fix this when overhauling the menu
+    slug?: string;
+    href?: string;
     children: Array<{
       title: string;
       slug: string;
@@ -34,7 +36,7 @@ export default function Menu({
         className
       )}
     >
-      {menu?.map(({ title, slug, children }, index) => {
+      {menu?.map(({ title, slug, href, children }, index) => {
         return (
           <li
             key={index}
@@ -54,7 +56,11 @@ export default function Menu({
                 footer && 'block px-[5px] duration-200'
               )}
             >
-              {slug ? <NavLink href={`/${slug}`}>{title}</NavLink> : title}
+              {slug || href ? (
+                <NavLink href={slug ? `/${slug}` : href ?? '/'}>{title}</NavLink>
+              ) : (
+                title
+              )}
             </div>
             {children && (
               <ul

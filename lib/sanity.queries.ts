@@ -46,7 +46,8 @@ author->` as const;
 const SETTIONS_SPECIAL_SELECT = `...,
 menuItems[]->{
   _type,
-  "slug": slug.current,
+  "slug": slug.current,\
+  href,
   title,
   children[]->{
     _type,
