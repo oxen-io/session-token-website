@@ -25,6 +25,10 @@ module.exports = {
       '3xl': '1920px',
     },
     extend: {
+      fontFamily: {
+        'atyp-display': ['var(--font-atyp-display)'],
+        'atyp-text': ['var(--font-atyp-text)'],
+      },
       animation: {
         push: 'push 0.3s linear 1',
       },
