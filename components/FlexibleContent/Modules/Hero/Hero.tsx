@@ -2,15 +2,15 @@
 
 import clsx from 'clsx';
 
-import PortableText from '@/components/PortableText/PortableText';
 import Button from '@/components/Button/Button';
+import PortableText from '@/components/PortableText/PortableText';
 
 import {
   AnimatedBigImage,
   AnimatedElement,
 } from '@/components/AnimatedComponent/AnimatedComponent';
-import { useState } from 'react';
 import ScrollButton from '@/components/Button/ScrollButton';
+import { useState } from 'react';
 import s from './Hero.module.sass';
 import RewardStats from './RewardStats';
 
@@ -64,7 +64,7 @@ export default function Hero({
               {isRewards && (
                 <li className={s.RewardsButton}>
                   <Button
-                    handleClick={() => {
+                    onClick={() => {
                       setStatsVisibleOnMobile(!statsVisibleOnMobile);
                     }}
                     title={`${statsVisibleOnMobile ? 'Hide' : 'Show'} stats`}

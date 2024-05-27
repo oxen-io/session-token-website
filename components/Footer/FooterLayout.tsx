@@ -1,10 +1,8 @@
-import clsx from 'clsx';
-
 import Image from 'next/image';
 
-import NavLink from '@/components/NavLink/NavLink';
 import Button from '@/components/Button/Button';
 import Menu from '@/components/Menu/Menu';
+import NavLink from '@/components/NavLink/NavLink';
 
 import LogoFooter from '@/public/images/logo-footer.png';
 import Logo from '@/public/images/logo.png';
@@ -27,8 +25,8 @@ export default function Footer({ settings }: { settings: any }) {
   );
 
   return (
-    <footer className={s.Footer}>
-      <div className={clsx(s.Cont, 'Container')}>
+    <footer className="w-full mt-[50px] mb-5">
+      <div className="m-auto max-w-[1580px] px-[40px]">
         <div className={s.FooterCont}>
           <div className={s.Main}>
             <div className={s.Logo}>
