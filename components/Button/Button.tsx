@@ -1,90 +1,93 @@
 'use client';
 
 import NavLink from '@/components/NavLink/NavLink';
-import clsx from 'clsx';
-
 import { getLinkUrl } from '@/lib/sanity.links';
-
 import buttonLogos from '@/public/images/buttonLogos';
-import s from './Button.module.sass';
+import { cva, type VariantProps } from 'class-variance-authority';
+import clsx from 'clsx';
+import { forwardRef } from 'react';
 
-export default function Button({
-  link,
-  url,
-  title,
-  handleClick,
-  className,
-  prefetch,
-  type,
-  small,
-  iconName,
-  hasArrow,
-  disabled,
-  isPrimary,
-}: {
+const buttonVariants = cva(
+  'border border-primary uppercase text-sm leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
+  {
+    variants: {
+      variant: {
+        default:
+          'bg-primary hover:bg-transparent text-black hover:text-primary [&>svg>path]:fill-black [&>svg>path]:hover:fill-primary',
+        outline:
+          'bg-transparent hover:bg-primary text-primary hover:text-black [&>svg>path]:fill-primary [&>svg>path]:hover:fill-black',
+      },
+      size: {
+        default: 'px-[13px] py-[25px] h-[46px]',
+        small: 'px-[10px] py-[14px] h-[40px]',
+      },
+    },
+    defaultVariants: {
+      variant: 'default',
+      size: 'default',
+    },
+  }
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
   link?: any;
   url?: string;
-  title?: string;
-  handleClick?: () => void;
-  className?: string;
   prefetch?: boolean;
-  type?: 'submit' | 'reset' | 'button' | undefined;
   small?: boolean;
   iconName?: string;
   hasArrow?: boolean;
-  disabled?: boolean;
   isPrimary?: boolean;
-}) {
-  const handleDummyClick = undefined;
-
-  const _handleClick = handleClick || handleDummyClick;
-
-  const buttonClass = clsx(
-    s.Button,
-    'button',
-    className && className,
-    small && s.Small,
-    !isPrimary && s.Inverted,
-    disabled && s.Disabled
-  );
-
-  const buttonIcon = iconName ? buttonLogos[iconName] : null;
-
-  const buttonInner = (innterTitle: string | undefined) => {
-    return (
-      <>
-        {buttonIcon}
-        {innterTitle && (
-          <span dangerouslySetInnerHTML={{ __html: `${innterTitle}${hasArrow ? ' ↗' : ''}` }} />
-        )}
-      </>
-    );
-  };
-
-  if (!url && !link) {
-    return (
-      <button className={buttonClass} onClick={_handleClick} type={type}>
-        {buttonInner(title)}
-      </button>
-    );
-  }
-
-  let linkUrl = url;
-  let _title = title;
-
-  if (link) {
-    linkUrl = getLinkUrl(link);
-    _title = link.title || title;
-  }
-
-  return (
-    <NavLink
-      className={buttonClass}
-      href={linkUrl ?? ''}
-      prefetch={prefetch}
-      onClick={_handleClick}
-    >
-      {buttonInner(_title)}
-    </NavLink>
-  );
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
 }
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant,
+      size,
+      link,
+      url,
+      title,
+      iconName,
+      small,
+      hasArrow,
+      isPrimary,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    const Comp = !url && !link ? 'button' : NavLink;
+    const text = link?.title ?? title;
+
+    return (
+      <Comp
+        className={clsx(
+          buttonVariants({
+            variant: !isPrimary ? 'outline' : variant,
+            size: small ? 'small' : size,
+            className,
+          })
+        )}
+        href={(link ? getLinkUrl(link) : url) ?? ''}
+        ref={ref}
+        {...props}
+      >
+        {iconName ? buttonLogos[iconName] : null}
+        {text && (
+          <span className={clsx('flex flex-row items-center top-[1px]')}>
+            {text ?? children}
+            {hasArrow ? ' ↗' : ''}
+          </span>
+        )}
+      </Comp>
+    );
+  }
+);
+
+Button.displayName = 'Button';
+
+export default Button;

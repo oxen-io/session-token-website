@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import PostPage from '@/components/Post/Post';
 import metadata from '@/lib/metadata';
-import generateRssFeed from '@/lib/rss';
+import { generateRssFeed } from '@/lib/rss';
 import { getDocumentData } from '@/lib/sanity.fetch';
 import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
 

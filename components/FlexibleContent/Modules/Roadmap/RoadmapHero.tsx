@@ -11,10 +11,9 @@ import {
 
 import clsx from 'clsx';
 
-import type React from 'react';
 import ScrollButton from '@/components/Button/ScrollButton';
+import type React from 'react';
 import s from './RoadmapHero.module.sass';
-import { HyperGlobe } from './Hyperglobe';
 
 function containsNewLine(str: string) {
   return str.includes('\n');
@@ -26,7 +25,6 @@ export default function RoadmapHero({
   copy,
   buttonTitle,
   backgroundImage,
-  replaceImageWithHyperglobe,
   children,
 }: {
   subtitle: string;
@@ -34,7 +32,6 @@ export default function RoadmapHero({
   copy: any;
   buttonTitle: string;
   backgroundImage: any;
-  replaceImageWithHyperglobe: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -73,16 +70,7 @@ export default function RoadmapHero({
           {children}
         </div>
         <div className={s.ImageCont}>
-          {replaceImageWithHyperglobe && (
-            <div className="flex justify-center">
-              <AnimatedElement delay={100}>
-                <HyperGlobe />
-              </AnimatedElement>
-            </div>
-          )}
-          {backgroundImage && !replaceImageWithHyperglobe && (
-            <AnimatedBigImage image={backgroundImage} />
-          )}
+          {backgroundImage ? <AnimatedBigImage image={backgroundImage} /> : null}
         </div>
       </div>
     </section>

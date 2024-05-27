@@ -35,9 +35,11 @@ export default function RoadmapTabsClient({
       {tabs.map((tab, i) =>
         activeTab === i ? (
           <RoadmapTab key={i} tab={tab}>
-            <AnimatedElement className="mt-4 space-x-6" type={'ul'} delay={300}>
-              {tabButtonImages}
-            </AnimatedElement>
+            {tabs.length > 1 ? (
+              <AnimatedElement className="mt-4 space-x-6" type={'ul'} delay={300}>
+                {tabButtonImages}
+              </AnimatedElement>
+            ) : null}
           </RoadmapTab>
         ) : null
       )}
