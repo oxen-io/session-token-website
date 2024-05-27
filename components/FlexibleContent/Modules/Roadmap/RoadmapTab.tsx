@@ -3,14 +3,14 @@
 import { useRef } from 'react';
 import RoadmapHero from './RoadmapHero';
 import RoadmapSection from './RoadmapSection';
-import TimelineSelector from './Timeline';
 
+// NOTE - Timeline selector hidden for now
 export default function RoadmapTab({ tab, children }: { tab: any; children: React.ReactNode }) {
   const sectionsRef = useRef<Map<any, any>>();
 
   const sections = tab?.roadmapSections.map(section => section);
 
-  function scrollToSection(id) {
+  /* function scrollToSection(id) {
     const map = getMap();
     const node = map.get(id);
     node.scrollIntoView({
@@ -18,7 +18,7 @@ export default function RoadmapTab({ tab, children }: { tab: any; children: Reac
       block: 'center',
       inline: 'center',
     });
-  }
+  } */
 
   function getMap() {
     if (!sectionsRef.current) {
@@ -30,11 +30,11 @@ export default function RoadmapTab({ tab, children }: { tab: any; children: Reac
   return (
     <div className="flex flex-col items-center">
       {tab?.roadmapHero ? <RoadmapHero {...tab.roadmapHero}>{children}</RoadmapHero> : null}
-      <TimelineSelector
+      {/* <TimelineSelector
         sections={sections}
         defaultSection={sections[0].segment ?? 0}
         scrollToSection={scrollToSection}
-      />
+      /> */}
       <div className="flex flex-col items-center">
         {sections
           ? sections.map((section, i) => {
