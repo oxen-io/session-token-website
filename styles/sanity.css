@@ -1,3 +1,9 @@
+/* Sanity Studio styles */
 body {
   margin: 0;
+}
+
+div[data-ui='Container'] {
+  max-width: unset;
+  padding: 5vw;
 }

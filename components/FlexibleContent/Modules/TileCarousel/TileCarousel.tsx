@@ -2,17 +2,17 @@
 
 import clsx from 'clsx';
 
-import { Swiper, SwiperSlide } from 'swiper/react';
 import { A11y, Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+import 'swiper/css/navigation';
 import 'swiper/scss';
 import 'swiper/scss/a11y';
-import 'swiper/css/navigation';
 
 import PortableText from '@/components/PortableText/PortableText';
 
-import ImageBox from '@/components/ImageBox/ImageBox';
 import Button from '@/components/Button/Button';
+import ImageBox from '@/components/ImageBox/ImageBox';
 import NavLink from '@/components/NavLink/NavLink';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';

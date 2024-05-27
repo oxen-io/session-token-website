@@ -8,10 +8,10 @@ import { getSettings, token } from '@/lib/sanity.fetch';
 import '@/styles/Global.sass';
 import '@/styles/Reset.sass';
 import { AtypDisplay } from '@/styles/fonts/fonts';
+import '@/styles/globals.css';
 import dynamic from 'next/dynamic';
 import { draftMode } from 'next/headers';
 import { Fragment } from 'react';
-import '../styles/globals.css';
 
 const PreviewProvider = dynamic(() => import('@/components/preview/PreviewProvider'));
 

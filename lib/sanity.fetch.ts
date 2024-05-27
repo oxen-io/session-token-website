@@ -85,8 +85,7 @@ export async function getDocumentData<D extends CMSDocument>(
   document: D,
   slug: string | Array<string>
 ) {
-  log.debug(`Getting page dat
-  a for slug: ${slug}`);
+  log.debug(`Getting page data for slug: ${slug}`);
   const [settings, page] = await Promise.all([
     getSettings(),
     sanityQuery.from(document).select().eq('slug.current', slug.toString()).executeSingle(),
