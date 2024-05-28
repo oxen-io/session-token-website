@@ -220,3 +220,7 @@ button {
   @apply filter drop-shadow-lg;
   filter: drop-shadow(0 0 8px #ffea00);
 }
+
+.post-content .AnimatedElement a {
+  @apply text-primary font-extralight;
+}
