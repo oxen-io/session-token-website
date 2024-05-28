@@ -1,6 +1,6 @@
 'use client';
 
-import type { SanitySettings } from '@/lib/sanity.fetch';
+import type { SettingsSchemaType } from '@/lib/sanity.fetch';
 import { createContext } from 'react';
 
 export const SettingsContext = createContext({
@@ -9,14 +9,14 @@ export const SettingsContext = createContext({
   menuTopLink: undefined,
   mobileMenuCta: undefined,
   menuItems: undefined,
-} as SanitySettings);
+} as SettingsSchemaType);
 
 export const SettingsProvider = ({
   children,
   value,
 }: {
   children: React.ReactNode;
-  value: SanitySettings;
+  value: SettingsSchemaType;
 }) => {
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
 };

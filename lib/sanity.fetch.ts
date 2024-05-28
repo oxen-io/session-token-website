@@ -59,7 +59,7 @@ export async function sanityFetch<QueryResponse>({
   );
 }
 
-export type SanitySettings = {
+export type SettingsSchemaType = {
   rewards?: string | undefined;
   socialLinks?: Array<string> | undefined;
   menuTopLink?: string | undefined;
