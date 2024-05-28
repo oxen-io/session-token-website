@@ -8,9 +8,10 @@ import LogoFooter from '@/public/images/logo-footer.png';
 import Logo from '@/public/images/logo.png';
 
 import Socials from '@/components/Socials/Socials';
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import s from './Footer.module.sass';
 
-export default function Footer({ settings }: { settings: any }) {
+export default function Footer({ settings }: { settings: SettingsSchemaType }) {
   const { menuItems, lastUpdatedDate, menuTopLink } = settings;
 
   const d = new Date();

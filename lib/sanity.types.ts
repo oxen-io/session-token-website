@@ -1,6 +1,11 @@
+import type { PageSchemaType } from '@/schemas/documents/page';
+import type { ButtonSchemaType } from '@/schemas/objects/button';
+import type { LinkSchemaType } from '@/schemas/objects/link';
+import type { SocialLinksSchemaType } from '@/schemas/partials/socialLinks';
+import type { UrlDefinition } from 'sanity';
 import type { SanityImage } from './sanity.image';
 
-type FieldTypeMap = {
+type SanityFieldTypeMap = {
   string: string;
   slug: {
     current: string;
@@ -12,8 +17,18 @@ type FieldTypeMap = {
   reference: any;
   image: SanityImage;
   object: Record<string, unknown>;
-  array: Array<unknown>;
+  array: Array<any>;
+  url: UrlDefinition;
+  page: PageSchemaType;
 };
+
+type CustomFieldTypeMap = {
+  link: LinkSchemaType;
+  button: ButtonSchemaType;
+  socialLinks: Array<SocialLinksSchemaType>;
+};
+
+type FieldTypeMap = SanityFieldTypeMap & CustomFieldTypeMap;
 
 type FieldType = keyof FieldTypeMap;
 

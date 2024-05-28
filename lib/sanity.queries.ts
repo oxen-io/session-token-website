@@ -1,8 +1,9 @@
-import type { Page } from '@/schemas/documents/page';
-import type { Post } from '@/schemas/documents/post';
+import type { PageSchemaType } from '@/schemas/documents/page';
+import type { PostSchemaType } from '@/schemas/documents/post';
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import { isNull } from 'lodash';
 import { log } from './logger';
-import { sanityFetch, type SanitySettings } from './sanity.fetch';
+import { sanityFetch } from './sanity.fetch';
 
 export enum CMSDocument {
   Page = 'page',
@@ -68,9 +69,9 @@ type SpecialSelectType =
   | typeof SETTIONS_SPECIAL_SELECT;
 
 type CMSTypescriptMappings = {
-  [CMSDocument.Page]: Page;
-  [CMSDocument.Post]: Post;
-  [CMSDocument.Settings]: SanitySettings;
+  [CMSDocument.Page]: PageSchemaType;
+  [CMSDocument.Post]: PostSchemaType;
+  [CMSDocument.Settings]: SettingsSchemaType;
 };
 
 export type QueryReturnTypeFull<T extends CMSDocument> = CMSTypescriptMappings[T];

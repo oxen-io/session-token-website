@@ -1,8 +1,8 @@
-import type { Post } from '@/schemas/documents/post';
+import type { PostSchemaType } from '@/schemas/documents/post';
 import fs from 'fs';
 import { generateXMLFromObject } from 'mini-xml';
 
-export async function generateRssFeed(posts: Array<Post>) {
+export async function generateRssFeed(posts: Array<PostSchemaType>) {
   const site_url = 'https://token.getsession.org';
 
   posts.sort((a, b) => {
@@ -41,7 +41,7 @@ export async function generateRssFeed(posts: Array<Post>) {
           '@type': 'application/rss+xml',
         },
         copyright: `All rights reserved ${year}`,
-        item: posts.map((post: Post) => ({
+        item: posts.map((post: PostSchemaType) => ({
           title: post.title.trim(),
           description: {
             '#cdata': `${post.excerpt}<br /><a href="${site_url}/blog/${post.slug.current}">Read more</a>`,

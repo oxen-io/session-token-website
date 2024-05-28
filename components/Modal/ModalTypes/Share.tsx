@@ -4,10 +4,11 @@ import { getShareSites, getSocialIcon } from '@/lib/utils';
 
 import Button from '@/components/Button/Button';
 
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import { useState } from 'react';
 import s from './Share.module.sass';
 
-function Share({ settings }: { settings: any }) {
+export default function Share({ settings }: { settings: SettingsSchemaType }) {
   const { shareModal } = settings ?? {};
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
@@ -55,5 +56,3 @@ function Share({ settings }: { settings: any }) {
     </div>
   );
 }
-
-export default Share;

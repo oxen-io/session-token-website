@@ -4,10 +4,11 @@ import useStore from '@/lib/store';
 import x from '@/public/images/x';
 import clsx from 'clsx';
 
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import styles from './Modal.module.sass';
 import Share from './ModalTypes/Share';
 
-export default function Modal({ settings }: { settings: any }) {
+export default function Modal({ settings }: { settings: SettingsSchemaType }) {
   const { closeModal, modalData } = useStore() as {
     closeModal: () => void;
     modalData: {
@@ -22,15 +23,7 @@ export default function Modal({ settings }: { settings: any }) {
     return null;
   }
 
-  const { type, subType, data, isVisible } = modalData;
-
-  const commonProps = {
-    settings,
-    data,
-    subType,
-    isVisible,
-    close: closeModal,
-  };
+  const { type, isVisible } = modalData;
 
   return (
     <div
@@ -51,7 +44,7 @@ export default function Modal({ settings }: { settings: any }) {
         aria-label="modal"
       >
         {type ? <button onClick={closeModal}>{x}</button> : null}
-        <Share {...commonProps} />
+        <Share settings={settings} />
       </div>
     </div>
   );

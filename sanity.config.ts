@@ -1,5 +1,3 @@
-import './styles/sanity.css';
-
 import { apiVersion, dataset, previewSecretId, projectId } from '@/lib/sanity.api';
 import { pageStructure, singletonPlugin } from '@/plugins/settings';
 import { visionTool } from '@sanity/vision';

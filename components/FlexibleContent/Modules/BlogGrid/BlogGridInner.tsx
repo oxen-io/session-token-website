@@ -1,12 +1,12 @@
 'use client';
 
-import type { Post } from '@/schemas/documents/post';
+import type { PostSchemaType } from '@/schemas/documents/post';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
 import s from './BlogGrid.module.sass';
 import BlogTile from './BlogTile';
 
-export default function BlogGridInner({ posts }: { posts: Array<Post> }) {
+export default function BlogGridInner({ posts }: { posts: Array<PostSchemaType> }) {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {

@@ -41,4 +41,4 @@ const page = defineType({
 });
 
 export default page;
-export type Page = SchemaFields<typeof fields> & DocumentFields;
+export type PageSchemaType = SchemaFields<typeof fields> & DocumentFields;

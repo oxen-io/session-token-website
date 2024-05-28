@@ -72,4 +72,4 @@ const post = defineType({
 
 export default post;
 
-export type Post = SchemaFields<typeof fields> & DocumentFields;
+export type PostSchemaType = SchemaFields<typeof fields> & DocumentFields;
