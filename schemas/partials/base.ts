@@ -1,3 +1,4 @@
+import type { SchemaFields } from '@/lib/sanity.types';
 import { defineField } from 'sanity';
 
 export const baseData = [
@@ -40,3 +41,4 @@ export const baseData = [
     ],
   }),
 ];
+export type BaseSchemaType = SchemaFields<typeof baseData>;

@@ -1,4 +1,5 @@
 import { log } from '@/lib/logger';
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import BlogGrid from './Modules/BlogGrid/BlogGrid';
 import ComingSoon from './Modules/ComingSoon/ComingSoon';
 import CopyAndImage from './Modules/CopyAndImage/CopyAndImage';
@@ -31,7 +32,15 @@ const ucFirst = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-const FlexibleContent = ({ rows, settings, topic }: { rows: any; settings: any; topic?: any }) => {
+const FlexibleContent = ({
+  rows,
+  settings,
+  topic,
+}: {
+  rows: any;
+  settings: SettingsSchemaType;
+  topic?: any;
+}) => {
   if (!rows) {
     return null;
   }

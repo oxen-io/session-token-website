@@ -59,14 +59,6 @@ export async function sanityFetch<QueryResponse>({
   );
 }
 
-export type SanitySettings = {
-  rewards?: string | undefined;
-  socialLinks?: Array<string> | undefined;
-  menuTopLink?: string | undefined;
-  mobileMenuCta?: string | undefined;
-  menuItems?: string | undefined;
-};
-
 export const getSettings = () => {
   return sanityQuery
     .from(CMSDocument.Settings)

@@ -6,7 +6,7 @@ import moment from 'moment';
 import Image from 'next/image';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import type { Post } from '@/schemas/documents/post';
+import type { PostSchemaType } from '@/schemas/documents/post';
 import s from './BlogTile.module.sass';
 
 export default function BlogTile({
@@ -15,7 +15,7 @@ export default function BlogTile({
   isSingle,
   isTitle,
 }: {
-  post: Post;
+  post: PostSchemaType;
   isFeatured?: boolean;
   isSingle?: boolean;
   isTitle?: boolean;

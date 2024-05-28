@@ -28,7 +28,7 @@ const OptionalPreviewProvider = ({
   );
 };
 
-export default async function SiteLayout({ children }: { children: React.ReactNode }) {
+export default async function SiteLayout({ children }: { children: ReactNode }) {
   const isDraftMode = draftMode().isEnabled;
   const settings = await getSettings();
 
