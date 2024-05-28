@@ -32,7 +32,8 @@ export default function Menu({
     <ul
       className={clsx(
         'flex mr-auto gap-[15px]',
-        footer && 'w-full max-w-[1000px] flex items-start flex-wrap gap-0 ml-[8%] pb-[100px]',
+        footer && 'w-full max-w-[1000px] flex flex-wrap items-start gap-0 ml-[8%] pb-[100px]',
+        'md:flex-nowrap',
         className
       )}
     >
@@ -48,7 +49,10 @@ export default function Menu({
                 closeMenu();
               }
             }}
-            className={clsx('flex items-center', footer && 'w-1/3 flex-col items-start')}
+            className={clsx(
+              'flex',
+              footer ? 'w-1/3 flex-col justify-start items-start text-start' : 'items-center'
+            )}
           >
             <div
               className={clsx(
