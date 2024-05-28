@@ -1,5 +1,6 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
+  "commentAnchors.workspace.excludeFiles": "**/{node_modules,.git,.idea,target,out,build,bin,obj,vendor,coverage,release,stylesheets/dist,ts/**/*.js,ts/**/*.jsx}/**/*",
   "editor.codeActionsOnSave": {
     "source.organizeImports": "always"
   },
@@ -7,11 +8,9 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "files.exclude": {
-    "ts/**/*.js": true
-  },
+  "files.exclude": {},
   "files.watcherExclude": {
-    "ts/**/*.js": true
+    "node_modules": true
   },
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "tailwindCSS.experimental.classRegex": [
