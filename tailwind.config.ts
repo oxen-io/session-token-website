@@ -13,8 +13,6 @@ module.exports = {
   theme: {
     fontFamily: {
       helvetica: ['Helvetica', 'Arial', 'sans-serif'],
-      mono: ['SpaceMono', 'monospace'],
-      sans: ['PublicSans', 'sans-serif'],
     },
     screens: {
       sm: '375px',

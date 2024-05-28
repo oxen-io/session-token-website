@@ -82,16 +82,6 @@ button {
   @apply bg-primary text-black;
 }
 
-/* fixes '</' in Space Mono */
-.font-mono {
-  font-variant-ligatures: no-contextual;
-}
-
-/* Space Mono doesn't have a medium weight */
-.font-mono.font-medium {
-  @apply subpixel-antialiased;
-}
-
 .glitch {
   transform: scale3d(1, 1, 1);
 }
