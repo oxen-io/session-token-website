@@ -40,14 +40,7 @@ export default function CopyAndImage({
               <PortableText value={subCopy} />
             </h4>
           )}
-          {button && (
-            <Button
-              title={button.link.title}
-              isPrimary={button.isPrimary}
-              hasArrow={button.hasArrow}
-              iconName={button.iconName}
-            />
-          )}
+          {button && <Button {...button} title={button.link.title} />}
         </AnimatedElement>
         <AnimatedElement className={s.Image} delay={isReversed ? 100 : 200}>
           {image && <ImageBox image={image} />}

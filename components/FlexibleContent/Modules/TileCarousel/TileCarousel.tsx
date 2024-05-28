@@ -161,6 +161,7 @@ export default function TileCarousel({
                     {linkLabel && (
                       <Button
                         title={linkLabel}
+                        link={link}
                         isPrimary={fullSizeImage}
                         hasArrow={link}
                         disabled={!link}
