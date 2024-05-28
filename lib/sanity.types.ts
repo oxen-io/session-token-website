@@ -2,7 +2,6 @@ import type { PageSchemaType } from '@/schemas/documents/page';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import type { LinkSchemaType } from '@/schemas/objects/link';
 import type { SocialLinksSchemaType } from '@/schemas/partials/socialLinks';
-import type { UrlDefinition } from 'sanity';
 import type { SanityImage } from './sanity.image';
 
 type SanityFieldTypeMap = {
@@ -18,7 +17,7 @@ type SanityFieldTypeMap = {
   image: SanityImage;
   object: Record<string, unknown>;
   array: Array<any>;
-  url: UrlDefinition;
+  url: string;
   page: PageSchemaType;
 };
 

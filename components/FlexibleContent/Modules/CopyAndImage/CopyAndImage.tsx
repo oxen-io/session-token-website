@@ -5,6 +5,7 @@ import ImageBox from '@/components/shared/ImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import type { SanityImage } from '@/lib/sanity.image';
+import type { ButtonSchemaType } from '@/schemas/objects/button';
 import clsx from 'clsx';
 import s from './CopyAndImage.module.sass';
 
@@ -20,7 +21,7 @@ export default function CopyAndImage({
   copy: any;
   subCopy: any;
   image: SanityImage;
-  button: any;
+  button: ButtonSchemaType;
   alignment: 'imageLeft' | 'imageRight';
 }) {
   const isReversed = alignment === 'imageLeft';

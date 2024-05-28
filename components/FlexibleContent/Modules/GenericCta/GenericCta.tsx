@@ -1,6 +1,7 @@
-import PortableText from '@/components/PortableText/PortableText';
-import clsx from 'clsx';
 import Button from '@/components/Button/Button';
+import PortableText from '@/components/PortableText/PortableText';
+import type { ButtonSchemaType } from '@/schemas/objects/button';
+import clsx from 'clsx';
 import s from './GenericCta.module.sass';
 
 export default function GenericCta({
@@ -10,7 +11,7 @@ export default function GenericCta({
 }: {
   title: string;
   copy: any;
-  buttons: any;
+  buttons: Array<ButtonSchemaType>;
 }) {
   return (
     <section className={s.Outer}>

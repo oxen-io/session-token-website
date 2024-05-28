@@ -2,6 +2,7 @@ import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponen
 import PortableText from '@/components/PortableText/PortableText';
 import Socials from '@/components/Socials/Socials';
 import { urlForImage, type SanityImage } from '@/lib/sanity.image';
+import type { SocialLinksSchemaType } from '@/schemas/partials/socialLinks';
 import clsx from 'clsx';
 import s from './JoinCta.module.sass';
 
@@ -16,7 +17,7 @@ export default function JoinCta({
   title: string;
   copy: any;
   image: SanityImage;
-  socialLinks: any;
+  socialLinks: Array<SocialLinksSchemaType>;
 }) {
   const bgUrl = urlForImage(image)?.url();
 
