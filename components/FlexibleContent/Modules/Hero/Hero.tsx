@@ -10,6 +10,7 @@ import {
   AnimatedElement,
 } from '@/components/AnimatedComponent/AnimatedComponent';
 import ScrollButton from '@/components/Button/ScrollButton';
+import type { ButtonSchemaType } from '@/schemas/objects/button';
 import { useState } from 'react';
 import s from './Hero.module.sass';
 import RewardStats from './RewardStats';
@@ -23,7 +24,7 @@ export default function Hero({
 }: {
   title: string;
   copy: any;
-  buttons: any;
+  buttons: Array<ButtonSchemaType>;
   backgroundImage: any;
   type: 'default' | 'rewards';
 }) {

@@ -15,7 +15,7 @@ export default function PostContent({ copy }: { copy: CopyFields }) {
   ) as Array<CopyBlock>;
 
   return (
-    <section className={clsx(s.Outer, allH2s.length > 0 && 'grid')}>
+    <section className={clsx('post-content', s.Outer, allH2s.length > 0 && 'grid')}>
       <AnimatedElement innerRef={mainRef} type="main" delay={250}>
         <PortableText value={copy} />
       </AnimatedElement>
