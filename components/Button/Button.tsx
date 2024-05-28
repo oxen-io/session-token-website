@@ -3,12 +3,13 @@
 import NavLink from '@/components/NavLink/NavLink';
 import { getLinkUrl } from '@/lib/sanity.links';
 import buttonLogos from '@/public/images/buttonLogos';
+import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
 const buttonVariants = cva(
-  'border border-primary uppercase text-md leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
+  'border border-solid border-primary uppercase text-md leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
   {
     variants: {
       variant: {
@@ -32,7 +33,7 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  link?: any;
+  link?: LinkSchemaType;
   url?: string;
   prefetch?: boolean;
   small?: boolean;
