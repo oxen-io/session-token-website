@@ -54,3 +54,7 @@ Thumbs.db
 .env.local
 tsconfig.tsbuildinfo
 public/rss.xml
+
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json

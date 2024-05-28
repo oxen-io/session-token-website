@@ -57,7 +57,7 @@ export default function Hero({
               {buttons.map((button, index) => {
                 return (
                   <li key={index}>
-                    <Button {...button} inverted={index !== 0} />
+                    <Button {...button} />
                   </li>
                 );
               })}
