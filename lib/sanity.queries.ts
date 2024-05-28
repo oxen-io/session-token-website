@@ -1,8 +1,9 @@
 import type { PageSchemaType } from '@/schemas/documents/page';
 import type { PostSchemaType } from '@/schemas/documents/post';
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import { isNull } from 'lodash';
 import { log } from './logger';
-import { sanityFetch, type SettingsSchemaType } from './sanity.fetch';
+import { sanityFetch } from './sanity.fetch';
 
 export enum CMSDocument {
   Page = 'page',

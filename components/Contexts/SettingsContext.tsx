@@ -1,21 +1,23 @@
 'use client';
 
-import type { SettingsSchemaType } from '@/lib/sanity.fetch';
-import { createContext } from 'react';
+import type { SettingsSchemaType } from '@/schemas/singletons/settings';
+import { createContext, type ReactNode } from 'react';
 
 export const SettingsContext = createContext({
-  rewards: undefined,
-  socialLinks: undefined,
   menuTopLink: undefined,
   mobileMenuCta: undefined,
   menuItems: undefined,
-} as SettingsSchemaType);
+  ogImage: undefined,
+  shareModal: undefined,
+  socialLinks: undefined,
+  rewards: undefined,
+} as unknown as SettingsSchemaType);
 
 export const SettingsProvider = ({
   children,
   value,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
   value: SettingsSchemaType;
 }) => {
   return <SettingsContext.Provider value={value}>{children}</SettingsContext.Provider>;
