@@ -73,10 +73,6 @@ button {
   @apply focus:outline-primary;
 }
 
-.AnimatedElement a {
-  @apply text-primary font-extralight;
-}
-
 ::-moz-selection {
   /* Code for Firefox */
   @apply bg-primary text-black;
