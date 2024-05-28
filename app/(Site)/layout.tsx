@@ -1,3 +1,4 @@
+// NOTE don't change the import order of stylesheet imports until we remove SASS entirely because of CSS cascade order
 import '@/styles/Global.sass';
 import '@/styles/Reset.sass';
 
