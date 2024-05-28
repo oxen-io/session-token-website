@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import { forwardRef } from 'react';
 
 const buttonVariants = cva(
-  'border border-primary uppercase text-sm leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
+  'border border-primary uppercase text-md leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
   {
     variants: {
       variant: {
@@ -18,8 +18,8 @@ const buttonVariants = cva(
           'bg-transparent hover:bg-primary text-primary hover:text-black [&>svg>path]:fill-primary [&>svg>path]:hover:fill-black',
       },
       size: {
-        default: 'px-[13px] py-[25px] h-[46px]',
-        small: 'px-[10px] py-[14px] h-[40px]',
+        default: 'w-fit px-[20px] py-[16px]',
+        small: 'w-fit px-[16px] py-[10px]',
       },
     },
     defaultVariants: {
