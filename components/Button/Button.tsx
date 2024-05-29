@@ -9,18 +9,19 @@ import clsx from 'clsx';
 import { forwardRef } from 'react';
 
 const buttonVariants = cva(
-  'border border-solid border-primary uppercase text-md leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
+  [
+    'font-atyp-display uppercase leading-none flex whitespace-nowrap items-center gap-[5px] disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
+    'transition duration-200',
+  ],
   {
     variants: {
       variant: {
-        default:
-          'bg-primary hover:bg-transparent text-black hover:text-primary [&>svg>path]:fill-black [&>svg>path]:hover:fill-primary',
-        outline:
-          'bg-transparent hover:bg-primary text-primary hover:text-black [&>svg>path]:fill-primary [&>svg>path]:hover:fill-black',
+        default: ['bg-primary text-black', 'hover:bg-transparent hover:text-primary'],
+        outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
       },
       size: {
-        default: 'w-fit px-[20px] py-[16px]',
-        small: 'w-fit px-[16px] py-[10px]',
+        default: ['text-sm w-fit px-4 py-3', 'md:text-md md:px-[20px] md:py-[16px]'],
+        small: ['text-xs w-fit px-3 py-1', 'md:text-sm md:px-[16px] md:py-[10px]'],
       },
     },
     defaultVariants: {
@@ -77,7 +78,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {iconName ? buttonLogos[iconName] : null}
+        {iconName ? (
+          <span
+            className={clsx('w-3 h-3 fill-current', 'md:w-5 md:h-5', 'transition duration-200')}
+          >
+            {buttonLogos[iconName]}
+          </span>
+        ) : null}
         {text && (
           <span className={clsx('flex flex-row items-center top-[1px]')}>
             {text ?? children}
