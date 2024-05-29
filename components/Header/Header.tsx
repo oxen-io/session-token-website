@@ -1,6 +1,6 @@
 'use client';
 
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import clsx from 'clsx';
 import Image from 'next/image';
@@ -22,6 +22,18 @@ export function Header() {
   const { isSM, isMD } = useScreenWidth();
 
   const { menuTopLink, mobileMenuCta, menuItems } = useContext(SettingsContext);
+
+  useEffect(() => {
+    if (isSM || isMD) {
+      if (isExpanded) {
+        document.body.style.height = '100%';
+        document.body.style.overflowY = 'hidden';
+      }
+      if (!isExpanded && document.body.style) {
+        document.body.removeAttribute('style');
+      }
+    }
+  }, [isExpanded, isMD, isSM]);
 
   return (
     <nav
@@ -58,7 +70,7 @@ export function Header() {
         <div
           className={clsx(
             'bg-background flex flex-col items-start justify-between text-lg text-white w-full px-5',
-            'lg:bg-none lg:flex-row lg:items-center lg:px-0',
+            'lg:bg-transparent lg:flex-row lg:items-center lg:px-0',
             'transform transition-all duration-300',
             isExpanded
               ? 'h-screen translate-y-0 -mb-20 pt-3 pb-10'
