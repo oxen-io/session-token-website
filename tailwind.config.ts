@@ -1,6 +1,6 @@
-/* eslint-disable global-require */
-/** @type {import('tailwindcss').Config} */
-module.exports = {
+import type { Config } from 'tailwindcss';
+
+export default {
   content: [
     './styles/globals.css',
     './pages/**/*.{js,ts,jsx,tsx}',
@@ -85,5 +85,7 @@ module.exports = {
       transitionDuration: ['group-hover'],
     },
   },
+
+  /* eslint-disable-next-line global-require */
   plugins: [require('tailwindcss-selection-variant')],
-};
+} satisfies Config;
