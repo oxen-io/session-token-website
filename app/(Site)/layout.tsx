@@ -38,7 +38,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       {isNotProduction() ? <DevModal /> : null}
       <SettingsProvider value={settings}>
         <Header />
-        <main>{children}</main>
+        <main className={'-mt-16'}>{children}</main>
         <Footer />
       </SettingsProvider>
     </OptionalPreviewProvider>
