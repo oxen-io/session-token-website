@@ -5,12 +5,12 @@ import '@/styles/Reset.sass';
 import { SettingsProvider } from '@/components/Contexts/SettingsContext';
 import { DevModal } from '@/components/DevModal';
 import { Footer } from '@/components/Footer';
-import { Header } from '@/components/Header';
 import { PreviewBanner } from '@/components/preview/PreviewBanner';
 import PreviewProvider from '@/components/preview/PreviewProvider';
 import { isNotProduction } from '@/lib/env';
 import { getSettings, token } from '@/lib/sanity.fetch';
 
+import { Header } from '@/components/Header/Header';
 import { draftMode } from 'next/headers';
 import type { ReactNode } from 'react';
 
