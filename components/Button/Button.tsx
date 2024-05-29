@@ -78,7 +78,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {iconName ? (
+        {iconName && iconName !== '' && iconName.toLowerCase() !== 'none' ? (
           <span
             className={clsx('w-3 h-3 fill-current', 'lg:w-5 lg:h-5', 'transition duration-200')}
           >
