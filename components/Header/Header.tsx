@@ -24,19 +24,18 @@ export function Header() {
     <nav
       role="navigation"
       className={clsx(
-        'container relative flex items-center justify-between mx-auto z-10 w-full',
-        'md:justify-normal',
+        'relative flex items-center justify-between z-10 w-full',
         'transition duration-300'
       )}
     >
       <div
-        className={clsx('flex items-center justify-between w-full px-5 pt-7', 'lg:w-1/3 lg:p-0')}
+        className={clsx('flex justify-between items-center w-full px-5 pt-7', 'lg:w-1/3 lg:p-0')}
       >
         <NavLink href="/">
           <Image
             src={Logo}
             alt="Session Token"
-            className={clsx('w-36', 'md:w-auto md:h-[29px]')}
+            className={clsx('w-36', 'lg:w-auto lg:h-[29px]')}
             priority
           />
         </NavLink>
@@ -47,7 +46,7 @@ export function Header() {
       </div>
       <div
         className={clsx(
-          'absolute top-20 left-0 right-0 w-screen overflow-hidden z-0',
+          'absolute top-20 left-0 right-0 w-full overflow-hidden z-0',
           'lg:relative lg:overflow-visible lg:w-2/3 lg:top-0',
           'transform transition-all duration-300'
         )}

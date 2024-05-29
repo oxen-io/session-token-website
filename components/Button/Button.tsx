@@ -20,8 +20,8 @@ const buttonVariants = cva(
         outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
       },
       size: {
-        default: ['text-sm w-fit px-4 py-3', 'md:text-md md:px-[20px] md:py-[16px]'],
-        small: ['text-xs w-fit px-3 py-1', 'md:text-sm md:px-[16px] md:py-[10px]'],
+        default: ['text-sm w-fit px-4 py-3', 'lg:text-md lg:px-[20px] lg:py-[16px]'],
+        small: ['text-xs w-fit px-3 py-1', 'lg:text-sm lg:px-[16px] lg:py-[10px]'],
       },
     },
     defaultVariants: {
@@ -80,7 +80,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {iconName ? (
           <span
-            className={clsx('w-3 h-3 fill-current', 'md:w-5 md:h-5', 'transition duration-200')}
+            className={clsx('w-3 h-3 fill-current', 'lg:w-5 lg:h-5', 'transition duration-200')}
           >
             {buttonLogos[iconName]}
           </span>
