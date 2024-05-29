@@ -78,12 +78,16 @@ export function Header() {
                   onClick={isSM || isMD ? toggleNav : undefined}
                   className={clsx('cursor-pointer', 'hover:text-primary')}
                 >
-                  <NavLink
-                    key={`${item.title}-${index}`}
-                    href={item.slug ? `/${item.slug}` : item.href ?? '/'}
-                  >
-                    {item.title}
-                  </NavLink>
+                  {item.slug || item.href ? (
+                    <NavLink
+                      key={`${item.title}-${index}`}
+                      href={item.slug ? `/${item.slug}` : item.href ?? '/'}
+                    >
+                      {item.title}
+                    </NavLink>
+                  ) : (
+                    item.title
+                  )}
                 </div>
               );
             })}

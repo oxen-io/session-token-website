@@ -1,46 +1,9 @@
-/* eslint-disable max-len */
-
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
 import { throttle } from 'lodash';
+import { useEffect, useRef, useState } from 'react';
 
-export const useIsMobile = () => {
-  const breakPoint = 500;
-
-  const [_isMobile, setIsMobile] = useState(false);
-
-  const _window = typeof window !== 'undefined' ? window : null;
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (_window) {
-        setIsMobile(_window.screen.width <= breakPoint);
-      }
-    }, 1);
-  }, [_window]);
-
-  return _isMobile;
-};
-
-export const useIsTablet = () => {
-  const breakPoint = 1024;
-
-  const [_isTablet, setIsTablet] = useState(false);
-
-  const _window = typeof window !== 'undefined' ? window : null;
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (_window) {
-        setIsTablet(_window.screen.width <= breakPoint);
-      }
-    }, 1);
-  }, [_window]);
-
-  return _isTablet;
-};
-
+/* eslint-disable max-len */
 export const getSocialIcon = company => {
   switch (company) {
     case 'x':
@@ -219,6 +182,7 @@ export const getSocialIcon = company => {
       );
   }
 };
+/* eslint-enable max-len */
 
 export const getShareSites = currentUrl => {
   return [

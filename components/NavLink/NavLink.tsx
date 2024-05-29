@@ -1,5 +1,6 @@
 'use client';
 
+import { isLocalLink } from '@/lib/sanity.links';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -28,12 +29,9 @@ export default function NavLink({
 }) {
   const asPath = usePathname();
 
-  const localHref =
-    href && !href.includes('http') && !href.includes('mailto:') && !href.includes('tel:');
-
   let className = _className;
 
-  if (onClick && !localHref) {
+  if (onClick && !isLocalLink(href)) {
     return (
       <a
         className={className}

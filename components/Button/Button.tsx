@@ -1,7 +1,7 @@
 'use client';
 
 import NavLink from '@/components/NavLink/NavLink';
-import { getLinkUrl } from '@/lib/sanity.links';
+import { resolveLinkFromSanityOrString } from '@/lib/sanity.links';
 import buttonLogos from '@/public/images/buttonLogos';
 import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -74,7 +74,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             className,
           })
         )}
-        href={(link ? getLinkUrl(link) : url) ?? ''}
+        href={(link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
         ref={ref}
         {...props}
       >
