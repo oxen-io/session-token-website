@@ -46,7 +46,7 @@ const FlexibleContent = ({
   }
 
   return (
-    <main>
+    <div>
       {rows.map((row, index) => {
         const name = row._type;
 
@@ -63,7 +63,7 @@ const FlexibleContent = ({
 
         return <Component {...row} key={index} settings={settings} topic={topic} />;
       })}
-    </main>
+    </div>
   );
 };
 
