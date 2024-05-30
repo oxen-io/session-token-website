@@ -3,15 +3,6 @@
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 
-const navLinks: Array<{ title: string; href: string }> = [
-  { title: 'Home', href: '/home' },
-  { title: 'Coming Soon', href: '/coming-soon' },
-  { title: 'Blog', href: '/blog' },
-  { title: 'Rewards', href: '/active-staker-reward-pool' },
-  { title: 'Roadmap', href: '/roadmap' },
-  { title: 'FAQ', href: '/faq' },
-] as const;
-
 const Modal = ({
   isOpen,
   onClose,
@@ -42,7 +33,7 @@ const Modal = ({
   );
 };
 
-export const DevModal = () => {
+export const DevModal = ({ slugs }: { slugs: Array<string> }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [lastSearchChar, setLastSearchChar] = useState<string>('');
   const [lastSearchIndex, setLastSearchIndex] = useState<number>(0);
@@ -57,9 +48,7 @@ export const DevModal = () => {
         setIsModalOpen(false);
       } else {
         setLastSearchChar(event.key);
-        const matchingLinks = navLinks.filter(
-          ({ title }) => title.toLowerCase().charAt(0) === event.key
-        );
+        const matchingLinks = slugs.filter(slug => slug.toLowerCase().charAt(0) === event.key);
         if (matchingLinks.length > 0) {
           let targetIndex = lastSearchIndex;
           if (event.key === lastSearchChar) {
@@ -77,7 +66,7 @@ export const DevModal = () => {
           const link = matchingLinks[targetIndex];
           if (link) {
             const anchor = document.querySelector(
-              `a[aria-label="dev-nav${link.href}"]`
+              `a[aria-label="dev-nav-${link}"]`
             ) as HTMLAnchorElement;
             anchor.focus();
           }
@@ -98,10 +87,10 @@ export const DevModal = () => {
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
       <nav>
         <ul>
-          {navLinks.map(({ title, href }, i) => (
-            <li key={href}>
-              <a tabIndex={i} href={href} aria-label={`dev-nav${href}`}>
-                {title}
+          {slugs.map((slug, i) => (
+            <li key={slug}>
+              <a tabIndex={i} href={slug} aria-label={`dev-nav-${slug}`}>
+                {slug}
               </a>
             </li>
           ))}
