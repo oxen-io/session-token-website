@@ -77,7 +77,7 @@ export function Header() {
             'lg:bg-transparent lg:flex-row lg:items-center lg:px-0',
             'transform transition-all duration-300',
             isExpanded
-              ? 'h-screen translate-y-0 -mb-20 pt-3 pb-10'
+              ? 'h-dvh translate-y-0 -mb-20 pt-3 pb-10'
               : 'h-0 -translate-y-full lg:h-auto lg:translate-y-0'
           )}
         >
