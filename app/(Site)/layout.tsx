@@ -3,7 +3,6 @@ import '@/styles/Global.sass';
 import '@/styles/Reset.sass';
 
 import { SettingsProvider } from '@/components/Contexts/SettingsContext';
-import { DevModal } from '@/components/DevModal';
 import { Footer } from '@/components/Footer';
 import { PreviewBanner } from '@/components/preview/PreviewBanner';
 import PreviewProvider from '@/components/preview/PreviewProvider';
@@ -11,6 +10,7 @@ import { isNotProduction } from '@/lib/env';
 import { getSettings, token } from '@/lib/sanity.fetch';
 
 import { Header } from '@/components/Header/Header';
+import { DevModalServer } from '@/components/DevModalServer';
 import { draftMode } from 'next/headers';
 import type { ReactNode } from 'react';
 
@@ -35,7 +35,7 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
   return (
     <OptionalPreviewProvider isDraftMode={isDraftMode}>
       {isDraftMode ? <PreviewBanner /> : null}
-      {isNotProduction() ? <DevModal /> : null}
+      {isNotProduction() ? <DevModalServer /> : null}
       <SettingsProvider value={settings}>
         <Header />
         <main className={'-mt-16'}>{children}</main>
