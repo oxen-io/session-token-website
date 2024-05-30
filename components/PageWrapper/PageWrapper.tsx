@@ -1,7 +1,9 @@
 'use client';
 
-const PageWrapper = ({ children }: { children: React.ReactNode }) => {
-  return <main>{children}</main>;
+import type { ReactNode } from 'react';
+
+const PageWrapper = ({ children }: { children: ReactNode }) => {
+  return <div>{children}</div>;
 };
 
 export default PageWrapper;

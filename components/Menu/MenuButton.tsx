@@ -4,12 +4,22 @@ import s from './MenuButton.module.sass';
 export default function MenuButton({
   open,
   setOpen,
+  className,
 }: {
   open: boolean;
-  setOpen: (open: boolean) => void;
+  setOpen: () => void;
+  className?: string;
 }) {
   return (
-    <button className={clsx(s.Outer, open && s.Open)} onClick={() => setOpen(!open)}>
+    <button
+      className={clsx(
+        'h-9 w-9 border border-solid border-primary rounded-full ml-1',
+        s.Outer,
+        open && s.Open,
+        className
+      )}
+      onClick={setOpen}
+    >
       <div />
       <div />
       <div />

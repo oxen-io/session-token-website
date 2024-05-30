@@ -1,7 +1,7 @@
 'use client';
 
 import NavLink from '@/components/NavLink/NavLink';
-import { getLinkUrl } from '@/lib/sanity.links';
+import { resolveLinkFromSanityOrString } from '@/lib/sanity.links';
 import buttonLogos from '@/public/images/buttonLogos';
 import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
@@ -9,23 +9,25 @@ import clsx from 'clsx';
 import { forwardRef } from 'react';
 
 const buttonVariants = cva(
-  'border border-solid border-primary uppercase text-md leading-none rounded-[40px] transition duration-200 flex items-center gap-[5px] disabled:pointer-events-none font-atyp-display [&>svg]:h-[18px] [&>svg]:w-[18px] [&>svg]:inline [&>svg>path]:transition [&>svg>path]:duration-200',
+  [
+    'font-atyp-display uppercase leading-none flex whitespace-nowrap items-center gap-[5px] disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
+    'transition duration-200',
+  ],
   {
     variants: {
       variant: {
-        default:
-          'bg-primary hover:bg-transparent text-black hover:text-primary [&>svg>path]:fill-black [&>svg>path]:hover:fill-primary',
-        outline:
-          'bg-transparent hover:bg-primary text-primary hover:text-black [&>svg>path]:fill-primary [&>svg>path]:hover:fill-black',
+        default: ['bg-primary text-black', 'hover:bg-transparent hover:text-primary'],
+        outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
       },
       size: {
-        default: 'w-fit px-[20px] py-[16px]',
-        small: 'w-fit px-[16px] py-[10px]',
+        small: ['text-xs w-fit px-4 h-11'],
+        medium: ['text-sm w-fit px-6 h-12'],
+        large: ['text-md w-fit px-7 h-14'],
       },
     },
     defaultVariants: {
       variant: 'default',
-      size: 'default',
+      size: 'medium',
     },
   }
 );
@@ -36,7 +38,6 @@ export interface ButtonProps
   link?: LinkSchemaType;
   url?: string;
   prefetch?: boolean;
-  small?: boolean;
   iconName?: string;
   hasArrow?: boolean;
   isPrimary?: boolean;
@@ -53,7 +54,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       url,
       title,
       iconName,
-      small,
       hasArrow,
       isPrimary,
       children,
@@ -63,21 +63,30 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
+    const hasIcon = iconName && Boolean(iconName !== '' && iconName.toLowerCase() !== 'none');
+
+    const iconClasses = [
+      'fill-current',
+      (!size || size === 'medium') && 'w-4 h-4',
+      size === 'small' && 'w-3 h-3',
+      size === 'large' && 'w-5 h-5',
+      'transition duration-200',
+    ];
 
     return (
       <Comp
         className={clsx(
           buttonVariants({
             variant: !isPrimary ? 'outline' : variant,
-            size: small ? 'small' : size,
+            size,
             className,
           })
         )}
-        href={(link ? getLinkUrl(link) : url) ?? ''}
+        href={(link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
         ref={ref}
         {...props}
       >
-        {iconName ? buttonLogos[iconName] : null}
+        {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}
         {text && (
           <span className={clsx('flex flex-row items-center top-[1px]')}>
             {text ?? children}

@@ -13,9 +13,15 @@ import PortableText from '@/components/PortableText/PortableText';
 
 import Button from '@/components/Button/Button';
 import ImageBox from '@/components/ImageBox/ImageBox';
-import NavLink from '@/components/NavLink/NavLink';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
+import NavLink from '@/components/NavLink/NavLink';
+import { createSanityLink } from '@/lib/sanity.links';
+import type {
+  CarouselContentSchemaType,
+  TileCarouselSchemaType,
+  TileSchemaType,
+} from '@/schemas/objects/flexibleSections/tileCarousel';
 import type { A11yOptions } from 'swiper/types';
 import s from './TileCarousel.module.sass';
 
@@ -46,18 +52,13 @@ const filterA11yOptions = (
 
 export default function TileCarousel({
   title,
-  content,
-  tiles,
+  content: _content,
+  tiles: _tiles,
   borderless,
-}: {
-  title: string;
-  content: {
-    title: string;
-    copy: string;
-  };
-  tiles: Array<any>;
-  borderless: boolean;
-}) {
+}: TileCarouselSchemaType) {
+  const tiles = _tiles as Array<TileSchemaType>;
+  const content = _content as CarouselContentSchemaType;
+
   const hasScrollIconOnMobile = !content && !borderless;
 
   const [OuterElement, outerElementProps, InnerElement] = (() => {
@@ -90,14 +91,14 @@ export default function TileCarousel({
         {content ? (
           <div className={s.Content}>
             <div className="smallTitle">{title}</div>
-            {content?.title && (
+            {content.title.length && (
               <h2
                 dangerouslySetInnerHTML={{
                   __html: content?.title,
                 }}
               />
             )}
-            {content?.copy && <PortableText value={content?.copy} />}
+            {content.copy.length && <PortableText value={content.copy} />}
           </div>
         ) : borderless ? (
           <h2
@@ -161,9 +162,9 @@ export default function TileCarousel({
                     {linkLabel && (
                       <Button
                         title={linkLabel}
-                        link={link}
+                        link={createSanityLink(link, linkLabel)}
                         isPrimary={fullSizeImage}
-                        hasArrow={link}
+                        hasArrow={!!link}
                         disabled={!link}
                       />
                     )}
@@ -177,7 +178,11 @@ export default function TileCarousel({
                     className={clsx(s.Slide, fullSizeImage ? s.FullSizeImage : '')}
                     delay={index * 100 + 100}
                   >
-                    {link ? <NavLink href={link}>{inside}</NavLink> : <div>{inside}</div>}
+                    {!link || linkLabel ? (
+                      <div>{inside}</div>
+                    ) : (
+                      <NavLink href={link}>{inside}</NavLink>
+                    )}
                   </AnimatedElement>
                 </InnerElement>
               );
