@@ -52,7 +52,7 @@ export default function ComingSoon({
             {buttons.map((button, index) => {
               return (
                 <li key={index}>
-                  <Button {...button} small />
+                  <Button {...button} />
                 </li>
               );
             })}

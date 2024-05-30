@@ -20,13 +20,14 @@ const buttonVariants = cva(
         outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
       },
       size: {
-        default: ['text-sm w-fit px-4 py-3', 'lg:text-md lg:px-[20px] lg:py-[16px]'],
-        small: ['text-xs w-fit px-3 py-1', 'lg:text-sm lg:px-[16px] lg:py-[10px]'],
+        small: ['text-xs w-fit px-4 h-11'],
+        medium: ['text-sm w-fit px-6 h-12'],
+        large: ['text-md w-fit px-7 h-14'],
       },
     },
     defaultVariants: {
       variant: 'default',
-      size: 'default',
+      size: 'medium',
     },
   }
 );
@@ -37,7 +38,6 @@ export interface ButtonProps
   link?: LinkSchemaType;
   url?: string;
   prefetch?: boolean;
-  small?: boolean;
   iconName?: string;
   hasArrow?: boolean;
   isPrimary?: boolean;
@@ -54,7 +54,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       url,
       title,
       iconName,
-      small,
       hasArrow,
       isPrimary,
       children,
@@ -64,13 +63,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
+    const hasIcon = iconName && Boolean(iconName !== '' && iconName.toLowerCase() !== 'none');
+
+    const iconClasses = [
+      'fill-current',
+      (!size || size === 'medium') && 'w-4 h-4',
+      size === 'small' && 'w-3 h-3',
+      size === 'large' && 'w-5 h-5',
+      'transition duration-200',
+    ];
 
     return (
       <Comp
         className={clsx(
           buttonVariants({
             variant: !isPrimary ? 'outline' : variant,
-            size: small ? 'small' : size,
+            size,
             className,
           })
         )}
@@ -78,13 +86,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {iconName && iconName !== '' && iconName.toLowerCase() !== 'none' ? (
-          <span
-            className={clsx('w-3 h-3 fill-current', 'lg:w-5 lg:h-5', 'transition duration-200')}
-          >
-            {buttonLogos[iconName]}
-          </span>
-        ) : null}
+        {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}
         {text && (
           <span className={clsx('flex flex-row items-center top-[1px]')}>
             {text ?? children}

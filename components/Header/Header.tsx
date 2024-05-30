@@ -12,6 +12,7 @@ import Socials from '@/components/Socials/Socials';
 import { useScreenWidth } from '@/hooks/screen';
 import Logo from '@/public/images/logo.png';
 import MenuButton from '../Menu/MenuButton';
+import { Spacer } from '../Spacer/Spacer';
 
 export function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -56,7 +57,9 @@ export function Header() {
         </NavLink>
         {isSM || isMD ? (
           <div className={clsx('flex flex-row')}>
-            <Button {...menuTopLink} small />
+            <Spacer size="xs" />
+            <Button {...menuTopLink} size="small" className="max-h-9" />
+            <Spacer size="xs" />
             <MenuButton open={isExpanded} setOpen={toggleNav} />
           </div>
         ) : null}
@@ -111,7 +114,7 @@ export function Header() {
               <Socials />
             </div>
           ) : (
-            <Button {...menuTopLink} className={'h-9 text-lg'} />
+            <Button {...menuTopLink} className={'max-h-9'} />
           )}
         </div>
       </div>

@@ -20,15 +20,11 @@ export default function GenericCta({
         <div className={clsx(s.Copy, `Copy Large`)}>
           <PortableText value={copy} />
         </div>
-        <ul className={s.Buttons}>
+        <div className={clsx('flex flex-wrap gap-4 justify-center items-center mt-10')}>
           {buttons.map((button, index) => {
-            return (
-              <li key={index}>
-                <Button {...button} />
-              </li>
-            );
+            return <Button {...button} key={index} />;
           })}
-        </ul>
+        </div>
       </div>
     </section>
   );

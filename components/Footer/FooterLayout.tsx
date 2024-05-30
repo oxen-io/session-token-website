@@ -41,7 +41,7 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
           </div>
           {menuItems.length > 1 ? <Menu menu={menuItems} footer /> : null}
           <div className={s.Links}>
-            <Button {...menuTopLink} small />
+            <Button {...menuTopLink} />
             <Socials />
           </div>
         </div>
