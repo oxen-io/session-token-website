@@ -11,6 +11,7 @@ import NavLink from '@/components/NavLink/NavLink';
 import Socials from '@/components/Socials/Socials';
 import { useScreenWidth } from '@/hooks/screen';
 import Logo from '@/public/images/logo.png';
+import Link from 'next/link';
 import MenuButton from '../Menu/MenuButton';
 import { Spacer } from '../Spacer/Spacer';
 
@@ -47,14 +48,14 @@ export function Header() {
       )}
     >
       <div className={clsx('flex justify-between items-center w-full px-5', 'lg:w-fit lg:px-0')}>
-        <NavLink href="/">
+        <Link href="/">
           <Image
             src={Logo}
             alt="Session Token"
             className={clsx('w-36', 'lg:w-48 lg:h-auto')}
             priority
           />
-        </NavLink>
+        </Link>
         {isSM || isMD ? (
           <div className={clsx('flex flex-row')}>
             <Spacer size="xs" />

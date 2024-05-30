@@ -2,13 +2,13 @@ import Image from 'next/image';
 
 import Button from '@/components/Button/Button';
 import Menu from '@/components/Menu/Menu';
-import NavLink from '@/components/NavLink/NavLink';
 
 import LogoFooter from '@/public/images/logo-footer.png';
 import Logo from '@/public/images/logo.png';
 
 import Socials from '@/components/Socials/Socials';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
+import Link from 'next/link';
 import s from './Footer.module.sass';
 
 export default function Footer({ settings }: { settings: SettingsSchemaType }) {
@@ -31,10 +31,10 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
         <div className={s.FooterCont}>
           <div className={s.Main}>
             <div className={s.Logo}>
-              <NavLink href={'/'} label="home">
+              <Link href={'/'}>
                 <Image src={LogoFooter} alt="Session Token" />
                 <Image src={Logo} alt="Session Token" />
-              </NavLink>
+              </Link>
             </div>
             <span className="smallTitle">/ Managed by Session</span>
             {bottomJsx}
