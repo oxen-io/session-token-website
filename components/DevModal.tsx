@@ -81,7 +81,7 @@ export const DevModal = ({ slugs }: { slugs: Array<string> }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [lastSearchChar, lastSearchIndex]);
+  }, [lastSearchChar, lastSearchIndex, slugs]);
 
   return (
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
