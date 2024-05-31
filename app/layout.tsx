@@ -11,7 +11,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${AtypDisplay.variable} ${AtypText.variable} ${MonumentExtended.variable}`}
     >
-      <body className={'text-text'}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
