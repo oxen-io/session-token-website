@@ -14,8 +14,6 @@
 
     --black: #0a0a0a;
     --text: #dbdbdb;
-
-    --text-static: #dbdbdb;
     --text-gradient: linear-gradient(128.42deg, #ffffff -38.86%, #97a99e 133.98%);
     --text-gradient-darker: linear-gradient(
       90.71deg,
@@ -26,7 +24,7 @@
     --text-caption: linear-gradient(113.07deg, #ace2d5 -6.36%, #405e56 210.93%);
 
     --background: var(--black);
-    --foreground: var(--gray-light);
+    --foreground: var(--text);
   }
 }
 
@@ -56,15 +54,16 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground overflow-x-hidden;
-  }
-}
+    /* TODO this make fonts slightly thinner and lighter in Firefox compared to figma */
+    /* @apply antialiased; */
+    /* TODO Do we need the height, outline and width on html as well? */
+    @apply h-full outline-none w-screen overflow-x-hidden;
+    @apply font-atyp-text font-normal text-base leading-4 bg-background text-foreground;
 
-body {
-  /* Fix for Safari */
-  /* https://stackoverflow.com/a/37365794 */
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
+    /* Fix for Safari */
+    /* https://stackoverflow.com/a/37365794 */
+    text-rendering: optimizeLegibility;
+  }
 }
 
 a,
