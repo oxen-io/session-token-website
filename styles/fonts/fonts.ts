@@ -1,5 +1,27 @@
 import localFont from 'next/font/local';
 
+type FontWeight =
+  | 'Thin'
+  | 'Light'
+  | 'Regular'
+  | 'Medium'
+  | 'SemiBold'
+  | 'Bold'
+  | 'ThinItalic'
+  | 'LightItalic'
+  | 'Italic'
+  | 'MediumItalic'
+  | 'SemiBoldItalic'
+  | 'BoldItalic';
+
+type FontPath = `${string}-${FontWeight}.ttf`;
+
+type FontSrc = Array<{
+  path: FontPath;
+  weight: string;
+  style?: string;
+}>;
+
 const AtypDisplay = localFont({
   src: [
     {
@@ -56,7 +78,7 @@ const AtypDisplay = localFont({
       weight: '700',
       style: 'italic',
     },
-  ],
+  ] satisfies FontSrc,
   variable: '--font-atyp-display',
   display: 'swap',
 });
@@ -117,7 +139,7 @@ const AtypText = localFont({
       weight: '700',
       style: 'italic',
     },
-  ],
+  ] satisfies FontSrc,
   variable: '--font-atyp-text',
   display: 'swap',
 });
