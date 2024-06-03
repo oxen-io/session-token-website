@@ -14,7 +14,7 @@ export default function ScrollButton() {
   return (
     <div className={s.MobileScroll} onClick={nudgeDown}>
       <div className={s.ScrollIcon} />
-      <span>Scrolls</span>
+      <span>Scroll</span>
     </div>
   );
 }
