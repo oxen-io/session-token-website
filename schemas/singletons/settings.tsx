@@ -3,6 +3,21 @@ import type { DocumentFields, SchemaFields } from '@/lib/sanity.types';
 import { CogIcon, DocumentIcon } from '@sanity/icons';
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
+const shareModalFields = [
+  defineField({
+    name: 'title',
+    title: 'Title',
+    type: 'string',
+  }),
+  defineField({
+    name: 'copy',
+    title: 'Copy',
+    type: 'text',
+  }),
+];
+
+export type ShareModalSchemaType = SchemaFields<typeof shareModalFields>;
+
 const fields = [
   defineField({
     name: 'title',
@@ -58,18 +73,7 @@ const fields = [
     name: 'shareModal',
     title: 'Share Modal',
     type: 'object',
-    fields: [
-      defineField({
-        name: 'title',
-        title: 'Title',
-        type: 'string',
-      }),
-      defineField({
-        name: 'copy',
-        title: 'Copy',
-        type: 'text',
-      }),
-    ],
+    fields: shareModalFields,
   }),
   defineField({
     name: 'socialLinks',

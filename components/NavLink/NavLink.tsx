@@ -11,7 +11,6 @@ export default function NavLink({
   href,
   as,
   children,
-  innerHTML,
   className: _className = '',
   onClick,
   label,
@@ -21,7 +20,6 @@ export default function NavLink({
   href: string;
   as?: string;
   children: React.ReactNode;
-  innerHTML?: { __html: string };
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
   label?: string;
@@ -33,13 +31,7 @@ export default function NavLink({
 
   if (onClick && !isLocalLink(href)) {
     return (
-      <a
-        className={className}
-        onClick={onClick}
-        target="_blank"
-        dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}
-        aria-label={label}
-      >
+      <a className={className} onClick={onClick} target="_blank" aria-label={label}>
         {children}
       </a>
     );
@@ -47,14 +39,7 @@ export default function NavLink({
 
   if (href && href.indexOf('http') !== -1) {
     return (
-      <a
-        className={className}
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}
-        aria-label={label}
-      >
+      <a className={className} href={href} target="_blank" rel="noreferrer" aria-label={label}>
         {children}
       </a>
     );
@@ -62,12 +47,7 @@ export default function NavLink({
 
   if ((href && href.indexOf('tel:') !== -1) || (href && href.indexOf('mailto:') !== -1)) {
     return (
-      <a
-        className={className}
-        href={href}
-        dangerouslySetInnerHTML={innerHTML ? { __html: innerHTML } : undefined}
-        aria-label={label}
-      >
+      <a className={className} href={href} aria-label={label}>
         {children}
       </a>
     );
@@ -79,7 +59,7 @@ export default function NavLink({
   }).test(asPath);
 
   const _children = (
-    <span dangerouslySetInnerHTML={innerHTML} className={className} aria-label={label}>
+    <span className={className} aria-label={label}>
       {children}
     </span>
   );
