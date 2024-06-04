@@ -14,6 +14,7 @@ export default {
     fontFamily: {
       'atyp-display': ['var(--font-atyp-display)'],
       'atyp-text': ['var(--font-atyp-text)'],
+      'monument-extended': ['var(--font-monument-extended)'],
     },
     screens: {
       sm: '375px',

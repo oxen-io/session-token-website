@@ -2,7 +2,7 @@
 
 import NavLink from '@/components/NavLink/NavLink';
 import { resolveLinkFromSanityOrString } from '@/lib/sanity.links';
-import buttonLogos from '@/public/images/buttonLogos';
+import buttonLogos, { buttonLogoKeys } from '@/public/images/buttonLogos';
 import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
@@ -10,7 +10,7 @@ import { forwardRef } from 'react';
 
 const buttonVariants = cva(
   [
-    'font-atyp-display uppercase leading-none whitespace-nowrap flex justify-center items-center gap-1 disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
+    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-3 disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
     'transition duration-200',
   ],
   {
@@ -42,6 +42,7 @@ export interface ButtonProps
   hasArrow?: boolean;
   isPrimary?: boolean;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
+  isUpperCase?: boolean;
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -56,6 +57,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconName,
       hasArrow,
       isPrimary,
+      isUpperCase = true,
       children,
       ...props
     },
@@ -63,13 +65,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
-    const hasIcon = iconName && Boolean(iconName !== '' && iconName.toLowerCase() !== 'none');
+    const hasIcon =
+      iconName &&
+      buttonLogoKeys.includes(iconName.toLowerCase()) &&
+      iconName.toLowerCase() !== 'none';
 
     const iconClasses = [
       'fill-current',
       (!size || size === 'medium') && 'w-4 h-4 *:h-4 *:w-4',
-      size === 'small' && 'w-3 h-3 *:w-3 *:h-3',
-      size === 'large' && 'w-5 h-5 *:w-5 *:h-5',
+      size === 'small' && 'w-4 h-4 *:w-4 *:h-4',
+      size === 'large' && 'w-6 h-6 *:w-6 *:h-6',
       'transition duration-200',
       // This is a hack for Windows to align the icon with the button text because the Atyp Text font is not vertically centered.
       'inline *:inline *:bottom-[1px]',
@@ -82,7 +87,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             variant: !isPrimary ? 'outline' : variant,
             size,
             className,
-          })
+          }),
+          isUpperCase ? 'uppercase' : ''
         )}
         href={(link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
         ref={ref}
