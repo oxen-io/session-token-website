@@ -10,7 +10,7 @@ import { forwardRef } from 'react';
 
 const buttonVariants = cva(
   [
-    'font-atyp-display uppercase leading-none flex whitespace-nowrap items-center gap-[5px] disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
+    'font-atyp-display uppercase leading-none whitespace-nowrap flex justify-center items-center gap-1 disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
     'transition duration-200',
   ],
   {
@@ -67,10 +67,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const iconClasses = [
       'fill-current',
-      (!size || size === 'medium') && 'w-4 h-4',
-      size === 'small' && 'w-3 h-3',
-      size === 'large' && 'w-5 h-5',
+      (!size || size === 'medium') && 'w-4 h-4 *:h-4 *:w-4',
+      size === 'small' && 'w-3 h-3 *:w-3 *:h-3',
+      size === 'large' && 'w-5 h-5 *:w-5 *:h-5',
       'transition duration-200',
+      // This is a hack for Windows to align the icon with the button text because the Atyp Text font is not vertically centered.
+      'inline *:inline *:bottom-[1px]',
     ];
 
     return (
@@ -88,7 +90,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}
         {text && (
-          <span className={clsx('flex flex-row items-center top-[1px]')}>
+          <span className="inline-flex flex-row items-center">
             {text ?? children}
             {hasArrow ? ' ↗' : ''}
           </span>

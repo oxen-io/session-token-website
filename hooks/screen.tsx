@@ -7,7 +7,7 @@ export function useScreenWidth() {
   const { width } = useWindowSize();
 
   // Mobile first
-  const [isSM, setisSM] = useState(true);
+  const [isSM, setisSM] = useState(false);
   const [isMD, setisMD] = useState(false);
   const [isLG, setisLG] = useState(false);
   const [isXL, setisXL] = useState(false);

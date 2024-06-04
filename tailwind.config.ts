@@ -12,7 +12,8 @@ export default {
   mode: 'jit',
   theme: {
     fontFamily: {
-      helvetica: ['Helvetica', 'Arial', 'sans-serif'],
+      'atyp-display': ['var(--font-atyp-display)'],
+      'atyp-text': ['var(--font-atyp-text)'],
     },
     screens: {
       sm: '375px',
@@ -23,10 +24,6 @@ export default {
       '3xl': '1920px',
     },
     extend: {
-      fontFamily: {
-        'atyp-display': ['var(--font-atyp-display)'],
-        'atyp-text': ['var(--font-atyp-text)'],
-      },
       animation: {
         push: 'push 0.3s linear 1',
       },
@@ -41,7 +38,7 @@ export default {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
         text: {
-          DEFAULT: 'var(--text-static)',
+          DEFAULT: 'var(--text-text)',
           gradient: 'var(--text-gradient)',
           caption: 'var(--text-caption)',
         },

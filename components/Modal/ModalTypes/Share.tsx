@@ -4,12 +4,13 @@ import { getShareSites, getSocialIcon } from '@/lib/utils';
 
 import Button from '@/components/Button/Button';
 
-import type { SettingsSchemaType } from '@/schemas/singletons/settings';
+import type { SettingsSchemaType, ShareModalSchemaType } from '@/schemas/singletons/settings';
 import { useState } from 'react';
 import s from './Share.module.sass';
 
 export default function Share({ settings }: { settings: SettingsSchemaType }) {
-  const { shareModal } = settings ?? {};
+  const { shareModal: _shareModal } = settings ?? {};
+  const shareModal = _shareModal as ShareModalSchemaType;
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
   const shareSites = getShareSites(currentUrl);

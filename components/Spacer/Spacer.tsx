@@ -3,11 +3,12 @@ import clsx from 'clsx';
 type SpacerProps = {
   /** 4px | 8px | 16px | 24px | 48px | 64px | 96px | 128px */
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | '4xl';
+  inline?: boolean;
   className?: string;
 };
 
 export const Spacer = (props: SpacerProps) => {
-  const { size = 'md', className } = props;
+  const { size = 'md', inline, className } = props;
   const sizeClasses = [
     size === 'xs' && 'm-0.5',
     size === 'sm' && 'm-1',
@@ -18,6 +19,10 @@ export const Spacer = (props: SpacerProps) => {
     size === '3xl' && 'm-12',
     size === '4xl' && 'm-20',
   ];
+
+  if (inline) {
+    return <span className={clsx(sizeClasses, className)} />;
+  }
 
   return <div className={clsx(sizeClasses, className)} />;
 };

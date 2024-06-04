@@ -9,8 +9,8 @@ import PreviewProvider from '@/components/preview/PreviewProvider';
 import { isNotProduction } from '@/lib/env';
 import { getSettings, token } from '@/lib/sanity.fetch';
 
-import { Header } from '@/components/Header/Header';
 import { DevModalServer } from '@/components/DevModalServer';
+import { Header } from '@/components/Header/Header';
 import { draftMode } from 'next/headers';
 import type { ReactNode } from 'react';
 
