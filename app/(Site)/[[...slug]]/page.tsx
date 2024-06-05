@@ -13,6 +13,11 @@ const parseSlug = (slug?: Array<string>) => slug?.join('/') ?? landingSlug;
 
 export async function generateMetadata({ params }: { params: { slug: Array<string> } }) {
   const { settings, page } = await getDocumentData(CMSDocument.Page, parseSlug(params.slug));
+
+  if (!page || !page.title || page.title === '') {
+    return metadata({ title: 'Page not found' }, settings);
+  }
+
   return metadata(page, settings);
 }
 

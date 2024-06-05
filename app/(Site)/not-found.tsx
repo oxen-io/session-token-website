@@ -4,8 +4,6 @@ import clsx from 'clsx';
 export default async function NotFound() {
   return (
     <div className={clsx('flex flex-col justify-center items-center w-full h-screen align-middle')}>
-      {/* https://github.com/vercel/next.js/issues/45620 */}
-      <title>Page not found - Session Token</title>
       <div
         className={clsx(
           'flex flex-col gap-4 justify-center items-center align-middle mt-16',
