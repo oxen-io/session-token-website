@@ -22,8 +22,8 @@ type SanityFieldTypeMap = {
 };
 
 type CustomFieldTypeMap = {
-  link: LinkSchemaType;
   button: ButtonSchemaType;
+  link: LinkSchemaType;
   socialLinks: Array<SocialLinksSchemaType>;
 };
 
