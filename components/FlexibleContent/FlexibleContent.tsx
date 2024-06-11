@@ -1,5 +1,6 @@
 import { log } from '@/lib/logger';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
+import BasicCopy from '../Basic Copy/BasicCopy';
 import BlogGrid from './Modules/BlogGrid/BlogGrid';
 import ComingSoon from './Modules/ComingSoon/ComingSoon';
 import CopyAndImage from './Modules/CopyAndImage/CopyAndImage';
@@ -26,6 +27,7 @@ const Components = {
   ComingSoon,
   GenericCta,
   FaqsList,
+  BasicCopy,
 };
 
 const ucFirst = string => {

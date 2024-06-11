@@ -13,6 +13,7 @@ const components = [
   'comingSoon',
   'genericCta',
   'faqsList',
+  'basicCopy',
 ];
 
 const flexibleSections = components.map(component =>
