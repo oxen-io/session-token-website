@@ -26,6 +26,7 @@ import forms from './documents/forms';
 import navigationLink from './documents/navigationLink';
 import page from './documents/page';
 import post from './documents/post';
+import { basicCopy } from './objects/flexibleSections/basicCopy';
 import { roadmapHero } from './objects/flexibleSections/roadmapHero';
 import { roadmapSection } from './objects/flexibleSections/roadmapSection';
 import { roadmapTabs } from './objects/flexibleSections/roadmapTabs';
@@ -56,6 +57,7 @@ const schemas = [
   comingSoon,
   genericCta,
   faqsList,
+  basicCopy,
 
   // Objects
   figure,
