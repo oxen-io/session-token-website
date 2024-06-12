@@ -70,13 +70,13 @@ export default function TileCarousel({
       {
         modules: [A11y, Navigation],
         spaceBetween: 20,
-        slidesPerView: content ? 1.2 : 1,
+        slidesPerView: 1.2,
         a11y: true,
         allowTouchMove: true,
         navigation: true,
         breakpoints: {
           1024: {
-            slidesPerView: content ? 3 : 2.85,
+            slidesPerView: 3,
             allowTouchMove: false,
           },
         },
@@ -126,6 +126,30 @@ export default function TileCarousel({
                 </svg>
               </div>
             ) : null}
+          </div>
+        ) : null}
+        {!title && hasScrollIconOnMobile ? (
+          <div
+            className={
+              (clsx(s.ScrollIcon),
+              'w-full flex md:hidden flex-row-reverse items-center align-middle mb-2')
+            }
+          >
+            <span className="flex flex-row items-center align-middle">
+              Scroll
+              <svg
+                width="77"
+                height="8"
+                viewBox="0 0 77 8"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="gray"
+              >
+                <path
+                  d="M76.4998 3.79688L69.9998 0.0440984V7.54965L76.4998 3.79688ZM70.6498 3.14688L0.964111 3.14688V4.44687L70.6498 4.44687V3.14688Z"
+                  fill="gray"
+                />
+              </svg>
+            </span>
           </div>
         ) : null}
         <div className={s.Slider}>
