@@ -128,7 +128,7 @@ export default function TileCarousel({
             ) : null}
           </div>
         ) : null}
-        {!title && hasScrollIconOnMobile ? (
+        {/* {!title && hasScrollIconOnMobile ? (
           <div
             className={
               (clsx(s.ScrollIcon),
@@ -151,7 +151,7 @@ export default function TileCarousel({
               </svg>
             </span>
           </div>
-        ) : null}
+        ) : null} */}
         <div className={s.Slider}>
           <OuterElement {...filterA11yOptions(outerElementProps)}>
             {tiles?.map((tile, index) => {
