@@ -103,7 +103,7 @@ export class QueryBuilder<D extends CMSDocument> {
   get filterString() {
     return this.query.where.length > 0
       ? ` && ${this.query.where
-          .map(filter => {
+          .map((filter) => {
             return `${String(filter.field)} ${filter.operator} ${isNull(filter.value) ? 'null' : `"${filter.value}"`}`;
           })
           .join(' && ')}`
@@ -131,7 +131,7 @@ export class FilterBuilder<D extends CMSDocument> {
     }
 
     const query = new QueryBuilder<D>(this.query).queryString;
-    const whereTags = this.query.where.map(filter => `${String(filter.field)}:${filter.value}`);
+    const whereTags = this.query.where.map((filter) => `${String(filter.field)}:${filter.value}`);
 
     if (this.query.from === CMSDocument.Settings) {
       whereTags.push(...['page', 'topic']);

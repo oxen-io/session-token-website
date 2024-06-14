@@ -35,7 +35,7 @@ export default function BlogTile({
         s.Outer,
         isFeatured && s.Featured,
         isSingle && s.Single,
-        !isSingle && !isTitle && 'hover:brightness-125 transition-all',
+        !isSingle && !isTitle && 'transition-all hover:brightness-125',
         'group'
       )}
     >

@@ -6,7 +6,7 @@ export const baseData = [
     name: 'title',
     type: 'string',
     title: 'Title',
-    validation: Rule => Rule.required(),
+    validation: (Rule) => Rule.required(),
   }),
   defineField({
     name: 'slug',
@@ -15,7 +15,7 @@ export const baseData = [
     options: {
       source: 'title',
     },
-    validation: Rule => Rule.required(),
+    validation: (Rule) => Rule.required(),
   }),
   defineField({
     name: 'metadata',
@@ -31,7 +31,7 @@ export const baseData = [
         name: 'description',
         title: 'Description',
         type: 'string',
-        validation: Rule => Rule.required(),
+        validation: (Rule) => Rule.required(),
       }),
       defineField({
         name: 'ogpImage',

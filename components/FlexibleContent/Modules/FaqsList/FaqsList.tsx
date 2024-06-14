@@ -44,7 +44,7 @@ export default function FaqsList({ categories }: { categories: any }) {
             return (
               <li
                 key={_key}
-                ref={ref => {
+                ref={(ref) => {
                   categoryRefs.current[_key] = ref;
                 }}
               >
@@ -59,7 +59,7 @@ export default function FaqsList({ categories }: { categories: any }) {
                           onClick={() => {
                             setOpenCategories(
                               openCategories.includes(_keyInnter)
-                                ? openCategories.filter(category => category !== _keyInnter)
+                                ? openCategories.filter((category) => category !== _keyInnter)
                                 : [...openCategories, _keyInnter]
                             );
                           }}

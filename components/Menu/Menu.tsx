@@ -31,8 +31,8 @@ export default function Menu({
   return (
     <ul
       className={clsx(
-        'flex mr-auto gap-[15px]',
-        footer && 'w-full max-w-[1000px] flex flex-wrap items-start gap-0 ml-[8%] pb-[100px]',
+        'mr-auto flex gap-[15px]',
+        footer && 'ml-[8%] flex w-full max-w-[1000px] flex-wrap items-start gap-0 pb-[100px]',
         'md:flex-nowrap',
         className
       )}
@@ -51,12 +51,12 @@ export default function Menu({
             }}
             className={clsx(
               'flex',
-              footer ? 'w-1/3 flex-col justify-start items-start text-start' : 'items-center'
+              footer ? 'w-1/3 flex-col items-start justify-start text-start' : 'items-center'
             )}
           >
             <div
               className={clsx(
-                'text-white text-decoration-none px-5 py-[10px] hover:text-primary cursor-pointer',
+                'text-decoration-none cursor-pointer px-5 py-[10px] text-white hover:text-primary',
                 footer && 'block px-[5px] duration-200'
               )}
             >
@@ -69,8 +69,8 @@ export default function Menu({
             {children && (
               <ul
                 className={clsx(
-                  'hover:opacity-100 hover:visible w-full w-min-[300px] bg-red-500 absolute top-[40px] left-0 p-[20px] m-0 opacity-0 hidden duration-200',
-                  footer && 'min-w-0 bg-transparent absolute top-[31px] p-0 opacity-100 visible'
+                  'w-min-[300px] absolute left-0 top-[40px] m-0 hidden w-full bg-red-500 p-[20px] opacity-0 duration-200 hover:visible hover:opacity-100',
+                  footer && 'visible absolute top-[31px] min-w-0 bg-transparent p-0 opacity-100'
                 )}
               >
                 {children?.map(({ title: itemTitle, slug: itemSlug }, sIndex) => {
@@ -78,7 +78,7 @@ export default function Menu({
                     <li key={sIndex}>
                       <div
                         className={clsx(
-                          'text-white text-decoration-none px-5 py-[10px] hover:text-primary cursor-pointer',
+                          'text-decoration-none cursor-pointer px-5 py-[10px] text-white hover:text-primary',
                           footer && 'block px-[5px] duration-200',
                           footer && 'opacity-60'
                         )}

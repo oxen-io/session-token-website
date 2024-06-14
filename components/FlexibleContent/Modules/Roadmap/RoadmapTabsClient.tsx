@@ -19,10 +19,10 @@ export default function RoadmapTabsClient({
       <li key={i}>
         <button
           onClick={() => setActiveTab(i)}
-          className="items-center justify-center flex flex-col group"
+          className="group flex flex-col items-center justify-center"
         >
           <TabButton svgData={imageData} active={activeTab === i} />
-          <span className="text-center text-xs mt-3 w-max group-hover:text-primary group-hover:opacity-100 opacity-0 ease-in-out transition-all ">
+          <span className="mt-3 w-max text-center text-xs opacity-0 transition-all ease-in-out group-hover:text-primary group-hover:opacity-100">
             {title}
           </span>
         </button>
@@ -64,7 +64,7 @@ function TabButton({ svgData, active }: { svgData: string; active: boolean }) {
   return (
     <AnimatedElement
       delay={200}
-      className="w-14 h-14"
+      className="h-14 w-14"
       dangerouslySetInnerHTML={{ __html: svgWithHover }}
     />
   );

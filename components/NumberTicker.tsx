@@ -47,7 +47,7 @@ const NumberTicker = ({
       return;
     }
     let start = 0;
-    const step = timestamp => {
+    const step = (timestamp) => {
       if (!start) {
         start = timestamp;
       }
@@ -75,7 +75,7 @@ const NumberTicker = ({
   }, [targetNumber, count]);
 
   return (
-    <motion.div ref={ref} className="inline-flex relative">
+    <motion.div ref={ref} className="relative inline-flex">
       {formattedString ? <motion.div>{majorNumber}</motion.div> : null}
       {formattedString ? (
         <motion.div

@@ -11,7 +11,7 @@ export const hero = defineType({
       name: 'title',
       title: 'Title',
       type: 'text',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     portableText('copy', 'Copy'),
     defineField({

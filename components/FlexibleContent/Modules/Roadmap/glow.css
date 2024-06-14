@@ -1,10 +1,10 @@
 /* glow.css */
 .glow {
-  @apply filter drop-shadow-lg;
+  @apply drop-shadow-lg filter;
   filter: drop-shadow(0 0 8px #76fcbdac);
 }
 
 .glow-large {
-  @apply filter drop-shadow-lg;
+  @apply drop-shadow-lg filter;
   filter: drop-shadow(0 0 16px #76fcbdac);
 }

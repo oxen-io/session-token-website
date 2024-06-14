@@ -42,17 +42,17 @@ export function Header() {
       role="navigation"
       // Try to match the global Container class
       className={clsx(
-        'relative flex items-center justify-between z-10 w-full max-w-[1580px] pt-7',
-        'lg:pt-5 lg:px-10 lg:mx-auto',
+        'relative z-10 flex w-full max-w-[1580px] items-center justify-between pt-7',
+        'lg:mx-auto lg:px-10 lg:pt-5',
         'transition duration-300'
       )}
     >
-      <div className={clsx('flex justify-between items-center w-full px-5', 'lg:w-fit lg:px-0')}>
+      <div className={clsx('flex w-full items-center justify-between px-5', 'lg:w-fit lg:px-0')}>
         <Link href="/">
           <Image
             src={Logo}
             alt="Session Token"
-            className={clsx('w-36', 'lg:w-48 lg:h-auto')}
+            className={clsx('w-36', 'lg:h-auto lg:w-48')}
             priority
           />
         </Link>
@@ -67,24 +67,24 @@ export function Header() {
       </div>
       <div
         className={clsx(
-          'absolute top-20 left-0 right-0 w-full overflow-hidden z-0',
-          'lg:relative lg:overflow-visible lg:top-0'
+          'absolute left-0 right-0 top-20 z-0 w-full overflow-hidden',
+          'lg:relative lg:top-0 lg:overflow-visible'
         )}
       >
         <div
           className={clsx(
-            'bg-background flex flex-col items-start justify-between text-lg text-white w-full px-5',
-            'lg:bg-transparent lg:flex-row lg:items-center lg:px-0',
+            'flex w-full flex-col items-start justify-between bg-background px-5 text-lg text-white',
+            'lg:flex-row lg:items-center lg:bg-transparent lg:px-0',
             'transform transition-all duration-300',
             isExpanded
-              ? 'h-dvh translate-y-0 -mb-20 pt-3 pb-10'
+              ? '-mb-20 h-dvh translate-y-0 pb-10 pt-3'
               : 'h-0 -translate-y-full lg:h-auto lg:translate-y-0'
           )}
         >
           <div
             className={clsx(
-              'flex flex-col justify-start items-start w-full gap-5',
-              'lg:flex-row lg:gap-12 lg:ml-12'
+              'flex w-full flex-col items-start justify-start gap-5',
+              'lg:ml-12 lg:flex-row lg:gap-12'
             )}
           >
             {menuItems.map((item, index) => {

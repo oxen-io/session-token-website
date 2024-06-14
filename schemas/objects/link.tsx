@@ -22,7 +22,7 @@ const fields = [
     name: 'href',
     type: 'url',
     hidden: ({ parent }) => parent?.linkType !== 'external', // hidden if link type is not external
-    validation: Rule =>
+    validation: (Rule) =>
       Rule.uri({
         allowRelative: true,
         scheme: ['https', 'http', 'mailto', 'tel'],

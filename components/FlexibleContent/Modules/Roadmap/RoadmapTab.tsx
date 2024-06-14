@@ -8,7 +8,7 @@ import RoadmapSection from './RoadmapSection';
 export default function RoadmapTab({ tab, children }: { tab: any; children: React.ReactNode }) {
   const sectionsRef = useRef<Map<any, any>>();
 
-  const sections = tab?.roadmapSections.map(section => section);
+  const sections = tab?.roadmapSections.map((section) => section);
 
   /* function scrollToSection(id) {
     const map = getMap();
@@ -45,7 +45,7 @@ export default function RoadmapTab({ tab, children }: { tab: any; children: Reac
                     {...section}
                     isFirst={i === 0}
                     isFinal={i === sections.length - 1}
-                    ref={node => {
+                    ref={(node) => {
                       const map = getMap();
                       if (node) {
                         map.set(id, node);
