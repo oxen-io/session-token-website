@@ -16,7 +16,9 @@ export default function BlogGridInner({ posts }: { posts: Array<PostSchemaType> 
   }, []);
 
   return (
-    <ul className={clsx(s.List, hasMounted && s.Mounted)}>
+    <ul
+      className={clsx(s.List, 'grid grid-cols-1 gap-10', 'lg:grid-cols-3', hasMounted && s.Mounted)}
+    >
       {posts.map((post, index) => (
         <li
           key={post.slug.current}
