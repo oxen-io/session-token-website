@@ -1,17 +1,4 @@
 .Outer
-    display: grid
-    grid-template-columns: 1fr
-    gap: 20px
-
-    &.Featured
-        grid-template-columns: 1fr 1fr
-        gap: 40px
-
-        .Content
-            display: flex
-            flex-direction: column
-            justify-content: center
-
     &:not(.Featured)
         h3
             font-size: 20px
@@ -45,23 +32,3 @@
         color: var(--color-primary)
         margin-top: 15px
         display: block
-
-@media(max-width: 500px)
-    .Outer
-        &.Featured
-            grid-template-columns: 1fr
-            gap: 20px
-
-            .Content
-                display: block
-
-        &.Single
-            display: flex
-            flex-direction: column-reverse
-            
-            .Image
-                margin-left: -10px
-                width: calc(100% + 20px)
-
-                img
-                    border-radius: 0px

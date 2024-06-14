@@ -33,16 +33,33 @@ export default function BlogTile({
       href={`/blog/${slug.current}`}
       className={clsx(
         s.Outer,
-        isFeatured && s.Featured,
-        isSingle && s.Single,
+
+        isSingle ? 'flex flex-col-reverse' : 'grid grid-cols-1 gap-5',
+        isFeatured && 'lg:grid-cols-2 lg:gap-10',
         !isSingle && !isTitle && 'transition-all hover:brightness-125',
         'group'
       )}
     >
-      <AnimatedElement className={s.Image} type="div" delay={100} disabled={!isFeatured}>
-        <Image src={imageUrl} width={560} height={345} alt={`Featured image for ${title}`} />
+      <AnimatedElement
+        className={clsx(s.Image, isSingle && 'w-full')}
+        type="div"
+        delay={100}
+        disabled={!isFeatured}
+      >
+        <Image
+          className={clsx('w-full')}
+          src={imageUrl}
+          width={560}
+          height={345}
+          alt={`Featured image for ${title}`}
+        />
       </AnimatedElement>
-      <AnimatedElement className={s.Content} type="div" delay={200} disabled={!isFeatured}>
+      <AnimatedElement
+        className={clsx(s.Content, isFeatured && 'flex flex-col justify-center')}
+        type="div"
+        delay={200}
+        disabled={!isFeatured}
+      >
         <h3 className={clsx(!isSingle && 'group-hover:text-primary')}>{title}</h3>
         <div className={s.Meta}>
           <span>{moment(datePosted).format(`MMMM D, YYYY`)}</span>
