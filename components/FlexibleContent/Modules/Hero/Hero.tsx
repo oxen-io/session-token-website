@@ -86,13 +86,13 @@ export default function Hero({
           className={clsx(
             s.ImageCont,
             statsVisibleOnMobile && s.Darkened,
-            backgroundSplineModel && '-mt-6'
+            backgroundSplineModel && '-mt-6 h-full'
           )}
         >
           {backgroundImage && !backgroundSplineModel && (
             <AnimatedBigImage image={backgroundImage} />
           )}
-          {backgroundSplineModel && <SplineModel url={backgroundSplineModel.url} />}
+          {backgroundSplineModel?.url ? <SplineModel url={backgroundSplineModel.url} /> : null}
         </div>
       </div>
     </section>

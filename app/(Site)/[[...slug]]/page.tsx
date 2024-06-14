@@ -28,11 +28,7 @@ export async function generateStaticParams() {
     .neq('slug.current', null)
     .execute();
 
-  const filteredPages = pages.filter(
-    ({ slug }) => slug.current !== 'launch-plan' && slug.current !== 'testnet-incentive-program'
-  );
-
-  return filteredPages.map(({ slug }) => ({ slug: [slug.current] }));
+  return pages.map(({ slug }) => ({ slug: [slug.current] }));
 }
 
 export default async function PageSlugRoute({ params }: { params: { slug: Array<string> } }) {
