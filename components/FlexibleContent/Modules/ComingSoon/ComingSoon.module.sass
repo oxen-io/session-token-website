@@ -1,11 +1,4 @@
 .Outer
-    min-height: 100vh
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    text-align: center
-
     &.Mounted .Bg
         opacity: 1
         transform: scale(1)
@@ -37,25 +30,8 @@
         transform: scale(1.05)
         transition: 1s
 
-    .Logo
-        width: 200px
-        height: auto
-
     .Buttons
         display: flex
         flex-direction: row
         gap: 10px
         margin-top: 25px
-
-@media(max-width: 500px)
-    .Outer
-        overflow: hidden
-        
-        h1
-            font-size: 50px
-
-        .Bg
-            max-width: none
-            width: 150%
-            left: 50%
-            translate: -50% 0%

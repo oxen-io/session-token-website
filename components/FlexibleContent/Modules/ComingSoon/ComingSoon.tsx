@@ -38,13 +38,29 @@ export default function ComingSoon({
   }, []);
 
   return (
-    <section className={clsx(s.Outer, hasMounted && s.Mounted)}>
-      <Image src={backgroundImageUrl} className={s.Bg} width={1920} height={1080} alt="" />
-      <div>
-        <AnimatedElement delay={300} type="div">
-          <Image src={Logo} alt="Session Token" className={s.Logo} priority />
+    <section
+      className={clsx(
+        s.Outer,
+        'relative flex flex-col items-center justify-center text-center',
+        hasMounted && s.Mounted
+      )}
+    >
+      <Image
+        src={backgroundImageUrl}
+        className={clsx('top-0 min-h-screen object-cover', 'lg:max-h-screen lg:object-contain')}
+        width={1920}
+        height={1080}
+        alt=""
+      />
+      <div className={clsx('absolute w-full')}>
+        <AnimatedElement className={clsx('')} delay={300} type="div">
+          <Image src={Logo} alt="Session Token" className={clsx('mb-2 w-52', 'md:mb-4')} priority />
         </AnimatedElement>
-        <AnimatedElement className={`Huge HasGradient`} type="h1" delay={400}>
+        <AnimatedElement
+          className={clsx('HasGradient', 'text-5xl', 'md:text-[80px]')}
+          type="h1"
+          delay={400}
+        >
           {title}
         </AnimatedElement>
         {buttons && (
