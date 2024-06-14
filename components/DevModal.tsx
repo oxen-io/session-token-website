@@ -17,15 +17,15 @@ const Modal = ({
   return (
     <div
       className={clsx(
-        'fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center',
+        'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50',
         isOpen ? '' : 'hidden'
       )}
       role="dialog"
       onClick={onClose}
     >
       <div
-        className={clsx('bg-gray-950 p-8 rounded-lg shadow-lg', className)}
-        onClick={event => event.stopPropagation()}
+        className={clsx('rounded-lg bg-gray-950 p-8 shadow-lg', className)}
+        onClick={(event) => event.stopPropagation()}
       >
         {children}
       </div>
@@ -39,16 +39,16 @@ export const DevModal = ({ slugs }: { slugs: Array<string> }) => {
   const [lastSearchIndex, setLastSearchIndex] = useState<number>(0);
 
   useEffect(() => {
-    const handleKeyDown = event => {
+    const handleKeyDown = (event) => {
       // Checks for the ctrl + k key combination
       if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
         event.preventDefault();
-        setIsModalOpen(prev => !prev);
+        setIsModalOpen((prev) => !prev);
       } else if (event.code === 'Escape') {
         setIsModalOpen(false);
       } else {
         setLastSearchChar(event.key);
-        const matchingLinks = slugs.filter(slug => slug.toLowerCase().charAt(0) === event.key);
+        const matchingLinks = slugs.filter((slug) => slug.toLowerCase().charAt(0) === event.key);
         if (matchingLinks.length > 0) {
           let targetIndex = lastSearchIndex;
           if (event.key === lastSearchChar) {

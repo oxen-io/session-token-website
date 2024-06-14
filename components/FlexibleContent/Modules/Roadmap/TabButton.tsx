@@ -13,7 +13,7 @@ export async function TabButton({ image, active }: { image: SanityImage; active:
   }
 
   // eslint-disable-next-line more/no-then
-  const svgData = await fetch(src).then(res => res.text());
+  const svgData = await fetch(src).then((res) => res.text());
 
   // remove width and height from svg
   const svgDataNoWidth = svgData.replace(/width=".*?"/, '');
@@ -31,7 +31,7 @@ export async function TabButton({ image, active }: { image: SanityImage; active:
   return (
     <AnimatedElement
       delay={200}
-      className="w-12 h-12"
+      className="h-12 w-12"
       dangerouslySetInnerHTML={{ __html: svgWithHover }}
     />
   );

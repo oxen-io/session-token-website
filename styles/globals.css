@@ -57,8 +57,8 @@
     /* TODO this make fonts slightly thinner and lighter in Firefox compared to figma */
     /* @apply antialiased; */
     /* TODO Do we need the height, outline and width on html as well? */
-    @apply h-full outline-none w-screen overflow-x-hidden;
-    @apply font-atyp-text font-normal text-lg leading-6 bg-background text-foreground;
+    @apply h-full w-screen overflow-x-hidden outline-none;
+    @apply bg-background font-atyp-text text-lg font-normal leading-6 text-foreground;
 
     /* Fix for Safari */
     /* https://stackoverflow.com/a/37365794 */
@@ -86,8 +86,8 @@ button {
 }
 
 .glitch:after {
-  @apply text-5xl font-semibold bg-white text-gray-dark lg:text-6xl;
-  @apply absolute top-0 left-0 right-0 overflow-hidden;
+  @apply bg-white text-5xl font-semibold text-gray-dark lg:text-6xl;
+  @apply absolute left-0 right-0 top-0 overflow-hidden;
   content: attr(data-glitch-text);
   clip: rect(0, 900px, 0, 0);
   text-shadow: -1px 0 var(--primary-DEFAULT);
@@ -201,25 +201,25 @@ button {
 }
 
 .glow {
-  @apply filter drop-shadow-lg;
+  @apply drop-shadow-lg filter;
   filter: drop-shadow(0 0 8px #76fcbdac);
 }
 
 .glow-large {
-  @apply filter drop-shadow-lg;
+  @apply drop-shadow-lg filter;
   filter: drop-shadow(0 0 16px #76fcbdac);
 }
 
 .glow-red {
-  @apply filter drop-shadow-lg;
+  @apply drop-shadow-lg filter;
   filter: drop-shadow(0 0 8px #ff0000);
 }
 
 .glow-yellow {
-  @apply filter drop-shadow-lg;
+  @apply drop-shadow-lg filter;
   filter: drop-shadow(0 0 8px #ffea00);
 }
 
 .post-content .AnimatedElement a {
-  @apply text-primary font-extralight;
+  @apply font-extralight text-primary;
 }

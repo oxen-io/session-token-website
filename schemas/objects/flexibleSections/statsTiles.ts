@@ -18,12 +18,12 @@ export const statsTiles = defineType({
             defineField({
               name: 'figure',
               type: 'string',
-              validation: Rule => Rule.required(),
+              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'copy',
               type: 'string',
-              validation: Rule => Rule.required(),
+              validation: (Rule) => Rule.required(),
             }),
             defineField({
               name: 'backgroundImage',

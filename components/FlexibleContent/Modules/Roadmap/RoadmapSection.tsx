@@ -47,8 +47,8 @@ const RoadmapSection = forwardRef(
       <div ref={scrollRef}>
         <section className={s.CopyAndImage} ref={ref}>
           <div className="relative flex flex-row">
-            <div className="flex flex-col items-center flex-grow w-[120px] ml-[-120px] mr-[60px]">
-              <figure className="progress flex-grow h-full">
+            <div className="ml-[-120px] mr-[60px] flex w-[120px] flex-grow flex-col items-center">
+              <figure className="progress h-full flex-grow">
                 <svg
                   width={width}
                   height="900px"
@@ -140,7 +140,7 @@ const RoadmapSection = forwardRef(
                     cy={circleY}
                     r={circleRadius}
                     strokeWidth={3}
-                    className={'fill-[#00F782] glow-large'}
+                    className={'glow-large fill-[#00F782]'}
                     style={{ scale: circleActiveScale }}
                   />
                   <motion.circle
@@ -196,18 +196,18 @@ const RoadmapSection = forwardRef(
                 {title && (
                   <AnimatedElement
                     type="h2"
-                    className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-transparent font-extrabold text-xl mt-8"
+                    className="mt-8 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-xl font-extrabold text-transparent"
                     delay={100}
                     dangerouslySetInnerHTML={{ __html: title }}
                   />
                 )}
                 {copy && (
-                  <AnimatedElement className="mt-[40px] mb-[30px] mr-[12px]" type="div" delay={200}>
+                  <AnimatedElement className="mb-[30px] mr-[12px] mt-[40px]" type="div" delay={200}>
                     <PortableText value={copy} />
                   </AnimatedElement>
                 )}
                 {showLink && link && (
-                  <NavLink {...link} className="text-primary text-[26px] font-bold">
+                  <NavLink {...link} className="text-[26px] font-bold text-primary">
                     <span className={s.LinkLabel}>{link.title}</span>
                   </NavLink>
                 )}

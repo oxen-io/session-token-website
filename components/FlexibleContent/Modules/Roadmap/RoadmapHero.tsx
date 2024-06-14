@@ -50,7 +50,7 @@ export default function RoadmapHero({
           {title && (
             <AnimatedElement
               type="h1"
-              className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-transparent font-extrabold text-xl mt-8"
+              className="mt-8 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-xl font-extrabold text-transparent"
               delay={100}
               dangerouslySetInnerHTML={{ __html: title }}
             />
@@ -62,7 +62,7 @@ export default function RoadmapHero({
           )}
           {buttonTitle && (
             <AnimatedElement
-              className="bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text pr-2 text-transparent font-extrabold text-xl mt-4"
+              className="mt-4 bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text pr-2 text-xl font-extrabold text-transparent"
               delay={300}
               dangerouslySetInnerHTML={{ __html: buttonTitle }}
             />

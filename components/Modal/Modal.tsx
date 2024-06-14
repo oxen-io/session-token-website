@@ -36,8 +36,8 @@ export default function Modal({ settings }: { settings: SettingsSchemaType }) {
     >
       <div
         className={styles[type]}
-        onClick={e => e.stopPropagation()}
-        onKeyDown={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
         role="button"
         tabIndex={0}
         data-lenis-prevent

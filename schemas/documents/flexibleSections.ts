@@ -16,7 +16,7 @@ const components = [
   'basicCopy',
 ];
 
-const flexibleSections = components.map(component =>
+const flexibleSections = components.map((component) =>
   defineArrayMember({
     type: component,
   })

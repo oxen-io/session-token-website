@@ -26,7 +26,7 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
   );
 
   return (
-    <footer className="w-full mt-[50px] mb-5">
+    <footer className="mb-5 mt-[50px] w-full">
       <div className="m-auto max-w-[1580px] px-[40px]">
         <div className={s.FooterCont}>
           <div className={s.Main}>

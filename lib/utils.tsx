@@ -4,7 +4,7 @@ import { throttle } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 
 /* eslint-disable max-len */
-export const getSocialIcon = company => {
+export const getSocialIcon = (company) => {
   switch (company) {
     case 'x':
       return (
@@ -184,7 +184,7 @@ export const getSocialIcon = company => {
 };
 /* eslint-enable max-len */
 
-export const getShareSites = currentUrl => {
+export const getShareSites = (currentUrl) => {
   return [
     {
       company: 'facebook',
@@ -233,7 +233,7 @@ export const useThrottledHandleScroll = (callback, interval = 100) => {
   return useRef(throttle(callback, interval));
 };
 
-export const stripHtmlFromString = htmlString => {
+export const stripHtmlFromString = (htmlString) => {
   const tmp = document.createElement('DIV');
   tmp.innerHTML = htmlString;
   return tmp.textContent || tmp.innerText || '';

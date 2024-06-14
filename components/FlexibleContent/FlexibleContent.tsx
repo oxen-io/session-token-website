@@ -30,7 +30,7 @@ const Components = {
   BasicCopy,
 };
 
-const ucFirst = string => {
+const ucFirst = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 

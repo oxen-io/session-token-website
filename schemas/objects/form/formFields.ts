@@ -15,7 +15,7 @@ const formFields = defineType({
       name: 'fieldName',
       title: 'Field Name',
       type: 'string',
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'placeholder',
@@ -41,7 +41,7 @@ const formFields = defineType({
         },
         maxLength: 200,
       },
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'inputType',
@@ -58,7 +58,7 @@ const formFields = defineType({
           { value: 'file', title: 'File upload' },
         ],
       },
-      validation: Rule => Rule.required(),
+      validation: (Rule) => Rule.required(),
     }),
   ],
 });
