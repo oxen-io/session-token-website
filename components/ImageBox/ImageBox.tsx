@@ -39,7 +39,7 @@ export default function ImageBox({
   return (
     <div
       className={className}
-      ref={ref => {
+      ref={(ref) => {
         if (innerRef) {
           innerRef(ref);
         }

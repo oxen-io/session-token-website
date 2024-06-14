@@ -15,7 +15,7 @@ const formRow = defineType({
       title: 'Form Fields',
       type: 'array',
       of: [defineArrayMember({ type: 'formFields' })],
-      validation: Rule => Rule.min(1).max(2),
+      validation: (Rule) => Rule.min(1).max(2),
     }),
   ],
   preview: {

@@ -5,12 +5,12 @@ export const blocksToText = (blocks, opts = {}) => {
 
   const options = { ...defaults, ...opts };
   return blocks
-    .map(block => {
+    .map((block) => {
       if (block._type !== 'block' || !block.children) {
         return options.nonTextBehavior === 'remove' ? '' : `[${block._type} block]`;
       }
 
-      return block.children.map(child => child.text).join('');
+      return block.children.map((child) => child.text).join('');
     })
     .join('\n\n');
 };
@@ -23,7 +23,7 @@ export const nl2p = (str, asString) => {
   const lines = str.split('\n').filter(Boolean);
 
   if (asString) {
-    return lines.map(item => `<p>${item}</p>`).join('');
+    return lines.map((item) => `<p>${item}</p>`).join('');
   }
 
   return lines.map((item, key) => <p key={key}>{item}</p>);
@@ -58,7 +58,7 @@ export const nl2br = (str, asString) => {
   });
 };
 
-export const replaceEmailWithMailToLinks = str => {
+export const replaceEmailWithMailToLinks = (str) => {
   if (!str) {
     return str;
   }

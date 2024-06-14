@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 export async function generateStaticParams() {
   const allPosts = await sanityQuery.from(CMSDocument.Post).select().execute();
 
-  generateRssFeed(allPosts).catch(err => {
+  generateRssFeed(allPosts).catch((err) => {
     throw new Error(err);
   });
 

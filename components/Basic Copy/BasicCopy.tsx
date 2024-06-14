@@ -17,7 +17,7 @@ export default function BasicCopy({
   const mainRef = useRef<any>();
 
   const allH2s = copy.filter(
-    block => block._type === 'block' && block.style === 'h2'
+    (block) => block._type === 'block' && block.style === 'h2'
   ) as Array<CopyBlock>;
 
   return (

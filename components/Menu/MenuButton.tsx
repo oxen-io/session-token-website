@@ -13,7 +13,7 @@ export default function MenuButton({
   return (
     <button
       className={clsx(
-        'h-9 w-9 border border-solid border-primary rounded-full ml-1',
+        'ml-1 h-9 w-9 rounded-full border border-solid border-primary',
         s.Outer,
         open && s.Open,
         className

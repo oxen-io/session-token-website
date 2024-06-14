@@ -23,7 +23,7 @@ const fields = [
         { title: 'Discord', value: 'discord' },
       ],
     },
-    validation: Rule => Rule.required(),
+    validation: (Rule) => Rule.required(),
   }),
   defineField({
     name: 'link',

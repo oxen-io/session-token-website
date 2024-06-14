@@ -23,7 +23,7 @@ const y = height / 2;
 const TimelineSelector = ({ sections, defaultSection, scrollToSection }: any) => {
   const [activeSegment, setActiveSegment] = useState(defaultSection);
 
-  const handleClick = id => {
+  const handleClick = (id) => {
     setActiveSegment(id);
     scrollToSection(id);
   };
@@ -37,8 +37,8 @@ const TimelineSelector = ({ sections, defaultSection, scrollToSection }: any) =>
             key={segment}
             type="button"
             className={clsx(
-              '-mr-[28px] flex flex-col items-center stroke-[#535353] hover:fill-[#00F782] hover:stroke-[#00F782] hover:from-[#00F782] hover:to-[#00F782] cursor-pointer hover:z-20 transition-all duration-0.5s ease-in-out from-[#ACE2D5] to-[#405E56]',
-              active ? 'z-30 text-2xl text-[#00F782]' : 'z-10 text-md'
+              'duration-0.5s -mr-[28px] flex cursor-pointer flex-col items-center from-[#ACE2D5] to-[#405E56] stroke-[#535353] transition-all ease-in-out hover:z-20 hover:from-[#00F782] hover:to-[#00F782] hover:fill-[#00F782] hover:stroke-[#00F782]',
+              active ? 'z-30 text-2xl text-[#00F782]' : 'text-md z-10'
             )}
             onClick={() => {
               handleClick(segment);
@@ -46,7 +46,7 @@ const TimelineSelector = ({ sections, defaultSection, scrollToSection }: any) =>
           >
             <div
               className={clsx(
-                ' absolute bottom-0 mb-8',
+                'absolute bottom-0 mb-8',
                 active ? '' : 'bg-gradient-to-br bg-clip-text text-transparent'
               )}
             >
@@ -97,7 +97,7 @@ const TimelineSelector = ({ sections, defaultSection, scrollToSection }: any) =>
               width={width}
               height={height}
               xmlns="http://www.w3.org/2000/svg"
-              className={`glow mt-[-29.1px] -z-50`}
+              className={`glow -z-50 mt-[-29.1px]`}
             >
               {active && (
                 <Circle

@@ -11,16 +11,16 @@ export default function PostContent({ copy }: { copy: CopyFields }) {
   const mainRef = useRef<any>();
 
   const allH2s = copy.filter(
-    block => block._type === 'block' && block.style === 'h2'
+    (block) => block._type === 'block' && block.style === 'h2'
   ) as Array<CopyBlock>;
 
   return (
-    <section className={clsx('post-content', s.Outer, allH2s.length > 0 && 'grid')}>
+    <section className={clsx('post-content my-12', s.Outer, allH2s.length > 0 && 'grid')}>
       <AnimatedElement innerRef={mainRef} type="main" delay={250}>
         <PortableText value={copy} />
       </AnimatedElement>
       {allH2s.length > 0 && (
-        <aside>
+        <aside className={clsx('hidden', 'lg:block')}>
           <AnimatedElement type="div" delay={300}>
             <h5>In this article</h5>
             <ul>
