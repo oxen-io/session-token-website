@@ -19,6 +19,7 @@ import { iframe } from './objects/iframe';
 import link from './objects/link';
 import portableImage from './objects/portableImage';
 import quote from './objects/quote';
+import splineModel from './objects/splineModel';
 import socialLinks from './partials/socialLinks';
 
 import author from './documents/author';
@@ -70,6 +71,7 @@ const schemas = [
   button,
   iframe,
   socialLinks,
+  splineModel,
 ] satisfies Array<SchemaTypeDefinition>;
 
 export default schemas;

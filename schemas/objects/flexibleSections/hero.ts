@@ -30,6 +30,24 @@ export const hero = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'backgroundSplineModel',
+      type: 'object',
+      title: 'Background Spline Model',
+      fields: [
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+        }),
+        defineField({
+          name: 'url',
+          type: 'string',
+          title: 'url',
+        }),
+      ],
+    }),
+    defineField({
       name: 'type',
       type: 'string',
       title: 'Type',
