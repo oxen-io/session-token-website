@@ -10,6 +10,7 @@ import {
   AnimatedElement,
 } from '@/components/AnimatedComponent/AnimatedComponent';
 import ScrollButton from '@/components/Button/ScrollButton';
+import SplineModel from '@/components/SplineModel';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import { useState } from 'react';
 import s from './Hero.module.sass';
@@ -20,12 +21,17 @@ export default function Hero({
   copy,
   buttons,
   backgroundImage,
+  backgroundSplineModel,
   type,
 }: {
   title: string;
   copy: any;
   buttons: Array<ButtonSchemaType>;
   backgroundImage: any;
+  backgroundSplineModel: {
+    alt: string;
+    url: string;
+  };
   type: 'default' | 'rewards';
 }) {
   const [statsVisibleOnMobile, setStatsVisibleOnMobile] = useState(false);
@@ -76,8 +82,17 @@ export default function Hero({
           )}
         </div>
         {type === 'rewards' ? <RewardStats visibleOnMobile={statsVisibleOnMobile} /> : null}
-        <div className={clsx(s.ImageCont, statsVisibleOnMobile && s.Darkened)}>
-          {backgroundImage && <AnimatedBigImage image={backgroundImage} />}
+        <div
+          className={clsx(
+            s.ImageCont,
+            statsVisibleOnMobile && s.Darkened,
+            backgroundSplineModel && '-mt-6'
+          )}
+        >
+          {backgroundImage && !backgroundSplineModel && (
+            <AnimatedBigImage image={backgroundImage} />
+          )}
+          {backgroundSplineModel && <SplineModel url={backgroundSplineModel.url} />}
         </div>
       </div>
     </section>
