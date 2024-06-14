@@ -28,6 +28,7 @@
     "@sanity/orderable-document-list": "^1.2.1",
     "@sanity/preview-kit": "5.0.33",
     "@sanity/vision": "3.34.0",
+    "@vercel/og": "^0.6.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "2.1.0",
     "cssnano": "6.1.0",
