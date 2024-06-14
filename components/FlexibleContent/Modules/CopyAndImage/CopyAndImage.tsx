@@ -29,7 +29,7 @@ export default function CopyAndImage({
   return (
     <section className={clsx(s.CopyAndImage)}>
       <div className={clsx(s.Cont, 'Container', alignment && s[alignment])}>
-        <AnimatedElement className={s.Content} delay={isReversed ? 200 : 100}>
+        <AnimatedElement className={clsx(s.Content, 'flex-grow')} delay={isReversed ? 200 : 100}>
           <div className="smallTitle">{title}</div>
           {copy && (
             <h2>
