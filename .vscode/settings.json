@@ -12,6 +12,10 @@
   "files.watcherExclude": {
     "node_modules": true
   },
+  "[sass]": {
+    "editor.formatOnSave": false, // Disable format on save for .sass files
+    "editor.defaultFormatter": null // Disable default formatter for .sass files
+  },
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "tailwindCSS.experimental.classRegex": [
     ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
