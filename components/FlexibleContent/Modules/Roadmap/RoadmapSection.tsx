@@ -1,16 +1,14 @@
 'use client';
 
-import clsx from 'clsx';
-
 import PortableText from 'components/PortableText/PortableText';
 
 import ImageBox from 'components/shared/ImageBox';
 
+import { useScreenWidth } from '@/hooks/screen';
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';
 import NavLink from 'components/NavLink/NavLink';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { forwardRef, useRef } from 'react';
-import s from './RoadmapSection.module.sass';
 
 const circleRadius = 26;
 const largeCircleRadius = circleRadius * 1.05;
@@ -25,6 +23,7 @@ const strokeFadePercent = 20;
 // eslint-disable-next-line react/display-name
 const RoadmapSection = forwardRef(
   ({ subtitle, title, copy, image, showLink, link, isFirst, isFinal }: any, ref: any) => {
+    const { isLG } = useScreenWidth();
     const scrollRef = useRef(null);
     const { scrollYProgress } = useScroll({
       target: scrollRef,
@@ -181,11 +180,12 @@ const RoadmapSection = forwardRef(
               </svg>
             </figure>
           </div>
-          <div className="flex w-full flex-col-reverse items-center lg:flex-row lg:pl-24">
-            <AnimatedElement className={clsx(s.Content, 'w-full')} delay={100}>
+          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:pl-24">
+            <AnimatedElement className="w-full" delay={100}>
               {subtitle && (
                 <AnimatedElement
                   type="h3"
+                  className="bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text text-base font-medium text-transparent lg:text-lg"
                   delay={0}
                   dangerouslySetInnerHTML={{
                     __html: subtitle,
@@ -195,14 +195,14 @@ const RoadmapSection = forwardRef(
               {title && (
                 <AnimatedElement
                   type="h2"
-                  className="mt-8 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-4xl font-medium text-transparent lg:text-8xl"
+                  className="mt-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-4xl font-medium text-transparent lg:mt-8 lg:text-7xl"
                   delay={100}
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
               )}
               {copy && (
                 <AnimatedElement
-                  className="mb-[30px] mr-[12px] mt-[40px] text-base font-medium lg:text-3xl"
+                  className="mt-3 text-base font-medium lg:mb-7 lg:mr-3 lg:mt-8 lg:text-2xl"
                   type="div"
                   delay={200}
                 >
@@ -210,7 +210,7 @@ const RoadmapSection = forwardRef(
                 </AnimatedElement>
               )}
               {showLink && link && (
-                <NavLink {...link} className="text-[26px] font-bold text-primary">
+                <NavLink {...link} className="text-base font-bold text-primary">
                   <span>{link.title}</span>
                 </NavLink>
               )}
