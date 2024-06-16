@@ -4,7 +4,6 @@ import PortableText from 'components/PortableText/PortableText';
 
 import ImageBox from 'components/shared/ImageBox';
 
-import { useScreenWidth } from '@/hooks/screen';
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';
 import NavLink from 'components/NavLink/NavLink';
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -23,7 +22,6 @@ const strokeFadePercent = 20;
 // eslint-disable-next-line react/display-name
 const RoadmapSection = forwardRef(
   ({ subtitle, title, copy, image, showLink, link, isFirst, isFinal }: any, ref: any) => {
-    const { isLG } = useScreenWidth();
     const scrollRef = useRef(null);
     const { scrollYProgress } = useScroll({
       target: scrollRef,
