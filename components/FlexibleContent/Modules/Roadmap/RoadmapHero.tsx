@@ -14,10 +14,6 @@ import clsx from 'clsx';
 import type React from 'react';
 import s from './RoadmapHero.module.sass';
 
-function containsNewLine(str: string) {
-  return str.includes('\n');
-}
-
 export default function RoadmapHero({
   subtitle,
   title,
@@ -41,21 +37,21 @@ export default function RoadmapHero({
         {subtitle && (
           <AnimatedElement
             type="h3"
+            className="hidden bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text text-lg font-medium text-transparent md:block"
             delay={0}
             dangerouslySetInnerHTML={{ __html: subtitle }}
-            className={clsx(containsNewLine(title) && '-mt-24')}
           />
         )}
         {title && (
           <AnimatedElement
             type="h1"
-            className="mt-8 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-xl font-extrabold text-transparent"
+            className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-7xl font-bold text-transparent lg:text-[82px]"
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
           />
         )}
         {copy && (
-          <AnimatedElement className="mt-[40px]" type="div" delay={200}>
+          <AnimatedElement type="div" delay={200}>
             <PortableText value={copy} />
           </AnimatedElement>
         )}
