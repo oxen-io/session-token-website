@@ -178,12 +178,12 @@ const RoadmapSection = forwardRef(
               </svg>
             </figure>
           </div>
-          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:pl-24">
-            <AnimatedElement className="w-full" delay={100}>
+          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:pl-24">
+            <AnimatedElement className="flex w-full flex-col gap-4 lg:gap-8" delay={100}>
               {subtitle && (
                 <AnimatedElement
                   type="h3"
-                  className="bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text text-base font-medium text-transparent lg:text-lg"
+                  className="-mb-1 bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text text-sm font-medium text-transparent lg:-mb-2 lg:text-lg"
                   delay={0}
                   dangerouslySetInnerHTML={{
                     __html: subtitle,
@@ -193,14 +193,14 @@ const RoadmapSection = forwardRef(
               {title && (
                 <AnimatedElement
                   type="h2"
-                  className="mt-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-4xl font-medium text-transparent lg:mt-8 lg:text-7xl"
+                  className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text text-4xl font-medium text-transparent lg:text-7xl"
                   delay={100}
                   dangerouslySetInnerHTML={{ __html: title }}
                 />
               )}
               {copy && (
                 <AnimatedElement
-                  className="mt-3 text-base font-medium lg:mb-7 lg:mr-3 lg:mt-8 lg:text-2xl"
+                  className="text-base font-medium lg:text-2xl"
                   type="div"
                   delay={200}
                 >
@@ -208,7 +208,7 @@ const RoadmapSection = forwardRef(
                 </AnimatedElement>
               )}
               {showLink && link && (
-                <NavLink {...link} className="text-base font-bold text-primary">
+                <NavLink {...link} className="text-lg font-medium text-primary lg:text-2xl">
                   <span>{link.title}</span>
                 </NavLink>
               )}
