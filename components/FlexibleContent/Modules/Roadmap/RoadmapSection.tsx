@@ -21,29 +21,31 @@ const circleY = y + 320;
 const strokeFadePercent = 20;
 
 interface RoadmapLineProps extends HTMLAttributes<HTMLDivElement> {
-  scrollRef: React.RefObject<HTMLDivElement>;
+  scrollYProgress: any;
+  circlePassiveScale: any;
+  circleActiveScale: any;
+  circleStrokeGradient: any;
+  circleFillGradient: any;
   isFirst: boolean;
   isFinal: boolean;
 }
 
 /** NOTE: The roadmap line is very fragile and needs extensive testing if any changes are made */
 const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
-  ({ className, scrollRef, isFirst, isFinal, ...props }, ref) => {
-    const { scrollYProgress } = useScroll({
-      target: scrollRef,
-      smooth: 0.5,
-      offset: ['start center', 'end center'],
-    });
-
-    const circlePassiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0.75, 1]);
-    const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
-    const circleStrokeGradient = useTransform(scrollYProgress, [0.3, 0.5], ['#5C5C5C', '#000000']);
-    const circleFillGradient = useTransform(
+  (
+    {
+      className,
       scrollYProgress,
-      [0.3, 0.5],
-      ['var(--color-black)', 'none']
-    );
-
+      circlePassiveScale,
+      circleActiveScale,
+      circleStrokeGradient,
+      circleFillGradient,
+      isFirst,
+      isFinal,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <div
         ref={ref}
@@ -207,6 +209,21 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
   ) => {
     const scrollRef = useRef(null);
 
+    const { scrollYProgress } = useScroll({
+      target: scrollRef,
+      smooth: 0.5,
+      offset: ['start center', 'end center'],
+    });
+
+    const circlePassiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0.75, 1]);
+    const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+    const circleStrokeGradient = useTransform(scrollYProgress, [0.3, 0.5], ['#5C5C5C', '#000000']);
+    const circleFillGradient = useTransform(
+      scrollYProgress,
+      [0.3, 0.5],
+      ['var(--color-black)', 'none']
+    );
+
     return (
       <div ref={scrollRef}>
         <section
@@ -215,7 +232,11 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
           {...props}
         >
           <RoadmapLine
-            scrollRef={scrollRef}
+            scrollYProgress={scrollYProgress}
+            circlePassiveScale={circlePassiveScale}
+            circleActiveScale={circleActiveScale}
+            circleStrokeGradient={circleStrokeGradient}
+            circleFillGradient={circleFillGradient}
             className="-ml-16 -mr-4 lg:ml-0"
             isFirst={isFirst}
             isFinal={isFinal}
