@@ -2,10 +2,10 @@
 
 import { useRef, useState } from 'react';
 
-import clsx from 'clsx';
-import PortableText from '@/components/PortableText/PortableText';
-import FadeCollapse from '@/components/FadeCollapse/FadeCollapse';
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
+import FadeCollapse from '@/components/FadeCollapse/FadeCollapse';
+import PortableText from '@/components/PortableText/PortableText';
+import clsx from 'clsx';
 import s from './FaqsList.module.sass';
 
 export default function FaqsList({ categories }: { categories: any }) {
@@ -13,7 +13,7 @@ export default function FaqsList({ categories }: { categories: any }) {
   const categoryRefs = useRef<any>({});
 
   return (
-    <section className={clsx(s.Outer, 'Container')}>
+    <section className={clsx(s.Outer)}>
       <AnimatedElement type="legend" delay={100} className={s.Legend}>
         <div>
           <strong>Table of contents</strong>

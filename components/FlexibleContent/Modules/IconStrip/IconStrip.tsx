@@ -7,7 +7,7 @@ import s from './IconStrip.module.sass';
 export default function IconStrip({ title, icons }: { title: string; icons: any }) {
   return (
     <section className={s.IconStrip}>
-      <div className={clsx(s.Cont, 'Container')}>
+      <div className={clsx(s.Cont)}>
         {title && <div className="smallTitle">{title}</div>}
         {icons && (
           <ul>

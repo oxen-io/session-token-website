@@ -34,9 +34,10 @@ export default function RoadmapHero({
   backgroundImage: any;
   children: React.ReactNode;
 }) {
+  // TODO resolve any conflicts with the roadmap branch after it is merged
   return (
     <section className={clsx(s.Hero)}>
-      <div className={clsx(s.Cont, 'Container', 'w-[1500px]')}>
+      <div className={clsx(s.Cont, 'w-[1500px]')}>
         <ScrollButton />
         <div className={clsx(s.CopyCont)}>
           {subtitle && (

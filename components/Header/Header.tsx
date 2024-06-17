@@ -43,12 +43,12 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
       role="navigation"
       // Try to match the global Container class
       className={clsx(
-        'relative z-10 flex w-full max-w-[1580px] items-center justify-between pt-7',
-        'lg:mx-auto lg:px-10 lg:pt-5',
+        'relative z-10 flex w-full items-center justify-between pt-7',
+        'lg:mx-auto lg:pt-5',
         'transition duration-300'
       )}
     >
-      <div className={clsx('flex w-full items-center justify-between px-5', 'lg:w-fit lg:px-0')}>
+      <div className={clsx('flex w-full items-center justify-between', 'lg:w-fit')}>
         <Link href="/">
           <Image
             src={Logo}

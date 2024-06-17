@@ -8,8 +8,8 @@ import ImageBox from 'components/shared/ImageBox';
 
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';
 import NavLink from 'components/NavLink/NavLink';
-import { forwardRef, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import { forwardRef, useRef } from 'react';
 import s from './RoadmapSection.module.sass';
 
 const circleRadius = 26;
@@ -182,7 +182,7 @@ const RoadmapSection = forwardRef(
                 </svg>
               </figure>
             </div>
-            <div className={clsx(s.Cont, 'Container')}>
+            <div className={clsx(s.Cont)}>
               <AnimatedElement className={clsx(s.Content)} delay={100}>
                 {subtitle && (
                   <AnimatedElement
