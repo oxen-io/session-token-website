@@ -25,7 +25,7 @@ export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: str
   }
 
   return (
-    <section className={clsx(s.Outer, `Container Deep`)}>
+    <section className={clsx(s.Outer)}>
       <BlogTile post={firstPost} isFeatured />
       <div className={s.Grid}>
         <AnimatedElement type="h5" delay={300}>

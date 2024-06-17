@@ -7,7 +7,6 @@ import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponen
 import type { SanityImage } from '@/lib/sanity.image';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import clsx from 'clsx';
-import s from './CopyAndImage.module.sass';
 
 export default function CopyAndImage({
   title,
@@ -27,23 +26,45 @@ export default function CopyAndImage({
   const isReversed = alignment === 'imageLeft';
 
   return (
-    <section className={clsx(s.CopyAndImage)}>
-      <div className={clsx(s.Cont, 'Container', alignment && s[alignment])}>
-        <AnimatedElement className={clsx(s.Content, 'flex-grow')} delay={isReversed ? 200 : 100}>
-          <div className="smallTitle">{title}</div>
-          {copy && (
-            <h2>
-              <PortableText value={copy} />
-            </h2>
+    <section className={clsx('my-24')}>
+      <div
+        className={clsx(
+          'flex items-center justify-between',
+          isReversed ? 'flex-col-reverse lg:flex-row-reverse' : 'flex-col lg:flex-row'
+        )}
+      >
+        <AnimatedElement
+          className={clsx(
+            'lg:flex lg:w-1/2 lg:items-center',
+            isReversed ? 'lg:justify-end' : 'lg:justify-start'
           )}
-          {subCopy && (
-            <h4 className={s.SubCopy}>
-              <PortableText value={subCopy} />
-            </h4>
-          )}
-          {button && <Button {...button} title={button.link.title} />}
+          delay={isReversed ? 200 : 100}
+        >
+          <div
+            className={clsx(
+              'flex w-full flex-grow flex-col items-start justify-center',
+              'lg:max-w-xs',
+              'xl:max-w-lg'
+            )}
+          >
+            <div className={clsx('smallTitle', 'mb-6')}>{title}</div>
+            {copy && (
+              <h2 className={clsx('mb-5 text-3xl leading-tight', 'xl:text-5xl xl:leading-snug')}>
+                <PortableText value={copy} />
+              </h2>
+            )}
+            {subCopy && (
+              <h4 className={clsx('mb-5 text-base text-text', 'lg:text-2xl')}>
+                <PortableText value={subCopy} />
+              </h4>
+            )}
+            {button && <Button {...button} className={clsx('my-5')} title={button.link.title} />}
+          </div>
         </AnimatedElement>
-        <AnimatedElement className={s.Image} delay={isReversed ? 100 : 200}>
+        <AnimatedElement
+          className={clsx('mb-5 mt-4 flex w-full', 'lg:mx-auto lg:mb-0 lg:mt-0 lg:w-1/2')}
+          delay={isReversed ? 100 : 200}
+        >
           {image && <ImageBox image={image} />}
         </AnimatedElement>
       </div>
