@@ -256,7 +256,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
               {title && (
                 <AnimatedElement
                   type="h2"
-                  className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text text-3xl font-medium text-transparent lg:text-7xl"
+                  className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 text-3xl font-medium text-transparent lg:text-7xl"
                   delay={100}
                   dangerouslySetInnerHTML={{ __html: title }}
                 />

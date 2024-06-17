@@ -32,7 +32,7 @@ export default function RoadmapHero({
   return (
     <section className="flex h-dvh w-full max-w-screen-3xl flex-col-reverse items-center justify-end align-middle lg:flex-row lg:justify-around lg:px-20">
       <div
-        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-3 text-center lg:text-left')}
+        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-left')}
       >
         {subtitle && (
           <AnimatedElement
@@ -45,7 +45,7 @@ export default function RoadmapHero({
         {title && (
           <AnimatedElement
             type="h1"
-            className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pr-2 text-7xl font-bold text-transparent lg:text-[82px]"
+            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-7xl font-bold text-transparent lg:text-[82px]"
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
           />
