@@ -1,5 +1,6 @@
 // NOTE don't change the import order of stylesheet imports until we remove SASS entirely because of CSS cascade order
 
+import { Container } from '@/components/Container/Container';
 import { AtypDisplay, AtypText, MonumentExtended } from '@/styles/fonts/fonts';
 import '@/styles/globals.css';
 
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={`${AtypDisplay.variable} ${AtypText.variable} ${MonumentExtended.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Container>{children}</Container>
+      </body>
     </html>
   );
 }
