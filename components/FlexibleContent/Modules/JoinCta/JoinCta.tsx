@@ -26,18 +26,24 @@ export default function JoinCta({
   }
 
   return (
-    <section className={clsx(s.Outer, 'Container')}>
-      <AnimatedElement delay={100}>
-        <div className={s.Content}>
+    <section className={clsx(s.Outer, 'my-24')}>
+      <AnimatedElement
+        className={clsx(
+          'flex flex-col-reverse items-center overflow-hidden rounded-3xl border border-solid border-white border-opacity-20',
+          'lg:flex-row'
+        )}
+        delay={100}
+      >
+        <div className={clsx('px-6 py-8', 'md:max-w-2xl', 'lg:max-w-sm lg:pl-10', 'xl:max-w-lg')}>
           <div className="smallTitle">/ {preTitle}</div>
-          <h2>{title}</h2>
-          <div className={s.Copy}>
+          <h2 className={clsx('mt-5', 'lg:mb-5 lg:mt-16')}>{title}</h2>
+          <div className={clsx('mb-8', 'lg:mb-16')}>
             <PortableText value={copy} />
           </div>
           <Socials socialLinks={socialLinks} />
         </div>
         <div
-          className={s.Image}
+          className={clsx('h-72 w-full bg-cover bg-center bg-no-repeat', 'lg:-my-12 lg:h-[660px]')}
           style={{
             backgroundImage: `url(${bgUrl})`,
           }}
