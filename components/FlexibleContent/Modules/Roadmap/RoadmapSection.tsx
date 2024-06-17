@@ -211,12 +211,12 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
       <div ref={scrollRef}>
         <section
           ref={ref}
-          className={clsx('mx-10 flex max-w-screen-3xl flex-row', className)}
+          className={clsx('ml-10 mr-4 flex max-w-screen-3xl flex-row lg:mr-10', className)}
           {...props}
         >
           <RoadmapLine
             scrollRef={scrollRef}
-            className="-ml-16 lg:ml-0"
+            className="-ml-16 -mr-4 lg:ml-0"
             isFirst={isFirst}
             isFinal={isFinal}
           />
@@ -235,7 +235,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
               {title && (
                 <AnimatedElement
                   type="h2"
-                  className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text text-4xl font-medium text-transparent lg:text-7xl"
+                  className="bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text text-3xl font-medium text-transparent lg:text-7xl"
                   delay={100}
                   dangerouslySetInnerHTML={{ __html: title }}
                 />

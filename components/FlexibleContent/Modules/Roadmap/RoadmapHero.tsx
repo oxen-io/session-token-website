@@ -37,7 +37,7 @@ export default function RoadmapHero({
         {subtitle && (
           <AnimatedElement
             type="h3"
-            className="hidden bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text text-lg font-medium text-transparent md:block"
+            className="hidden bg-gradient-to-tr from-[#A0C5B5] to-[#AED0D8] bg-clip-text font-medium text-transparent md:block lg:text-lg"
             delay={0}
             dangerouslySetInnerHTML={{ __html: subtitle }}
           />
@@ -51,7 +51,7 @@ export default function RoadmapHero({
           />
         )}
         {copy && (
-          <AnimatedElement type="div" delay={200}>
+          <AnimatedElement type="div" delay={200} className="text-base lg:text-2xl">
             <PortableText value={copy} />
           </AnimatedElement>
         )}
@@ -64,7 +64,9 @@ export default function RoadmapHero({
         )}
         {children}
       </div>
-      {backgroundImage ? <AnimatedBigImage image={backgroundImage} className="lg:w-1/2" /> : null}
+      {backgroundImage ? (
+        <AnimatedBigImage image={backgroundImage} className="pt-16 lg:w-1/2 lg:pt-0" />
+      ) : null}
     </section>
   );
 }
