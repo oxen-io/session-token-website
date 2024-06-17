@@ -5,6 +5,7 @@ import { getShareSites, getSocialIcon } from '@/lib/utils';
 import Button from '@/components/Button/Button';
 
 import type { SettingsSchemaType, ShareModalSchemaType } from '@/schemas/singletons/settings';
+import clsx from 'clsx';
 import { useState } from 'react';
 import s from './Share.module.sass';
 
@@ -26,7 +27,7 @@ export default function Share({ settings }: { settings: SettingsSchemaType }) {
   };
 
   return (
-    <div className={s.Share}>
+    <div className={clsx(s.Share, 'px-5 py-8', 'lg:px-8 lg:py-12')}>
       <h3
         dangerouslySetInnerHTML={{
           __html: shareModal?.title || 'Share',
@@ -49,9 +50,12 @@ export default function Share({ settings }: { settings: SettingsSchemaType }) {
       </ul>
       <div className={s.CopyCont}>
         <p>Or copy the link below</p>
-        <div className={s.CopyBox} onClick={handleCopyUrl}>
+        <div className={clsx(s.CopyBox, 'flx flex-col items-center gap-4')} onClick={handleCopyUrl}>
           {currentUrl && <input type="text" value={currentUrl} />}
-          <Button title={!copied ? 'Copy URL' : 'Copied!'} />
+          <Button
+            className={clsx('relative right-0 top-0', 'lg:absolute lg:right-3 lg:top-2')}
+            title={!copied ? 'Copy URL' : 'Copied!'}
+          />
         </div>
       </div>
     </div>
