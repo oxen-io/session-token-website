@@ -20,7 +20,7 @@ export default function PreviewProvider({
     throw new TypeError('Missing token');
   }
   return (
-    <LiveQueryProvider client={client} token={token} logger={isProduction() ? console : undefined}>
+    <LiveQueryProvider client={client} token={token} logger={isProduction() ? undefined : console}>
       {children}
     </LiveQueryProvider>
   );
