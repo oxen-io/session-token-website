@@ -57,7 +57,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
             priority
           />
           {isDraftMode && (isEnv(Environment.DEV) || isEnv(Environment.QA)) ? (
-            <span className="absolute top-0 rounded-full bg-primary px-2 font-bold text-black opacity-80">
+            <span className="absolute bottom-0 right-0 w-28 rounded-full bg-primary p-0 pl-1.5 text-start text-xs font-bold leading-none text-black opacity-90 lg:w-32">
               DRAFT MODE
             </span>
           ) : null}
