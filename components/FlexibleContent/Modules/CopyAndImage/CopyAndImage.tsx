@@ -29,8 +29,8 @@ export default function CopyAndImage({
     <section className={clsx('my-24')}>
       <div
         className={clsx(
-          'flex items-center justify-between',
-          isReversed ? 'flex-col-reverse lg:flex-row-reverse' : 'flex-col lg:flex-row'
+          'flex flex-col-reverse items-center justify-between',
+          isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
         )}
       >
         <AnimatedElement

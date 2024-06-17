@@ -14,13 +14,22 @@ export default function GenericCta({
   buttons: Array<ButtonSchemaType>;
 }) {
   return (
-    <section className={s.Outer}>
-      <div className="Container">
-        <h2 className="h1 Massive HasGradient Vertical">{title}</h2>
-        <div className={clsx(s.Copy, `Copy Large`)}>
-          <PortableText value={copy} />
+    <section className={clsx(s.Outer, 'text-center', 'lg:my-24')}>
+      <div className={clsx('flex flex-col items-center pt-24', 'lg:pb-24')}>
+        <h2
+          className={clsx(
+            'HasGradient Vertical',
+            'white mb-4 text-5xl',
+            'md:text-7xl',
+            'lg:mb-12 lg:text-9xl'
+          )}
+        >
+          {title}
+        </h2>
+        <div className={clsx(s.Copy, 'mb-8 max-w-3xl text-base', 'md:text-xl', 'lg:text-2xl')}>
+          <PortableText className={clsx('my-5')} value={copy} />
         </div>
-        <div className={clsx('mt-10 flex flex-wrap items-center justify-center gap-4')}>
+        <div className={clsx('flex flex-wrap items-center justify-center gap-4')}>
           {buttons.map((button, index) => {
             return <Button {...button} key={index} />;
           })}
