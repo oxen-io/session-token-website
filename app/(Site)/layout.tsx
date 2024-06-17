@@ -9,6 +9,7 @@ import PreviewProvider from '@/components/preview/PreviewProvider';
 import { Environment, isEnv, isProduction } from '@/lib/env';
 import { getSettings, token } from '@/lib/sanity.fetch';
 
+import { Container } from '@/components/Container/Container';
 import { DevModalServer } from '@/components/DevModalServer';
 import { Header } from '@/components/Header/Header';
 import { draftMode } from 'next/headers';
@@ -41,9 +42,11 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       {isDraftMode && isProduction() ? <PreviewBanner /> : null}
       {isProduction() ? null : <DevModalServer />}
       <SettingsProvider value={settings}>
-        <Header isDraftMode={isDraftMode} />
-        <main className={'-mt-16'}>{children}</main>
-        <Footer />
+        <Container>
+          <Header isDraftMode={isDraftMode} />
+          <main className={'-mt-16'}>{children}</main>
+          <Footer />
+        </Container>
       </SettingsProvider>
     </OptionalPreviewProvider>
   );
