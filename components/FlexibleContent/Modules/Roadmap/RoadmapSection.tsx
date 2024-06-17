@@ -241,7 +241,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
             isFirst={isFirst}
             isFinal={isFinal}
           />
-          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:pl-24">
+          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:pl-10 lg:pr-28">
             <AnimatedElement className="flex w-full flex-col gap-4 lg:gap-8" delay={100}>
               {subtitle && (
                 <AnimatedElement
