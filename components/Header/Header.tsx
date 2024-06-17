@@ -41,7 +41,6 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
   return (
     <nav
       role="navigation"
-      // Try to match the global Container class
       className={clsx(
         'relative z-10 flex w-full items-center justify-between pt-7',
         'lg:mx-auto lg:pt-5',
@@ -79,8 +78,8 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
       >
         <div
           className={clsx(
-            'flex w-full flex-col items-start justify-between bg-background px-5 text-lg text-white',
-            'lg:flex-row lg:items-center lg:bg-transparent lg:px-0',
+            'flex w-full flex-col items-start justify-between bg-background text-lg text-white',
+            'lg:flex-row lg:items-center lg:bg-transparent',
             'transform transition-all duration-300',
             isExpanded
               ? '-mb-20 h-dvh translate-y-0 pb-10 pt-3'

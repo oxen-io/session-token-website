@@ -13,8 +13,8 @@ export default function FaqsList({ categories }: { categories: any }) {
   const categoryRefs = useRef<any>({});
 
   return (
-    <section className={clsx(s.Outer)}>
-      <AnimatedElement type="legend" delay={100} className={s.Legend}>
+    <section className={clsx(s.Outer, 'gap-20 pt-32', 'lg:grid')}>
+      <AnimatedElement type="legend" delay={100} className={clsx(s.Legend, 'hidden', 'lg:block')}>
         <div>
           <strong>Table of contents</strong>
           <ul>
