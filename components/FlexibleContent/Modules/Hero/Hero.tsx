@@ -34,7 +34,7 @@ export default function Hero({
 
   return (
     <section className={clsx(s.Hero, s[`Type-${type}`])}>
-      <div className={clsx(s.Cont, 'Container')}>
+      <div>
         <ScrollButton />
         <div className={s.CopyCont}>
           {title && (

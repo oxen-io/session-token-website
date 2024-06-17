@@ -17,7 +17,7 @@ export default function StatsTiles({
 }) {
   return (
     <section className={s.StatsTiles}>
-      <div className={clsx(s.Cont, 'Container')}>
+      <div className={clsx(s.Cont)}>
         <ul>
           {tiles?.map((tile, index) => {
             const { figure, copy, backgroundImage } = tile;

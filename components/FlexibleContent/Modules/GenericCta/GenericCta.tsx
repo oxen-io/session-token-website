@@ -14,14 +14,14 @@ export default function GenericCta({
   buttons: Array<ButtonSchemaType>;
 }) {
   return (
-    <section className={clsx(s.Outer, 'text-center', 'lg:my-24')}>
+    <section className={clsx(s.Outer, 'my-24 text-center')}>
       <div className={clsx('flex flex-col items-center pt-24', 'lg:pb-24')}>
         <h2
           className={clsx(
             'HasGradient Vertical',
-            'white mb-4 text-5xl',
-            'md:text-7xl',
-            'lg:mb-12 lg:text-9xl'
+            'white mb-4 text-6xl',
+            'md:text-8xl',
+            'lg:text-9xl'
           )}
         >
           {title}
