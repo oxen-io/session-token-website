@@ -1,5 +1,6 @@
 'use client';
 
+import { getEnvironment } from '@/lib/env';
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 
@@ -85,17 +86,20 @@ export const DevModal = ({ slugs }: { slugs: Array<string> }) => {
 
   return (
     <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-      <nav>
-        <ul>
-          {slugs.map((slug, i) => (
-            <li key={slug}>
-              <a tabIndex={i} href={slug} aria-label={`dev-nav-${slug}`}>
-                {slug}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div>
+        Environment: {getEnvironment()}
+        <nav>
+          <ul>
+            {slugs.map((slug, i) => (
+              <li key={slug}>
+                <a tabIndex={i} href={slug} aria-label={`dev-nav-${slug}`}>
+                  {slug}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </Modal>
   );
 };
