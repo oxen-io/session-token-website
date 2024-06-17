@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-import { isNotProduction } from './env';
+import { isProduction } from './env';
 
 class Logger {
-  static debugEnabled = isNotProduction() && process.env.DEBUG_LOG === 'true';
+  static debugEnabled = !isProduction() && process.env.DEBUG_LOG === 'true';
   public debug(message: string, ...args: Array<unknown>) {
     if (Logger.debugEnabled) {
       console.debug(message, ...args);

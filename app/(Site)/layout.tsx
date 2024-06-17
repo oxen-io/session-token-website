@@ -6,7 +6,7 @@ import { SettingsProvider } from '@/components/Contexts/SettingsContext';
 import { Footer } from '@/components/Footer';
 import { PreviewBanner } from '@/components/preview/PreviewBanner';
 import PreviewProvider from '@/components/preview/PreviewProvider';
-import { isNotProduction } from '@/lib/env';
+import { Environment, isEnv, isProduction } from '@/lib/env';
 import { getSettings, token } from '@/lib/sanity.fetch';
 
 import { DevModalServer } from '@/components/DevModalServer';
@@ -29,15 +29,19 @@ const OptionalPreviewProvider = ({
 };
 
 export default async function SiteLayout({ children }: { children: ReactNode }) {
+  if (isEnv(Environment.DEV) || isEnv(Environment.QA)) {
+    draftMode().enable();
+  }
+
   const isDraftMode = draftMode().isEnabled;
   const settings = await getSettings();
 
   return (
     <OptionalPreviewProvider isDraftMode={isDraftMode}>
-      {isDraftMode ? <PreviewBanner /> : null}
-      {isNotProduction() ? <DevModalServer /> : null}
+      {isDraftMode && isProduction() ? <PreviewBanner /> : null}
+      {isProduction() ? null : <DevModalServer />}
       <SettingsProvider value={settings}>
-        <Header />
+        <Header isDraftMode={isDraftMode} />
         <main className={'-mt-16'}>{children}</main>
         <Footer />
       </SettingsProvider>
