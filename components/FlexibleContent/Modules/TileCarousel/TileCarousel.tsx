@@ -84,10 +84,17 @@ export default function TileCarousel({
       SwiperSlide,
     ];
   })();
-
   return (
-    <section className={clsx(s.TileCarousel, content && s.HasContent, borderless && s.Borderless)}>
-      <div className={clsx(s.Cont, 'Container')}>
+    <section
+      className={clsx(
+        s.TileCarousel,
+        content && s.HasContent,
+        borderless && s.Borderless,
+        // Values should match Constants.UI.CONTAINER_*
+        `-me-[5vw] pe-[5vw]`
+      )}
+    >
+      <div className={clsx(s.Cont)}>
         {content ? (
           <div className={s.Content}>
             <div className="smallTitle">{title}</div>

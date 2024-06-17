@@ -17,6 +17,7 @@ export default {
       'monument-extended': ['var(--font-monument-extended)'],
     },
     screens: {
+      container: '1441px', // beyond the container's max width
       sm: '375px',
       md: '768px',
       lg: '1024px',
