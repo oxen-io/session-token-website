@@ -10,12 +10,13 @@ import { SettingsContext } from '@/components/Contexts/SettingsContext';
 import NavLink from '@/components/NavLink/NavLink';
 import Socials from '@/components/Socials/Socials';
 import { useScreenWidth } from '@/hooks/screen';
+import { Environment, isEnv } from '@/lib/env';
 import Logo from '@/public/images/logo.png';
 import Link from 'next/link';
 import MenuButton from '../Menu/MenuButton';
 import { Spacer } from '../Spacer/Spacer';
 
-export function Header() {
+export function Header({ isDraftMode }: { isDraftMode: boolean }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleNav = () => {
     setIsExpanded(!isExpanded);
@@ -55,6 +56,11 @@ export function Header() {
             className={clsx('w-36', 'lg:h-auto lg:w-48')}
             priority
           />
+          {isDraftMode && (isEnv(Environment.DEV) || isEnv(Environment.QA)) ? (
+            <span className="absolute top-0 rounded-full bg-primary px-2 font-bold text-black opacity-80">
+              DRAFT MODE
+            </span>
+          ) : null}
         </Link>
         {isSM || isMD ? (
           <div className={clsx('flex flex-row')}>

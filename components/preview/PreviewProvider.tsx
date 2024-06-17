@@ -2,7 +2,7 @@
 
 import { suspend } from 'suspend-react';
 
-import { isNotProduction } from '@/lib/env';
+import { isProduction } from '@/lib/env';
 import { LiveQueryProvider } from '@sanity/preview-kit';
 
 // suspend-react cache is global, so we use a unique key to avoid collisions
@@ -20,11 +20,7 @@ export default function PreviewProvider({
     throw new TypeError('Missing token');
   }
   return (
-    <LiveQueryProvider
-      client={client}
-      token={token}
-      logger={isNotProduction() ? console : undefined}
-    >
+    <LiveQueryProvider client={client} token={token} logger={isProduction() ? console : undefined}>
       {children}
     </LiveQueryProvider>
   );
