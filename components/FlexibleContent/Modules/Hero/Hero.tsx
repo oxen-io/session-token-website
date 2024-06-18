@@ -25,15 +25,18 @@ export default function Hero({
   backgroundImage: any;
 }) {
   return (
-    <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:flex-row lg:py-20">
+    <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:grid lg:grid-cols-2 lg:py-20">
       <ScrollButton className="pt-4" />
       <div
-        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-start')}
+        className={clsx(
+          s.CopyCont,
+          'flex w-full flex-col justify-center gap-4 text-center lg:text-start'
+        )}
       >
         {title && (
           <AnimatedElement
             type="h1"
-            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-4xl font-medium text-transparent md:text-7xl lg:text-[82px] lg:font-bold"
+            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-4xl font-medium text-transparent md:text-7xl"
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
           />
@@ -59,7 +62,9 @@ export default function Hero({
           </AnimatedElement>
         )}
       </div>
-      {backgroundImage ? <AnimatedBigImage image={backgroundImage} className="flex w-2/3" /> : null}
+      {backgroundImage ? (
+        <AnimatedBigImage image={backgroundImage} className="w-max-[50vh] flex w-2/3 lg:w-full" />
+      ) : null}
     </section>
   );
 }
