@@ -4,6 +4,7 @@ import PortableText from 'components/PortableText/PortableText';
 
 import ImageBox from 'components/shared/ImageBox';
 
+import { useScreenWidth } from '@/hooks/screen';
 import clsx from 'clsx';
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';
 import NavLink from 'components/NavLink/NavLink';
@@ -208,6 +209,8 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
     ref
   ) => {
     const scrollRef = useRef(null);
+    const { isSM, isMD } = useScreenWidth();
+    const lg = !(isMD || isSM);
 
     const { scrollYProgress } = useScroll({
       target: scrollRef,
@@ -215,8 +218,12 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
       offset: ['start center', 'end center'],
     });
 
-    const circlePassiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0.75, 1]);
-    const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
+    const circlePassiveScale = useTransform(
+      scrollYProgress,
+      [0.3, 0.5],
+      [lg ? 0.75 : 0.5, lg ? 1 : 0.66]
+    );
+    const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, lg ? 1 : 0.66]);
     const circleStrokeGradient = useTransform(scrollYProgress, [0.3, 0.5], ['#5C5C5C', '#000000']);
     const circleFillGradient = useTransform(
       scrollYProgress,
@@ -226,22 +233,18 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
 
     return (
       <div ref={scrollRef}>
-        <section
-          ref={ref}
-          className={clsx('ml-10 mr-4 flex max-w-screen-3xl flex-row lg:mr-10', className)}
-          {...props}
-        >
+        <section ref={ref} className={clsx('flex flex-row', className)} {...props}>
           <RoadmapLine
             scrollYProgress={scrollYProgress}
             circlePassiveScale={circlePassiveScale}
             circleActiveScale={circleActiveScale}
             circleStrokeGradient={circleStrokeGradient}
             circleFillGradient={circleFillGradient}
-            className="-ml-16 -mr-4 lg:ml-0"
+            className="-ml-14 -mr-4 md:-ml-16 lg:ml-0"
             isFirst={isFirst}
             isFinal={isFinal}
           />
-          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:pl-10 lg:pr-28">
+          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:px-10">
             <AnimatedElement className="flex w-full flex-col gap-4 lg:gap-8" delay={100}>
               {subtitle && (
                 <AnimatedElement
@@ -276,7 +279,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
                 </NavLink>
               )}
             </AnimatedElement>
-            <AnimatedElement className="w-full flex-shrink-0 lg:w-1/3" delay={200}>
+            <AnimatedElement className="flex-shrink-0 md:w-3/4 lg:w-1/3" delay={200}>
               {image && <ImageBox image={image} />}
             </AnimatedElement>
           </div>
