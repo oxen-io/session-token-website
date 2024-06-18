@@ -28,7 +28,7 @@ export default function Hero({
     <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:flex-row lg:py-20">
       <ScrollButton className="pt-4" />
       <div
-        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-left')}
+        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-start')}
       >
         {title && (
           <AnimatedElement
