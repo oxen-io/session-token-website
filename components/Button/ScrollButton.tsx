@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 
-export default function ScrollButton() {
+export default function ScrollButton({ className }: { className?: string }) {
   // When the button is clicked nudge the screen down a little
   const nudgeDown = () => {
     window.scrollBy({
@@ -14,12 +14,13 @@ export default function ScrollButton() {
   return (
     <div
       className={clsx(
-        'absolute bottom-5 left-0 flex w-full flex-col items-center justify-center gap-1 opacity-70',
-        'lg:hidden'
+        'flex w-full flex-col items-center justify-center gap-1 opacity-70',
+        'lg:hidden',
+        className
       )}
       onClick={nudgeDown}
     >
-      <div className={clsx('h-[70px] w-px bg-white opacity-70')} />
+      <div className={clsx('h-16 w-px bg-white opacity-70')} />
       <span className={clsx('uppercase')}>Scroll</span>
     </div>
   );
