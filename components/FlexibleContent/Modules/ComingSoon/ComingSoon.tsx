@@ -14,6 +14,7 @@ export default function ComingSoon({
   title,
   buttons,
   backgroundImage,
+  backgroundAlt,
 }: {
   title: string;
   buttons: Array<{
@@ -22,6 +23,7 @@ export default function ComingSoon({
     color: 'primary' | 'secondary' | 'tertiary';
   }>;
   backgroundImage: SanityImage;
+  backgroundAlt: string;
 }) {
   const backgroundImageUrl = urlForImage(backgroundImage)?.url();
 
@@ -50,7 +52,7 @@ export default function ComingSoon({
         className={clsx('top-0 min-h-screen object-cover', 'lg:max-h-screen lg:object-contain')}
         width={1920}
         height={1080}
-        alt=""
+        alt={backgroundAlt}
       />
       <div className={clsx('absolute w-full')}>
         <AnimatedElement className={clsx('')} delay={300} type="div">
