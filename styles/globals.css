@@ -58,7 +58,7 @@
     /* @apply antialiased; */
     /* TODO Do we need the height, outline and width on html as well? */
     @apply h-full w-screen overflow-x-hidden outline-none;
-    @apply bg-background font-atyp-text text-lg font-normal leading-6 text-foreground;
+    @apply bg-background text-lg font-normal leading-6 text-foreground;
 
     /* Fix for Safari */
     /* https://stackoverflow.com/a/37365794 */

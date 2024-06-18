@@ -1,0 +1,4 @@
+/* Brighten modal background */
+div[data-ui='DialogCard'] div:first-child {
+  backdrop-filter: brightness(150%);
+}
