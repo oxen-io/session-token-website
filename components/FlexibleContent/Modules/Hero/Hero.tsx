@@ -2,84 +2,64 @@
 
 import clsx from 'clsx';
 
-import Button from '@/components/Button/Button';
 import PortableText from '@/components/PortableText/PortableText';
 
 import {
   AnimatedBigImage,
   AnimatedElement,
 } from '@/components/AnimatedComponent/AnimatedComponent';
+import Button from '@/components/Button/Button';
 import ScrollButton from '@/components/Button/ScrollButton';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
-import { useState } from 'react';
 import s from './Hero.module.sass';
-import RewardStats from './RewardStats';
 
 export default function Hero({
   title,
   copy,
   buttons,
   backgroundImage,
-  type,
 }: {
   title: string;
   copy: any;
   buttons: Array<ButtonSchemaType>;
   backgroundImage: any;
-  type: 'default' | 'rewards';
 }) {
-  const [statsVisibleOnMobile, setStatsVisibleOnMobile] = useState(false);
-
-  const isRewards = type === 'rewards';
-
   return (
-    <section className={clsx(s.Hero, s[`Type-${type}`])}>
-      <div>
-        <ScrollButton />
-        <div className={s.CopyCont}>
-          {title && (
-            <AnimatedElement
-              type="h1"
-              delay={100}
-              className={clsx({
-                h3: isRewards,
-                Huge: !isRewards,
-              })}
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          )}
-          {copy && (
-            <AnimatedElement type="div" delay={200}>
-              <PortableText value={copy} />
-            </AnimatedElement>
-          )}
-          {buttons && (
-            <AnimatedElement type={'ul'} delay={300}>
-              {buttons.map((button, index) => {
-                return (
-                  <li key={index}>
-                    <Button {...button} />
-                  </li>
-                );
-              })}
-              {isRewards && (
-                <li className={s.RewardsButton}>
-                  <Button
-                    onClick={() => {
-                      setStatsVisibleOnMobile(!statsVisibleOnMobile);
-                    }}
-                    title={`${statsVisibleOnMobile ? 'Hide' : 'Show'} stats`}
-                  />
+    <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:flex-row lg:py-20">
+      <ScrollButton className="pt-4" />
+      <div
+        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-start')}
+      >
+        {title && (
+          <AnimatedElement
+            type="h1"
+            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-4xl font-medium text-transparent md:text-7xl lg:text-[82px] lg:font-bold"
+            delay={100}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+        )}
+        {copy && (
+          <AnimatedElement type="div" delay={200} className="text-base lg:text-2xl">
+            <PortableText value={copy} />
+          </AnimatedElement>
+        )}
+        {buttons && (
+          <AnimatedElement
+            type={'ul'}
+            delay={300}
+            className="flex w-full flex-row items-center justify-center gap-3 lg:w-max"
+          >
+            {buttons.map((button, index) => {
+              return (
+                <li key={index}>
+                  <Button {...button} />
                 </li>
-              )}
-            </AnimatedElement>
-          )}
-        </div>
-        {type === 'rewards' ? <RewardStats visibleOnMobile={statsVisibleOnMobile} /> : null}
-        <div className={clsx(s.ImageCont, statsVisibleOnMobile && s.Darkened)}>
-          {backgroundImage && <AnimatedBigImage image={backgroundImage} />}
-        </div>
+              );
+            })}
+          </AnimatedElement>
+        )}
       </div>
+      {backgroundImage ? <AnimatedBigImage image={backgroundImage} className="flex w-2/3" /> : null}
     </section>
   );
 }
