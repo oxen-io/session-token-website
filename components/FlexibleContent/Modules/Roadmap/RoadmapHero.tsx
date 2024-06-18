@@ -30,7 +30,7 @@ export default function RoadmapHero({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex h-dvh w-full max-w-screen-3xl flex-col-reverse items-center justify-end align-middle lg:flex-row lg:justify-around lg:px-20">
+    <section className="flex w-full max-w-screen-3xl flex-col-reverse items-center justify-end align-middle lg:flex-row lg:justify-around lg:px-20">
       <div
         className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-left')}
       >
