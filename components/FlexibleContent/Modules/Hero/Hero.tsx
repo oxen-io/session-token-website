@@ -25,7 +25,7 @@ export default function Hero({
   backgroundImage: any;
 }) {
   return (
-    <section className="flex min-h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:flex-row lg:py-20">
+    <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:flex-row lg:py-20">
       <ScrollButton className="pt-4" />
       <div
         className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-left')}
@@ -59,9 +59,7 @@ export default function Hero({
           </AnimatedElement>
         )}
       </div>
-      {backgroundImage ? (
-        <AnimatedBigImage image={backgroundImage} className="flex w-full lg:w-1/2" />
-      ) : null}
+      {backgroundImage ? <AnimatedBigImage image={backgroundImage} className="flex w-2/3" /> : null}
     </section>
   );
 }
