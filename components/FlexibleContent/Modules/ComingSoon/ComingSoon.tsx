@@ -55,7 +55,7 @@ export default function ComingSoon({
         alt={backgroundAlt}
       />
       <div className={clsx('absolute w-full')}>
-        <AnimatedElement className={clsx('')} delay={300} type="div">
+        <AnimatedElement delay={300} type="div">
           <Image src={Logo} alt="Session Token" className={clsx('mb-2 w-52', 'md:mb-4')} priority />
         </AnimatedElement>
         <AnimatedElement
