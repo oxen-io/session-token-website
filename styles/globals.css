@@ -5,7 +5,6 @@
 @layer base {
   :root {
     --primary-DEFAULT: #00f782;
-    --primary-dark: #00b35f;
     --gray-lightest: #adadad;
     --gray-lighter: #7a7a7a;
     --gray-light: #55595c;
