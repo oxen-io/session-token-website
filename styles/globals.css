@@ -81,123 +81,12 @@ button {
   @apply bg-primary text-black;
 }
 
-.glitch {
-  transform: scale3d(1, 1, 1);
-}
-
-.glitch:after {
-  @apply bg-white text-5xl font-semibold text-gray-dark lg:text-6xl;
-  @apply absolute left-0 right-0 top-0 overflow-hidden;
-  content: attr(data-glitch-text);
-  clip: rect(0, 900px, 0, 0);
-  text-shadow: -1px 0 var(--primary-DEFAULT);
-}
-
-.glitch:after {
-  left: 3px;
-  animation: glitch-effect 4s infinite linear alternate-reverse;
-}
-
-@keyframes glitch-effect {
-  0% {
-    clip: rect(23px, 9999px, 65px, 0);
-  }
-  5% {
-    clip: rect(17px, 9999px, 37px, 0);
-  }
-  10% {
-    clip: rect(72px, 9999px, 86px, 0);
-  }
-  15% {
-    clip: rect(52px, 9999px, 24px, 0);
-  }
-  20% {
-    clip: rect(85px, 9999px, 73px, 0);
-  }
-  25% {
-    clip: rect(81px, 9999px, 23px, 0);
-  }
-  30% {
-    clip: rect(48px, 9999px, 11px, 0);
-  }
-  35% {
-    clip: rect(94px, 9999px, 85px, 0);
-  }
-  40% {
-    clip: rect(71px, 9999px, 14px, 0);
-  }
-  45% {
-    clip: rect(74px, 9999px, 7px, 0);
-  }
-  50% {
-    clip: rect(25px, 9999px, 92px, 0);
-  }
-  55% {
-    clip: rect(1px, 9999px, 29px, 0);
-  }
-  60% {
-    clip: rect(59px, 9999px, 28px, 0);
-  }
-  65% {
-    clip: rect(52px, 9999px, 45px, 0);
-  }
-  70% {
-    clip: rect(95px, 9999px, 11px, 0);
-  }
-  75% {
-    clip: rect(23px, 9999px, 24px, 0);
-  }
-  80% {
-    clip: rect(42px, 9999px, 52px, 0);
-  }
-  85% {
-    clip: rect(44px, 9999px, 89px, 0);
-  }
-  90% {
-    clip: rect(35px, 9999px, 16px, 0);
-  }
-  95% {
-    clip: rect(56px, 9999px, 32px, 0);
-  }
-  100% {
-    clip: rect(45px, 9999px, 70px, 0);
-  }
-}
-
 .rich-content a span {
   text-decoration-line: none;
 }
 
 .rich-content a span:hover {
   text-decoration-line: underline;
-}
-
-/* https://github.com/videojs/video.js/issues/5751#issuecomment-483585248 */
-/* includes fixes for desktop safari  */
-.vjs-has-started .vjs-control-bar {
-  display: flex;
-  align-items: center;
-}
-
-.video-js .vjs-current-time,
-.vjs-no-flex .vjs-current-time {
-  display: flex !important;
-  align-items: center !important;
-  height: 100% !important;
-}
-
-.video-js .vjs-time-divider,
-.vjs-no-flex .vjs-time-divider {
-  display: flex !important;
-  align-items: center !important;
-  height: 100% !important;
-}
-
-.video-js .vjs-duration,
-.vjs-no-flex .vjs-duration {
-  display: flex !important;
-  align-items: center !important;
-  height: 100% !important;
 }
 
 .glow {
