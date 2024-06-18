@@ -4,7 +4,13 @@ import PageComponents from '@/components/PageComponents/PageComponents';
 import type { PageSchemaType } from '@/schemas/documents/page';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 
-export function Page({ page, settings }: { page: PageSchemaType; settings: SettingsSchemaType }) {
+export default function CMSPage({
+  page,
+  settings,
+}: {
+  page: PageSchemaType;
+  settings: SettingsSchemaType;
+}) {
   // Default to an empty object to allow previews on non-existent documents
   const { modules } = page ?? {};
 
@@ -14,5 +20,3 @@ export function Page({ page, settings }: { page: PageSchemaType; settings: Setti
     </PageComponents>
   );
 }
-
-export default Page;
