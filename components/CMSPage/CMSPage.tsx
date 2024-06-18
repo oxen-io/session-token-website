@@ -15,7 +15,7 @@ export default function CMSPage({
   const { modules } = page ?? {};
 
   return (
-    <PageComponents settings={settings}>
+    <PageComponents>
       <FlexibleContent rows={modules} settings={settings} />
     </PageComponents>
   );
