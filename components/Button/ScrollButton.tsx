@@ -20,7 +20,7 @@ export default function ScrollButton({ className }: { className?: string }) {
       )}
       onClick={nudgeDown}
     >
-      <div className={clsx('h-16 w-px bg-white opacity-70')} />
+      <div className={clsx('h-full max-h-16 min-h-10 w-px bg-white opacity-70')} />
       <span className={clsx('uppercase')}>Scroll</span>
     </div>
   );
