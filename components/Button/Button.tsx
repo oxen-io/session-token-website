@@ -2,11 +2,11 @@
 
 import NavLink from '@/components/NavLink/NavLink';
 import { resolveLinkFromSanityOrString } from '@/lib/sanity.links';
-import buttonLogos, { buttonLogoKeys } from '@/public/images/buttonLogos';
 import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
+import Icons, { iconsKeys } from '../Icons/Icons';
 
 const buttonVariants = cva(
   [
@@ -66,9 +66,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
     const hasIcon =
-      iconName &&
-      buttonLogoKeys.includes(iconName.toLowerCase()) &&
-      iconName.toLowerCase() !== 'none';
+      iconName && iconsKeys.includes(iconName.toLowerCase()) && iconName.toLowerCase() !== 'none';
 
     const iconClasses = [
       'fill-current',
@@ -94,7 +92,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}
+        {hasIcon ? <span className={clsx(iconClasses)}>{Icons[iconName]}</span> : null}
         {text && (
           <span className="inline-flex flex-row items-center">
             {text ?? children}

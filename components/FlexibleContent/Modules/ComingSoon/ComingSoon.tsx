@@ -4,7 +4,7 @@ import Button from '@/components/Button/Button';
 import { urlForImage, type SanityImage } from '@/lib/sanity.image';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import Logo from '@/public/images/logoInline.svg';
+import Logo from '@/public/assets/svgs/logo.svg';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';

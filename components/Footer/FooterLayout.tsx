@@ -3,8 +3,8 @@ import Image from 'next/image';
 import Button from '@/components/Button/Button';
 import Menu from '@/components/Menu/Menu';
 
-import LogoFooter from '@/public/images/logo-footer.png';
-import Logo from '@/public/images/logo.png';
+import LogoFooter from '@/public/assets/images/logo-footer.png';
+import Logo from '@/public/assets/images/logo.png';
 
 import Socials from '@/components/Socials/Socials';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';

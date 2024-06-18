@@ -11,7 +11,7 @@ import NavLink from '@/components/NavLink/NavLink';
 import Socials from '@/components/Socials/Socials';
 import { useScreenWidth } from '@/hooks/screen';
 import { Environment, isEnv } from '@/lib/env';
-import Logo from '@/public/images/logo.png';
+import Logo from '@/public/assets/images/logo.png';
 import Link from 'next/link';
 import MenuButton from '../Menu/MenuButton';
 import { Spacer } from '../Spacer/Spacer';
