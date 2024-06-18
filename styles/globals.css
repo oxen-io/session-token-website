@@ -25,6 +25,17 @@
 
     --background: var(--black);
     --foreground: var(--text);
+
+    --spacer: 230px;
+    --margin: 180px;
+    --gap: 15px;
+  }
+
+  @media (max-width: 768px) {
+    :root {
+      --spacer: 100px;
+      --margin: 50px;
+    }
   }
 }
 
