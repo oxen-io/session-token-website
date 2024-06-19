@@ -7,6 +7,7 @@ import Socials from '@/components/Socials/Socials';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import clsx from 'clsx';
 import Link from 'next/link';
+import Button from '../Button/Button';
 import NavLink from '../NavLink/NavLink';
 
 const BottomJsx = ({
@@ -31,10 +32,10 @@ const BottomJsx = ({
 );
 
 export default function Footer({ settings }: { settings: SettingsSchemaType }) {
-  const { menuItems, lastUpdatedDate } = settings;
+  const { menuItems, lastUpdatedDate, menuTopLink } = settings;
 
   return (
-    <footer className={clsx('my-16 w-full', 'lg:mb-8')}>
+    <footer className={clsx('my-16 w-full')}>
       <div
         className={clsx(
           'grid w-full grid-cols-2 pt-10',
@@ -94,7 +95,8 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
             })}
           </div>
         </div>
-        <div className={clsx('xl:w-1/4')}>
+        <div className={clsx('flex flex-col gap-6 xl:w-1/4')}>
+          <Button {...menuTopLink} className="hidden max-h-9 lg:flex" />
           <Socials className="w-full" />
         </div>
       </div>
