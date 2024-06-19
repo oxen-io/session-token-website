@@ -10,7 +10,7 @@ import { forwardRef } from 'react';
 
 const buttonVariants = cva(
   [
-    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-3 disabled:pointer-events-none disabled: cursor-not-allowed border border-solid border-primary rounded-[40px]',
+    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-2 disabled:pointer-events-none disabled: cursor-not-allowed border border-solid border-primary rounded-[40px]',
     'transition duration-200',
   ],
   {
@@ -68,10 +68,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
-    const hasIcon =
-      iconName &&
-      buttonLogoKeys.includes(iconName.toLowerCase()) &&
-      iconName.toLowerCase() !== 'none';
+    const hasIcon = iconName && buttonLogoKeys.includes(iconName) && iconName !== 'none';
 
     const iconClasses = [
       'fill-current',
