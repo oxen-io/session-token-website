@@ -8,7 +8,6 @@ import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import clsx from 'clsx';
 import Link from 'next/link';
 import NavLink from '../NavLink/NavLink';
-import s from './Footer.module.sass';
 
 const BottomJsx = ({
   lastUpdatedDate,
@@ -43,12 +42,22 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
           'lg:flex lg:flex-row lg:justify-between lg:pt-16'
         )}
       >
-        <div className={clsx('lg:w-1/3')}>
+        <div className={clsx('xl:w-1/3 xl:max-w-sm')}>
           <div className={clsx('mb-5 flex flex-col', 'lg:mb-0 lg:w-full')}>
-            <div className={s.Logo}>
+            <div>
               <Link href={'/'}>
-                <Image src={LogoFooter} alt="Session Token" />
-                <Image src={Logo} alt="Session Token" />
+                <Image
+                  src={LogoFooter}
+                  alt="Session Token"
+                  className={clsx('hidden object-contain', 'lg:block lg:h-auto lg:w-full')}
+                  priority
+                />
+                <Image
+                  src={Logo}
+                  alt="Session Token"
+                  className={clsx('h-10 w-auto object-contain', 'lg:hidden')}
+                  priority
+                />
               </Link>
             </div>
             <span className={clsx('my-6 text-sm font-medium uppercase', 'lg:mb-24 lg:mt-8')}>
@@ -57,7 +66,7 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
             <BottomJsx lastUpdatedDate={lastUpdatedDate} className="lg:hidden" />
           </div>
         </div>
-        <div className={clsx('lg:w-full lg:px-36')}>
+        <div className={clsx('lg:mt-2 lg:flex lg:justify-around lg:gap-8', 'xl:w-1/3')}>
           <div
             className={clsx(
               'ml-12 flex flex-col items-start justify-start gap-5',
@@ -85,8 +94,8 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
             })}
           </div>
         </div>
-        <div className={clsx('lg:w-1/3')}>
-          <Socials className="lg:w-full" />
+        <div className={clsx('xl:w-1/4')}>
+          <Socials className="w-full" />
         </div>
       </div>
       <BottomJsx lastUpdatedDate={lastUpdatedDate} className={'hidden lg:flex'} />

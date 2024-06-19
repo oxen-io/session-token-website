@@ -20,7 +20,7 @@ export default function Socials({
   const socialLinks = parentSocialLinks || settingsSocialLinks;
 
   return (
-    <ul className={clsx(s.Outer, className)}>
+    <ul className={clsx(s.Outer, 'flex flex-shrink-0 flex-row gap-3', className)}>
       {socialLinks?.map((item, index) => {
         const { link, company } = item;
 
