@@ -36,7 +36,8 @@ export default function CopyAndImage({
         <AnimatedElement
           className={clsx(
             'w-full',
-            'lg:flex lg:w-1/2 lg:items-center',
+            'lg:flex lg:max-w-md lg:items-center',
+            'xl:max-w-xl',
             isReversed ? 'lg:justify-end' : 'lg:justify-start'
           )}
           delay={isReversed ? 200 : 100}
@@ -44,13 +45,19 @@ export default function CopyAndImage({
           <div
             className={clsx(
               'flex w-full flex-grow flex-col items-start justify-center',
-              'lg:max-w-xs',
-              'xl:max-w-lg'
+              'md:max-w-xl',
+              'lg:max-w-none'
             )}
           >
             <div className={clsx('smallTitle', 'mb-6')}>{title}</div>
             {copy && (
-              <h2 className={clsx('mb-5 text-3xl leading-tight', 'xl:text-5xl xl:leading-snug')}>
+              <h2
+                className={clsx(
+                  'mb-5 text-3xl leading-tight',
+                  'xl:text-4xl xl:leading-snug',
+                  '2xl:text-[44px]'
+                )}
+              >
                 <PortableText value={copy} />
               </h2>
             )}
@@ -63,7 +70,12 @@ export default function CopyAndImage({
           </div>
         </AnimatedElement>
         <AnimatedElement
-          className={clsx('mb-5 mt-4 flex w-full', 'lg:mx-auto lg:mb-0 lg:mt-0 lg:w-1/2')}
+          className={clsx(
+            'mb-5 mt-4 flex w-full',
+            'lg:mb-0 lg:mt-0 lg:max-w-md',
+            'xl:max-w-2xl',
+            '2xl:max-w-3xl'
+          )}
           delay={isReversed ? 100 : 200}
         >
           {image && <ImageBox image={image} />}
