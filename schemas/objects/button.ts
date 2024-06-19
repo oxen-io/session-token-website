@@ -18,8 +18,8 @@ const fields = [
     },
   }),
   defineField({
-    title: 'Has arrow?',
-    name: 'hasArrow',
+    title: 'Disabled',
+    name: 'disabled',
     type: 'boolean',
   }),
   defineField({
@@ -31,6 +31,11 @@ const fields = [
     title: 'Link',
     name: 'link',
     type: 'link',
+  }),
+  defineField({
+    title: 'Has arrow?',
+    name: 'hasArrow',
+    type: 'boolean',
   }),
 ];
 

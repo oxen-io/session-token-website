@@ -10,7 +10,7 @@ import { forwardRef } from 'react';
 
 const buttonVariants = cva(
   [
-    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-3 disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
+    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-3 disabled:pointer-events-none disabled: cursor-not-allowed border border-solid border-primary rounded-[40px]',
     'transition duration-200',
   ],
   {
@@ -18,6 +18,7 @@ const buttonVariants = cva(
       variant: {
         default: ['bg-primary text-black', 'hover:bg-transparent hover:text-primary'],
         outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
+        disabled: ['bg-transparent text-disabled border-disabled'],
       },
       size: {
         small: ['text-xs w-fit px-4 h-11'],
@@ -39,6 +40,7 @@ export interface ButtonProps
   url?: string;
   prefetch?: boolean;
   iconName?: string;
+  disabled?: boolean;
   hasArrow?: boolean;
   isPrimary?: boolean;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
@@ -55,6 +57,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       url,
       title,
       iconName,
+      disabled,
       hasArrow,
       isPrimary,
       isUpperCase = true,
@@ -84,14 +87,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={clsx(
           buttonVariants({
-            variant: !isPrimary ? 'outline' : variant,
+            variant: disabled ? 'disabled' : !isPrimary ? 'outline' : variant,
             size,
             className,
           }),
           isUpperCase ? 'uppercase' : ''
         )}
-        href={(link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
+        href={(!disabled && link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
         ref={ref}
+        disabled={disabled}
         {...props}
       >
         {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}

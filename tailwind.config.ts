@@ -39,6 +39,7 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        disabled: 'var(--disabled)',
         text: {
           DEFAULT: 'var(--text-text)',
           gradient: 'var(--text-gradient)',
