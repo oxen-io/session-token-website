@@ -1,4 +1,5 @@
 import { log } from '@/lib/logger';
+import type { ModulesArraysSchemaType } from '@/schemas/documents/flexibleSections';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import BasicCopy from '../Basic Copy/BasicCopy';
 import BlogGrid from './Modules/BlogGrid/BlogGrid';
@@ -14,7 +15,7 @@ import RoadmapTabs from './Modules/Roadmap/RoadmapTabs';
 import StatsTiles from './Modules/StatsTiles/StatsTiles';
 import TileCarousel from './Modules/TileCarousel/TileCarousel';
 
-const Components = {
+const Components: Record<string, (props: object) => JSX.Element | Promise<JSX.Element | null>> = {
   Hero,
   RoadmapHero,
   RoadmapTabs,
@@ -39,7 +40,7 @@ const FlexibleContent = ({
   settings,
   topic,
 }: {
-  rows: any;
+  rows: ModulesArraysSchemaType;
   settings: SettingsSchemaType;
   topic?: any;
 }) => {
@@ -49,7 +50,7 @@ const FlexibleContent = ({
 
   return (
     <div>
-      {rows.map((row, index) => {
+      {rows.map((row: any, index) => {
         const name = row._type;
 
         const Component = Components[ucFirst(name)];
