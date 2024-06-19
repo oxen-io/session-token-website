@@ -28,9 +28,11 @@ function splitNumber(number: number): { numSuffix: string; numMajor: string; num
 const NumberTicker = ({
   targetNumber,
   duration = 3000,
+  onClick,
 }: {
   targetNumber: number;
   duration?: number;
+  onClick?: () => void;
 }) => {
   const [count, setCount] = useState<number>(0);
   const [majorNumber, setMajorNumber] = useState<string>();
@@ -38,6 +40,7 @@ const NumberTicker = ({
   const [showRestNumber, setShowRestNumber] = useState<boolean>(true);
   const [suffix, setSuffix] = useState('');
   const [formattedString, setFormattedString] = useState<string>();
+
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -79,7 +82,15 @@ const NumberTicker = ({
   }, [targetNumber, count, duration]);
 
   return (
-    <motion.div ref={ref} className="relative inline-flex">
+    <motion.div
+      ref={ref}
+      className="relative inline-flex cursor-pointer"
+      onClick={() => {
+        if (onClick && formattedString) {
+          onClick();
+        }
+      }}
+    >
       {formattedString ? <motion.div>{majorNumber}</motion.div> : null}
       <motion.div
         initial={{ opacity: 1 }}
