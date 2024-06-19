@@ -32,7 +32,7 @@ const BottomJsx = ({
 );
 
 export default function Footer({ settings }: { settings: SettingsSchemaType }) {
-  const { menuItems, lastUpdatedDate, menuTopLink } = settings;
+  const { menuItems, lastUpdatedDate, footerCTA } = settings;
 
   return (
     <footer className={clsx('my-16 w-full')}>
@@ -95,8 +95,10 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
             })}
           </div>
         </div>
-        <div className={clsx('flex flex-col gap-6 xl:w-1/4')}>
-          <Button {...menuTopLink} className="hidden max-h-9 lg:flex" />
+        <div className={clsx('flex flex-col gap-8 xl:w-1/4')}>
+          {footerCTA ? (
+            <Button {...footerCTA} size="large" className="hidden max-h-10 max-w-48 lg:flex" />
+          ) : null}
           <Socials className="w-full" />
         </div>
       </div>

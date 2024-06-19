@@ -32,6 +32,11 @@ const fields = [
     type: 'button',
   }),
   defineField({
+    name: 'footerCTA',
+    title: 'Footer CTA',
+    type: 'button',
+  }),
+  defineField({
     name: 'mobileMenuCta',
     type: 'button',
   }),
