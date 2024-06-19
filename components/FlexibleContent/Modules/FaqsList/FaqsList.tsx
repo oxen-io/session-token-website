@@ -173,7 +173,7 @@ function FAQItem({ question, answer }: FAQItemProps) {
         </label>
         <div
           className={clsx(
-            '-mt-4 ml-7 max-h-0 w-full overflow-y-hidden text-base transition-all duration-150 ease-in-out peer-checked:max-h-screen peer-checked:pb-8',
+            '-mt-4 ml-7 max-h-0 w-full overflow-y-hidden text-base opacity-0 transition-all duration-300 ease-in-out peer-checked:max-h-screen peer-checked:pb-8 peer-checked:opacity-100',
             '[&>*>a]:text-primary [&>p]:mt-3 first:[&>p]:mt-0'
           )}
         >
