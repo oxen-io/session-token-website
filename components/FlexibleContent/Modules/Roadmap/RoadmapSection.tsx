@@ -89,19 +89,12 @@ const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
                     y1={`${100 - strokeFadePercent - 20}%`}
                     y2="100%"
                   >
-                    <stop offset="0%" stopColor="var(--color-black)" stopOpacity={0} />
-                    <stop offset="50%" stopColor="var(--color-black)" stopOpacity={1} />
-                    <stop offset="100%" stopColor="var(--color-black)" stopOpacity={1} />
+                    <stop offset="0%" stopColor="var(--black)" stopOpacity={0} />
+                    <stop offset="50%" stopColor="var(--black)" stopOpacity={1} />
+                    <stop offset="100%" stopColor="var(--black)" stopOpacity={1} />
                   </linearGradient>
                 </defs>
-                <line
-                  x1={x}
-                  x2={x}
-                  y1={circleY}
-                  y2="100%"
-                  strokeWidth={6}
-                  stroke="var(--color-black)"
-                />
+                <line x1={x} x2={x} y1={circleY} y2="100%" strokeWidth={6} stroke="var(--black)" />
                 <line
                   x1={x}
                   x2={x}
@@ -127,7 +120,7 @@ const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
               r={circleRadius}
               strokeWidth={3}
               style={{
-                fill: 'var(--color-black)',
+                fill: 'var(--black)',
                 scale: circlePassiveScale,
               }}
             />
@@ -169,8 +162,8 @@ const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
                     y1="0%"
                     y2={`${strokeFadePercent}%`}
                   >
-                    <stop offset={`0%`} stopColor="var(--color-black)" stopOpacity={1} />
-                    <stop offset={`100%`} stopColor="var(--color-black)" stopOpacity={0} />
+                    <stop offset={`0%`} stopColor="var(--black)" stopOpacity={1} />
+                    <stop offset={`100%`} stopColor="var(--black)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <line
@@ -224,11 +217,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
     );
     const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, lg ? 1 : 0.66]);
     const circleStrokeGradient = useTransform(scrollYProgress, [0.3, 0.5], ['#5C5C5C', '#000000']);
-    const circleFillGradient = useTransform(
-      scrollYProgress,
-      [0.3, 0.5],
-      ['var(--color-black)', 'none']
-    );
+    const circleFillGradient = useTransform(scrollYProgress, [0.3, 0.5], ['var(--black)', 'none']);
 
     return (
       <div ref={scrollRef}>

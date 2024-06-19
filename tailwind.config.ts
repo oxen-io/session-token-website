@@ -47,7 +47,6 @@ export default {
         },
         primary: {
           DEFAULT: 'var(--primary-DEFAULT)',
-          dark: 'var(--primary-dark)',
         },
         gray: {
           lightest: 'var(--gray-lightest)',
