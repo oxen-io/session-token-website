@@ -45,7 +45,7 @@ export default function Hero(props: HeroSchemaType) {
         className={clsx(
           s.CopyCont,
           'flex flex-col justify-center gap-4 text-center lg:text-start',
-          variant === 'copyImageStatsHero' ? 'left-0 w-80 lg:absolute lg:top-32' : 'w-full'
+          variant === 'copyImageStatsHero' ? 'left-0 w-80 lg:absolute lg:top-28' : 'w-full'
         )}
       >
         {title && (
@@ -96,7 +96,8 @@ export default function Hero(props: HeroSchemaType) {
           image={image}
           className={clsx(
             'flex select-none md:w-2/3 lg:w-full',
-            variant === 'copyImageStatsHero' ? 'max-w-[75vh]' : 'lg:max-w-[50vh]'
+            variant === 'copyImageStatsHero' ? 'max-w-[75vh]' : 'lg:max-w-[50vh]',
+            variant === 'copyImageStatsHero' && !statsHidden && 'blur-lg lg:blur-none'
           )}
         />
       ) : null}
