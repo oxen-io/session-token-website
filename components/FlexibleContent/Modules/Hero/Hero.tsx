@@ -10,33 +10,51 @@ import {
 } from '@/components/AnimatedComponent/AnimatedComponent';
 import Button from '@/components/Button/Button';
 import ScrollButton from '@/components/Button/ScrollButton';
-import type { ButtonSchemaType } from '@/schemas/objects/button';
+import type { HeroSchemaType, HeroVariantType } from '@/schemas/objects/flexibleSections/hero';
+import { useState } from 'react';
+import DepricatedHero from './DepricatedHero';
 import s from './Hero.module.sass';
+import RewardStats from './RewardStats';
 
-export default function Hero({
-  title,
-  copy,
-  buttons,
-  backgroundImage,
-}: {
-  title: string;
-  copy: any;
-  buttons: Array<ButtonSchemaType>;
-  backgroundImage: any;
-}) {
+export default function Hero(props: HeroSchemaType) {
+  const [statsHidden, setStatsHidden] = useState<boolean>(true);
+
+  const { title, copy, buttons, image, variant: _variant } = props;
+
+  const handleStatsToggleClick = () => {
+    setStatsHidden((prev) => !prev);
+  };
+
+  // TODO - Remove DepricatedHero support when all heros are updated
+  if (!_variant || !image) {
+    // eslint-disable-next-line no-console
+    console.warn('Hero component is using depricated schema. Please update the schema.');
+    return <DepricatedHero {...props} />;
+  }
+
+  const variant = _variant as HeroVariantType;
   return (
-    <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:grid lg:grid-cols-2 lg:py-20">
+    <section
+      className={clsx(
+        'flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:pt-20',
+        variant === 'copyImageStatsHero' ? '' : 'lg:grid lg:grid-cols-2 lg:pb-20'
+      )}
+    >
       <ScrollButton className="pt-4" />
       <div
         className={clsx(
           s.CopyCont,
-          'flex w-full flex-col justify-center gap-4 text-center lg:text-start'
+          'flex flex-col justify-center gap-4 text-center lg:text-start',
+          variant === 'copyImageStatsHero' ? 'left-0 w-80 lg:absolute lg:top-32' : 'w-full'
         )}
       >
         {title && (
           <AnimatedElement
             type="h1"
-            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-4xl font-medium text-transparent md:text-7xl"
+            className={clsx(
+              '-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-3xl font-medium text-transparent',
+              variant === 'copyImageStatsHero' ? 'md:text-4xl' : 'md:text-7xl'
+            )}
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
           />
@@ -59,11 +77,31 @@ export default function Hero({
                 </li>
               );
             })}
+            {variant === 'copyImageStatsHero' ? (
+              <li className="block lg:hidden">
+                <Button
+                  onClick={handleStatsToggleClick}
+                  title={statsHidden ? 'Show Stats' : 'Hide Stats'}
+                  size="medium"
+                  variant="outline"
+                  isUpperCase={true}
+                />
+              </li>
+            ) : null}
           </AnimatedElement>
         )}
       </div>
-      {backgroundImage ? (
-        <AnimatedBigImage image={backgroundImage} className="w-max-[50vh] flex w-2/3 lg:w-full" />
+      {image ? (
+        <AnimatedBigImage
+          image={image}
+          className={clsx(
+            'flex select-none md:w-2/3 lg:w-full',
+            variant === 'copyImageStatsHero' ? 'max-w-[75vh]' : 'lg:max-w-[50vh]'
+          )}
+        />
+      ) : null}
+      {variant === 'copyImageStatsHero' ? (
+        <RewardStats className={clsx('lg:block', statsHidden && 'hidden')} />
       ) : null}
     </section>
   );
