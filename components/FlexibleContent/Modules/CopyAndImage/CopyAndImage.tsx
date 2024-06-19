@@ -32,7 +32,7 @@ export default function CopyAndImage(props: CopyAndImageProps) {
   }
 
   return (
-    <section className={clsx('my-24')}>
+    <section className={clsx('my-12', 'lg:my-24')}>
       <div
         className={clsx(
           'flex items-center justify-between',

@@ -26,7 +26,7 @@ export default function JoinCta({
   }
 
   return (
-    <section className={clsx(s.Outer, 'my-24')}>
+    <section className={clsx(s.Outer, 'my-12', 'lg:my-24')}>
       <AnimatedElement
         className={clsx(
           'flex flex-col-reverse items-center overflow-hidden rounded-3xl border border-solid border-white border-opacity-20',

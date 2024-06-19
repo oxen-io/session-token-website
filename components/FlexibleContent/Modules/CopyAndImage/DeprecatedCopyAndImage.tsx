@@ -21,7 +21,7 @@ export default function DeprecatedCopyAndImage(props: DeprecatedCopyAndImageProp
   const isReversed = alignment === 'imageLeft';
 
   return (
-    <section className={clsx('my-24')}>
+    <section className={clsx('my-24', 'lg:my-12')}>
       <div
         className={clsx(
           'flex flex-col-reverse items-center justify-between',
