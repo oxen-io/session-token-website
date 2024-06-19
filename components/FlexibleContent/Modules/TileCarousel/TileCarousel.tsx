@@ -90,6 +90,8 @@ export default function TileCarousel({
         s.TileCarousel,
         content && s.HasContent,
         borderless && s.Borderless,
+        'mb-5 mt-12 overflow-hidden',
+        'lg:mt-24',
         // Values should match Constants.UI.CONTAINER_*
         `-me-[5vw] pe-[5vw]`
       )}

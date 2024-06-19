@@ -11,7 +11,7 @@ type TileCarouselTitle = {
   borderless?: boolean;
 };
 
-export const smallTitleClasses = ['text-sm *:text-sm text-text mb-4', 'lg:mb-6'];
+export const smallTitleClasses = ['text-sm *:text-sm text-text mb-5', 'lg:mb-6'];
 
 export default function TileCarouselTitle(props: TileCarouselTitle) {
   const { title, content, borderless } = props;
