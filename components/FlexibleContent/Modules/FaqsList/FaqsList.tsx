@@ -19,6 +19,7 @@ export default function FaqsList({ categories, maxWidth: _maxWidth }: FAQSchemaT
 
   useEffect(() => {
     const hash = window.location.hash;
+
     if (hash) {
       const target = document.querySelector(hash);
       target?.scrollIntoView({
@@ -27,8 +28,10 @@ export default function FaqsList({ categories, maxWidth: _maxWidth }: FAQSchemaT
       // click on the target label to expand the FAQ
       const inputId = target?.getAttribute('for');
       if (inputId) {
-        const input = document.getElementById(inputId);
-        input?.setAttribute('checked', 'true');
+        const input = document.getElementById(inputId) as HTMLInputElement | undefined;
+        if (input) {
+          input.checked = true;
+        }
       }
     }
   }, []);
