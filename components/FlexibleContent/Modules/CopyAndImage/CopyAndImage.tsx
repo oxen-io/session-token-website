@@ -35,6 +35,7 @@ export default function CopyAndImage({
       >
         <AnimatedElement
           className={clsx(
+            'w-full',
             'lg:flex lg:w-1/2 lg:items-center',
             isReversed ? 'lg:justify-end' : 'lg:justify-start'
           )}
