@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const Icons = {
+const icons = {
   house: (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 29" fill="none">
       <path
@@ -39,5 +39,5 @@ const Icons = {
   none: null,
 };
 
-export default Icons;
-export const iconsKeys = Object.keys(Icons);
+export default icons;
+export const iconsKeys = Object.keys(icons);

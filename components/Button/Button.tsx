@@ -6,7 +6,7 @@ import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
-import Icons, { iconsKeys } from '../Icons/Icons';
+import icons, { iconsKeys } from '../Icons/Icons';
 
 const buttonVariants = cva(
   [
@@ -92,7 +92,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {hasIcon ? <span className={clsx(iconClasses)}>{Icons[iconName]}</span> : null}
+        {hasIcon ? <span className={clsx(iconClasses)}>{icons[iconName]}</span> : null}
         {text && (
           <span className="inline-flex flex-row items-center">
             {text ?? children}
