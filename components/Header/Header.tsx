@@ -120,7 +120,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
               <Socials />
             </div>
           ) : (
-            <Button {...menuTopLink} className={'max-h-9'} />
+            <Button {...menuTopLink} variant={'outline'} className={'max-h-9'} />
           )}
         </div>
       </div>
