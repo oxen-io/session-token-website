@@ -13,6 +13,7 @@ import RoadmapHero from './Modules/Roadmap/RoadmapHero';
 import RoadmapTabs from './Modules/Roadmap/RoadmapTabs';
 import StatsTiles from './Modules/StatsTiles/StatsTiles';
 import TileCarousel from './Modules/TileCarousel/TileCarousel';
+import TileGroup from './Modules/TileGroup/TileGroup';
 
 const Components = {
   Hero,
@@ -21,6 +22,7 @@ const Components = {
   IconStrip,
   JoinCta,
   StatsTiles,
+  TileGroup,
   TileCarousel,
   CopyAndImage,
   BlogGrid,
