@@ -110,13 +110,26 @@ export default function TileCarousel({
               } = tile;
 
               const inside = (
-                <>
+                <div className={clsx('flex h-full w-full flex-col items-start', 'justify-end')}>
                   {image && (
-                    <div className={s.Image}>
+                    <div
+                      className={clsx(
+                        s.Image,
+                        'flex h-full w-36 flex-col justify-end',
+                        'lg:h-full lg:min-h-72 lg:w-48'
+                      )}
+                    >
                       <ImageBox image={image} />
                     </div>
                   )}
-                  <div className={s.TileContent}>
+                  <div
+                    className={clsx(
+                      s.TileContent,
+                      'mt-4 flex flex-col justify-end',
+                      'lg:mt-12',
+                      image ? 'h-full' : 'h-fit'
+                    )}
+                  >
                     {preTitle && <div className={clsx(smallTitleClasses)}>{preTitle}</div>}
                     {content ? (
                       <h4>
@@ -125,7 +138,7 @@ export default function TileCarousel({
                       </h4>
                     ) : (
                       <h2
-                        className={clsx('mb-1')}
+                        className={clsx('mb-2', 'lg:mb-1')}
                         dangerouslySetInnerHTML={{ __html: tileTitle }}
                       />
                     )}
@@ -140,7 +153,7 @@ export default function TileCarousel({
                       />
                     )}
                   </div>
-                </>
+                </div>
               );
 
               return (
@@ -150,7 +163,14 @@ export default function TileCarousel({
                     delay={index * 100 + 100}
                   >
                     {!link || linkLabel ? (
-                      <div>{inside}</div>
+                      <div
+                        className={clsx(
+                          'flex h-full flex-col items-start',
+                          image ? 'justify-between' : 'justify-end'
+                        )}
+                      >
+                        {inside}
+                      </div>
                     ) : (
                       <NavLink href={link}>{inside}</NavLink>
                     )}
