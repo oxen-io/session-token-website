@@ -10,15 +10,23 @@ import { forwardRef } from 'react';
 
 const buttonVariants = cva(
   [
-    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-2 disabled:pointer-events-none disabled: cursor-not-allowed border border-solid border-primary rounded-[40px]',
+    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-2 border border-solid rounded-[40px]',
     'transition duration-200',
   ],
   {
     variants: {
       variant: {
-        default: ['bg-primary text-black', 'hover:bg-transparent hover:text-primary'],
-        outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
-        disabled: ['bg-transparent text-disabled border-disabled'],
+        default: [
+          'bg-primary text-black cursor-pointer border-primary ',
+          'hover:bg-transparent hover:text-primary',
+        ],
+        outline: [
+          'bg-transparent text-primary cursor-pointer border-primary ',
+          'hover:bg-primary hover:text-black',
+        ],
+        disabled: [
+          'bg-transparent text-disabled border-disabled cursor-not-allowed *:cursor-not-allowed pointer-events-none',
+        ],
       },
       size: {
         small: ['text-xs w-fit px-4 h-11'],
@@ -93,6 +101,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         href={(!disabled && link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
         ref={ref}
         disabled={disabled}
+        style={{
+          cursor: disabled ? 'not-allowed' : undefined,
+          pointerEvents: disabled ? 'none' : undefined,
+        }}
         {...props}
       >
         {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}
