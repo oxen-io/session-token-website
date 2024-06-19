@@ -2,8 +2,7 @@
 
 import PortableText from 'components/PortableText/PortableText';
 
-import ImageBox from 'components/shared/ImageBox';
-
+import ImageBox from '@/components/shared/ImageBox';
 import { useScreenWidth } from '@/hooks/screen';
 import clsx from 'clsx';
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';

@@ -1,9 +1,9 @@
 import PortableText from '@/components/PortableText/PortableText';
 
 import Button from '@/components/Button/Button';
-import ImageBox from '@/components/shared/ImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
+import ImageBox from '@/components/shared/ImageBox';
 import type { SanityImage } from '@/lib/sanity.image';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import clsx from 'clsx';
