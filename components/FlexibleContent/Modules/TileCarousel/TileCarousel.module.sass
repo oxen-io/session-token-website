@@ -3,12 +3,6 @@
     margin-bottom: 20px
     overflow: hidden
 
-    div[class^="smallTitle"]
-        margin-bottom: 30px
-
-        .ScrollIcon
-            display: none
-
     &.Borderless
         .Cont
             display: flex
@@ -27,9 +21,11 @@
             flex-direction: column
             z-index: 2
 
-            h2
-                text-align: center
-                color: var(--color-mid-grey)
+            &:not(.TitleCarouselTitle)
+
+                h2
+                    text-align: center
+                    color: var(--color-mid-grey)
 
         .Slide > div
             border: none
@@ -37,9 +33,10 @@
             align-items: center
             text-align: center
 
-            h2
-                font-size: 32px
+            &:not(.TitleCarouselTitle)
 
+                h2
+                    font-size: 32px
             .Image
                 width: auto
 
@@ -92,10 +89,6 @@
     justify-content: center
     width: 25%
     padding: 0 100px 0 0
-
-    h2
-        margin-top: 0px
-        margin-bottom: 20px
 
 .Slider
     width: 100%
@@ -221,9 +214,6 @@
         margin: 0 0 10px
         opacity: 0.6
 
-    h2
-        margin: 0 0 20px
-
     h4
         margin: 0 0 10px
 
@@ -246,22 +236,6 @@
                     &[class*="swiper-horizontal"]
                         overflow: visible
 
-        div[class^="smallTitle"]
-            margin-bottom: 0px
-
-            .ScrollIcon
-                display: block
-                position: absolute
-                right: 0
-                top: 0
-                white-space: nowrap
-                opacity: 0.5
-
-                svg
-                    width: 35px
-                    display: inline-block
-                    margin-left: 10px
-
     .Cont
         flex-direction: column
 
@@ -270,9 +244,6 @@
         margin: 0 0 30px
         padding: 0px
         gap: 20px
-
-        h2
-            margin: 0px
 
     .Slider
         &>ul

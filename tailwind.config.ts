@@ -41,7 +41,7 @@ export default {
         foreground: 'var(--foreground)',
         disabled: 'var(--disabled)',
         text: {
-          DEFAULT: 'var(--text-text)',
+          DEFAULT: 'var(--text)',
           gradient: 'var(--text-gradient)',
           caption: 'var(--text-caption)',
         },
