@@ -117,7 +117,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
           {isSM || isMD ? (
             <div className={clsx('flex flex-col pb-16')}>
               <Button {...mobileMenuCta} />
-              <Socials />
+              <Socials className="mt-5" />
             </div>
           ) : (
             <Button {...menuTopLink} variant={'outline'} className={'max-h-9'} />

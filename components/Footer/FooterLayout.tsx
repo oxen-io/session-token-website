@@ -18,18 +18,13 @@ const BottomJsx = ({
   className?: string;
 }) => (
   <div
-    className={clsx(
-      s.Bottom,
-      'mx-0 mt-auto flex w-full flex-col items-start text-sm',
-      'lg:gap-1',
-      className
-    )}
+    className={clsx('mx-0 mt-auto flex w-full flex-col items-start text-sm', 'lg:gap-1', className)}
   >
-    <div className={clsx('flex flex-col leading-tight', 'lg-gap-2')}>
+    <div className={clsx('flex flex-col leading-tight', 'lg:flex-row lg:gap-2')}>
       <span>Website last updated</span>
       <span>{lastUpdatedDate}</span>
     </div>
-    <div className={clsx('flex flex-col whitespace-nowrap leading-tight', 'lg-gap-2')}>
+    <div className={clsx('flex flex-col whitespace-nowrap leading-tight', 'lg:flex-row lg:gap-2')}>
       <span>&copy; The Session Network {new Date().getFullYear()}.</span>
       <span>All rights reserved.</span>
     </div>
@@ -40,32 +35,33 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
   const { menuItems, lastUpdatedDate } = settings;
 
   return (
-    <footer className="mb-5 mt-[50px] w-full">
-      <div className="m-auto">
-        <div
-          className={clsx(
-            'grid grid-cols-2 pt-10',
-            'border-x-0 border-b-0 border-t-2 border-solid border-[#676767]',
-            'lg:flex lg:items-start lg:justify-between'
-          )}
-        >
-          <div className={s.Main}>
+    <footer className={clsx('my-16 w-full', 'lg:mb-8')}>
+      <div
+        className={clsx(
+          'grid w-full grid-cols-2 pt-10',
+          'border-x-0 border-b-0 border-t-2 border-solid border-[#676767]',
+          'lg:flex lg:flex-row lg:justify-between lg:pt-16'
+        )}
+      >
+        <div className={clsx('lg:w-1/3')}>
+          <div className={clsx('mb-5 flex flex-col', 'lg:mb-0 lg:w-full')}>
             <div className={s.Logo}>
               <Link href={'/'}>
                 <Image src={LogoFooter} alt="Session Token" />
                 <Image src={Logo} alt="Session Token" />
               </Link>
             </div>
-            <span className={clsx('my-6 text-sm font-medium uppercase')}>
+            <span className={clsx('my-6 text-sm font-medium uppercase', 'lg:mb-24 lg:mt-8')}>
               / Managed by The Session Network
             </span>
             <BottomJsx lastUpdatedDate={lastUpdatedDate} className="lg:hidden" />
           </div>
-          {/* {menuItems.length > 1 ? <Menu menu={menuItems} footer /> : null} */}
+        </div>
+        <div className={clsx('lg:w-full lg:px-36')}>
           <div
             className={clsx(
-              'ml-12 flex w-full flex-col items-start justify-start gap-5',
-              'lg:flex-row lg:gap-12'
+              'ml-12 flex flex-col items-start justify-start gap-5',
+              'lg:ml-0 lg:w-full lg:flex-row lg:justify-between'
             )}
           >
             {menuItems.map((item, index) => {
@@ -88,10 +84,12 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
               );
             })}
           </div>
-          <Socials />
         </div>
-        <BottomJsx lastUpdatedDate={lastUpdatedDate} className={'hidden lg:flex'} />
+        <div className={clsx('lg:w-1/3')}>
+          <Socials className="lg:w-full" />
+        </div>
       </div>
+      <BottomJsx lastUpdatedDate={lastUpdatedDate} className={'hidden lg:flex'} />
     </footer>
   );
 }
