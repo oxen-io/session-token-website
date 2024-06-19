@@ -1,8 +1,6 @@
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import { SettingsContext } from '@/components/Contexts/SettingsContext';
 import { log } from '@/lib/logger';
 import clsx from 'clsx';
-import { useContext } from 'react';
 import s from './RewardStats.module.sass';
 
 const giftIcon = (
@@ -15,8 +13,36 @@ const giftIcon = (
   </svg>
 );
 
-export default function RewardStats({ visibleOnMobile }: { visibleOnMobile: boolean }) {
-  const { rewards } = useContext(SettingsContext);
+const comingSoonRewardsData = {
+  timeUntilNextRewardPercent: 50,
+  meta: [
+    {
+      _key: '1',
+      title: 'Glqwos xmakwhp',
+      copy: '15 bskfn DND',
+    },
+    {
+      _key: '2',
+      title: 'Cool you can see this',
+      copy: '12,345',
+    },
+    {
+      _key: '3',
+      title: 'Saskfnw rejsbcgwet',
+      copy: '12,345',
+    },
+    {
+      _key: '4',
+      title: 'good job :)',
+      copy: '2,000',
+    },
+  ],
+};
+
+export default function RewardStats({ className }: { className?: string }) {
+  // TODO: Uncomment when rewards are available
+  // const { rewards } = useContext(SettingsContext);
+  const rewards = comingSoonRewardsData;
 
   if (!rewards) {
     log.error('No rewards found');
@@ -26,9 +52,10 @@ export default function RewardStats({ visibleOnMobile }: { visibleOnMobile: bool
   const { timeUntilNextRewardPercent, meta } = rewards as any;
 
   return (
-    <AnimatedElement className={clsx(s.Outer, visibleOnMobile && s.VisibleOnMobile)} delay={400}>
-      <h3>Current stats</h3>
-      <ul>
+    <AnimatedElement className={clsx(s.Outer, className)} delay={400}>
+      <h3 className="text-4xl">Live Reward Stats</h3>
+      <span className="text-2xl">Coming Soon</span>
+      <ul className="select-none blur-sm">
         {timeUntilNextRewardPercent ? (
           <li>
             <span>{giftIcon} Time until next reward:</span>
