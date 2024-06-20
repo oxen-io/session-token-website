@@ -43,19 +43,14 @@ export default function CopyAndImage(props: CopyAndImageProps) {
         <AnimatedElement
           className={clsx(
             'w-full',
-            'lg:flex lg:max-w-md lg:items-center',
-            'xl:max-w-xl',
-            desktopAlignment === 'imageLeft' ? 'lg:justify-end' : 'lg:justify-start'
+            'lg:flex lg:items-center',
+            desktopAlignment === 'imageLeft'
+              ? 'lg:ms-16 lg:justify-end'
+              : 'lg:me-16 lg:justify-start'
           )}
           delay={mobileAlignment === 'imageAbove' || desktopAlignment === 'imageLeft' ? 200 : 100}
         >
-          <div
-            className={clsx(
-              'flex w-full flex-grow flex-col items-start justify-center',
-              'md:max-w-xl',
-              'lg:max-w-none'
-            )}
-          >
+          <div className={clsx('flex w-full flex-grow flex-col items-start justify-center')}>
             <div className={clsx('smallTitle', 'mb-6')}>{title}</div>
             {copy && (
               <h2
