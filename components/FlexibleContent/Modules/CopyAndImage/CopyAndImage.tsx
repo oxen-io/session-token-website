@@ -15,13 +15,15 @@ type CopyAndImageProps = DeprecatedCopyAndImageProps & {
   copy: any;
   subCopy: any;
   image: SanityImage;
+  showButton?: boolean;
   button: ButtonSchemaType;
   mobileAlignment: 'imageAbove' | 'imageBelow' | undefined;
   desktopAlignment: 'imageLeft' | 'imageRight' | undefined;
 };
 
 export default function CopyAndImage(props: CopyAndImageProps) {
-  const { title, copy, subCopy, image, button, mobileAlignment, desktopAlignment } = props;
+  const { title, copy, subCopy, image, button, mobileAlignment, desktopAlignment, showButton } =
+    props;
 
   if (!mobileAlignment || !desktopAlignment) {
     // eslint-disable-next-line no-console
@@ -73,7 +75,9 @@ export default function CopyAndImage(props: CopyAndImageProps) {
                 <PortableText value={subCopy} />
               </h4>
             )}
-            {button && <Button {...button} className={clsx('my-5')} title={button.link.title} />}
+            {showButton && button && (
+              <Button {...button} className={clsx('my-5')} title={button.link.title} />
+            )}
           </div>
         </AnimatedElement>
         <AnimatedElement

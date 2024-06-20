@@ -19,8 +19,17 @@ export const copyAndImage = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'showButton',
+      type: 'boolean',
+      title: 'Show Button',
+      initialValue: false,
+      description:
+        'Show a button below the copy. If enabled, the button fields will be shown for you to fill out.',
+    }),
+    defineField({
       name: 'button',
       type: 'button',
+      hidden: ({ parent }) => !parent?.showButton,
     }),
     defineField({
       name: 'mobileAlignment',
