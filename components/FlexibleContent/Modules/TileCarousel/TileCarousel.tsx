@@ -22,8 +22,8 @@ import type {
   TileSchemaType,
 } from '@/schemas/objects/flexibleSections/tileCarousel';
 import type { A11yOptions } from 'swiper/types';
-import TileCarouselTitle, { smallTitleClasses } from './TIleCarouselTitle';
 import s from './TileCarousel.module.sass';
+import TileCarouselTitle, { smallTitleClasses } from './TileCarouselTitle';
 
 function parseString(potentialString: string | number | undefined | null): string | undefined {
   if (typeof potentialString === 'string') {
