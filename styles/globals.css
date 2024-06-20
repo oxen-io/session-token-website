@@ -13,6 +13,8 @@
 
     --black: #0a0a0a;
     --text: #dbdbdb;
+    --disabled: #939393;
+
     --text-gradient: linear-gradient(128.42deg, #ffffff -38.86%, #97a99e 133.98%);
     --text-gradient-darker: linear-gradient(
       90.71deg,

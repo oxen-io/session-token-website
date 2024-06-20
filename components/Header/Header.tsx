@@ -64,7 +64,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
         {isSM || isMD ? (
           <div className={clsx('flex flex-row')}>
             <Spacer size="xs" />
-            <Button {...menuTopLink} size="small" className="max-h-9" />
+            <Button {...menuTopLink} variant={'outline'} size="small" className="max-h-9" />
             <Spacer size="xs" />
             <MenuButton open={isExpanded} setOpen={toggleNav} />
           </div>
@@ -78,7 +78,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
       >
         <div
           className={clsx(
-            'flex w-full flex-col items-start justify-between bg-background text-lg text-white',
+            'flex w-full flex-col items-start justify-between bg-background text-lg text-text',
             'lg:flex-row lg:items-center lg:bg-transparent',
             'transform transition-all duration-300',
             isExpanded
@@ -117,10 +117,10 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
           {isSM || isMD ? (
             <div className={clsx('flex flex-col pb-16')}>
               <Button {...mobileMenuCta} />
-              <Socials />
+              <Socials className="mt-5" />
             </div>
           ) : (
-            <Button {...menuTopLink} className={'max-h-9'} />
+            <Button {...menuTopLink} variant={'outline'} className={'max-h-9'} />
           )}
         </div>
       </div>

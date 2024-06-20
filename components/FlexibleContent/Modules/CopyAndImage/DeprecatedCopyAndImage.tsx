@@ -1,43 +1,31 @@
-import PortableText from '@/components/PortableText/PortableText';
-
-import Button from '@/components/Button/Button';
-
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import ImageBox from '@/components/shared/ImageBox';
+import Button from '@/components/Button/Button';
+import ImageBox from '@/components/ImageBox/ImageBox';
 import type { SanityImage } from '@/lib/sanity.image';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
+import { PortableText } from '@portabletext/react';
 import clsx from 'clsx';
-import type { DeprecatedCopyAndImageProps } from './DeprecatedCopyAndImage';
-import DeprecatedCopyAndImage from './DeprecatedCopyAndImage';
 
-type CopyAndImageProps = DeprecatedCopyAndImageProps & {
+export type DeprecatedCopyAndImageProps = {
   title: string;
   copy: any;
   subCopy: any;
   image: SanityImage;
   button: ButtonSchemaType;
-  mobileAlignment: 'imageAbove' | 'imageBelow' | undefined;
-  desktopAlignment: 'imageLeft' | 'imageRight' | undefined;
+  alignment: 'imageLeft' | 'imageRight';
 };
 
-export default function CopyAndImage(props: CopyAndImageProps) {
-  const { title, copy, subCopy, image, button, mobileAlignment, desktopAlignment } = props;
-
-  if (!mobileAlignment || !desktopAlignment) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      '@deprecated A CopyAndImage component is using a depricated schema field. Please update the schema.'
-    );
-    return <DeprecatedCopyAndImage {...props} />;
-  }
+/** @deprecated */
+export default function DeprecatedCopyAndImage(props: DeprecatedCopyAndImageProps) {
+  const { title, copy, subCopy, image, button, alignment } = props;
+  const isReversed = alignment === 'imageLeft';
 
   return (
-    <section className={clsx('my-12', 'lg:my-24')}>
+    <section className={clsx('my-24', 'lg:my-12')}>
       <div
         className={clsx(
-          'flex items-center justify-between',
-          mobileAlignment === 'imageAbove' ? 'flex-col-reverse' : 'flex-col',
-          desktopAlignment === 'imageLeft' ? 'lg:flex-row-reverse' : 'lg:flex-row'
+          'flex flex-col-reverse items-center justify-between',
+          isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'
         )}
       >
         <AnimatedElement
@@ -45,9 +33,9 @@ export default function CopyAndImage(props: CopyAndImageProps) {
             'w-full',
             'lg:flex lg:max-w-md lg:items-center',
             'xl:max-w-xl',
-            desktopAlignment === 'imageLeft' ? 'lg:justify-end' : 'lg:justify-start'
+            isReversed ? 'lg:justify-end' : 'lg:justify-start'
           )}
-          delay={mobileAlignment === 'imageAbove' || desktopAlignment === 'imageLeft' ? 200 : 100}
+          delay={isReversed ? 200 : 100}
         >
           <div
             className={clsx(
@@ -83,7 +71,7 @@ export default function CopyAndImage(props: CopyAndImageProps) {
             'xl:max-w-2xl',
             '2xl:max-w-3xl'
           )}
-          delay={mobileAlignment === 'imageAbove' || desktopAlignment === 'imageLeft' ? 100 : 200}
+          delay={isReversed ? 100 : 200}
         >
           {image && <ImageBox image={image} />}
         </AnimatedElement>

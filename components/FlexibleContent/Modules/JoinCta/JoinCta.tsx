@@ -26,7 +26,7 @@ export default function JoinCta({
   }
 
   return (
-    <section className={clsx(s.Outer, 'my-24')}>
+    <section className={clsx(s.Outer, 'my-12', 'lg:my-24')}>
       <AnimatedElement
         className={clsx(
           'flex flex-col-reverse items-center overflow-hidden rounded-3xl border border-solid border-white border-opacity-20',
@@ -40,7 +40,7 @@ export default function JoinCta({
           <div className={clsx('mb-8', 'lg:mb-16')}>
             <PortableText value={copy} />
           </div>
-          <Socials socialLinks={socialLinks} />
+          <Socials socialLinks={socialLinks} className="mt-5" />
         </div>
         <div
           className={clsx('h-72 w-full bg-cover bg-center bg-no-repeat', 'lg:-my-12 lg:h-[660px]')}

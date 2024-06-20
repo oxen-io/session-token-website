@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 function nonLinearEase(t: number) {
@@ -28,15 +28,19 @@ function splitNumber(number: number): { numSuffix: string; numMajor: string; num
 const NumberTicker = ({
   targetNumber,
   duration = 3000,
+  onClick,
 }: {
   targetNumber: number;
   duration?: number;
+  onClick?: () => void;
 }) => {
   const [count, setCount] = useState<number>(0);
   const [majorNumber, setMajorNumber] = useState<string>();
   const [restNumber, setRestNumber] = useState<string>();
+  const [showRestNumber, setShowRestNumber] = useState<boolean>(true);
   const [suffix, setSuffix] = useState('');
   const [formattedString, setFormattedString] = useState<string>();
+
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -68,15 +72,38 @@ const NumberTicker = ({
       return;
     }
     const { numSuffix, numMajor, numRest } = splitNumber(targetNumber);
-    setSuffix(numSuffix);
-    setMajorNumber(numMajor);
     setRestNumber(numRest);
+    setMajorNumber(numMajor);
+    setSuffix(numSuffix);
     setFormattedString(`${numMajor}${numSuffix}`);
-  }, [targetNumber, count]);
+    setTimeout(() => {
+      setShowRestNumber(false);
+    }, 1800 + 1);
+  }, [targetNumber, count, duration]);
 
   return (
-    <motion.div ref={ref} className="relative inline-flex">
+    <motion.div
+      ref={ref}
+      className="relative inline-flex cursor-pointer"
+      onClick={() => {
+        if (onClick && formattedString) {
+          onClick();
+        }
+      }}
+    >
       {formattedString ? <motion.div>{majorNumber}</motion.div> : null}
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: formattedString ? 0 : 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 1 + 0.8,
+          ease: 'linear',
+        }}
+        style={{ display: showRestNumber ? 'block' : 'none' }}
+      >
+        {restNumber ?? Math.floor(count).toLocaleString()}
+      </motion.div>
       {formattedString ? (
         <motion.div
           initial={{ opacity: 0, display: 'none' }}
@@ -90,17 +117,6 @@ const NumberTicker = ({
           {suffix}
         </motion.div>
       ) : null}
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: duration / 1000 + 1,
-          ease: 'linear',
-        }}
-      >
-        {restNumber ?? Math.floor(count).toLocaleString()}
-      </motion.div>
     </motion.div>
   );
 };
