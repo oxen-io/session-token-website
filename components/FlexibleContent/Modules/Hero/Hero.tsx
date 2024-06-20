@@ -67,13 +67,13 @@ export default function Hero(props: HeroSchemaType) {
             <PortableText value={copy} />
           </AnimatedElement>
         )}
-        {buttons && (
+        {buttons || variant === 'copyImageStatsHero' ? (
           <AnimatedElement
             type={'ul'}
             delay={300}
             className="flex w-full flex-row items-center justify-center gap-3 lg:w-max"
           >
-            {buttons.map((button, index) => {
+            {buttons?.map((button, index) => {
               return (
                 <li key={index}>
                   <Button {...button} />
@@ -91,6 +91,8 @@ export default function Hero(props: HeroSchemaType) {
                 />
               </li>
             ) : null}
+          </AnimatedElement>
+        ) : null}
           </AnimatedElement>
         )}
       </div>
