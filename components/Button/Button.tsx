@@ -89,7 +89,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       (!size || size === 'medium') && 'w-4 h-4 *:h-4 *:w-4',
       size === 'small' && 'w-4 h-4 *:w-4 *:h-4',
       size === 'large' && 'w-6 h-6 *:w-6 *:h-6',
-      'transition duration-200',
       // This is a hack for Windows to align the icon with the button text because the Atyp Text font is not vertically centered.
       'inline *:inline *:bottom-[1px]',
     ];
