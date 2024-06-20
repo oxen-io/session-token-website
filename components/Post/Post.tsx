@@ -1,4 +1,4 @@
-import PostTile from '@/components/FlexibleContent/Modules/BlogGrid/BlogTile';
+import PostTile from '@/components/FlexibleContent/Modules/PostGrid/PostTile';
 import { SLUG } from '@/lib/constants';
 import type { PostSchemaType } from '@/schemas/documents/post';
 import type { CopyFields } from '@/schemas/partials/portableText';

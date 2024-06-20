@@ -3,10 +3,10 @@
 import type { PostSchemaType } from '@/schemas/documents/post';
 import clsx from 'clsx';
 import { useEffect, useState } from 'react';
-import s from './BlogGrid.module.sass';
-import PostTile from './BlogTile';
+import s from './PostGrid.module.sass';
+import PostTile from './PostTile';
 
-export default function BlogGridInner({ posts }: { posts: Array<PostSchemaType> }) {
+export default function PostGridInner({ posts }: { posts: Array<PostSchemaType> }) {
   const [hasMounted, setHasMounted] = useState(false);
 
   useEffect(() => {

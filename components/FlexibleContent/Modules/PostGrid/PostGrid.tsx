@@ -1,11 +1,11 @@
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
 import clsx from 'clsx';
-import s from './BlogGrid.module.sass';
-import BlogGridInner from './BlogGridInner';
-import PostTile from './BlogTile';
+import s from './PostGrid.module.sass';
+import PostGridInner from './PostGridInner';
+import PostTile from './PostTile';
 
-export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: string }) {
+export default async function PostGrid({ morePostsTitle }: { morePostsTitle: string }) {
   const posts = await sanityQuery
     .from(CMSDocument.Post)
     .select([SPECIAL_SELECT[CMSDocument.Post]])
@@ -31,7 +31,7 @@ export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: str
         <AnimatedElement type="h5" delay={300}>
           {morePostsTitle}
         </AnimatedElement>
-        <BlogGridInner posts={postsWithoutFirst} />
+        <PostGridInner posts={postsWithoutFirst} />
       </div>
     </section>
   );

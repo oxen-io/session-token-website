@@ -26,12 +26,12 @@ export async function generateRssFeed(posts: Array<PostSchemaType>) {
       '@xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
       '@xmlns:dc': 'http://purl.org/dc/elements/1.1/',
       channel: {
-        title: `Session Token Blog`,
-        description: 'RSS feed for the Session Token Blog.',
+        title: `Session Token Updates`,
+        description: 'RSS feed for Session Token updates.',
         link: site_url,
         image: {
           url: `${site_url}/images/logoBlack.png`,
-          title: `Session Token Blog`,
+          title: `Session Token Updates`,
           link: site_url,
         },
         generator: 'mini-xml for Node.js',
