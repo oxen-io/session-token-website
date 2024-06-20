@@ -13,13 +13,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/blog',
-        destination: '/updates',
+        source: '/updates',
+        destination: '/blog',
         permanent: true,
       },
       {
-        source: '/blog/:slug*',
-        destination: '/updates/:slug*',
+        source: '/updates/:slug*',
+        destination: '/blog/:slug*',
         permanent: true,
       },
     ];
@@ -30,11 +30,11 @@ const nextConfig = {
         '/rss',
         '/feed',
         '/feed.xml',
-        '/updates.xml',
-        '/updates/rss',
-        '/updates/feed',
-        '/updates/rss.xml',
-        '/updates/feed.xml',
+        '/blog.xml',
+        '/blog/rss',
+        '/blog/feed',
+        '/blog/rss.xml',
+        '/blog/feed.xml',
       ].map((source) => ({
         source,
         destination: '/rss.xml',
