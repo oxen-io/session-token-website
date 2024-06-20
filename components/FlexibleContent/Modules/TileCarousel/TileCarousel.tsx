@@ -10,7 +10,7 @@ import 'swiper/scss';
 import 'swiper/scss/a11y';
 
 import Button from '@/components/Button/Button';
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import NavLink from '@/components/NavLink/NavLink';
@@ -121,7 +121,7 @@ export default function TileCarousel({
                         'lg:h-full lg:min-h-72 lg:w-48'
                       )}
                     >
-                      <ImageBox image={image} />
+                      <CMSImageBox image={image} />
                     </div>
                   )}
                   <div

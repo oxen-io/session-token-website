@@ -1,6 +1,6 @@
 'use client';
 
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 import clsx from 'clsx';
 import { useCallback } from 'react';
 
@@ -95,7 +95,7 @@ export const AnimatedBigImage = ({
   });
 
   return (
-    <ImageBox
+    <CMSImageBox
       image={image}
       className={clsx(className, `AnimatedBigImage`, {
         [`Visible`]: inView,

@@ -2,7 +2,7 @@
 
 import clsx from 'clsx';
 
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import NumberTicker from '@/components/NumberTicker';
@@ -54,8 +54,8 @@ export default function StatsTiles({
                   className={clsx(
                     'text-[54px] leading-none',
                     'lg:text-[44px]',
-                    'xl:text-[68px]',
-                    '2xl:text-[72px]'
+                    'xl:text-[64px]',
+                    '3xl:text-[72px]'
                   )}
                 >
                   <NumberTicker
@@ -67,7 +67,7 @@ export default function StatsTiles({
                 <p className={clsx('w-full text-2xl leading-none')}>{copy}</p>
               </div>
               {backgroundImage && (
-                <ImageBox
+                <CMSImageBox
                   image={backgroundImage}
                   className={clsx('absolute left-0 top-0 *:h-36', 'xl:*:h-48')}
                 />

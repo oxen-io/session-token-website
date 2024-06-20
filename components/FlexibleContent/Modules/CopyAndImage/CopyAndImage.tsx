@@ -1,9 +1,9 @@
 import PortableText from '@/components/PortableText/PortableText';
 
 import Button from '@/components/Button/Button';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import ImageBox from '@/components/shared/ImageBox';
 import type { SanityImage } from '@/lib/sanity.image';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import clsx from 'clsx';
@@ -15,13 +15,15 @@ type CopyAndImageProps = DeprecatedCopyAndImageProps & {
   copy: any;
   subCopy: any;
   image: SanityImage;
+  showButton?: boolean;
   button: ButtonSchemaType;
   mobileAlignment: 'imageAbove' | 'imageBelow' | undefined;
   desktopAlignment: 'imageLeft' | 'imageRight' | undefined;
 };
 
 export default function CopyAndImage(props: CopyAndImageProps) {
-  const { title, copy, subCopy, image, button, mobileAlignment, desktopAlignment } = props;
+  const { title, copy, subCopy, image, button, mobileAlignment, desktopAlignment, showButton } =
+    props;
 
   if (!mobileAlignment || !desktopAlignment) {
     // eslint-disable-next-line no-console
@@ -68,7 +70,9 @@ export default function CopyAndImage(props: CopyAndImageProps) {
                 <PortableText value={subCopy} />
               </h4>
             )}
-            {button && <Button {...button} className={clsx('my-5')} title={button.link.title} />}
+            {showButton && button && (
+              <Button {...button} className={clsx('my-5')} title={button.link.title} />
+            )}
           </div>
         </AnimatedElement>
         <AnimatedElement
@@ -80,7 +84,7 @@ export default function CopyAndImage(props: CopyAndImageProps) {
           )}
           delay={mobileAlignment === 'imageAbove' || desktopAlignment === 'imageLeft' ? 100 : 200}
         >
-          {image && <ImageBox image={image} />}
+          {image && <CMSImageBox image={image} />}
         </AnimatedElement>
       </div>
     </section>

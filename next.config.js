@@ -10,6 +10,20 @@ const nextConfig = {
       { hostname: 'source.unsplash.com' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/updates',
+        destination: '/blog',
+        permanent: true,
+      },
+      {
+        source: '/updates/:slug*',
+        destination: '/blog/:slug*',
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       ...[

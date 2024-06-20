@@ -1,4 +1,5 @@
-import BlogTile from '@/components/FlexibleContent/Modules/BlogGrid/BlogTile';
+import PostTile from '@/components/FlexibleContent/Modules/PostGrid/PostTile';
+import { SLUG } from '@/lib/constants';
 import type { PostSchemaType } from '@/schemas/documents/post';
 import type { CopyFields } from '@/schemas/partials/portableText';
 import clsx from 'clsx';
@@ -10,9 +11,9 @@ export default function Post({ post }: { post: PostSchemaType }) {
   return (
     <section className={clsx(s.Outer, 'pt-20', 'lg:pt-32')}>
       <div className={s.BackLink}>
-        <Link href={'/blog'}>← Back to blog</Link>
+        <Link href={`/${SLUG.POSTS}`}>← Back to {SLUG.POSTS.toLocaleLowerCase()}</Link>
       </div>
-      <BlogTile post={post} isFeatured isSingle isTitle />
+      <PostTile post={post} isFeatured isSingle isTitle />
       <BasicCopy
         copy={post.copy as CopyFields}
         showOutline={true}

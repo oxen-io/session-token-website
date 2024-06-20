@@ -43,7 +43,6 @@ export default function Hero(props: HeroSchemaType) {
         variant === 'copyImageStatsHero' ? '' : 'lg:grid lg:grid-cols-2 lg:pb-20'
       )}
     >
-      <ScrollButton className="pt-4" />
       <div
         className={clsx(
           s.CopyCont,
@@ -67,13 +66,13 @@ export default function Hero(props: HeroSchemaType) {
             <PortableText value={copy} />
           </AnimatedElement>
         )}
-        {buttons && (
+        {buttons || variant === 'copyImageStatsHero' ? (
           <AnimatedElement
             type={'ul'}
             delay={300}
             className="flex w-full flex-row items-center justify-center gap-3 lg:w-max"
           >
-            {buttons.map((button, index) => {
+            {buttons?.map((button, index) => {
               return (
                 <li key={index}>
                   <Button {...button} />
@@ -92,7 +91,8 @@ export default function Hero(props: HeroSchemaType) {
               </li>
             ) : null}
           </AnimatedElement>
-        )}
+        ) : null}
+        <ScrollButton className="pt-2" />
       </div>
       {image ? (
         <AnimatedBigImage

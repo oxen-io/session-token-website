@@ -3,13 +3,14 @@ import Link from 'next/link';
 
 import { urlForImage } from '@/lib/sanity.image';
 import moment from 'moment';
-import Image from 'next/image';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
+import ImageBox from '@/components/ImageBox/ImageBox';
+import { SLUG } from '@/lib/constants';
 import type { PostSchemaType } from '@/schemas/documents/post';
-import s from './BlogTile.module.sass';
+import s from './PostTile.module.sass';
 
-export default function BlogTile({
+export default function PostTile({
   post: { author, excerpt, title, featuredImage, slug, datePosted },
   isFeatured,
   isSingle,
@@ -30,7 +31,7 @@ export default function BlogTile({
 
   return (
     <Element
-      href={`/blog/${slug.current}`}
+      href={`/${SLUG.POSTS}/${slug.current}`}
       className={clsx(
         s.Outer,
         isSingle ? 'flex flex-col-reverse' : 'grid grid-cols-1 gap-5',
@@ -45,7 +46,7 @@ export default function BlogTile({
         delay={100}
         disabled={!isFeatured}
       >
-        <Image
+        <ImageBox
           className={clsx('w-full')}
           src={imageUrl}
           width={560}

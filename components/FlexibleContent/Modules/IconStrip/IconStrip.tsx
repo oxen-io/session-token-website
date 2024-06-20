@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import s from './IconStrip.module.sass';
 
@@ -18,7 +18,7 @@ export default function IconStrip({ title, icons }: { title: string; icons: any 
 
               return (
                 <li key={index}>
-                  <ImageBox image={icon} />
+                  <CMSImageBox image={icon} />
                 </li>
               );
             })}
