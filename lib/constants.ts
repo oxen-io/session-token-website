@@ -2,6 +2,10 @@
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../tailwind.config';
 
+export const SLUG = {
+  POSTS: 'updates',
+} as const;
+
 const fullConfig = resolveConfig(tailwindConfig);
 
 function makeNumber(input: string) {

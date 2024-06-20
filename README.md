@@ -45,8 +45,7 @@ The `app/api` directory is mapped to `/api/*`. Files in this directory are treat
 
 ### Next.js
 
-- Try to use the [next/image](https://nextjs.org/docs/api-reference/next/image) component in place of `img` tags where possible.
-- If you want to make a link to a location on the website use the [next/link](https://nextjs.org/docs/api-reference/next/link) component with a relative path. i.e. `https://token.getsession.org/blog -> /blog`
+- If you want to make a link to a location on the website use the [next/link](https://nextjs.org/docs/api-reference/next/link) component with a relative path. i.e. `https://token.getsession.org/updates -> /updates`
 
 ## Deploying to Production
 

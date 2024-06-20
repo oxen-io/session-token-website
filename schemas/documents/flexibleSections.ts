@@ -10,7 +10,7 @@ type ModulesSchemaType =
   | 'tileGroup'
   | 'tileCarousel'
   | 'copyAndImage'
-  | 'blogGrid'
+  | 'postGrid'
   | 'comingSoon'
   | 'genericCta'
   | 'faqsList'
@@ -28,7 +28,7 @@ const modules: ModulesArraysSchemaType = [
   'tileGroup',
   'tileCarousel',
   'copyAndImage',
-  'blogGrid',
+  'postGrid',
   'comingSoon',
   'genericCta',
   'faqsList',
