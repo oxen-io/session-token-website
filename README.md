@@ -1,6 +1,6 @@
 # Session Token Website
 
-![Session Token Logo](public/images/logo.png)
+![Session Token Logo](public/assets/images/logo.png)
 
 > Making Session possible.
 

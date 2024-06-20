@@ -1,4 +1,7 @@
 /* Brighten modal background */
-div[data-ui='DialogCard'] div:first-child {
+div[data-testid='document-panel-portal']
+  div[data-ui='DialogCard']
+  div[data-ui='Card']:first-child
+  > div[data-ui='Flex']:first-child {
   backdrop-filter: brightness(150%);
 }

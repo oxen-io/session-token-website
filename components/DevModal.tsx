@@ -92,7 +92,7 @@ export const DevModal = ({ slugs }: { slugs: Array<string> }) => {
           <ul>
             {slugs.map((slug, i) => (
               <li key={slug}>
-                <a tabIndex={i} href={slug} aria-label={`dev-nav-${slug}`}>
+                <a tabIndex={i} href={`${slug}`} aria-label={`dev-nav-${slug}`}>
                   {slug}
                 </a>
               </li>

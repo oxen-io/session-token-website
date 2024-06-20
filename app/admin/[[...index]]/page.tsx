@@ -7,11 +7,14 @@
  * https://github.com/sanity-io/next-sanity
  */
 
+import { metadata } from 'next-sanity/studio';
 import Studio from './Studio';
 
 export const dynamic = 'force-static';
 
-export { metadata } from 'next-sanity/studio/metadata';
+export async function generateMetadata() {
+  return { ...metadata, title: 'Sanity Studio - Session Token' };
+}
 
 export default function StudioPage() {
   return <Studio />;

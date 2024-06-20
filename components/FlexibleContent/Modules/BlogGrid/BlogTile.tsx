@@ -33,9 +33,8 @@ export default function BlogTile({
       href={`/blog/${slug.current}`}
       className={clsx(
         s.Outer,
-
         isSingle ? 'flex flex-col-reverse' : 'grid grid-cols-1 gap-5',
-        isFeatured && 'lg:grid-cols-2 lg:gap-10',
+        isFeatured && 'lg:grid lg:grid-cols-2 lg:gap-10',
         !isSingle && !isTitle && 'transition-all hover:brightness-125',
         'group'
       )}
@@ -55,12 +54,12 @@ export default function BlogTile({
         />
       </AnimatedElement>
       <AnimatedElement
-        className={clsx(s.Content, isFeatured && 'flex flex-col justify-center')}
+        className={clsx(isFeatured && 'flex flex-col justify-center')}
         type="div"
         delay={200}
         disabled={!isFeatured}
       >
-        <h3 className={clsx(!isSingle && 'group-hover:text-primary')}>{title}</h3>
+        <h3 className={clsx('text-4xl', !isSingle && 'group-hover:text-primary')}>{title}</h3>
         <div className={s.Meta}>
           <span>{moment(datePosted).format(`MMMM D, YYYY`)}</span>
           {author && (
@@ -69,7 +68,7 @@ export default function BlogTile({
             </span>
           )}
         </div>
-        <p className={s.Excerpt}>{excerpt}</p>
+        <p className={clsx('text-lg')}>{excerpt}</p>
         {!isSingle ? (
           <span className={clsx(s.LinkLabel, 'group-hover:underline')}>Read More</span>
         ) : null}

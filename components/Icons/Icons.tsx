@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-const buttonLogos = {
+const icons = {
   house: (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 29" fill="none">
       <path
@@ -39,5 +39,5 @@ const buttonLogos = {
   none: null,
 };
 
-export default buttonLogos;
-export const buttonLogoKeys = Object.keys(buttonLogos);
+export default icons;
+export const iconsKeys = Object.keys(icons);

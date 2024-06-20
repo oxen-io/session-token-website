@@ -1,11 +1,12 @@
 import { isProduction } from '@/lib/env';
 import metadata from '@/lib/metadata';
 
+import CMSPage from '@/components/CMSPage/CMSPage';
+import PageWrapper from '@/components/PageWrapper/PageWrapper';
 import { getDocumentData } from '@/lib/sanity.fetch';
 import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
-import PageInner from './PageInner';
 
 const landingSlug = isProduction() ? 'coming-soon' : 'home';
 
@@ -44,5 +45,9 @@ export default async function PageSlugRoute({ params }: { params: { slug: Array<
     return notFound();
   }
 
-  return <PageInner page={page} settings={settings} />;
+  return (
+    <PageWrapper>
+      <CMSPage page={page} settings={settings} />
+    </PageWrapper>
+  );
 }

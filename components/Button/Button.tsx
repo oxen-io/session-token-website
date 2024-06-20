@@ -2,22 +2,31 @@
 
 import NavLink from '@/components/NavLink/NavLink';
 import { resolveLinkFromSanityOrString } from '@/lib/sanity.links';
-import buttonLogos, { buttonLogoKeys } from '@/public/images/buttonLogos';
 import type { LinkSchemaType } from '@/schemas/objects/link';
 import { cva, type VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
 import { forwardRef } from 'react';
+import icons, { iconsKeys } from '../Icons/Icons';
 
 const buttonVariants = cva(
   [
-    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-3 disabled:pointer-events-none border border-solid border-primary rounded-[40px]',
+    'font-atyp-display leading-none whitespace-nowrap flex justify-center items-center gap-2 border border-solid rounded-[40px]',
     'transition duration-200',
   ],
   {
     variants: {
       variant: {
-        default: ['bg-primary text-black', 'hover:bg-transparent hover:text-primary'],
-        outline: ['bg-transparent text-primary', 'hover:bg-primary hover:text-black'],
+        default: [
+          'bg-primary text-black cursor-pointer border-primary ',
+          'hover:bg-transparent hover:text-primary',
+        ],
+        outline: [
+          'bg-transparent text-primary cursor-pointer border-primary ',
+          'hover:bg-primary hover:text-black',
+        ],
+        disabled: [
+          'bg-transparent text-disabled border-disabled cursor-not-allowed *:cursor-not-allowed pointer-events-none',
+        ],
       },
       size: {
         small: ['text-xs w-fit px-4 h-11'],
@@ -39,6 +48,7 @@ export interface ButtonProps
   url?: string;
   prefetch?: boolean;
   iconName?: string;
+  disabled?: boolean;
   hasArrow?: boolean;
   isPrimary?: boolean;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
@@ -55,6 +65,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       url,
       title,
       iconName,
+      disabled,
       hasArrow,
       isPrimary,
       isUpperCase = true,
@@ -65,10 +76,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
-    const hasIcon =
-      iconName &&
-      buttonLogoKeys.includes(iconName.toLowerCase()) &&
-      iconName.toLowerCase() !== 'none';
+    const hasIcon = iconName && iconsKeys.includes(iconName) && iconName.toLowerCase() !== 'none';
 
     const iconClasses = [
       'fill-current',
@@ -84,17 +92,22 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <Comp
         className={clsx(
           buttonVariants({
-            variant: !isPrimary ? 'outline' : variant,
+            variant: disabled ? 'disabled' : !isPrimary ? 'outline' : variant,
             size,
             className,
           }),
           isUpperCase ? 'uppercase' : ''
         )}
-        href={(link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
+        href={(!disabled && link ? resolveLinkFromSanityOrString(link) : url) ?? ''}
         ref={ref}
+        disabled={disabled}
+        style={{
+          cursor: disabled ? 'not-allowed' : undefined,
+          pointerEvents: disabled ? 'none' : undefined,
+        }}
         {...props}
       >
-        {hasIcon ? <span className={clsx(iconClasses)}>{buttonLogos[iconName]}</span> : null}
+        {hasIcon ? <span className={clsx(iconClasses)}>{icons[iconName]}</span> : null}
         {text && (
           <span className="inline-flex flex-row items-center">
             {text ?? children}
