@@ -2,15 +2,15 @@
 
 import { useContext, useEffect, useState } from 'react';
 
-import clsx from 'clsx';
-
 import Button from '@/components/Button/Button';
 import { SettingsContext } from '@/components/Contexts/SettingsContext';
 import NavLink from '@/components/NavLink/NavLink';
 import Socials from '@/components/Socials/Socials';
 import { useScreenWidth } from '@/hooks/screen';
 import { Environment, isEnv } from '@/lib/env';
+import clsx from 'clsx';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import ImageBox from '../ImageBox/ImageBox';
 import MenuButton from '../Menu/MenuButton';
 import { Spacer } from '../Spacer/Spacer';
@@ -20,6 +20,9 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
   const toggleNav = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const pathname = usePathname();
+  const rootPath = pathname?.split('/')[1];
 
   const { isSM, isMD } = useScreenWidth();
 
@@ -95,7 +98,11 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
                 <div
                   key={`${item.title}-${index}`}
                   onClick={isSM || isMD ? toggleNav : undefined}
-                  className={clsx('cursor-pointer', 'hover:text-primary')}
+                  className={clsx(
+                    'cursor-pointer',
+                    'hover:text-primary',
+                    rootPath === item.slug && 'text-primary'
+                  )}
                 >
                   {item.slug || item.href ? (
                     <NavLink
