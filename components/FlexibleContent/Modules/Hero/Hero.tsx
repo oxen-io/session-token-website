@@ -93,8 +93,6 @@ export default function Hero(props: HeroSchemaType) {
             ) : null}
           </AnimatedElement>
         ) : null}
-          </AnimatedElement>
-        )}
       </div>
       {image ? (
         <AnimatedBigImage
