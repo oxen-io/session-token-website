@@ -23,7 +23,7 @@ const heroFields = [
     name: 'variant',
     type: 'string',
     description:
-      'The type of hero section to display on the page. This will determine the layout and content of the hero section.',
+      'The type of hero module to use on the page. Each type describes the modules inside of the hero in order. The layout is a grid system with each column being a single module.',
     title: 'Variant',
     options: {
       list: heroVariantOptions,

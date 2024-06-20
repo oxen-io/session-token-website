@@ -1,10 +1,10 @@
 import type { TileGroupSchemaType } from '@/schemas/objects/flexibleSections/tileGroup';
 import Tile from '../Tile/Tile';
 
-export default function TileGroup({ tiles, title, showGreenBackground }: TileGroupSchemaType) {
+export default function TileGroup({ tiles, title, showPrimaryBackground }: TileGroupSchemaType) {
   return (
     <section className="relative flex w-full flex-col items-center justify-center gap-14 px-2 lg:px-0">
-      {showGreenBackground ? (
+      {showPrimaryBackground ? (
         <>
           <div className="absolute hidden h-full w-screen bg-gradient-to-b from-transparent via-primary to-transparent opacity-10 lg:block" />
           <div className="absolute hidden h-full w-screen bg-gradient-to-r from-[#0a0a0a] via-transparent to-[#0a0a0a] opacity-90 lg:block" />

@@ -28,7 +28,10 @@ export default function Hero(props: HeroSchemaType) {
   // TODO - Remove DepricatedHero support when all heros are updated
   if (!_variant || !image) {
     // eslint-disable-next-line no-console
-    console.warn('Hero component is using depricated schema. Please update the schema.');
+    console.warn(
+      '@deprecated A Hero component is using a depricated schema field. Please update the schema.'
+    );
+
     return <DepricatedHero {...props} />;
   }
 

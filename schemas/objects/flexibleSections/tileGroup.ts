@@ -27,8 +27,8 @@ const fields = [
     type: 'text',
   }),
   defineField({
-    name: 'showGreenBackground',
-    title: 'Show Green Background',
+    name: 'showPrimaryBackground',
+    title: 'Show Primary Colour Background',
     type: 'boolean',
   }),
   defineField({
