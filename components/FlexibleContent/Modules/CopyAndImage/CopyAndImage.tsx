@@ -1,9 +1,9 @@
 import PortableText from '@/components/PortableText/PortableText';
 
 import Button from '@/components/Button/Button';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
-import ImageBox from '@/components/shared/ImageBox';
 import type { SanityImage } from '@/lib/sanity.image';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import clsx from 'clsx';
@@ -85,7 +85,7 @@ export default function CopyAndImage(props: CopyAndImageProps) {
           )}
           delay={mobileAlignment === 'imageAbove' || desktopAlignment === 'imageLeft' ? 100 : 200}
         >
-          {image && <ImageBox image={image} />}
+          {image && <CMSImageBox image={image} />}
         </AnimatedElement>
       </div>
     </section>

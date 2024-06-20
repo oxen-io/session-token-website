@@ -1,41 +1,37 @@
 'use client';
 
-import { urlForImage, type SanityImage } from '@/lib/sanity.image';
 import Image from 'next/image';
 import type { CSSProperties } from 'react';
 
-export default function ImageBox({
-  image,
-  width = 3500,
-  height = 2000,
-  size = '100vw',
-  loading = 'lazy',
-  style,
-  blur,
-  className = '',
-  innerRef,
-}: {
-  image?: SanityImage;
+export type BasicImageBoxProps = {
   width?: number;
   height?: number;
   size?: string;
+  quality?: number;
   loading?: 'lazy' | 'eager';
   style?: CSSProperties;
   blur?: boolean;
   className?: string;
   innerRef?: any;
-}) {
-  if (!image) {
-    return null;
-  }
+};
 
-  const altText = image ? (image.alt ? image.alt : '') : '';
-  const imageUrl = image?.asset?.url ? image?.asset?.url : urlForImage(image)?.url();
+type ImageBoxProps = BasicImageBoxProps & {
+  src: string;
+  alt: string;
+};
 
-  if (!imageUrl) {
-    return null;
-  }
-
+export default function ImageBox({
+  src,
+  alt,
+  width = 3500,
+  height = 2000,
+  size = '100vw',
+  quality = 85,
+  loading = 'lazy',
+  style,
+  className = '',
+  innerRef,
+}: ImageBoxProps) {
   return (
     <div
       className={className}
@@ -46,17 +42,15 @@ export default function ImageBox({
       }}
       style={style}
     >
-      {image && (
-        <Image
-          alt={altText}
-          width={width}
-          height={height}
-          sizes={size}
-          src={imageUrl}
-          loading={loading}
-          placeholder={blur ? 'blur' : 'empty'}
-        />
-      )}
+      <Image
+        alt={alt}
+        width={width}
+        height={height}
+        sizes={size}
+        src={src}
+        quality={quality}
+        loading={loading}
+      />
     </div>
   );
 }

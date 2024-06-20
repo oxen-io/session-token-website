@@ -1,14 +1,9 @@
-import Image from 'next/image';
-
 import Button from '@/components/Button/Button';
-
-import LogoFooter from '@/public/assets/images/logo-footer.png';
-import Logo from '@/public/assets/images/logo.png';
-
 import Socials from '@/components/Socials/Socials';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import clsx from 'clsx';
 import Link from 'next/link';
+import ImageBox from '../ImageBox/ImageBox';
 import NavLink from '../NavLink/NavLink';
 
 const BottomJsx = ({
@@ -48,17 +43,15 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
           <div className={clsx('mb-5 flex flex-col', 'lg:mb-0 lg:w-full')}>
             <div>
               <Link href={'/'}>
-                <Image
-                  src={LogoFooter}
+                <ImageBox
+                  src="/assets/images/logo-footer.png"
                   alt="Session Token"
                   className={clsx('hidden object-contain', 'lg:block lg:h-auto lg:w-full')}
-                  priority
                 />
-                <Image
-                  src={Logo}
+                <ImageBox
+                  src="/assets/images/logo.png"
                   alt="Session Token"
                   className={clsx('h-10 w-auto object-contain', 'lg:hidden')}
-                  priority
                 />
               </Link>
             </div>
