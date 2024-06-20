@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 import { urlForImage } from '@/lib/sanity.image';
 import moment from 'moment';
-import Image from 'next/image';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
+import ImageBox from '@/components/ImageBox/ImageBox';
 import type { PostSchemaType } from '@/schemas/documents/post';
 import s from './BlogTile.module.sass';
 
@@ -45,7 +45,7 @@ export default function BlogTile({
         delay={100}
         disabled={!isFeatured}
       >
-        <Image
+        <ImageBox
           className={clsx('w-full')}
           src={imageUrl}
           width={560}

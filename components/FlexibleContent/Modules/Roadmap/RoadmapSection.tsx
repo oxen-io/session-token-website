@@ -2,7 +2,7 @@
 
 import PortableText from 'components/PortableText/PortableText';
 
-import ImageBox from '@/components/shared/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 import { useScreenWidth } from '@/hooks/screen';
 import clsx from 'clsx';
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';
@@ -268,7 +268,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
               )}
             </AnimatedElement>
             <AnimatedElement className="flex-shrink-0 md:w-3/4 lg:w-1/3" delay={200}>
-              {image && <ImageBox image={image} />}
+              {image && <CMSImageBox image={image} />}
             </AnimatedElement>
           </div>
         </section>

@@ -1,6 +1,6 @@
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import Button from '@/components/Button/Button';
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 import type { SanityImage } from '@/lib/sanity.image';
 import type { ButtonSchemaType } from '@/schemas/objects/button';
 import { PortableText } from '@portabletext/react';
@@ -73,7 +73,7 @@ export default function DeprecatedCopyAndImage(props: DeprecatedCopyAndImageProp
           )}
           delay={isReversed ? 100 : 200}
         >
-          {image && <ImageBox image={image} />}
+          {image && <CMSImageBox image={image} />}
         </AnimatedElement>
       </div>
     </section>

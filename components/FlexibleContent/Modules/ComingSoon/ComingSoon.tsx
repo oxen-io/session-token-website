@@ -4,9 +4,9 @@ import Button from '@/components/Button/Button';
 import { urlForImage, type SanityImage } from '@/lib/sanity.image';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
+import ImageBox from '@/components/ImageBox/ImageBox';
 import Logo from '@/public/assets/svgs/logo.svg';
 import clsx from 'clsx';
-import Image from 'next/image';
 import s from './ComingSoon.module.sass';
 
 export default function ComingSoon({
@@ -34,7 +34,7 @@ export default function ComingSoon({
     <section
       className={clsx(s.Outer, 'relative flex flex-col items-center justify-center text-center')}
     >
-      <Image
+      <ImageBox
         src={backgroundImageUrl}
         className={clsx(
           'top-0 min-h-screen object-cover opacity-55',
@@ -45,8 +45,8 @@ export default function ComingSoon({
         alt={backgroundAlt}
       />
       <div className={clsx('absolute w-full')}>
-        <AnimatedElement type="div">
-          <Image src={Logo} alt="Session Token" className={clsx('mb-2 w-52', 'md:mb-4')} priority />
+        <AnimatedElement delay={300} type="div">
+          <ImageBox src={Logo} alt="Session Token" className={clsx('mb-2 w-52', 'md:mb-4')} />
         </AnimatedElement>
         <AnimatedElement
           className={clsx('HasGradient', 'text-5xl', 'md:text-[80px]')}
