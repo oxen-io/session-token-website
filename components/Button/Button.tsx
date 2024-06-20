@@ -51,6 +51,7 @@ export interface ButtonProps
   disabled?: boolean;
   hasArrow?: boolean;
   isPrimary?: boolean;
+  hideButton?: boolean;
   onClick?: (e?: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void;
   isUpperCase?: boolean;
 }
@@ -68,12 +69,17 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       hasArrow,
       isPrimary,
+      hideButton,
       isUpperCase = true,
       children,
       ...props
     },
     ref
   ) => {
+    if (hideButton) {
+      return null;
+    }
+
     const Comp = !url && !link ? 'button' : NavLink;
     const text = link?.title ?? title;
     const hasIcon = iconName && iconsKeys.includes(iconName) && iconName.toLowerCase() !== 'none';
