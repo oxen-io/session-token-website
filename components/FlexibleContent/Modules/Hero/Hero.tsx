@@ -11,7 +11,11 @@ import {
 import Button from '@/components/Button/Button';
 import ScrollButton from '@/components/Button/ScrollButton';
 import SplineModel from '@/components/SplineScene/SplineScene';
-import type { HeroSchemaType, HeroVariantType } from '@/schemas/objects/flexibleSections/hero';
+import type {
+  HeroSchemaType,
+  HeroVariantType,
+  SplineSceneType,
+} from '@/schemas/objects/flexibleSections/hero';
 import { useState } from 'react';
 import DepricatedHero from './DepricatedHero';
 import s from './Hero.module.sass';
@@ -20,7 +24,16 @@ import RewardStats from './RewardStats';
 export default function Hero(props: HeroSchemaType) {
   const [statsHidden, setStatsHidden] = useState<boolean>(true);
 
-  const { title, copy, buttons, image, variant: _variant, splineScene } = props;
+  const {
+    title,
+    copy,
+    buttons,
+    image,
+    variant: _variant,
+    splineScene: _splineScene,
+    splineSceneUrl,
+  } = props;
+  const splineScene = _splineScene as SplineSceneType;
 
   const handleStatsToggleClick = () => {
     setStatsHidden((prev) => !prev);
@@ -98,6 +111,7 @@ export default function Hero(props: HeroSchemaType) {
       {splineScene ? (
         <SplineModel
           splineScene={splineScene}
+          spineSceneUrl={splineSceneUrl}
           className={clsx(
             'h-dvh w-screen',
             variant === 'copyImageStatsHero'
