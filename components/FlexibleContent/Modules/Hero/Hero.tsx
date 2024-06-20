@@ -43,7 +43,6 @@ export default function Hero(props: HeroSchemaType) {
         variant === 'copyImageStatsHero' ? '' : 'lg:grid lg:grid-cols-2 lg:pb-20'
       )}
     >
-      <ScrollButton className="pt-4" />
       <div
         className={clsx(
           s.CopyCont,
@@ -93,6 +92,7 @@ export default function Hero(props: HeroSchemaType) {
             ) : null}
           </AnimatedElement>
         ) : null}
+        <ScrollButton className="pt-2" />
       </div>
       {image ? (
         <AnimatedBigImage
