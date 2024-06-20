@@ -10,6 +10,7 @@ import {
 } from '@/components/AnimatedComponent/AnimatedComponent';
 import Button from '@/components/Button/Button';
 import ScrollButton from '@/components/Button/ScrollButton';
+import SplineModel from '@/components/SplineScene/SplineScene';
 import type { HeroSchemaType, HeroVariantType } from '@/schemas/objects/flexibleSections/hero';
 import { useState } from 'react';
 import DepricatedHero from './DepricatedHero';
@@ -19,7 +20,7 @@ import RewardStats from './RewardStats';
 export default function Hero(props: HeroSchemaType) {
   const [statsHidden, setStatsHidden] = useState<boolean>(true);
 
-  const { title, copy, buttons, image, variant: _variant } = props;
+  const { title, copy, buttons, image, variant: _variant, splineScene } = props;
 
   const handleStatsToggleClick = () => {
     setStatsHidden((prev) => !prev);
@@ -94,7 +95,17 @@ export default function Hero(props: HeroSchemaType) {
         ) : null}
         <ScrollButton className="pt-2" />
       </div>
-      {image ? (
+      {splineScene ? (
+        <SplineModel
+          splineScene={splineScene}
+          className={clsx(
+            'h-dvh w-screen',
+            variant === 'copyImageStatsHero'
+              ? 'md:h-[110vh] md:w-[110vw]'
+              : 'md:w-[150vw] lg:translate-x-[40vw] xl:translate-x-[50vw] 2xl:translate-x-[50vw] 3xl:translate-x-[60vw]'
+          )}
+        />
+      ) : image ? (
         <AnimatedBigImage
           image={image}
           className={clsx(

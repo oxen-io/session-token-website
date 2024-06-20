@@ -54,7 +54,13 @@ const heroFields = [
     description: 'The image that will be displayed.',
     type: 'image',
     options: { hotspot: true },
-    validation: (Rule) => Rule.required(),
+  }),
+  defineField({
+    name: 'splineScene',
+    type: 'string',
+    title: 'Spline Scene',
+    description:
+      'The name of the spline scene to display in the hero. Setting this will render the spline scene instead of the image.',
   }),
   defineField({
     name: 'backgroundImage',
