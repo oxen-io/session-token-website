@@ -7,6 +7,7 @@ const components = [
   'roadmapTabs',
   'joinCta',
   'statsTiles',
+  'tileGroup',
   'tileCarousel',
   'copyAndImage',
   'blogGrid',

@@ -30,6 +30,7 @@ import { basicCopy } from './objects/flexibleSections/basicCopy';
 import { roadmapHero } from './objects/flexibleSections/roadmapHero';
 import { roadmapSection } from './objects/flexibleSections/roadmapSection';
 import { roadmapTabs } from './objects/flexibleSections/roadmapTabs';
+import { tileGroup } from './objects/flexibleSections/tileGroup';
 import settings from './singletons/settings';
 
 const schemas = [
@@ -50,6 +51,7 @@ const schemas = [
   roadmapTabs,
   joinCta,
   statsTiles,
+  tileGroup,
   tileCarousel,
   iconStrip,
   copyAndImage,

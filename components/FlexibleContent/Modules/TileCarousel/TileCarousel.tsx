@@ -20,7 +20,7 @@ import { createSanityLink } from '@/lib/sanity.links';
 import type {
   CarouselContentSchemaType,
   TileCarouselSchemaType,
-  TileSchemaType,
+  TileCarouselTileSchemaType,
 } from '@/schemas/objects/flexibleSections/tileCarousel';
 import type { A11yOptions } from 'swiper/types';
 import s from './TileCarousel.module.sass';
@@ -56,7 +56,7 @@ export default function TileCarousel({
   tiles: _tiles,
   borderless,
 }: TileCarouselSchemaType) {
-  const tiles = _tiles as Array<TileSchemaType>;
+  const tiles = _tiles as Array<TileCarouselTileSchemaType>;
   const content = _content as CarouselContentSchemaType;
 
   const hasScrollIconOnMobile = !content && !borderless;
