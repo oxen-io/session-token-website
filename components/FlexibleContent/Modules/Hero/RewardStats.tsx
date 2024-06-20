@@ -75,7 +75,7 @@ export default function RewardStats({ className }: { className?: string }) {
             </span>
             <div className="mt-1 h-3 w-60 overflow-hidden rounded-xl bg-gradient-to-r from-gray-lighter to-gray-dark">
               <div
-                className="h-full bg-gradient-to-r from-primary to-primary-dark"
+                className="to-primary-dark h-full bg-gradient-to-r from-primary"
                 style={{
                   width: `${timeUntilNextRewardPercent}%`,
                 }}

@@ -7,6 +7,7 @@ type ModulesSchemaType =
   | 'roadmapTabs'
   | 'joinCta'
   | 'statsTiles'
+  | 'tileGroup'
   | 'tileCarousel'
   | 'copyAndImage'
   | 'blogGrid'
