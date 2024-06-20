@@ -38,6 +38,16 @@ const faqFields = [
       }),
     ],
   }),
+  defineField({
+    name: 'hideCategoryTitles',
+    type: 'boolean',
+    title: 'Hide Category Titles',
+  }),
+  defineField({
+    name: 'hideTableOfContents',
+    type: 'boolean',
+    title: 'Hide Table of Contents',
+  }),
 ];
 
 export const faqsList = defineType({

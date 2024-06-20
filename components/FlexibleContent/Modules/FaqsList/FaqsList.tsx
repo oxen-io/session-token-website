@@ -13,7 +13,12 @@ import type { FAQSchemaType } from '@/schemas/objects/flexibleSections/faqsList'
 import type { MaxWidthType } from '@/schemas/partials/styling';
 import clsx from 'clsx';
 
-export default function FaqsList({ categories, maxWidth: _maxWidth }: FAQSchemaType) {
+export default function FaqsList({
+  categories,
+  maxWidth: _maxWidth,
+  hideCategoryTitles,
+  hideTableOfContents,
+}: FAQSchemaType) {
   const categoryRefs = useRef<any>({});
   const maxWidth = _maxWidth as MaxWidthType;
 
@@ -43,34 +48,36 @@ export default function FaqsList({ categories, maxWidth: _maxWidth }: FAQSchemaT
         maxWidth === 'medium' && 'max-w-screen-lg'
       )}
     >
-      <AnimatedElement
-        type="legend"
-        delay={100}
-        className={clsx('wrap hidden w-max max-w-[25vw]', 'lg:block')}
-      >
-        <div className="sticky top-12">
-          <span className="text-nowrap text-xl font-semibold uppercase">Table of contents</span>
-          <ul className="mt-2 flex flex-col gap-1">
-            {categories.map(({ _key, title }) => {
-              return (
-                <li key={_key}>
-                  <button
-                    className="py-1 hover:text-primary"
-                    onClick={() => {
-                      const target = categoryRefs.current[_key];
-                      target?.scrollIntoView({
-                        behavior: 'smooth',
-                      });
-                    }}
-                  >
-                    {title}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </AnimatedElement>
+      {!hideTableOfContents ? (
+        <AnimatedElement
+          type="legend"
+          delay={100}
+          className={clsx('wrap hidden w-max max-w-[25vw]', 'lg:block')}
+        >
+          <div className="sticky top-12">
+            <span className="text-nowrap text-xl font-semibold uppercase">Table of contents</span>
+            <ul className="mt-2 flex flex-col gap-1">
+              {categories.map(({ _key, title }) => {
+                return (
+                  <li key={_key}>
+                    <button
+                      className="py-1 hover:text-primary"
+                      onClick={() => {
+                        const target = categoryRefs.current[_key];
+                        target?.scrollIntoView({
+                          behavior: 'smooth',
+                        });
+                      }}
+                    >
+                      {title}
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </AnimatedElement>
+      ) : null}
       <AnimatedElement type="main" delay={200}>
         <ul className="flex flex-col gap-12">
           {categories.map(({ _key, title, faqs }) => {
@@ -82,7 +89,9 @@ export default function FaqsList({ categories, maxWidth: _maxWidth }: FAQSchemaT
                   categoryRefs.current[_key] = ref;
                 }}
               >
-                <span className="text-xl font-semibold uppercase">{title}</span>
+                {!hideCategoryTitles ? (
+                  <span className="text-xl font-semibold uppercase">{title}</span>
+                ) : null}
                 <ul>
                   {faqs.map((props: FAQItemProps) => {
                     return <FAQItem key={props.question} {...props} />;
