@@ -1,9 +1,9 @@
 import { defineField, defineType } from 'sanity';
 
-export const blogGrid = defineType({
-  name: 'blogGrid',
+export const postGrid = defineType({
+  name: 'postGrid',
   type: 'object',
-  title: 'Blog grid',
+  title: 'Post grid',
   fields: [
     defineField({
       name: 'morePostsTitle',
@@ -14,7 +14,7 @@ export const blogGrid = defineType({
   preview: {
     prepare() {
       return {
-        title: `Blog grid`,
+        title: `Post grid`,
         subtitle: '',
       };
     },

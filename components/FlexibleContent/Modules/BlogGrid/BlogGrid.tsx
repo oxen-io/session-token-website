@@ -3,7 +3,7 @@ import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
 import clsx from 'clsx';
 import s from './BlogGrid.module.sass';
 import BlogGridInner from './BlogGridInner';
-import BlogTile from './BlogTile';
+import PostTile from './BlogTile';
 
 export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: string }) {
   const posts = await sanityQuery
@@ -26,7 +26,7 @@ export default async function BlogGrid({ morePostsTitle }: { morePostsTitle: str
 
   return (
     <section className={clsx(s.Outer)}>
-      <BlogTile post={firstPost} isFeatured />
+      <PostTile post={firstPost} isFeatured />
       <div className={s.Grid}>
         <AnimatedElement type="h5" delay={300}>
           {morePostsTitle}

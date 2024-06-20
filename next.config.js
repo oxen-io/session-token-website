@@ -10,17 +10,31 @@ const nextConfig = {
       { hostname: 'source.unsplash.com' },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog',
+        destination: '/updates',
+        permanent: true,
+      },
+      {
+        source: '/blog/:slug*',
+        destination: '/updates/:slug*',
+        permanent: true,
+      },
+    ];
+  },
   async rewrites() {
     return [
       ...[
         '/rss',
         '/feed',
         '/feed.xml',
-        '/blog.xml',
-        '/blog/rss',
-        '/blog/feed',
-        '/blog/rss.xml',
-        '/blog/feed.xml',
+        '/updates.xml',
+        '/updates/rss',
+        '/updates/feed',
+        '/updates/rss.xml',
+        '/updates/feed.xml',
       ].map((source) => ({
         source,
         destination: '/rss.xml',
