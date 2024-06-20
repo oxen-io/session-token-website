@@ -116,7 +116,8 @@ export default function Hero(props: HeroSchemaType) {
             'h-dvh w-screen',
             variant === 'copyImageStatsHero'
               ? 'md:h-[110vh] md:w-[110vw]'
-              : 'md:w-[150vw] lg:translate-x-[40vw] xl:translate-x-[50vw] 2xl:translate-x-[50vw] 3xl:translate-x-[60vw]'
+              : 'md:w-[150vw] lg:translate-x-[40vw] xl:translate-x-[50vw] 2xl:translate-x-[50vw] 3xl:translate-x-[60vw]',
+            variant === 'copyImageStatsHero' && !statsHidden && 'blur-lg lg:blur-none'
           )}
         />
       ) : image ? (
