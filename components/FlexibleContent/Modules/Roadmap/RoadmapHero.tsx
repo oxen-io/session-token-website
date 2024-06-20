@@ -30,9 +30,12 @@ export default function RoadmapHero({
   children: React.ReactNode;
 }) {
   return (
-    <section className="flex w-full flex-col-reverse items-center justify-end py-20 align-middle lg:flex-row lg:justify-around lg:px-20">
+    <section className="flex h-dvh w-full flex-col-reverse items-center justify-around justify-items-end pt-20 align-middle lg:-mb-40 lg:grid lg:grid-cols-2 lg:pb-20 lg:pt-20">
       <div
-        className={clsx(s.CopyCont, 'flex flex-col justify-center gap-4 text-center lg:text-left')}
+        className={clsx(
+          s.CopyCont,
+          'flex flex-col justify-center gap-4 pb-20 text-center lg:pb-0 lg:text-start'
+        )}
       >
         {subtitle && (
           <AnimatedElement
@@ -67,7 +70,7 @@ export default function RoadmapHero({
       {backgroundImage ? (
         <AnimatedBigImage
           image={backgroundImage}
-          className="flex w-full pt-16 md:max-w-[50vw] lg:w-1/2 lg:max-w-[100vw] lg:pt-0"
+          className="flex select-none md:w-2/3 lg:w-full lg:max-w-[50vh]"
         />
       ) : null}
     </section>

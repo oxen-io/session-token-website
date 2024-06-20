@@ -232,7 +232,7 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
             isFirst={isFirst}
             isFinal={isFinal}
           />
-          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:px-10">
+          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-16 lg:px-10">
             <AnimatedElement className="flex w-full flex-col gap-4 lg:gap-8" delay={100}>
               {subtitle && (
                 <AnimatedElement
@@ -267,7 +267,10 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
                 </NavLink>
               )}
             </AnimatedElement>
-            <AnimatedElement className="flex-shrink-0 md:w-3/4 lg:w-1/3" delay={200}>
+            <AnimatedElement
+              className="flex-shrink-0 self-start md:w-3/4 lg:w-1/3 lg:self-auto"
+              delay={200}
+            >
               {image && <CMSImageBox image={image} />}
             </AnimatedElement>
           </div>
