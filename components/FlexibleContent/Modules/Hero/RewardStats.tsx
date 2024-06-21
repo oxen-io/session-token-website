@@ -60,7 +60,7 @@ export default function RewardStats({ className }: { className?: string }) {
   return (
     <AnimatedElement
       className={clsx(
-        'absolute top-28 aspect-square max-w-[75vh] p-8 pt-14 text-center md:p-24 md:pt-28 lg:right-0 lg:max-w-80 lg:p-0 lg:text-end',
+        'absolute top-28 z-20 aspect-square max-w-[75vh] p-8 pt-14 text-center md:p-24 md:pt-28 lg:right-0 lg:max-w-80 lg:p-0 lg:text-end',
         className
       )}
       delay={400}
