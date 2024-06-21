@@ -69,7 +69,9 @@ export default function Hero(props: HeroSchemaType) {
             type="h1"
             className={clsx(
               '-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-3xl font-medium text-transparent',
-              variant === 'copyImageStatsHero' ? 'md:text-4xl' : 'md:text-7xl'
+              variant === 'copyImageStatsHero'
+                ? 'md:text-4xl'
+                : 'md:text-7xl lg:text-5xl xl:text-7xl'
             )}
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
@@ -124,8 +126,8 @@ export default function Hero(props: HeroSchemaType) {
         <AnimatedBigImage
           image={image}
           className={clsx(
-            'flex select-none md:w-2/3 lg:w-full',
-            variant === 'copyImageStatsHero' ? 'max-w-[75vh]' : 'lg:max-w-[50vw]',
+            'mt-16 flex w-3/4 select-none md:mt-0 md:w-2/3 lg:w-full',
+            variant === 'copyImageStatsHero' ? 'max-w-[75vh]' : 'lg:max-w-[55vw]',
             variant === 'copyImageStatsHero' && !statsHidden && 'blur-lg lg:blur-none'
           )}
         />
