@@ -8,24 +8,34 @@ function nonLinearEase(t: number) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
 }
 
+enum NumberSuffix {
+  BILLION = 'b',
+  MILLION = 'm',
+}
+
 /**
  * Splits a number into its simplified parts with a suffix, its major part before the suffix and the rest of the number before the shortening
  * @param number
  * @returns
  */
-function splitNumber(number: number): { numSuffix: string; numMajor: string; numRest?: string } {
-  const numSuffix = number >= 1000000000 ? 'B' : number >= 1000000 ? 'M' : '';
+function splitNumber(number: number): {
+  numSuffix: NumberSuffix | '';
+  numMajor: string;
+  numRest?: string;
+} {
+  const numSuffix =
+    number >= 1000000000 ? NumberSuffix.BILLION : number >= 1000000 ? NumberSuffix.MILLION : '';
   const numMajor =
-    numSuffix === 'B'
+    numSuffix === NumberSuffix.BILLION
       ? (number / 1000000000).toLocaleString()
-      : numSuffix === 'M'
+      : numSuffix === NumberSuffix.MILLION
         ? (number / 1000000).toLocaleString()
         : number.toLocaleString();
   const numRest = number.toLocaleString().substring(numMajor.length);
   return { numSuffix, numMajor, numRest };
 }
 
-const NumberTicker = ({
+export default function NumberTicker({
   targetNumber,
   duration = 3000,
   onClick,
@@ -33,7 +43,7 @@ const NumberTicker = ({
   targetNumber: number;
   duration?: number;
   onClick?: () => void;
-}) => {
+}) {
   const [count, setCount] = useState<number>(0);
   const [majorNumber, setMajorNumber] = useState<string>();
   const [restNumber, setRestNumber] = useState<string>();
@@ -119,33 +129,4 @@ const NumberTicker = ({
       ) : null}
     </motion.div>
   );
-};
-
-export default NumberTicker; /* 
-<motion.div ref={ref} className="inline-flex">
-      {formattedString ? <motion.div>{majorNumber}</motion.div> : null}
-      {formattedString ? (
-        <motion.div
-          initial={{ x: '-100%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0,
-            ease: 'backInOut',
-          }}
-        >
-          {suffix}
-        </motion.div>
-      ) : null}
-      <motion.div
-        initial={{ x: 0 }}
-        animate={{ x: '-100%', opacity: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: duration / 1000,
-          ease: 'backInOut',
-        }}
-      >
-        {restNumber ?? Math.floor(count).toLocaleString()}
-      </motion.div>
-    </motion.div> */
+}

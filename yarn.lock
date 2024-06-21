@@ -1510,20 +1510,20 @@
     fflate "^0.7.3"
     string.prototype.codepointat "^0.2.1"
 
-"@splinetool/react-spline@^3.1.1":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@splinetool/react-spline/-/react-spline-3.1.1.tgz#56add5db267ced7e475f104e40a769426596dbb1"
-  integrity sha512-mB9A2yZgrPWkKHgBLvcbwsyoiBgKWy6/PkeksRH8soOEZmJiEz9PT0+h3vsui52nZ+CnLqj/yjowfyZvd1FmKQ==
+"@splinetool/react-spline@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@splinetool/react-spline/-/react-spline-4.0.0.tgz#bf510c12c187738ba91c13ca9b03f90babb5708f"
+  integrity sha512-FqrV7/K2q998Y0t83QUauQxsifKWAg9CFZoSb64qRuH7IfHkDs5/OgU1ACkg0aTgsEPtFlH+kATQ+8X6MrizHQ==
   dependencies:
     blurhash "2.0.5"
     lodash.debounce "4.0.8"
     react-merge-refs "2.1.1"
     thumbhash "0.1.1"
 
-"@splinetool/runtime@^1.7.2":
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/@splinetool/runtime/-/runtime-1.7.2.tgz#2595346c67688a444feb35e44f72e085ba3fadf9"
-  integrity sha512-zxxaL0g8WF1f0anN2cKEAZREMac5xap3DshD5FQBG9RokyADPf7XsaJtkXOAT597BphDsrje3WnuHadnc7piow==
+"@splinetool/runtime@1.7.4":
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/@splinetool/runtime/-/runtime-1.7.4.tgz#aa83c3f75d8ac3cf1cf32cd03ce442c79d750d6c"
+  integrity sha512-KYxYaKlBLBwv1ONZ3UyKBqakyqlxFiCwDld1gqpICLDmcXDoygLs42KrhUR6MBfYw0hegcPYw1GDUQOL2yVjhQ==
   dependencies:
     on-change "^4.0.0"
     semver-compare "^1.0.0"
