@@ -16,9 +16,6 @@ import MenuButton from '../Menu/MenuButton';
 import { Spacer } from '../Spacer/Spacer';
 
 export function Header({ isDraftMode }: { isDraftMode: boolean }) {
-  const pathname = usePathname();
-  const rootPath = pathname?.split('/')[1];
-
   const [isExpanded, setIsExpanded] = useState(false);
   const toggleNav = () => {
     setIsExpanded(!isExpanded);
