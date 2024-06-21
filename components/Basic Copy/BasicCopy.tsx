@@ -25,8 +25,8 @@ export default function BasicCopy({
   return (
     <section
       className={clsx(
-        'post-content flex w-full',
         s.Outer,
+        'post-content flex w-full',
         allH2s.length > 0 && showOutline && 'md:grid'
       )}
     >
