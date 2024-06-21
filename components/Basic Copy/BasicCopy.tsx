@@ -23,7 +23,13 @@ export default function BasicCopy({
   ) as Array<CopyBlock>;
 
   return (
-    <section className={clsx('post-content', s.Outer, allH2s.length > 0 && showOutline && 'grid')}>
+    <section
+      className={clsx(
+        s.Outer,
+        'post-content flex w-full',
+        allH2s.length > 0 && showOutline && 'md:grid'
+      )}
+    >
       <AnimatedElement innerRef={mainRef} type="main" delay={250}>
         <PortableText value={copy} />
       </AnimatedElement>
