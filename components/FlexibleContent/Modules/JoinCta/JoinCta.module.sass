@@ -13,7 +13,7 @@
           width: auto
 
           svg
-            height: 30px
+            height: 40px
             width: auto
 
           &:hover svg path
@@ -23,3 +23,13 @@
               path
                 &:nth-child(2), &:nth-child(3)
                   fill: black
+
+@media(max-width: 1024px)
+
+  .Outer
+    &>div
+      ul[class^="Socials_"]
+              li
+                    a
+                        svg
+                            height: 36px
