@@ -11,11 +11,14 @@ const generateMetadata = (obj, settings) => {
 
   const { title: metaTitle, description = '', ogpImage } = metadata || {};
 
-  const ogpImageUrl = ogpImage && urlForImage(ogpImage)?.width(1200).height(627).fit('crop').url();
+  const ogpImageUrl = ogpImage
+    ? urlForImage(ogpImage)?.width(1200).height(627).fit('crop').url()
+    : '/assets/images/link_preview.png';
 
   const _title = `${metaTitle || title} - ${settings?.title || undefined}`;
 
   return {
+    metadataBase: new URL('https://token.getsession.org'),
     description,
     title: _title,
     openGraph: {
