@@ -70,7 +70,7 @@ export default function RoadmapHero({
       {backgroundImage ? (
         <AnimatedBigImage
           image={backgroundImage}
-          className="flex select-none md:w-2/3 lg:w-full lg:max-w-[50vh]"
+          className="flex select-none md:w-2/3 lg:w-full lg:max-w-[50vw]"
         />
       ) : null}
     </section>

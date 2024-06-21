@@ -54,7 +54,7 @@ export default function DepricatedHero({ title, copy, buttons, backgroundImage }
         )}
       </div>
       {backgroundImage ? (
-        <AnimatedBigImage image={backgroundImage} className="w-max-[50vh] flex w-2/3 lg:w-full" />
+        <AnimatedBigImage image={backgroundImage} className="w-max-[50vw] flex w-2/3 lg:w-full" />
       ) : null}
     </section>
   );
