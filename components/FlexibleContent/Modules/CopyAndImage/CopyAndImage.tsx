@@ -55,7 +55,7 @@ export default function CopyAndImage(props: CopyAndImageProps) {
           <div className={clsx('flex w-full flex-grow flex-col items-start justify-center')}>
             <div className={clsx('smallTitle', 'mb-6')}>{title}</div>
             {copy && (
-              <h2
+              <div
                 className={clsx(
                   'mb-5 text-3xl leading-tight',
                   'xl:text-4xl xl:leading-snug',
@@ -63,7 +63,7 @@ export default function CopyAndImage(props: CopyAndImageProps) {
                 )}
               >
                 <PortableText value={copy} />
-              </h2>
+              </div>
             )}
             {subCopy && (
               <h4 className={clsx('mb-5 text-base text-text', 'lg:text-2xl')}>
