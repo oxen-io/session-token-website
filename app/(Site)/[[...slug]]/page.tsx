@@ -8,7 +8,8 @@ import { CMSDocument, sanityQuery } from '@/lib/sanity.queries';
 import { draftMode } from 'next/headers';
 import { notFound } from 'next/navigation';
 
-const landingSlug = isProduction() ? 'coming-soon' : 'home';
+// TODO: add cms coming soon field to settings
+const landingSlug = 'home';
 
 const parseSlug = (slug?: Array<string>) => slug?.join('/') ?? landingSlug;
 
