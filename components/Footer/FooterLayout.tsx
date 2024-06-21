@@ -8,9 +8,11 @@ import NavLink from '../NavLink/NavLink';
 
 const BottomJsx = ({
   lastUpdatedDate,
+  footerCopyright,
   className,
 }: {
   lastUpdatedDate: string;
+  footerCopyright?: string;
   className?: string;
 }) => (
   <div
@@ -26,14 +28,18 @@ const BottomJsx = ({
       <span>{lastUpdatedDate}</span>
     </div>
     <div className={clsx('flex flex-col whitespace-nowrap leading-tight', 'lg:flex-row lg:gap-2')}>
-      <span>&copy; The Session Network {new Date().getFullYear()}.</span>
-      <span>All rights reserved.</span>
+      {footerCopyright ? (
+        <span>
+          &copy; {footerCopyright} {new Date().getFullYear()}.
+        </span>
+      ) : null}
+      {footerCopyright ? <span>All rights reserved.</span> : null}
     </div>
   </div>
 );
 
 export default function Footer({ settings }: { settings: SettingsSchemaType }) {
-  const { menuItems, lastUpdatedDate, footerCTA } = settings;
+  const { menuItems, lastUpdatedDate, footerCTA, footerMangedBy, footerCopyright } = settings;
 
   return (
     <footer className={clsx('my-16 w-full')}>
@@ -67,9 +73,13 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
             <span
               className={clsx('my-6 text-sm font-medium uppercase', 'md:mt-16', 'lg:mb-24 lg:mt-8')}
             >
-              / Managed by The Session Network
+              / {footerMangedBy}
             </span>
-            <BottomJsx lastUpdatedDate={lastUpdatedDate} className="lg:hidden" />
+            <BottomJsx
+              lastUpdatedDate={lastUpdatedDate}
+              footerCopyright={footerCopyright}
+              className="lg:hidden"
+            />
           </div>
         </div>
         <div className={clsx('lg:mt-2 lg:flex lg:justify-around', 'xl:w-1/3')}>
@@ -107,7 +117,11 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
           <Socials className="w-full" />
         </div>
       </div>
-      <BottomJsx lastUpdatedDate={lastUpdatedDate} className={'hidden lg:flex'} />
+      <BottomJsx
+        lastUpdatedDate={lastUpdatedDate}
+        footerCopyright={footerCopyright}
+        className={'hidden lg:flex'}
+      />
     </footer>
   );
 }
