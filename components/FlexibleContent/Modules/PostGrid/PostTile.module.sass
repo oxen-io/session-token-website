@@ -1,0 +1,29 @@
+.Outer
+    &:not(.Featured)
+        
+    .Image
+        overflow: hidden
+
+        img
+            width: 100%
+            height: auto
+            border-radius: 10px
+            aspect-ratio: 16/9
+            object-fit: cover
+            transition: 0.15s
+            filter: brightness(1)
+
+    h3
+        transition: 0.15s
+
+    .Meta
+        margin-top: 15px
+        margin-bottom: 10px
+        font-size: 16px
+        color: rgba(255,255,255,0.5)
+
+    .LinkLabel
+        font-size: 14px
+        color: var(--primary-DEFAULT)
+        margin-top: 15px
+        display: block

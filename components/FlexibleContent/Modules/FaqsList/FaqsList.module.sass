@@ -1,15 +1,13 @@
 .Outer
-    display: grid
     grid-template-columns: auto 1fr
-    gap: 80px
-    padding-top: 120px
 
     legend
         &>div
             position: sticky
             top: 85px
 
-        strong
+        
+            font-weight: 700
             margin-bottom: 15px
             display: block
 
@@ -30,11 +28,11 @@
 
         & > li
             &.Open > button
-                color: var(--color-primary)
+                color: var(--primary-DEFAULT)
 
                 & > em:after
                     transform: translate(-50%, -50%) rotate(180deg)
-                    background: var(--color-primary)
+                    background: var(--primary-DEFAULT)
 
             &:not(:last-child):after
                 content: ''
@@ -86,11 +84,4 @@
                     &:not(:last-child)
                         margin-bottom: 15px
                 a
-                    color: var(--color-primary)
-
-@media(max-width: 500px)
-    .Outer
-        display: block
-
-        legend
-            display: none
+                    color: var(--primary-DEFAULT)

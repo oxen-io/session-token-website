@@ -23,7 +23,7 @@ export async function generateStaticParams() {
   return allPosts.map(({ slug }) => ({ slug: slug.current }));
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function UpdatesPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
   const post = await sanityQuery
     .from(CMSDocument.Post)

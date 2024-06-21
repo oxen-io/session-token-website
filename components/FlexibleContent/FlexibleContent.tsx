@@ -1,7 +1,7 @@
 import { log } from '@/lib/logger';
+import type { ModulesArraysSchemaType } from '@/schemas/documents/flexibleSections';
 import type { SettingsSchemaType } from '@/schemas/singletons/settings';
 import BasicCopy from '../Basic Copy/BasicCopy';
-import BlogGrid from './Modules/BlogGrid/BlogGrid';
 import ComingSoon from './Modules/ComingSoon/ComingSoon';
 import CopyAndImage from './Modules/CopyAndImage/CopyAndImage';
 import FaqsList from './Modules/FaqsList/FaqsList';
@@ -9,21 +9,24 @@ import GenericCta from './Modules/GenericCta/GenericCta';
 import Hero from './Modules/Hero/Hero';
 import IconStrip from './Modules/IconStrip/IconStrip';
 import JoinCta from './Modules/JoinCta/JoinCta';
+import PostGrid from './Modules/PostGrid/PostGrid';
 import RoadmapHero from './Modules/Roadmap/RoadmapHero';
 import RoadmapTabs from './Modules/Roadmap/RoadmapTabs';
 import StatsTiles from './Modules/StatsTiles/StatsTiles';
 import TileCarousel from './Modules/TileCarousel/TileCarousel';
+import TileGroup from './Modules/TileGroup/TileGroup';
 
-const Components = {
+const Components: Record<string, (props: object) => JSX.Element | Promise<JSX.Element | null>> = {
   Hero,
   RoadmapHero,
   RoadmapTabs,
   IconStrip,
   JoinCta,
   StatsTiles,
+  TileGroup,
   TileCarousel,
   CopyAndImage,
-  BlogGrid,
+  PostGrid,
   ComingSoon,
   GenericCta,
   FaqsList,
@@ -39,7 +42,7 @@ const FlexibleContent = ({
   settings,
   topic,
 }: {
-  rows: any;
+  rows: ModulesArraysSchemaType;
   settings: SettingsSchemaType;
   topic?: any;
 }) => {
@@ -49,7 +52,7 @@ const FlexibleContent = ({
 
   return (
     <div>
-      {rows.map((row, index) => {
+      {rows.map((row: any, index) => {
         const name = row._type;
 
         const Component = Components[ucFirst(name)];

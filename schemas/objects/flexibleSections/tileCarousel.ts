@@ -48,7 +48,7 @@ const tileFields = [
     type: 'boolean',
   }),
 ];
-export type TileSchemaType = SchemaFields<typeof tileFields>;
+export type TileCarouselTileSchemaType = SchemaFields<typeof tileFields>;
 
 const fields = [
   defineField({

@@ -32,6 +32,23 @@ const fields = [
     type: 'button',
   }),
   defineField({
+    name: 'footerCTA',
+    title: 'Footer CTA',
+    type: 'button',
+  }),
+  defineField({
+    name: 'footerMangedBy',
+    title: 'Footer Manged By Information',
+    type: 'string',
+  }),
+  defineField({
+    name: 'footerCopyright',
+    title: 'Footer Copyright Information',
+    description:
+      'Displayed in the fotter, will append "All rights reserved". If nothing is provided no text will display.',
+    type: 'string',
+  }),
+  defineField({
     name: 'mobileMenuCta',
     type: 'button',
   }),

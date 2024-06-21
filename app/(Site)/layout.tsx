@@ -1,6 +1,9 @@
-// NOTE don't change the import order of stylesheet imports until we remove SASS entirely because of CSS cascade order
-import '@/styles/Global.sass';
+// NOTE Do not change the import order of stylesheets because of CSS cascading. We use new lines to prevent the imports from being auto sorted.
+import '@/styles/globals.css';
+
 import '@/styles/Reset.sass';
+
+import '@/styles/Global.sass';
 
 import { SettingsProvider } from '@/components/Contexts/SettingsContext';
 import { Footer } from '@/components/Footer';
@@ -9,8 +12,10 @@ import PreviewProvider from '@/components/preview/PreviewProvider';
 import { Environment, isEnv, isProduction } from '@/lib/env';
 import { getSettings, token } from '@/lib/sanity.fetch';
 
+import { Container } from '@/components/Container/Container';
 import { DevModalServer } from '@/components/DevModalServer';
 import { Header } from '@/components/Header/Header';
+import { AtypDisplay, AtypText, MonumentExtended } from '@/styles/fonts/fonts';
 import { draftMode } from 'next/headers';
 import type { ReactNode } from 'react';
 
@@ -41,9 +46,13 @@ export default async function SiteLayout({ children }: { children: ReactNode }) 
       {isDraftMode && isProduction() ? <PreviewBanner /> : null}
       {isProduction() ? null : <DevModalServer />}
       <SettingsProvider value={settings}>
-        <Header isDraftMode={isDraftMode} />
-        <main className={'-mt-16'}>{children}</main>
-        <Footer />
+        <Container
+          className={`${AtypDisplay.variable} ${AtypText.variable} ${MonumentExtended.variable} font-atyp-text`}
+        >
+          <Header isDraftMode={isDraftMode} />
+          <main className={'-mt-16'}>{children}</main>
+          <Footer />
+        </Container>
       </SettingsProvider>
     </OptionalPreviewProvider>
   );

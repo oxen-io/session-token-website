@@ -32,7 +32,7 @@ export default function Menu({
     <ul
       className={clsx(
         'mr-auto flex gap-[15px]',
-        footer && 'ml-[8%] flex w-full max-w-[1000px] flex-wrap items-start gap-0 pb-[100px]',
+        footer && 'ml-[8%] flex w-full flex-wrap items-start gap-0 pb-[100px]',
         'md:flex-nowrap',
         className
       )}

@@ -4,6 +4,13 @@ import { defineField, defineType } from 'sanity';
 const fields = [
   // TODO would be nice to properly type this at some point
   defineField({
+    name: 'hideButton',
+    type: 'boolean',
+    title: 'Hide Button',
+    initialValue: false,
+    description: 'Hide the button. If enabled, the button wont render.',
+  }),
+  defineField({
     title: 'Icon Name',
     name: 'iconName',
     type: 'string',
@@ -18,8 +25,8 @@ const fields = [
     },
   }),
   defineField({
-    title: 'Has arrow?',
-    name: 'hasArrow',
+    title: 'Disabled',
+    name: 'disabled',
     type: 'boolean',
   }),
   defineField({
@@ -31,6 +38,11 @@ const fields = [
     title: 'Link',
     name: 'link',
     type: 'link',
+  }),
+  defineField({
+    title: 'Has arrow?',
+    name: 'hasArrow',
+    type: 'boolean',
   }),
 ];
 

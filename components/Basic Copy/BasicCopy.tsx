@@ -5,14 +5,16 @@ import PortableText from '@/components/PortableText/PortableText';
 import type { CopyBlock, CopyFields } from '@/schemas/partials/portableText';
 import clsx from 'clsx';
 import { useRef } from 'react';
-import s from '../Post/PostContent.module.sass';
+import s from './BasicCopy.module.sass';
 
 export default function BasicCopy({
   copy,
   showOutline,
+  outlineHeading = 'In this page',
 }: {
   copy: CopyFields;
   showOutline: boolean;
+  outlineHeading?: string;
 }) {
   const mainRef = useRef<any>();
 
@@ -23,10 +25,9 @@ export default function BasicCopy({
   return (
     <section
       className={clsx(
-        'post-content',
         s.Outer,
-        allH2s.length > 0 && showOutline && 'grid',
-        'Container Deep'
+        'post-content flex w-full',
+        allH2s.length > 0 && showOutline && 'md:grid'
       )}
     >
       <AnimatedElement innerRef={mainRef} type="main" delay={250}>
@@ -35,7 +36,7 @@ export default function BasicCopy({
       {allH2s.length > 0 && showOutline ? (
         <aside>
           <AnimatedElement type="div" delay={300}>
-            <h5>In this page</h5>
+            <h5>{outlineHeading}</h5>
             <ul>
               {allH2s.map(({ _key, children }, index) => {
                 const textContent = children[0]?.text;

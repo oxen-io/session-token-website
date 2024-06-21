@@ -2,17 +2,16 @@
 
 import { useContext, useEffect, useState } from 'react';
 
-import clsx from 'clsx';
-import Image from 'next/image';
-
 import Button from '@/components/Button/Button';
 import { SettingsContext } from '@/components/Contexts/SettingsContext';
 import NavLink from '@/components/NavLink/NavLink';
 import Socials from '@/components/Socials/Socials';
 import { useScreenWidth } from '@/hooks/screen';
 import { Environment, isEnv } from '@/lib/env';
-import Logo from '@/public/images/logo.png';
+import clsx from 'clsx';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import ImageBox from '../ImageBox/ImageBox';
 import MenuButton from '../Menu/MenuButton';
 import { Spacer } from '../Spacer/Spacer';
 
@@ -21,6 +20,9 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
   const toggleNav = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const pathname = usePathname();
+  const rootPath = pathname?.split('/')[1];
 
   const { isSM, isMD } = useScreenWidth();
 
@@ -41,20 +43,18 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
   return (
     <nav
       role="navigation"
-      // Try to match the global Container class
       className={clsx(
-        'relative z-10 flex w-full max-w-[1580px] items-center justify-between pt-7',
-        'lg:mx-auto lg:px-10 lg:pt-5',
+        'relative z-10 flex w-full items-center justify-between pt-7',
+        'lg:mx-auto lg:pt-5',
         'transition duration-300'
       )}
     >
-      <div className={clsx('flex w-full items-center justify-between px-5', 'lg:w-fit lg:px-0')}>
+      <div className={clsx('flex w-full items-center justify-between bg-background', 'lg:w-fit')}>
         <Link href="/">
-          <Image
-            src={Logo}
+          <ImageBox
+            src="/assets/images/logo.png"
             alt="Session Token"
             className={clsx('w-36', 'lg:h-auto lg:w-48')}
-            priority
           />
           {isDraftMode && (isEnv(Environment.DEV) || isEnv(Environment.QA)) ? (
             <span className="absolute bottom-0 right-0 w-28 rounded-full bg-primary p-0 pl-1.5 text-start text-xs font-bold leading-none text-black opacity-90 lg:w-32">
@@ -65,7 +65,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
         {isSM || isMD ? (
           <div className={clsx('flex flex-row')}>
             <Spacer size="xs" />
-            <Button {...menuTopLink} size="small" className="max-h-9" />
+            <Button {...menuTopLink} variant={'outline'} size="small" className="max-h-9" />
             <Spacer size="xs" />
             <MenuButton open={isExpanded} setOpen={toggleNav} />
           </div>
@@ -79,8 +79,8 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
       >
         <div
           className={clsx(
-            'flex w-full flex-col items-start justify-between bg-background px-5 text-lg text-white',
-            'lg:flex-row lg:items-center lg:bg-transparent lg:px-0',
+            'flex w-full flex-col items-start justify-between bg-background text-lg text-text',
+            'lg:flex-row lg:items-center lg:bg-transparent',
             'transform transition-all duration-300',
             isExpanded
               ? '-mb-20 h-dvh translate-y-0 pb-10 pt-3'
@@ -89,8 +89,10 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
         >
           <div
             className={clsx(
-              'flex w-full flex-col items-start justify-start gap-5',
-              'lg:ml-12 lg:flex-row lg:gap-12'
+              'flex w-full flex-col items-start justify-start gap-5 text-lg',
+              'md:gap-8 md:text-base',
+              'lg:ml-12 lg:flex-row',
+              'xl:gap-12 xl:text-lg'
             )}
           >
             {menuItems.map((item, index) => {
@@ -98,7 +100,11 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
                 <div
                   key={`${item.title}-${index}`}
                   onClick={isSM || isMD ? toggleNav : undefined}
-                  className={clsx('cursor-pointer', 'hover:text-primary')}
+                  className={clsx(
+                    'cursor-pointer',
+                    'hover:text-primary',
+                    rootPath === item.slug && 'text-primary'
+                  )}
                 >
                   {item.slug || item.href ? (
                     <NavLink
@@ -118,10 +124,10 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
           {isSM || isMD ? (
             <div className={clsx('flex flex-col pb-16')}>
               <Button {...mobileMenuCta} />
-              <Socials />
+              <Socials className="mt-5" />
             </div>
           ) : (
-            <Button {...menuTopLink} className={'max-h-9'} />
+            <Button {...menuTopLink} variant={'outline'} className={'max-h-9'} />
           )}
         </div>
       </div>

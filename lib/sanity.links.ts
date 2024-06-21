@@ -1,4 +1,5 @@
 import type { LinkSchemaType } from '@/schemas/objects/link';
+import { SLUG } from './constants';
 import { log } from './logger';
 
 export function resolveHref(documentType, slug) {
@@ -6,7 +7,7 @@ export function resolveHref(documentType, slug) {
     case 'page':
       return slug ? `/${slug}` : undefined;
     case 'post':
-      return slug ? `/blog/${slug}` : undefined;
+      return slug ? `/${SLUG.POSTS}/${slug}` : undefined;
     default:
       log.error('Invalid document type:', documentType, 'slug', slug);
       return undefined;

@@ -1,6 +1,7 @@
 import type { PostSchemaType } from '@/schemas/documents/post';
 import fs from 'fs';
 import { generateXMLFromObject } from 'mini-xml';
+import { SLUG } from './constants';
 
 export async function generateRssFeed(posts: Array<PostSchemaType>) {
   const site_url = 'https://token.getsession.org';
@@ -25,12 +26,12 @@ export async function generateRssFeed(posts: Array<PostSchemaType>) {
       '@xmlns:content': 'http://purl.org/rss/1.0/modules/content/',
       '@xmlns:dc': 'http://purl.org/dc/elements/1.1/',
       channel: {
-        title: `Session Token Blog`,
-        description: 'RSS feed for the Session Token Blog.',
+        title: `Session Token Updates`,
+        description: 'RSS feed for Session Token updates.',
         link: site_url,
         image: {
           url: `${site_url}/images/logoBlack.png`,
-          title: `Session Token Blog`,
+          title: `Session Token Updates`,
           link: site_url,
         },
         generator: 'mini-xml for Node.js',
@@ -44,12 +45,12 @@ export async function generateRssFeed(posts: Array<PostSchemaType>) {
         item: posts.map((post: PostSchemaType) => ({
           title: post.title.trim(),
           description: {
-            '#cdata': `${post.excerpt}<br /><a href="${site_url}/blog/${post.slug.current}">Read more</a>`,
+            '#cdata': `${post.excerpt}<br /><a href="${site_url}/${SLUG.POSTS}/${post.slug.current}">Read more</a>`,
           },
-          link: `${site_url}/blog/${post.slug.current}`,
+          link: `${site_url}/${SLUG.POSTS}/${post.slug.current}`,
           guid: {
             '@isPermaLink': 'true',
-            '#text': `${site_url}/blog/${post.slug.current}`,
+            '#text': `${site_url}/${SLUG.POSTS}/${post.slug.current}`,
           },
           pubDate: new Date(post.datePosted ?? post._createdAt),
         })),

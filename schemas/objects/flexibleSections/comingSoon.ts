@@ -27,6 +27,12 @@ export const comingSoon = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    defineField({
+      name: 'backgroundAlt',
+      type: 'string',
+      title: 'Background Image Alternative Text',
+      validation: (rule) => rule.required().error(`Images require alternative text`),
+    }),
   ],
   preview: {
     select: {

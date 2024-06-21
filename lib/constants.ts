@@ -2,6 +2,10 @@
 import resolveConfig from 'tailwindcss/resolveConfig';
 import tailwindConfig from '../tailwind.config';
 
+export const SLUG = {
+  POSTS: 'blog',
+} as const;
+
 const fullConfig = resolveConfig(tailwindConfig);
 
 function makeNumber(input: string) {
@@ -9,6 +13,8 @@ function makeNumber(input: string) {
 }
 
 const UI = {
+  CONTAINER_MAX_WIDTH_PX: '1440',
+  CONTAINER_PADDING_VW: `5`,
   SM_BREAKPOINT: makeNumber(fullConfig.theme.screens.sm),
   MD_BREAKPOINT: makeNumber(fullConfig.theme.screens.md),
   LG_BREAKPOINT: makeNumber(fullConfig.theme.screens.lg),

@@ -19,12 +19,65 @@ export const copyAndImage = defineType({
       options: { hotspot: true },
     }),
     defineField({
+      name: 'showButton',
+      type: 'boolean',
+      title: 'Show Button',
+      initialValue: false,
+      description:
+        'Show a button below the copy. If enabled, the button fields will be shown for you to fill out.',
+    }),
+    defineField({
       name: 'button',
       type: 'button',
+      hidden: ({ parent }) => !parent?.showButton,
     }),
+    defineField({
+      name: 'mobileAlignment',
+      title: 'Mobile Alignment',
+      type: 'string',
+      // TODO enforce after migration
+      // initialValue: 'imageBelow',
+      options: {
+        list: [
+          {
+            value: 'imageAbove',
+            title: 'Image Above',
+          },
+          {
+            value: 'imageBelow',
+            title: 'Image Below',
+          },
+        ],
+      },
+    }),
+    defineField({
+      name: 'desktopAlignment',
+      title: 'Desktop Alignment',
+      type: 'string',
+      // TODO enforce after migration
+      // initialValue: 'imageRight',
+      options: {
+        list: [
+          {
+            value: 'imageLeft',
+            title: 'Image Left',
+          },
+          {
+            value: 'imageRight',
+            title: 'Image Right',
+          },
+        ],
+      },
+    }),
+
+    // #region Deprecated
     defineField({
       name: 'alignment',
       type: 'string',
+      deprecated: {
+        reason:
+          'Use the "Mobile Alignment" or "Desktop Alignment" fields instead. This field is deprecated and will be removed in the future.',
+      },
       options: {
         list: [
           {
@@ -38,6 +91,7 @@ export const copyAndImage = defineType({
         ],
       },
     }),
+    // #endregion
   ],
   preview: {
     select: {

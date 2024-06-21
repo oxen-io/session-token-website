@@ -1,5 +1,4 @@
 import type { SchemaTypeDefinition } from 'sanity';
-import { blogGrid } from './objects/flexibleSections/blogGrid';
 import { comingSoon } from './objects/flexibleSections/comingSoon';
 import { copyAndImage } from './objects/flexibleSections/copyAndImage';
 import { faqsList } from './objects/flexibleSections/faqsList';
@@ -7,6 +6,7 @@ import { genericCta } from './objects/flexibleSections/genericCta';
 import { hero } from './objects/flexibleSections/hero';
 import { iconStrip } from './objects/flexibleSections/iconStrip';
 import { joinCta } from './objects/flexibleSections/joinCta';
+import { postGrid } from './objects/flexibleSections/postGrid';
 import { statsTiles } from './objects/flexibleSections/statsTiles';
 import { tileCarousel } from './objects/flexibleSections/tileCarousel';
 
@@ -30,6 +30,7 @@ import { basicCopy } from './objects/flexibleSections/basicCopy';
 import { roadmapHero } from './objects/flexibleSections/roadmapHero';
 import { roadmapSection } from './objects/flexibleSections/roadmapSection';
 import { roadmapTabs } from './objects/flexibleSections/roadmapTabs';
+import { tileGroup } from './objects/flexibleSections/tileGroup';
 import settings from './singletons/settings';
 
 const schemas = [
@@ -50,10 +51,11 @@ const schemas = [
   roadmapTabs,
   joinCta,
   statsTiles,
+  tileGroup,
   tileCarousel,
   iconStrip,
   copyAndImage,
-  blogGrid,
+  postGrid,
   comingSoon,
   genericCta,
   faqsList,

@@ -2,8 +2,8 @@
 
 import PortableText from 'components/PortableText/PortableText';
 
-import ImageBox from 'components/shared/ImageBox';
-
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
+import { useScreenWidth } from '@/hooks/screen';
 import clsx from 'clsx';
 import { AnimatedElement } from 'components/AnimatedComponent/AnimatedComponent';
 import NavLink from 'components/NavLink/NavLink';
@@ -89,19 +89,12 @@ const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
                     y1={`${100 - strokeFadePercent - 20}%`}
                     y2="100%"
                   >
-                    <stop offset="0%" stopColor="var(--color-black)" stopOpacity={0} />
-                    <stop offset="50%" stopColor="var(--color-black)" stopOpacity={1} />
-                    <stop offset="100%" stopColor="var(--color-black)" stopOpacity={1} />
+                    <stop offset="0%" stopColor="var(--black)" stopOpacity={0} />
+                    <stop offset="50%" stopColor="var(--black)" stopOpacity={1} />
+                    <stop offset="100%" stopColor="var(--black)" stopOpacity={1} />
                   </linearGradient>
                 </defs>
-                <line
-                  x1={x}
-                  x2={x}
-                  y1={circleY}
-                  y2="100%"
-                  strokeWidth={6}
-                  stroke="var(--color-black)"
-                />
+                <line x1={x} x2={x} y1={circleY} y2="100%" strokeWidth={6} stroke="var(--black)" />
                 <line
                   x1={x}
                   x2={x}
@@ -127,7 +120,7 @@ const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
               r={circleRadius}
               strokeWidth={3}
               style={{
-                fill: 'var(--color-black)',
+                fill: 'var(--black)',
                 scale: circlePassiveScale,
               }}
             />
@@ -169,8 +162,8 @@ const RoadmapLine = forwardRef<HTMLDivElement, RoadmapLineProps>(
                     y1="0%"
                     y2={`${strokeFadePercent}%`}
                   >
-                    <stop offset={`0%`} stopColor="var(--color-black)" stopOpacity={1} />
-                    <stop offset={`100%`} stopColor="var(--color-black)" stopOpacity={0} />
+                    <stop offset={`0%`} stopColor="var(--black)" stopOpacity={1} />
+                    <stop offset={`100%`} stopColor="var(--black)" stopOpacity={0} />
                   </linearGradient>
                 </defs>
                 <line
@@ -208,6 +201,8 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
     ref
   ) => {
     const scrollRef = useRef(null);
+    const { isSM, isMD } = useScreenWidth();
+    const lg = !(isMD || isSM);
 
     const { scrollYProgress } = useScroll({
       target: scrollRef,
@@ -215,33 +210,29 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
       offset: ['start center', 'end center'],
     });
 
-    const circlePassiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0.75, 1]);
-    const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, 1]);
-    const circleStrokeGradient = useTransform(scrollYProgress, [0.3, 0.5], ['#5C5C5C', '#000000']);
-    const circleFillGradient = useTransform(
+    const circlePassiveScale = useTransform(
       scrollYProgress,
       [0.3, 0.5],
-      ['var(--color-black)', 'none']
+      [lg ? 0.75 : 0.5, lg ? 1 : 0.66]
     );
+    const circleActiveScale = useTransform(scrollYProgress, [0.3, 0.5], [0, lg ? 1 : 0.66]);
+    const circleStrokeGradient = useTransform(scrollYProgress, [0.3, 0.5], ['#5C5C5C', '#000000']);
+    const circleFillGradient = useTransform(scrollYProgress, [0.3, 0.5], ['var(--black)', 'none']);
 
     return (
       <div ref={scrollRef}>
-        <section
-          ref={ref}
-          className={clsx('ml-10 mr-4 flex max-w-screen-3xl flex-row lg:mr-10', className)}
-          {...props}
-        >
+        <section ref={ref} className={clsx('flex flex-row', className)} {...props}>
           <RoadmapLine
             scrollYProgress={scrollYProgress}
             circlePassiveScale={circlePassiveScale}
             circleActiveScale={circleActiveScale}
             circleStrokeGradient={circleStrokeGradient}
             circleFillGradient={circleFillGradient}
-            className="-ml-16 -mr-4 lg:ml-0"
+            className="-ml-14 -mr-4 md:-ml-16 lg:ml-0"
             isFirst={isFirst}
             isFinal={isFinal}
           />
-          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-4 lg:pl-10 lg:pr-28">
+          <div className="flex h-full w-full flex-col-reverse items-center lg:-mt-16 lg:h-auto lg:flex-row lg:gap-16 lg:px-10">
             <AnimatedElement className="flex w-full flex-col gap-4 lg:gap-8" delay={100}>
               {subtitle && (
                 <AnimatedElement
@@ -276,8 +267,11 @@ const RoadmapSection = forwardRef<HTMLDivElement, RoadmapSectionProps>(
                 </NavLink>
               )}
             </AnimatedElement>
-            <AnimatedElement className="w-full flex-shrink-0 lg:w-1/3" delay={200}>
-              {image && <ImageBox image={image} />}
+            <AnimatedElement
+              className="flex-shrink-0 self-start md:w-3/4 lg:w-1/3 lg:self-auto"
+              delay={200}
+            >
+              {image && <CMSImageBox image={image} />}
             </AnimatedElement>
           </div>
         </section>

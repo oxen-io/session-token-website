@@ -9,21 +9,22 @@ import 'swiper/css/navigation';
 import 'swiper/scss';
 import 'swiper/scss/a11y';
 
-import PortableText from '@/components/PortableText/PortableText';
-
 import Button from '@/components/Button/Button';
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import NavLink from '@/components/NavLink/NavLink';
+import { useScreenWidth } from '@/hooks/screen';
+import { UI } from '@/lib/constants';
 import { createSanityLink } from '@/lib/sanity.links';
 import type {
   CarouselContentSchemaType,
   TileCarouselSchemaType,
-  TileSchemaType,
+  TileCarouselTileSchemaType,
 } from '@/schemas/objects/flexibleSections/tileCarousel';
 import type { A11yOptions } from 'swiper/types';
 import s from './TileCarousel.module.sass';
+import TileCarouselTitle, { smallTitleClasses } from './TileCarouselTitle';
 
 function parseString(potentialString: string | number | undefined | null): string | undefined {
   if (typeof potentialString === 'string') {
@@ -56,10 +57,15 @@ export default function TileCarousel({
   tiles: _tiles,
   borderless,
 }: TileCarouselSchemaType) {
-  const tiles = _tiles as Array<TileSchemaType>;
+  const tiles = _tiles as Array<TileCarouselTileSchemaType>;
   const content = _content as CarouselContentSchemaType;
+  const { isSM, isMD, isLG } = useScreenWidth();
 
-  const hasScrollIconOnMobile = !content && !borderless;
+  const breakpoints = {};
+  breakpoints[`${UI.LG_BREAKPOINT}`] = {
+    slidesPerView: 3,
+    allowTouchMove: false,
+  };
 
   const [OuterElement, outerElementProps, InnerElement] = (() => {
     if (borderless) {
@@ -70,88 +76,30 @@ export default function TileCarousel({
       {
         modules: [A11y, Navigation],
         spaceBetween: 20,
-        slidesPerView: 1.2,
+        slidesPerView: 1.055,
         a11y: true,
         allowTouchMove: true,
         navigation: true,
-        breakpoints: {
-          1024: {
-            slidesPerView: 3,
-            allowTouchMove: false,
-          },
-        },
+        breakpoints,
       } as A11yOptions,
       SwiperSlide,
     ];
   })();
 
   return (
-    <section className={clsx(s.TileCarousel, content && s.HasContent, borderless && s.Borderless)}>
-      <div className={clsx(s.Cont, 'Container')}>
-        {content ? (
-          <div className={s.Content}>
-            <div className="smallTitle">{title}</div>
-            {content.title.length && (
-              <h2
-                dangerouslySetInnerHTML={{
-                  __html: content?.title,
-                }}
-              />
-            )}
-            {content.copy.length && <PortableText value={content.copy} />}
-          </div>
-        ) : borderless ? (
-          <h2
-            dangerouslySetInnerHTML={{
-              __html: title,
-            }}
-          />
-        ) : title ? (
-          <div className="smallTitle">
-            <PortableText value={title} />
-            {hasScrollIconOnMobile ? (
-              <div className={s.ScrollIcon}>
-                Scroll
-                <svg
-                  width="77"
-                  height="8"
-                  viewBox="0 0 77 8"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M76.4998 3.79688L69.9998 0.0440984V7.54965L76.4998 3.79688ZM70.6498 3.14688L0.964111 3.14688V4.44687L70.6498 4.44687V3.14688Z"
-                    fill="#fff"
-                  />
-                </svg>
-              </div>
-            ) : null}
-          </div>
-        ) : null}
-        {/* {!title && hasScrollIconOnMobile ? (
-          <div
-            className={
-              (clsx(s.ScrollIcon),
-              'w-full flex md:hidden flex-row-reverse items-center align-middle mb-2')
-            }
-          >
-            <span className="flex flex-row items-center align-middle">
-              Scroll
-              <svg
-                width="77"
-                height="8"
-                viewBox="0 0 77 8"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="gray"
-              >
-                <path
-                  d="M76.4998 3.79688L69.9998 0.0440984V7.54965L76.4998 3.79688ZM70.6498 3.14688L0.964111 3.14688V4.44687L70.6498 4.44687V3.14688Z"
-                  fill="gray"
-                />
-              </svg>
-            </span>
-          </div>
-        ) : null} */}
+    <section
+      className={clsx(
+        s.TileCarousel,
+        content && s.HasContent,
+        borderless && s.Borderless,
+        'mb-5 mt-12 overflow-hidden',
+        'lg:mt-24',
+        // Values should match Constants.UI.CONTAINER_*
+        `-me-[5vw] pe-[5vw]`
+      )}
+    >
+      <div className={clsx(s.Cont)}>
+        <TileCarouselTitle title={title} content={content} borderless={borderless} />
         <div className={s.Slider}>
           <OuterElement {...filterA11yOptions(outerElementProps)}>
             {tiles?.map((tile, index) => {
@@ -166,23 +114,43 @@ export default function TileCarousel({
               } = tile;
 
               const inside = (
-                <>
+                <div
+                  className={clsx(
+                    'flex w-full flex-col items-start',
+                    image ? 'h-[480px] justify-end xl:h-[660px]' : 'h-full justify-start'
+                  )}
+                >
                   {image && (
-                    <div className={s.Image}>
-                      <ImageBox image={image} />
+                    <div className={clsx(s.Image, 'flex h-full w-36 flex-col justify-end')}>
+                      <CMSImageBox image={image} />
                     </div>
                   )}
-                  <div className={s.TileContent}>
-                    {preTitle && <div className="smallTitle">{preTitle}</div>}
+                  <div
+                    className={clsx(
+                      s.TileContent,
+                      'flex flex-col',
+                      image ? 'mt-4 h-full justify-end lg:mt-12' : 'h-fit justify-start'
+                    )}
+                  >
+                    {preTitle && (
+                      <div className={clsx(smallTitleClasses, 'font-medium uppercase')}>
+                        {preTitle}
+                      </div>
+                    )}
                     {content ? (
                       <h4>
                         {tileTitle}
                         <span>↗</span>
                       </h4>
                     ) : (
-                      <h2 dangerouslySetInnerHTML={{ __html: tileTitle }} />
+                      <h2
+                        className={clsx('mb-2 text-xl', 'lg:text-3xl', 'xl:text-4xl')}
+                        dangerouslySetInnerHTML={{ __html: tileTitle }}
+                      />
                     )}
-                    <p>{copy}</p>
+                    <p className={clsx('text-sm leading-snug', 'xl:text-lg', image && 'mb-5')}>
+                      {copy}
+                    </p>
                     {linkLabel && (
                       <Button
                         title={linkLabel}
@@ -190,10 +158,12 @@ export default function TileCarousel({
                         isPrimary={fullSizeImage}
                         hasArrow={!!link}
                         disabled={!link}
+                        size={isSM || isMD || isLG ? 'small' : 'medium'}
+                        className={clsx('max-h-9', 'xl:mb-1 xl:max-h-11')}
                       />
                     )}
                   </div>
-                </>
+                </div>
               );
 
               return (
@@ -203,7 +173,14 @@ export default function TileCarousel({
                     delay={index * 100 + 100}
                   >
                     {!link || linkLabel ? (
-                      <div>{inside}</div>
+                      <div
+                        className={clsx(
+                          'flex h-full flex-col items-start',
+                          image ? 'justify-between' : 'justify-end'
+                        )}
+                      >
+                        {inside}
+                      </div>
                     ) : (
                       <NavLink href={link}>{inside}</NavLink>
                     )}

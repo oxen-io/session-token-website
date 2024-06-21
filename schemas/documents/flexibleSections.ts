@@ -1,22 +1,41 @@
 import { defineArrayMember } from 'sanity';
 
-const components = [
+type ModulesSchemaType =
+  | 'hero'
+  | 'iconStrip'
+  | 'roadmapHero'
+  | 'roadmapTabs'
+  | 'joinCta'
+  | 'statsTiles'
+  | 'tileGroup'
+  | 'tileCarousel'
+  | 'copyAndImage'
+  | 'postGrid'
+  | 'comingSoon'
+  | 'genericCta'
+  | 'faqsList'
+  | 'basicCopy';
+
+export type ModulesArraysSchemaType = Array<ModulesSchemaType>;
+
+const modules: ModulesArraysSchemaType = [
   'hero',
   'iconStrip',
   'roadmapHero',
   'roadmapTabs',
   'joinCta',
   'statsTiles',
+  'tileGroup',
   'tileCarousel',
   'copyAndImage',
-  'blogGrid',
+  'postGrid',
   'comingSoon',
   'genericCta',
   'faqsList',
   'basicCopy',
 ];
 
-const flexibleSections = components.map((component) =>
+const flexibleSections = modules.map((component) =>
   defineArrayMember({
     type: component,
   })

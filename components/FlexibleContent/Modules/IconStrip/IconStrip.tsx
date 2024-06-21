@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 
-import ImageBox from '@/components/ImageBox/ImageBox';
+import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import s from './IconStrip.module.sass';
 
 export default function IconStrip({ title, icons }: { title: string; icons: any }) {
   return (
     <section className={s.IconStrip}>
-      <div className={clsx(s.Cont, 'Container')}>
+      <div className={clsx(s.Cont)}>
         {title && <div className="smallTitle">{title}</div>}
         {icons && (
           <ul>
@@ -18,7 +18,7 @@ export default function IconStrip({ title, icons }: { title: string; icons: any 
 
               return (
                 <li key={index}>
-                  <ImageBox image={icon} />
+                  <CMSImageBox image={icon} />
                 </li>
               );
             })}

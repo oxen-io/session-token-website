@@ -1,11 +1,16 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 function nonLinearEase(t: number) {
   return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+}
+
+enum NumberSuffix {
+  BILLION = 'b',
+  MILLION = 'm',
 }
 
 /**
@@ -13,30 +18,39 @@ function nonLinearEase(t: number) {
  * @param number
  * @returns
  */
-function splitNumber(number: number): { numSuffix: string; numMajor: string; numRest?: string } {
-  const numSuffix = number >= 1000000000 ? 'B' : number >= 1000000 ? 'M' : '';
+function splitNumber(number: number): {
+  numSuffix: NumberSuffix | '';
+  numMajor: string;
+  numRest?: string;
+} {
+  const numSuffix =
+    number >= 1000000000 ? NumberSuffix.BILLION : number >= 1000000 ? NumberSuffix.MILLION : '';
   const numMajor =
-    numSuffix === 'B'
+    numSuffix === NumberSuffix.BILLION
       ? (number / 1000000000).toLocaleString()
-      : numSuffix === 'M'
+      : numSuffix === NumberSuffix.MILLION
         ? (number / 1000000).toLocaleString()
         : number.toLocaleString();
   const numRest = number.toLocaleString().substring(numMajor.length);
   return { numSuffix, numMajor, numRest };
 }
 
-const NumberTicker = ({
+export default function NumberTicker({
   targetNumber,
   duration = 3000,
+  onClick,
 }: {
   targetNumber: number;
   duration?: number;
-}) => {
+  onClick?: () => void;
+}) {
   const [count, setCount] = useState<number>(0);
   const [majorNumber, setMajorNumber] = useState<string>();
   const [restNumber, setRestNumber] = useState<string>();
+  const [showRestNumber, setShowRestNumber] = useState<boolean>(true);
   const [suffix, setSuffix] = useState('');
   const [formattedString, setFormattedString] = useState<string>();
+
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
@@ -68,15 +82,38 @@ const NumberTicker = ({
       return;
     }
     const { numSuffix, numMajor, numRest } = splitNumber(targetNumber);
-    setSuffix(numSuffix);
-    setMajorNumber(numMajor);
     setRestNumber(numRest);
+    setMajorNumber(numMajor);
+    setSuffix(numSuffix);
     setFormattedString(`${numMajor}${numSuffix}`);
-  }, [targetNumber, count]);
+    setTimeout(() => {
+      setShowRestNumber(false);
+    }, 1800 + 1);
+  }, [targetNumber, count, duration]);
 
   return (
-    <motion.div ref={ref} className="relative inline-flex">
+    <motion.div
+      ref={ref}
+      className="relative inline-flex cursor-pointer"
+      onClick={() => {
+        if (onClick && formattedString) {
+          onClick();
+        }
+      }}
+    >
       {formattedString ? <motion.div>{majorNumber}</motion.div> : null}
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: formattedString ? 0 : 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 1 + 0.8,
+          ease: 'linear',
+        }}
+        style={{ display: showRestNumber ? 'block' : 'none' }}
+      >
+        {restNumber ?? Math.floor(count).toLocaleString()}
+      </motion.div>
       {formattedString ? (
         <motion.div
           initial={{ opacity: 0, display: 'none' }}
@@ -90,46 +127,6 @@ const NumberTicker = ({
           {suffix}
         </motion.div>
       ) : null}
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: duration / 1000 + 1,
-          ease: 'linear',
-        }}
-      >
-        {restNumber ?? Math.floor(count).toLocaleString()}
-      </motion.div>
     </motion.div>
   );
-};
-
-export default NumberTicker; /* 
-<motion.div ref={ref} className="inline-flex">
-      {formattedString ? <motion.div>{majorNumber}</motion.div> : null}
-      {formattedString ? (
-        <motion.div
-          initial={{ x: '-100%', opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0,
-            ease: 'backInOut',
-          }}
-        >
-          {suffix}
-        </motion.div>
-      ) : null}
-      <motion.div
-        initial={{ x: 0 }}
-        animate={{ x: '-100%', opacity: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: duration / 1000,
-          ease: 'backInOut',
-        }}
-      >
-        {restNumber ?? Math.floor(count).toLocaleString()}
-      </motion.div>
-    </motion.div> */
+}

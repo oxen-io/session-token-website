@@ -17,6 +17,7 @@ export default {
       'monument-extended': ['var(--font-monument-extended)'],
     },
     screens: {
+      container: '1441px', // beyond the container's max width
       sm: '375px',
       md: '768px',
       lg: '1024px',
@@ -38,14 +39,14 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        disabled: 'var(--disabled)',
         text: {
-          DEFAULT: 'var(--text-text)',
+          DEFAULT: 'var(--text)',
           gradient: 'var(--text-gradient)',
           caption: 'var(--text-caption)',
         },
         primary: {
           DEFAULT: 'var(--primary-DEFAULT)',
-          dark: 'var(--primary-dark)',
         },
         gray: {
           lightest: 'var(--gray-lightest)',
