@@ -76,7 +76,7 @@ export default function TileCarousel({
       {
         modules: [A11y, Navigation],
         spaceBetween: 20,
-        slidesPerView: 1.05,
+        slidesPerView: 1.055,
         a11y: true,
         allowTouchMove: true,
         navigation: true,
