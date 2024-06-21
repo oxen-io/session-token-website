@@ -14,6 +14,7 @@ import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import NavLink from '@/components/NavLink/NavLink';
+import { useScreenWidth } from '@/hooks/screen';
 import { UI } from '@/lib/constants';
 import { createSanityLink } from '@/lib/sanity.links';
 import type {
@@ -58,6 +59,7 @@ export default function TileCarousel({
 }: TileCarouselSchemaType) {
   const tiles = _tiles as Array<TileCarouselTileSchemaType>;
   const content = _content as CarouselContentSchemaType;
+  const {isSM, isMD, isLG} = useScreenWidth();
 
   const breakpoints = {};
   breakpoints[`${UI.LG_BREAKPOINT}`] = {
@@ -74,7 +76,7 @@ export default function TileCarousel({
       {
         modules: [A11y, Navigation],
         spaceBetween: 20,
-        slidesPerView: 1.2,
+        slidesPerView: 1.05,
         a11y: true,
         allowTouchMove: true,
         navigation: true,
@@ -112,13 +114,17 @@ export default function TileCarousel({
               } = tile;
 
               const inside = (
-                <div className={clsx('flex h-full w-full flex-col items-start', 'justify-end')}>
+                <div
+                  className={clsx(
+                    'flex h-[480px] w-full flex-col items-start justify-end',
+                    'xl:h-[660px]'
+                  )}
+                >
                   {image && (
                     <div
                       className={clsx(
                         s.Image,
-                        'flex h-full w-36 flex-col justify-end',
-                        'lg:h-full lg:min-h-72 lg:w-48'
+                        'flex h-full w-36 flex-col justify-end'
                       )}
                     >
                       <CMSImageBox image={image} />
@@ -140,11 +146,11 @@ export default function TileCarousel({
                       </h4>
                     ) : (
                       <h2
-                        className={clsx('mb-2', 'lg:mb-1')}
+                        className={clsx('text-xl mb-2', 'lg:text-3xl', 'xl:text-4xl')}
                         dangerouslySetInnerHTML={{ __html: tileTitle }}
                       />
                     )}
-                    <p>{copy}</p>
+                    <p className={clsx('text-sm leading-snug mb-5','xl:text-lg')}>{copy}</p>
                     {linkLabel && (
                       <Button
                         title={linkLabel}
@@ -152,6 +158,8 @@ export default function TileCarousel({
                         isPrimary={fullSizeImage}
                         hasArrow={!!link}
                         disabled={!link}
+                        size={isSM || isMD || isLG ? 'small' : 'medium'}
+                        className={clsx('max-h-9', 'xl:max-h-11 xl:mb-1')}
                       />
                     )}
                   </div>
