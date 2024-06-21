@@ -49,7 +49,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
         'transition duration-300'
       )}
     >
-      <div className={clsx('flex w-full items-center justify-between', 'lg:w-fit')}>
+      <div className={clsx('flex w-full items-center justify-between bg-background', 'lg:w-fit')}>
         <Link href="/">
           <ImageBox
             src="/assets/images/logo.png"
