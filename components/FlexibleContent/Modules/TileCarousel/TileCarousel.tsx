@@ -59,7 +59,7 @@ export default function TileCarousel({
 }: TileCarouselSchemaType) {
   const tiles = _tiles as Array<TileCarouselTileSchemaType>;
   const content = _content as CarouselContentSchemaType;
-  const {isSM, isMD, isLG} = useScreenWidth();
+  const { isSM, isMD, isLG } = useScreenWidth();
 
   const breakpoints = {};
   breakpoints[`${UI.LG_BREAKPOINT}`] = {
@@ -116,29 +116,27 @@ export default function TileCarousel({
               const inside = (
                 <div
                   className={clsx(
-                    'flex h-[480px] w-full flex-col items-start justify-end',
-                    'xl:h-[660px]'
+                    'flex w-full flex-col items-start',
+                    image ? 'h-[480px] justify-end xl:h-[660px]' : 'h-full justify-start'
                   )}
                 >
                   {image && (
-                    <div
-                      className={clsx(
-                        s.Image,
-                        'flex h-full w-36 flex-col justify-end'
-                      )}
-                    >
+                    <div className={clsx(s.Image, 'flex h-full w-36 flex-col justify-end')}>
                       <CMSImageBox image={image} />
                     </div>
                   )}
                   <div
                     className={clsx(
                       s.TileContent,
-                      'mt-4 flex flex-col justify-end',
-                      'lg:mt-12',
-                      image ? 'h-full' : 'h-fit'
+                      'flex flex-col',
+                      image ? 'mt-4 h-full justify-end lg:mt-12' : 'h-fit justify-start'
                     )}
                   >
-                    {preTitle && <div className={clsx(smallTitleClasses)}>{preTitle}</div>}
+                    {preTitle && (
+                      <div className={clsx(smallTitleClasses, 'font-medium uppercase')}>
+                        {preTitle}
+                      </div>
+                    )}
                     {content ? (
                       <h4>
                         {tileTitle}
@@ -146,11 +144,13 @@ export default function TileCarousel({
                       </h4>
                     ) : (
                       <h2
-                        className={clsx('text-xl mb-2', 'lg:text-3xl', 'xl:text-4xl')}
+                        className={clsx('mb-2 text-xl', 'lg:text-3xl', 'xl:text-4xl')}
                         dangerouslySetInnerHTML={{ __html: tileTitle }}
                       />
                     )}
-                    <p className={clsx('text-sm leading-snug mb-5','xl:text-lg')}>{copy}</p>
+                    <p className={clsx('text-sm leading-snug', 'xl:text-lg', image && 'mb-5')}>
+                      {copy}
+                    </p>
                     {linkLabel && (
                       <Button
                         title={linkLabel}
@@ -159,7 +159,7 @@ export default function TileCarousel({
                         hasArrow={!!link}
                         disabled={!link}
                         size={isSM || isMD || isLG ? 'small' : 'medium'}
-                        className={clsx('max-h-9', 'xl:max-h-11 xl:mb-1')}
+                        className={clsx('max-h-9', 'xl:mb-1 xl:max-h-11')}
                       />
                     )}
                   </div>
