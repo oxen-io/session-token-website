@@ -87,7 +87,7 @@ export default function RewardStats({ className }: { className?: string }) {
           return (
             <li key={_key}>
               <span>
-                {title}:<strong>{copy}</strong>
+                {title}:<strong className={clsx('font-bold')}>{copy}</strong>
               </span>
             </li>
           );

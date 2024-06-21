@@ -31,22 +31,15 @@ export default function DeprecatedCopyAndImage(props: DeprecatedCopyAndImageProp
         <AnimatedElement
           className={clsx(
             'w-full',
-            'lg:flex lg:max-w-md lg:items-center',
-            'xl:max-w-xl',
-            isReversed ? 'lg:justify-end' : 'lg:justify-start'
+            'lg:flex lg:items-center',
+            isReversed ? 'lg:ms-16 lg:justify-end' : 'lg:me-16 lg:justify-start'
           )}
           delay={isReversed ? 200 : 100}
         >
-          <div
-            className={clsx(
-              'flex w-full flex-grow flex-col items-start justify-center',
-              'md:max-w-xl',
-              'lg:max-w-none'
-            )}
-          >
+          <div className={clsx('flex w-full flex-grow flex-col items-start justify-center')}>
             <div className={clsx('smallTitle', 'mb-6')}>{title}</div>
             {copy && (
-              <h2
+              <div
                 className={clsx(
                   'mb-5 text-3xl leading-tight',
                   'xl:text-4xl xl:leading-snug',
@@ -54,7 +47,7 @@ export default function DeprecatedCopyAndImage(props: DeprecatedCopyAndImageProp
                 )}
               >
                 <PortableText value={copy} />
-              </h2>
+              </div>
             )}
             {subCopy && (
               <h4 className={clsx('mb-5 text-base text-text', 'lg:text-2xl')}>
