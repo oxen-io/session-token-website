@@ -126,7 +126,7 @@ export default function Hero(props: HeroSchemaType) {
         <AnimatedBigImage
           image={image}
           className={clsx(
-            'mt-16 flex w-3/4 select-none md:mt-0 md:w-2/3 lg:w-full',
+            'mt-16 flex w-full select-none md:mt-0 md:w-2/3 lg:w-full',
             variant === 'copyImageStatsHero' ? 'max-w-[75vh]' : 'lg:max-w-[55vw]',
             variant === 'copyImageStatsHero' && !statsHidden && 'blur-lg lg:blur-none'
           )}
