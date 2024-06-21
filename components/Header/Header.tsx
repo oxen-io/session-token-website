@@ -49,7 +49,7 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
         'transition duration-300'
       )}
     >
-      <div className={clsx('flex w-full items-center justify-between', 'lg:w-fit')}>
+      <div className={clsx('flex w-full items-center justify-between bg-background', 'lg:w-fit')}>
         <Link href="/">
           <ImageBox
             src="/assets/images/logo.png"
@@ -89,8 +89,10 @@ export function Header({ isDraftMode }: { isDraftMode: boolean }) {
         >
           <div
             className={clsx(
-              'flex w-full flex-col items-start justify-start gap-5',
-              'lg:ml-12 lg:flex-row lg:gap-12'
+              'flex w-full flex-col items-start justify-start gap-5 text-lg',
+              'md:gap-8 md:text-base',
+              'lg:ml-12 lg:flex-row',
+              'xl:gap-12 xl:text-lg'
             )}
           >
             {menuItems.map((item, index) => {

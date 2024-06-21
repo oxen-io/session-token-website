@@ -27,7 +27,7 @@ export default function DepricatedHero({ title, copy, buttons, backgroundImage }
         {title && (
           <AnimatedElement
             type="h1"
-            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-4xl font-medium text-transparent md:text-7xl"
+            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-4xl font-medium text-transparent md:text-7xl lg:text-5xl xl:text-7xl"
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
           />
@@ -54,7 +54,10 @@ export default function DepricatedHero({ title, copy, buttons, backgroundImage }
         )}
       </div>
       {backgroundImage ? (
-        <AnimatedBigImage image={backgroundImage} className="w-max-[50vh] flex w-2/3 lg:w-full" />
+        <AnimatedBigImage
+          image={backgroundImage}
+          className="mt-16 flex w-3/4 max-w-[55vw] md:mt-0 md:w-2/3 lg:w-full"
+        />
       ) : null}
     </section>
   );

@@ -36,14 +36,29 @@ export default function JoinCta({
       >
         <div className={clsx('px-6 py-8', 'md:max-w-2xl', 'lg:max-w-sm lg:pl-10', 'xl:max-w-lg')}>
           <div className="smallTitle">/ {preTitle}</div>
-          <h2 className={clsx('mt-5', 'lg:mb-5 lg:mt-16')}>{title}</h2>
-          <div className={clsx('mb-8', 'lg:mb-16')}>
+          <h2
+            className={clsx(
+              'my-5 text-4xl font-medium leading-tight',
+              // line height at lg gets overriden by sass somewhere
+              'lg:mb-10 lg:mt-16 lg:text-6xl lg:font-semibold lg:leading-tight'
+            )}
+          >
+            {title}
+          </h2>
+          <div className={clsx('mb-8 font-light', 'lg:mb-16 lg:text-2xl')}>
             <PortableText value={copy} />
           </div>
-          <Socials socialLinks={socialLinks} className="mt-5" />
+          <Socials
+            socialLinks={socialLinks}
+            className={clsx('mt-5 gap-5', 'lg:mb-2 lg:mt-28 lg:gap-6')}
+          />
         </div>
         <div
-          className={clsx('h-72 w-full bg-cover bg-center bg-no-repeat', 'lg:-my-12 lg:h-[660px]')}
+          className={clsx(
+            'h-72 w-full bg-cover bg-center bg-no-repeat',
+            'lg:-my-12 lg:h-[780px]',
+            'xl:h-[680px]'
+          )}
           style={{
             backgroundImage: `url(${bgUrl})`,
           }}

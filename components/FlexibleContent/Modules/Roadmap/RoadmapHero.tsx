@@ -34,7 +34,7 @@ export default function RoadmapHero({
       <div
         className={clsx(
           s.CopyCont,
-          'flex flex-col justify-center gap-4 pb-20 text-center lg:pb-0 lg:text-start'
+          'flex w-full flex-col justify-center gap-4 pb-20 text-center lg:pb-0 lg:text-start'
         )}
       >
         {subtitle && (
@@ -48,7 +48,7 @@ export default function RoadmapHero({
         {title && (
           <AnimatedElement
             type="h1"
-            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-7xl font-bold text-transparent lg:text-[82px]"
+            className="-mb-4 bg-gradient-to-tr from-[#FFFFFF] to-[#97A99E] bg-clip-text pb-4 pr-2 text-5xl font-bold text-transparent md:text-7xl lg:text-[82px]"
             delay={100}
             dangerouslySetInnerHTML={{ __html: title }}
           />
@@ -70,7 +70,10 @@ export default function RoadmapHero({
       {backgroundImage ? (
         <AnimatedBigImage
           image={backgroundImage}
-          className="flex select-none md:w-2/3 lg:w-full lg:max-w-[50vh]"
+          className={clsx(
+            'mt-16 flex w-3/4 select-none md:w-2/3 lg:w-full lg:max-w-[50vw]',
+            'md:mt-0'
+          )}
         />
       ) : null}
     </section>
