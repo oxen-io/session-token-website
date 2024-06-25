@@ -23,4 +23,10 @@ const UI = {
   '3XL_BREAKPOINT': makeNumber(fullConfig.theme.screens['3xl']),
 };
 
+/** Durations to revalidate data in seconds */
+export const REVALIDATIONS = {
+  '30S': 30,
+  '1H': 3600,
+};
+
 export { UI };
