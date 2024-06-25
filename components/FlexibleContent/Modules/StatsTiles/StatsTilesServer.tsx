@@ -14,11 +14,15 @@ async function getData(): Promise<string | null> {
       next: { revalidate: REVALIDATIONS['30S'] },
     });
 
+    if (!response.ok) {
+      throw new Error(`Fetch failed. Data API status: ${response.status}`);
+    }
+
     const { nodeCount } = await response.json();
     return String(nodeCount);
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error(`internal ${response?.status || ''} error from data API. Error ${err}`);
+    console.error(`internal ${response?.status || ''} error from Data API. Error ${err}`);
     return null;
   }
 }
