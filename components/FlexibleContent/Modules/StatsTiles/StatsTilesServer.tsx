@@ -18,7 +18,7 @@ async function getData(): Promise<string | null> {
     return String(nodeCount);
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error('internal error from data API repsonse', response?.status, '\nError', err);
+    console.error(`internal ${response?.status || ''} error from data API. Error ${err}`);
     return null;
   }
 }
