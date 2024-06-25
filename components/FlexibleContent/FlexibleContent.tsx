@@ -12,7 +12,7 @@ import JoinCta from './Modules/JoinCta/JoinCta';
 import PostGrid from './Modules/PostGrid/PostGrid';
 import RoadmapHero from './Modules/Roadmap/RoadmapHero';
 import RoadmapTabs from './Modules/Roadmap/RoadmapTabs';
-import StatsTiles from './Modules/StatsTiles/StatsTiles';
+import StatsTilesServer from './Modules/StatsTiles/StatsTilesServer';
 import TileCarousel from './Modules/TileCarousel/TileCarousel';
 import TileGroup from './Modules/TileGroup/TileGroup';
 
@@ -22,7 +22,7 @@ const Components: Record<string, (props: object) => JSX.Element | Promise<JSX.El
   RoadmapTabs,
   IconStrip,
   JoinCta,
-  StatsTiles,
+  StatsTiles: StatsTilesServer,
   TileGroup,
   TileCarousel,
   CopyAndImage,

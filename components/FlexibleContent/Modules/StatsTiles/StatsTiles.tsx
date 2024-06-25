@@ -7,16 +7,9 @@ import CMSImageBox from '@/components/ImageBox/CMSImageBox';
 import { AnimatedElement } from '@/components/AnimatedComponent/AnimatedComponent';
 import NumberTicker from '@/components/NumberTicker';
 import { useId, useState } from 'react';
+import type { StatTile } from './StatsTilesServer';
 
-export default function StatsTiles({
-  tiles,
-}: {
-  tiles: Array<{
-    figure: string;
-    copy: string;
-    backgroundImage: any;
-  }>;
-}) {
+export default function StatsTiles({ tiles }: { tiles: Array<StatTile> }) {
   const id = useId();
   const [attempt, setAttempt] = useState(0);
 
