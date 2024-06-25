@@ -11,7 +11,7 @@ async function getData(): Promise<string | null> {
         Authorization: `Bearer ${process.env.DATA_API_KEY}`,
       },
       method: 'GET',
-      next: { revalidate: REVALIDATIONS['30S'] },
+      next: { revalidate: REVALIDATIONS['1H'] },
     });
 
     if (!response.ok) {
