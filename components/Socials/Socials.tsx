@@ -1,4 +1,5 @@
-'use client';
+// NOTE Migrated to @session/ui 2024-07-05
+('use client');
 
 import { SettingsContext } from '@/components/Contexts/SettingsContext';
 import { getSocialIcon } from '@/lib/utils';

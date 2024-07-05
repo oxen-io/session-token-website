@@ -40,7 +40,7 @@ const BottomJsx = ({
 );
 
 export async function Footer() {
-  const { menuItems, lastUpdatedDate, footerCTA, footerMangedBy, footerCopyright } =
+  const { menuItems, lastUpdatedDate, footerCTA, footerManagedBy, footerCopyright } =
     await getSettings();
 
   return (
@@ -75,7 +75,7 @@ export async function Footer() {
             <span
               className={clsx('my-6 text-sm font-medium uppercase', 'md:mt-16', 'lg:mb-24 lg:mt-8')}
             >
-              / {footerMangedBy}
+              / {footerManagedBy}
             </span>
             <BottomJsx
               lastUpdatedDate={lastUpdatedDate}
