@@ -3,6 +3,7 @@
 import { sanityClient } from '@/lib/sanity.client';
 import { CMSDocument, SPECIAL_SELECT, sanityQuery } from '@/lib/sanity.queries';
 import type { FilteredResponseQueryOptions, QueryParams } from '@sanity/client';
+import { REVALIDATIONS } from './constants';
 import { log } from './logger';
 
 export const maxDuration = 300;
@@ -49,7 +50,7 @@ export async function sanityFetch<QueryResponse>({
     cache: undefined,
     token,
     perspective: 'previewDrafts',
-    next: { revalidate: 30, tags },
+    next: { revalidate: REVALIDATIONS['30S'], tags },
   };
 
   return sanityClient.fetch<QueryResponse>(
