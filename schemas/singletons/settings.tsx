@@ -37,8 +37,8 @@ const fields = [
     type: 'button',
   }),
   defineField({
-    name: 'footerMangedBy',
-    title: 'Footer Manged By Information',
+    name: 'footerManagedBy',
+    title: 'Footer Managed By Information',
     type: 'string',
   }),
   defineField({

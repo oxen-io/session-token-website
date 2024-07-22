@@ -6,7 +6,6 @@ import '@/styles/Reset.sass';
 import '@/styles/Global.sass';
 
 import { SettingsProvider } from '@/components/Contexts/SettingsContext';
-import { Footer } from '@/components/Footer';
 import { PreviewBanner } from '@/components/preview/PreviewBanner';
 import PreviewProvider from '@/components/preview/PreviewProvider';
 import { Environment, isEnv, isProduction } from '@/lib/env';
@@ -14,6 +13,7 @@ import { getSettings, token } from '@/lib/sanity.fetch';
 
 import { Container } from '@/components/Container/Container';
 import { DevModalServer } from '@/components/DevModalServer';
+import { Footer } from '@/components/Footer/Footer';
 import { Header } from '@/components/Header/Header';
 import { AtypDisplay, AtypText, MonumentExtended } from '@/styles/fonts/fonts';
 import { draftMode } from 'next/headers';
