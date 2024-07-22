@@ -17,6 +17,7 @@ export type AllowedElement =
   | 'ul'
   | 'li'
   | 'legend'
+  | 'aside'
   | 'main';
 
 export const AnimatedElement = ({
