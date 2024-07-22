@@ -1,9 +1,4 @@
 .Outer
-    margin-top: 100px
-    grid-template-columns: 1fr 320px
-    gap: 120px
-    margin-bottom: 200px
-
     main
         &>*:first-child
             margin-top: 0px
@@ -43,11 +38,8 @@
                 aspect-ratio: 16/9
 
     aside > div
-        position: sticky
-        top: 80px
 
         ul li
-            margin: 10px 0px
 
             button
                 display: block
@@ -59,11 +51,3 @@
                 &:hover
                     opacity: 1
 
-@media(max-width: 1024px)
-    .Outer
-        display: block
-        margin-top: 50px
-        margin-bottom: 50px
-
-        aside
-            display: none
