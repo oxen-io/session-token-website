@@ -23,21 +23,21 @@ export default function BasicCopy({
   ) as Array<CopyBlock>;
 
   return (
-    <section
-      className={clsx(
-        s.Outer,
-        'post-content flex w-full',
-        allH2s.length > 0 && showOutline && 'md:grid'
-      )}
-    >
+    <section className={clsx(s.Outer, 'post-content mb-48 mt-24 flex w-full gap-12')}>
       <AnimatedElement innerRef={mainRef} type="main" delay={250}>
         <PortableText value={copy} />
       </AnimatedElement>
       {allH2s.length > 0 && showOutline ? (
-        <aside>
-          <AnimatedElement type="div" delay={300}>
-            <h5>{outlineHeading}</h5>
-            <ul>
+        <AnimatedElement
+          type="aside"
+          delay={100}
+          className={clsx('wrap hidden w-max max-w-[25vw]', 'lg:block')}
+        >
+          <div className="sticky top-12">
+            <h5 className="text-nowrap text-xl font-medium uppercase tracking-wider">
+              {outlineHeading}
+            </h5>
+            <ul className="mt-2 flex flex-col gap-1">
               {allH2s.map(({ _key, children }, index) => {
                 const textContent = children[0]?.text;
 
@@ -61,8 +61,8 @@ export default function BasicCopy({
                 );
               })}
             </ul>
-          </AnimatedElement>
-        </aside>
+          </div>
+        </AnimatedElement>
       ) : null}
     </section>
   );

@@ -1,6 +1,7 @@
+// NOTE Migrated to @session/ui 2024-07-05
 import Button from '@/components/Button/Button';
 import Socials from '@/components/Socials/Socials';
-import type { SettingsSchemaType } from '@/schemas/singletons/settings';
+import { getSettings } from '@/lib/sanity.fetch';
 import clsx from 'clsx';
 import Link from 'next/link';
 import ImageBox from '../ImageBox/ImageBox';
@@ -38,8 +39,9 @@ const BottomJsx = ({
   </div>
 );
 
-export default function Footer({ settings }: { settings: SettingsSchemaType }) {
-  const { menuItems, lastUpdatedDate, footerCTA, footerMangedBy, footerCopyright } = settings;
+export async function Footer() {
+  const { menuItems, lastUpdatedDate, footerCTA, footerManagedBy, footerCopyright } =
+    await getSettings();
 
   return (
     <footer className={clsx('my-16 w-full')}>
@@ -73,7 +75,7 @@ export default function Footer({ settings }: { settings: SettingsSchemaType }) {
             <span
               className={clsx('my-6 text-sm font-medium uppercase', 'md:mt-16', 'lg:mb-24 lg:mt-8')}
             >
-              / {footerMangedBy}
+              / {footerManagedBy}
             </span>
             <BottomJsx
               lastUpdatedDate={lastUpdatedDate}

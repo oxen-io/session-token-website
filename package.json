@@ -3,25 +3,25 @@
   "description": "Session Token Website",
   "license": "GPL-3.0-only",
   "scripts": {
-    "build": "yarn build:production",
+    "build": "pnpm build:production",
     "build-next": "NEXT_PUBLIC_SITE_ENV=production NODE_ENV=production next build",
-    "build-next:safe": "yarn format-full && yarn type-check && yarn build-next",
-    "build:dev": "NEXT_PUBLIC_ENV_FLAG=dev yarn build-next:safe",
-    "build:production": "NEXT_PUBLIC_ENV_FLAG=prd yarn build-next:safe",
-    "build:qa": "NEXT_PUBLIC_ENV_FLAG=qa yarn build-next:safe",
-    "build:staging": "NEXT_PUBLIC_ENV_FLAG=stg yarn build-next:safe",
+    "build-next:safe": "pnpm format-full && pnpm type-check && pnpm build-next",
+    "build:dev": "NEXT_PUBLIC_ENV_FLAG=dev pnpm build-next:safe",
+    "build:production": "NEXT_PUBLIC_ENV_FLAG=prd pnpm build-next:safe",
+    "build:qa": "NEXT_PUBLIC_ENV_FLAG=qa pnpm build-next:safe",
+    "build:staging": "NEXT_PUBLIC_ENV_FLAG=stg pnpm build-next:safe",
     "clean": "rm -rf .next",
     "dev": "NEXT_PUBLIC_ENV_FLAG=dev next",
-    "format": "yarn prettier --list-different --write \"**/*.{css,html,js,json,md,ts,tsx}\"",
-    "format-full": "yarn format && yarn lint",
+    "format": "pnpm prettier --list-different --write \"**/*.{css,html,js,json,md,ts,tsx}\"",
+    "format-full": "pnpm format && pnpm lint",
     "lint": "eslint .",
     "prepare": "husky install",
-    "start": "yarn start:production",
+    "start": "pnpm start:production",
     "start-next": "NEXT_PUBLIC_SITE_ENV=production NODE_ENV=production next start --hostname 127.0.0.1",
-    "start:dev": "NEXT_PUBLIC_ENV_FLAG=dev yarn start-next",
-    "start:production": "NEXT_PUBLIC_ENV_FLAG=prd yarn start-next",
-    "start:qa": "NEXT_PUBLIC_ENV_FLAG=qa yarn start-next",
-    "start:staging": "NEXT_PUBLIC_ENV_FLAG=stg yarn start-next",
+    "start:dev": "NEXT_PUBLIC_ENV_FLAG=dev pnpm start-next",
+    "start:production": "NEXT_PUBLIC_ENV_FLAG=prd pnpm start-next",
+    "start:qa": "NEXT_PUBLIC_ENV_FLAG=qa pnpm start-next",
+    "start:staging": "NEXT_PUBLIC_ENV_FLAG=stg pnpm start-next",
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
@@ -87,5 +87,6 @@
     "prettier-plugin-packagejson": "2.4.12",
     "prettier-plugin-tailwindcss": "^0.6.4",
     "typescript": "5.4.2"
-  }
+  },
+  "packageManager": "pnpm@9.5.0-beta.0+sha512.c2e60e7ed04e459591c982f2760cd8f7d1f48fe1ca4d46ccbbf8377df1eb2d077ace1e9d334b06250dddf23c03b4562858f77992b9a3bb4a93355aefd173df32"
 }
