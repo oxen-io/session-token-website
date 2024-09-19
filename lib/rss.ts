@@ -44,9 +44,7 @@ export async function generateRssFeed(posts: Array<PostSchemaType>) {
         copyright: `All rights reserved ${year}`,
         item: posts.map((post: PostSchemaType) => ({
           title: post.title.trim(),
-          description: {
-            '#cdata': `${post.excerpt}<br /><a href="${site_url}/${SLUG.POSTS}/${post.slug.current}">Read more</a>`,
-          },
+          description: post.excerpt.trim(),
           link: `${site_url}/${SLUG.POSTS}/${post.slug.current}`,
           guid: {
             '@isPermaLink': 'true',
